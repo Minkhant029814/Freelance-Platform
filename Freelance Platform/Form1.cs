@@ -16,5 +16,10 @@ namespace Freelance_Platform
         {
             InitializeComponent();
         }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("hello world");
+        }
     }
 }
