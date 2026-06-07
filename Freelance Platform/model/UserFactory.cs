@@ -8,5 +8,15 @@ namespace Freelance_Platform.model
 {
     internal class UserFactory
     {
+        public static User CreateUser(string type,string username,string password)
+        {
+            if(type.ToLower() == "freelancer")
+            {
+                return new Freelancer(username, password);
+            }
+            return new Client(username, password);
+        }
+
+            
     }
 }

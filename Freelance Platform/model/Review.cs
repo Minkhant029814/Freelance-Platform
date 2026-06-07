@@ -8,5 +8,11 @@ namespace Freelance_Platform.model
 {
     internal class Review
     {
+        public int ReviewId { get; set; }
+
+        public string Comment { get; set; }
+        public float Rating { get; set; }
+
+        public DateTime CreatedDate { get; set; }
     }
 }

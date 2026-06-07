@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Freelance_Platform.model
 {
-    internal class ProjectStatus
+    internal enum ProjectStatus
     {
+        Planning,
+        InProgress,
+        OnHold,
+        Completed,
+        Cancelled
     }
 }

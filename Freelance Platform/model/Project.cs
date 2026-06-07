@@ -8,5 +8,15 @@ namespace Freelance_Platform.model
 {
     internal class Project
     {
+        public int ProjectId { get; set; }
+        public string ProjectTitle { get; set; }
+        public string Description { get; set; }
+        public decimal BaselineBudget { get; set; }
+
+        public DateTime StartDate { get; set; }
+
+
+        public  ProjectStatus CurrentStatus { get; set; }
+        public DateTime EndDate { get; set; }
     }
 }
