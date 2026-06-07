@@ -28,7 +28,7 @@ namespace Freelance_Platform.model
         {
             foreach(var p in projects)
             {
-                Console.WriteLine(p.projectTitle):
+                Console.WriteLine(p.ProjectTitle);
             }
         }
 
