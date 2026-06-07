@@ -7,29 +7,22 @@ using System.Threading.Tasks;
 
 namespace Freelance_Platform.model
 {
-    internal abstract class User
+    internal  class User
     {
         
         public string Username { get; set; }
         public string Password { get; set; }
 
-        protected User(string username,string password)
+        public string Type { get; set; }
+
+        public User(string username,string password,string type)
         {
             Username = username;
             Password = password;
+            Type = type;
         }
 
-        public bool ValidatePassword(string password)
-        {
-            if(password.Length <8 || password.Length > 12)
-            {
-                return false;
-            }
-            bool hasUpper = Regex.IsMatch(password, "[A-Z]");
-            bool hasLower = Regex.IsMatch(password, "[a-z]");
-
-            return hasUpper && hasLower;
-        }
+       
 
         public virtual void Register()
         {
@@ -41,6 +34,9 @@ namespace Freelance_Platform.model
 
         }
 
-        public abstract void CreateProfile();
+        public virtual void CreateProfile()
+        {
+
+        }
     }
 }

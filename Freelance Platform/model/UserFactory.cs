@@ -12,9 +12,9 @@ namespace Freelance_Platform.model
         {
             if(type.ToLower() == "freelancer")
             {
-                return new Freelancer(username, password);
+                return new Freelancer(username, password,type);
             }
-            return new Client(username, password);
+            return new Client(username, password,type);
         }
 
             

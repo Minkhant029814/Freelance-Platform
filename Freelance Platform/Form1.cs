@@ -59,5 +59,10 @@ namespace Freelance_Platform
             new Register().Show();
             this.Hide();
         }
+
+        private void btnLogin_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

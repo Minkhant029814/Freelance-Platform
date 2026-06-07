@@ -13,7 +13,7 @@ namespace Freelance_Platform.model
         public string Email { get; set; }
         
         public string Address { get; set; }
-        public Client(string username, string password) : base(username, password)
+        public Client(string username, string password,string type) : base(username, password,type)
         {
 
         }

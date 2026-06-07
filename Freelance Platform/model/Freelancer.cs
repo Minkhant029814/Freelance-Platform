@@ -12,12 +12,13 @@ namespace Freelance_Platform.model
         public List<string> Skills { get; set; }
         public string Expertise { get; set; }
         public List<string> PastWork { get; set; }
-        public Portfolio Portfolio { get; set; }
+        public List<Portfolio> Portfolio { get; set; }
         
-        public Freelancer(string username,string password):base(username, password)
+        public Freelancer(string username,string password,string type):base(username, password,type)
         {
             Skills = new List<string>();
             PastWork = new List<string>();
+            Portfolio = new List<Portfolio>();
         }
         public override void CreateProfile()
         {
