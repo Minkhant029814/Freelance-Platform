@@ -32,7 +32,7 @@ namespace Freelance_Platform.Forms
             else
             {
                 txtPassword.PasswordChar = '*' ;
-                txtPassword.PasswordChar = '*';
+                txtConfirm.PasswordChar = '*';
             }
         }
 
@@ -126,13 +126,23 @@ namespace Freelance_Platform.Forms
             else
             {
                 ClientProflle frm =
-                    new ClientProflle();
+                    new ClientProflle(userId,type,name);
 
 
                 frm.Show();
             }
 
             this.Hide();
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Register_Load(object sender, EventArgs e)
+        {
 
         }
     }
