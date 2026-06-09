@@ -30,26 +30,26 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnUploadImage = new System.Windows.Forms.Button();
+            this.pictProfileBox = new System.Windows.Forms.PictureBox();
+            this.lblUserType = new System.Windows.Forms.Label();
+            this.lblClientName = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.txtPhone = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.rtxtCompanyAddress = new System.Windows.Forms.RichTextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtPhone = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.lblClientName = new System.Windows.Forms.Label();
-            this.lblUserType = new System.Windows.Forms.Label();
-            this.pictProfileBox = new System.Windows.Forms.PictureBox();
-            this.btnUploadImage = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictProfileBox)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -73,6 +73,62 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(316, 639);
             this.panel1.TabIndex = 2;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.btnUploadImage);
+            this.panel3.Controls.Add(this.pictProfileBox);
+            this.panel3.Controls.Add(this.lblUserType);
+            this.panel3.Controls.Add(this.lblClientName);
+            this.panel3.Location = new System.Drawing.Point(14, 64);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(278, 419);
+            this.panel3.TabIndex = 0;
+            // 
+            // btnUploadImage
+            // 
+            this.btnUploadImage.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUploadImage.Location = new System.Drawing.Point(13, 327);
+            this.btnUploadImage.Name = "btnUploadImage";
+            this.btnUploadImage.Size = new System.Drawing.Size(248, 66);
+            this.btnUploadImage.TabIndex = 3;
+            this.btnUploadImage.Text = "Upload Photo";
+            this.btnUploadImage.UseVisualStyleBackColor = true;
+            this.btnUploadImage.Click += new System.EventHandler(this.btnUploadImage_Click);
+            // 
+            // pictProfileBox
+            // 
+            this.pictProfileBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictProfileBox.Location = new System.Drawing.Point(34, 27);
+            this.pictProfileBox.Name = "pictProfileBox";
+            this.pictProfileBox.Size = new System.Drawing.Size(194, 121);
+            this.pictProfileBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictProfileBox.TabIndex = 2;
+            this.pictProfileBox.TabStop = false;
+            // 
+            // lblUserType
+            // 
+            this.lblUserType.AutoSize = true;
+            this.lblUserType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
+            this.lblUserType.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserType.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblUserType.Location = new System.Drawing.Point(57, 244);
+            this.lblUserType.Name = "lblUserType";
+            this.lblUserType.Size = new System.Drawing.Size(76, 31);
+            this.lblUserType.TabIndex = 1;
+            this.lblUserType.Text = "label7";
+            // 
+            // lblClientName
+            // 
+            this.lblClientName.AutoSize = true;
+            this.lblClientName.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClientName.Location = new System.Drawing.Point(86, 171);
+            this.lblClientName.Name = "lblClientName";
+            this.lblClientName.Size = new System.Drawing.Size(96, 38);
+            this.lblClientName.TabIndex = 0;
+            this.lblClientName.Text = "label7";
             // 
             // label2
             // 
@@ -99,56 +155,19 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(678, 441);
             this.panel2.TabIndex = 3;
+            
             // 
-            // label3
+            // rtxtCompanyAddress
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(36, 34);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(181, 25);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Contact Information";
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
-            this.txtEmail.Location = new System.Drawing.Point(13, 139);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(261, 43);
-            this.txtEmail.TabIndex = 3;
-            // 
-            // txtPhone
-            // 
-            this.txtPhone.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
-            this.txtPhone.Location = new System.Drawing.Point(387, 139);
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(261, 43);
-            this.txtPhone.TabIndex = 4;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label4.Location = new System.Drawing.Point(22, 91);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(145, 28);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Email Address";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label5.Location = new System.Drawing.Point(382, 91);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(154, 28);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Phone Number";
+            this.rtxtCompanyAddress.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtxtCompanyAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
+            this.rtxtCompanyAddress.Location = new System.Drawing.Point(32, 277);
+            this.rtxtCompanyAddress.Name = "rtxtCompanyAddress";
+            this.rtxtCompanyAddress.Size = new System.Drawing.Size(631, 96);
+            this.rtxtCompanyAddress.TabIndex = 9;
+            this.rtxtCompanyAddress.Text = "";
+            this.rtxtCompanyAddress.TextChanged += new System.EventHandler(this.rtxtCompanyAddress_TextChanged);
+            this.rtxtCompanyAddress.Enter += new System.EventHandler(this.rtxtCompanyAddress_Enter);
             // 
             // label6
             // 
@@ -161,15 +180,59 @@
             this.label6.TabIndex = 8;
             this.label6.Text = "Company Address";
             // 
-            // rtxtCompanyAddress
+            // label5
             // 
-            this.rtxtCompanyAddress.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtxtCompanyAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
-            this.rtxtCompanyAddress.Location = new System.Drawing.Point(32, 277);
-            this.rtxtCompanyAddress.Name = "rtxtCompanyAddress";
-            this.rtxtCompanyAddress.Size = new System.Drawing.Size(631, 96);
-            this.rtxtCompanyAddress.TabIndex = 9;
-            this.rtxtCompanyAddress.Text = "";
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label5.Location = new System.Drawing.Point(382, 91);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(154, 28);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Phone Number";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label4.Location = new System.Drawing.Point(22, 91);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(145, 28);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Email Address";
+            // 
+            // txtPhone
+            // 
+            this.txtPhone.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPhone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
+            this.txtPhone.Location = new System.Drawing.Point(387, 139);
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(261, 43);
+            this.txtPhone.TabIndex = 4;
+            this.txtPhone.TextChanged += new System.EventHandler(this.txtPhone_TextChanged);
+            this.txtPhone.Enter += new System.EventHandler(this.txtPhone_Enter);
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
+            this.txtEmail.Location = new System.Drawing.Point(13, 139);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(261, 43);
+            this.txtEmail.TabIndex = 3;
+            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
+            this.txtEmail.Enter += new System.EventHandler(this.txtEmail_Enter);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(36, 34);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(181, 25);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Contact Information";
             // 
             // btnCancel
             // 
@@ -196,62 +259,6 @@
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel3.Controls.Add(this.btnUploadImage);
-            this.panel3.Controls.Add(this.pictProfileBox);
-            this.panel3.Controls.Add(this.lblUserType);
-            this.panel3.Controls.Add(this.lblClientName);
-            this.panel3.Location = new System.Drawing.Point(14, 64);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(278, 419);
-            this.panel3.TabIndex = 0;
-            // 
-            // lblClientName
-            // 
-            this.lblClientName.AutoSize = true;
-            this.lblClientName.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClientName.Location = new System.Drawing.Point(86, 171);
-            this.lblClientName.Name = "lblClientName";
-            this.lblClientName.Size = new System.Drawing.Size(96, 38);
-            this.lblClientName.TabIndex = 0;
-            this.lblClientName.Text = "label7";
-            // 
-            // lblUserType
-            // 
-            this.lblUserType.AutoSize = true;
-            this.lblUserType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
-            this.lblUserType.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserType.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblUserType.Location = new System.Drawing.Point(87, 244);
-            this.lblUserType.Name = "lblUserType";
-            this.lblUserType.Size = new System.Drawing.Size(76, 31);
-            this.lblUserType.TabIndex = 1;
-            this.lblUserType.Text = "label7";
-            // 
-            // pictProfileBox
-            // 
-            this.pictProfileBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictProfileBox.Location = new System.Drawing.Point(34, 27);
-            this.pictProfileBox.Name = "pictProfileBox";
-            this.pictProfileBox.Size = new System.Drawing.Size(194, 121);
-            this.pictProfileBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictProfileBox.TabIndex = 2;
-            this.pictProfileBox.TabStop = false;
-            // 
-            // btnUploadImage
-            // 
-            this.btnUploadImage.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUploadImage.Location = new System.Drawing.Point(13, 327);
-            this.btnUploadImage.Name = "btnUploadImage";
-            this.btnUploadImage.Size = new System.Drawing.Size(248, 66);
-            this.btnUploadImage.TabIndex = 3;
-            this.btnUploadImage.Text = "Upload Photo";
-            this.btnUploadImage.UseVisualStyleBackColor = true;
-            this.btnUploadImage.Click += new System.EventHandler(this.btnUploadImage_Click);
-            // 
             // ClientProflle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -268,11 +275,11 @@
             this.Text = "ClientProflle";
             this.Load += new System.EventHandler(this.ClientProflle_Load);
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictProfileBox)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

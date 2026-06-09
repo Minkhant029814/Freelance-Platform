@@ -108,6 +108,18 @@
     <Compile Include="Forms\ClientProflle.Designer.cs">
       <DependentUpon>ClientProflle.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Dashboard\ClientDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dashboard\ClientDashboard.Designer.cs">
+      <DependentUpon>ClientDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dashboard\FreelancerDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dashboard\FreelancerDashboard.Designer.cs">
+      <DependentUpon>FreelancerDashboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FreelancerProfile.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,11 +154,18 @@
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Service\ClientService.cs" />
     <Compile Include="Service\UserService.cs" />
+    <Compile Include="Session\UserSession.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ClientProflle.resx">
       <DependentUpon>ClientProflle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dashboard\ClientDashboard.resx">
+      <DependentUpon>ClientDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dashboard\FreelancerDashboard.resx">
+      <DependentUpon>FreelancerDashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FreelancerProfile.resx">
       <DependentUpon>FreelancerProfile.cs</DependentUpon>

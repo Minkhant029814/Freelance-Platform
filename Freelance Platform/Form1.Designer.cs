@@ -160,8 +160,9 @@
             this.txtPassword.Location = new System.Drawing.Point(126, 181);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(216, 43);
+            this.txtPassword.Size = new System.Drawing.Size(262, 43);
             this.txtPassword.TabIndex = 2;
+            this.txtPassword.Enter += new System.EventHandler(this.txtPassword_Enter);
             // 
             // txtUserName
             // 
@@ -169,8 +170,9 @@
             this.txtUserName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
             this.txtUserName.Location = new System.Drawing.Point(126, 71);
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(216, 43);
+            this.txtUserName.Size = new System.Drawing.Size(262, 43);
             this.txtUserName.TabIndex = 1;
+            this.txtUserName.Enter += new System.EventHandler(this.txtUserName_Enter);
             // 
             // label1
             // 

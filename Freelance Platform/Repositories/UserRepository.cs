@@ -44,15 +44,14 @@ namespace Freelance_Platform.Repositories
 
         }
 
-        public bool Login(string username, string password)
-        {
+        public bool Login(string name,string pass) { 
             try
             {
                 
-                string userQuery = "SELECT UserId, UserType FROM users WHERE UserName = @username AND Password = @pass";
+                string userQuery = "SELECT UserId, UserType FROM users WHERE Username = @username AND Password = @pass";
                 MySqlParameter[] userParams = {
-            new MySqlParameter("@username", username),
-            new MySqlParameter("@pass", password)
+            new MySqlParameter("@username",name),
+            new MySqlParameter("@pass", pass)
         };
 
                 DataTable dtUser = db.GetData(userQuery, userParams);

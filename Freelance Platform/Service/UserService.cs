@@ -20,6 +20,12 @@ namespace Freelance_Platform.Service
             return result;
         }
 
+        public bool Login(string name,string pass)
+        {
+
+            return userRepo.Login(name,pass);
+        }
+
        
 
 

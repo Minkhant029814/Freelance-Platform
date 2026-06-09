@@ -1,4 +1,5 @@
-﻿using Freelance_Platform.Service;
+﻿using Freelance_Platform.Forms.Dashboard;
+using Freelance_Platform.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,7 +38,7 @@ namespace Freelance_Platform.Forms
         private void ClientProflle_Load(object sender, EventArgs e)
         {
             lblClientName.Text = name;
-            lblUserType.Text = type + "Account";
+            lblUserType.Text = type + " Account";
 
         }
 
@@ -57,12 +58,61 @@ namespace Freelance_Platform.Forms
             }
         }
 
+        private void SetText(Control ctrl)
+        {
+          
+            if (ctrl.Tag == null)
+            {
+                ctrl.Tag = new Tuple<Color, Font>(ctrl.ForeColor, ctrl.Font);
+            }
+
+            ctrl.Text = "All fields are required";
+            ctrl.ForeColor = Color.Red;
+
+            
+            ctrl.Font = new Font(ctrl.Font.FontFamily, 14, ctrl.Font.Style);
+        
+        }
+
+       
+
+
         private void btnSave_Click(object sender, EventArgs e)
         {
+
             string email = txtEmail.Text;
             string phone = txtPhone.Text;
             string address = rtxtCompanyAddress.Text;
+           
+            bool hasError = false;
+
             
+            if (string.IsNullOrEmpty(email) || email == "All fields are required")
+            {
+                SetText(txtEmail);
+                hasError = true;
+            }
+
+           
+            if (string.IsNullOrEmpty(phone) || phone == "All fields are required")
+            {
+                SetText(txtPhone);
+                hasError = true;
+            }
+
+            
+            if (string.IsNullOrEmpty(address) || address == "All fields are required")
+            {
+                SetText(rtxtCompanyAddress);
+                hasError = true;
+            }
+
+         
+            if (hasError)
+            {
+                return;
+            }
+
             string profileFileName = HandleImageUpload(userId, selectedFilePath);
 
            
@@ -77,7 +127,9 @@ namespace Freelance_Platform.Forms
             if (flag)
             {
                 MessageBox.Show("Profile successfully saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                selectedFilePath = ""; 
+                selectedFilePath = "";
+                this.Hide();
+                new ClientDashboard().Show();
             }
             else
             {
@@ -117,6 +169,67 @@ namespace Freelance_Platform.Forms
             {
                 MessageBox.Show("Image upload လုပ်ရာတွင် အမှားအယွင်းဖြစ်ပါသည်: " + ex.Message, "Upload Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return "ERROR"; 
+            }
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+            
+
+        }
+
+        private void txtPhone_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void rtxtCompanyAddress_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void txtPhone_Enter(object sender, EventArgs e)
+        {
+            if (txtPhone.Text == "All fields are required")
+            {
+                txtPhone.Text = "";
+
+                if (txtPhone.Tag is Tuple<Color, Font> originalStyle)
+                {
+                    txtPhone.ForeColor = originalStyle.Item1;
+                    txtPhone.Font = originalStyle.Item2;
+                }
+            }
+        }
+
+        
+
+        private void rtxtCompanyAddress_Enter(object sender, EventArgs e)
+        {
+            if (rtxtCompanyAddress.Text == "All fields are required")
+            {
+                rtxtCompanyAddress.Text = "";
+
+                
+                if (rtxtCompanyAddress.Tag is Tuple<Color, Font> originalStyle)
+                {
+                    rtxtCompanyAddress.ForeColor = originalStyle.Item1;
+                    rtxtCompanyAddress.Font = originalStyle.Item2;
+                }
+            }
+        }
+
+        private void txtEmail_Enter(object sender, EventArgs e)
+        {
+            if (txtEmail.Text == "All fields are required")
+            {
+                txtEmail.Text = "";
+
+                
+                if (txtEmail.Tag is Tuple<Color, Font> originalStyle)
+                {
+                    txtEmail.ForeColor = originalStyle.Item1;
+                    txtEmail.Font = originalStyle.Item2;
+                }
             }
         }
     }
