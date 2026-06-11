@@ -1,0 +1,29 @@
+﻿using Freelance_Platform.Connection;
+using Freelance_Platform.model;
+using Freelance_Platform.Repositories;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Freelance_Platform.Service
+{
+    internal class ProjectService
+    {
+
+        private readonly ProjectRepository projectRepo;
+
+        public ProjectService()
+        {
+            this.projectRepo = new ProjectRepository();
+        }
+
+
+        public bool PostProject(Project project)
+        {
+            return projectRepo.PostProject(project);
+
+        }
+    }
+}
