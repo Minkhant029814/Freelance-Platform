@@ -48,7 +48,7 @@ namespace Freelance_Platform.Repositories
             try
             {
                 
-                string userQuery = "SELECT UserId, UserType FROM users WHERE Username = @username AND Password = @pass";
+                string userQuery = "SELECT UserId,Username, UserType FROM users WHERE Username = @username AND Password = @pass";
                 MySqlParameter[] userParams = {
             new MySqlParameter("@username",name),
             new MySqlParameter("@pass", pass)
@@ -61,6 +61,7 @@ namespace Freelance_Platform.Repositories
 
                 int userId = Convert.ToInt32(dtUser.Rows[0]["UserId"]);
                 string userType = dtUser.Rows[0]["UserType"].ToString();
+                UserSession.Username = dtUser.Rows[0]["Username"].ToString();
 
               
                 UserSession.UserId = userId;
@@ -105,7 +106,7 @@ namespace Freelance_Platform.Repositories
        
         private void LoadClientSession(int userId)
         {
-            string query = "SELECT ClientId, Phone, Email FROM clients WHERE UserId = @id";
+            string query = "SELECT ClientId, Phone, Email,ProfilePic,Address FROM clients WHERE UserId = @id";
             MySqlParameter[] ps = { new MySqlParameter("@id", userId) };
             DataTable dt = db.GetData(query, ps);
 
@@ -114,6 +115,8 @@ namespace Freelance_Platform.Repositories
                 UserSession.ClientId = Convert.ToInt32(dt.Rows[0]["ClientId"]);
                 UserSession.Phone = dt.Rows[0]["Phone"].ToString();
                 UserSession.Email = dt.Rows[0]["Email"].ToString();
+                UserSession.Imagepath = dt.Rows[0]["ProfilePic"].ToString();
+                UserSession.Address = dt.Rows[0]["Address"].ToString();
             }
         }
 

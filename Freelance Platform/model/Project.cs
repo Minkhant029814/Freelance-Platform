@@ -16,7 +16,7 @@ namespace Freelance_Platform.model
         public DateTime StartDate { get; set; }
 
 
-        public  ProjectStatus CurrentStatus { get; set; }
+        public string CurrentStatus { get; set; }
         public DateTime EndDate { get; set; }
     }
 }

@@ -34,10 +34,10 @@
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.btnProfile = new FontAwesome.Sharp.IconButton();
             this.btnDashboard = new FontAwesome.Sharp.IconButton();
-            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.panelDashboardContent = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.projectDisplayLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -53,11 +53,12 @@
             this.pnlCompleteProject = new Guna.UI2.WinForms.Guna2Panel();
             this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblGreeting = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnPostProject = new Guna.UI2.WinForms.Guna2Button();
+            this.lblsubtitle = new System.Windows.Forms.Label();
+            this.lblGreeting = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
-            this.guna2Panel2.SuspendLayout();
+            this.panelDashboardContent.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
             this.guna2Panel4.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -69,6 +70,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).BeginInit();
             this.pnlCompleteProject.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
+            this.guna2Panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -82,7 +84,7 @@
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(272, 597);
+            this.guna2Panel1.Size = new System.Drawing.Size(272, 753);
             this.guna2Panel1.TabIndex = 0;
             // 
             // iconButton4
@@ -97,7 +99,7 @@
             this.iconButton4.IconColor = System.Drawing.Color.White;
             this.iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton4.IconSize = 30;
-            this.iconButton4.Location = new System.Drawing.Point(0, 547);
+            this.iconButton4.Location = new System.Drawing.Point(0, 703);
             this.iconButton4.Name = "iconButton4";
             this.iconButton4.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.iconButton4.Size = new System.Drawing.Size(272, 50);
@@ -171,6 +173,7 @@
             this.btnProfile.Text = "Profile";
             this.btnProfile.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnProfile.UseVisualStyleBackColor = false;
+            this.btnProfile.Click += new System.EventHandler(this.btnProfile_Click);
             // 
             // btnDashboard
             // 
@@ -195,17 +198,16 @@
             this.btnDashboard.UseVisualStyleBackColor = false;
             this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
             // 
-            // guna2Panel2
+            // panelDashboardContent
             // 
-            this.guna2Panel2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.guna2Panel2.Controls.Add(this.btnPostProject);
-            this.guna2Panel2.Controls.Add(this.label6);
-            this.guna2Panel2.Controls.Add(this.lblGreeting);
-            this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Panel2.Location = new System.Drawing.Point(272, 0);
-            this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(790, 92);
-            this.guna2Panel2.TabIndex = 1;
+            this.panelDashboardContent.Controls.Add(this.guna2Panel3);
+            this.panelDashboardContent.Controls.Add(this.guna2Panel2);
+            this.panelDashboardContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDashboardContent.Location = new System.Drawing.Point(272, 0);
+            this.panelDashboardContent.Name = "panelDashboardContent";
+            this.panelDashboardContent.Size = new System.Drawing.Size(790, 753);
+            this.panelDashboardContent.TabIndex = 1;
+            this.panelDashboardContent.Resize += new System.EventHandler(this.panelDashboardContent_Resize);
             // 
             // guna2Panel3
             // 
@@ -213,39 +215,43 @@
             this.guna2Panel3.Controls.Add(this.guna2Panel4);
             this.guna2Panel3.Controls.Add(this.tableLayoutPanel1);
             this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Panel3.Location = new System.Drawing.Point(272, 92);
+            this.guna2Panel3.Location = new System.Drawing.Point(0, 104);
             this.guna2Panel3.Name = "guna2Panel3";
-            this.guna2Panel3.Size = new System.Drawing.Size(790, 505);
-            this.guna2Panel3.TabIndex = 2;
+            this.guna2Panel3.Size = new System.Drawing.Size(790, 649);
+            this.guna2Panel3.TabIndex = 4;
             this.guna2Panel3.UseTransparentBackground = true;
             // 
             // guna2Panel4
             // 
-            this.guna2Panel4.Controls.Add(this.flowLayoutPanel1);
+            this.guna2Panel4.Controls.Add(this.projectDisplayLayout);
             this.guna2Panel4.Controls.Add(this.label5);
             this.guna2Panel4.Controls.Add(this.label4);
             this.guna2Panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel4.Location = new System.Drawing.Point(0, 274);
+            this.guna2Panel4.Margin = new System.Windows.Forms.Padding(8);
             this.guna2Panel4.Name = "guna2Panel4";
-            this.guna2Panel4.Size = new System.Drawing.Size(790, 231);
+            this.guna2Panel4.Size = new System.Drawing.Size(790, 375);
             this.guna2Panel4.TabIndex = 1;
             // 
-            // flowLayoutPanel1
+            // projectDisplayLayout
             // 
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 133);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(790, 98);
-            this.flowLayoutPanel1.TabIndex = 2;
+            this.projectDisplayLayout.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.projectDisplayLayout.AutoScroll = true;
+            this.projectDisplayLayout.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.projectDisplayLayout.Location = new System.Drawing.Point(0, 71);
+            this.projectDisplayLayout.Name = "projectDisplayLayout";
+            this.projectDisplayLayout.Size = new System.Drawing.Size(759, 328);
+            this.projectDisplayLayout.TabIndex = 2;
+            this.projectDisplayLayout.WrapContents = false;
             // 
             // label5
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(609, 31);
+            this.label5.Location = new System.Drawing.Point(640, 25);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(81, 25);
             this.label5.TabIndex = 1;
@@ -255,7 +261,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(19, 37);
+            this.label4.Location = new System.Drawing.Point(19, 25);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(163, 31);
             this.label4.TabIndex = 0;
@@ -298,6 +304,7 @@
             // 
             // iconPictureBox3
             // 
+            this.iconPictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.iconPictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
             this.iconPictureBox3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.iconPictureBox3.IconChar = FontAwesome.Sharp.IconChar.ClockFour;
@@ -337,6 +344,7 @@
             // 
             // iconPictureBox1
             // 
+            this.iconPictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.iconPictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.iconPictureBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Suitcase;
@@ -358,7 +366,6 @@
             this.lblProject.Size = new System.Drawing.Size(119, 25);
             this.lblProject.TabIndex = 0;
             this.lblProject.Text = "Active Project";
-            this.lblProject.Click += new System.EventHandler(this.lblProject_Click);
             // 
             // pnlFreelanceRating
             // 
@@ -377,6 +384,7 @@
             // 
             // iconPictureBox4
             // 
+            this.iconPictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.iconPictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
             this.iconPictureBox4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.iconPictureBox4.IconChar = FontAwesome.Sharp.IconChar.Star;
@@ -416,6 +424,7 @@
             // 
             // iconPictureBox2
             // 
+            this.iconPictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.iconPictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.iconPictureBox2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.Check;
@@ -438,25 +447,17 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "completed Project";
             // 
-            // lblGreeting
+            // guna2Panel2
             // 
-            this.lblGreeting.AutoSize = true;
-            this.lblGreeting.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGreeting.Location = new System.Drawing.Point(28, 21);
-            this.lblGreeting.Name = "lblGreeting";
-            this.lblGreeting.Size = new System.Drawing.Size(294, 32);
-            this.lblGreeting.TabIndex = 0;
-            this.lblGreeting.Text = "Welcome back, Jane";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(29, 53);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(447, 28);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Here\'s what\'s happening with your projects today.";
+            this.guna2Panel2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.guna2Panel2.Controls.Add(this.btnPostProject);
+            this.guna2Panel2.Controls.Add(this.lblsubtitle);
+            this.guna2Panel2.Controls.Add(this.lblGreeting);
+            this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2Panel2.Location = new System.Drawing.Point(0, 0);
+            this.guna2Panel2.Name = "guna2Panel2";
+            this.guna2Panel2.Size = new System.Drawing.Size(790, 104);
+            this.guna2Panel2.TabIndex = 3;
             // 
             // btnPostProject
             // 
@@ -473,23 +474,41 @@
             this.btnPostProject.Size = new System.Drawing.Size(180, 45);
             this.btnPostProject.TabIndex = 2;
             this.btnPostProject.Text = "Post Project";
-            this.btnPostProject.Click += new System.EventHandler(this.btnPostProject_Click);
+            this.btnPostProject.Click += new System.EventHandler(this.btnPostProject_Click_1);
+            // 
+            // lblsubtitle
+            // 
+            this.lblsubtitle.AutoSize = true;
+            this.lblsubtitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblsubtitle.Location = new System.Drawing.Point(29, 53);
+            this.lblsubtitle.Name = "lblsubtitle";
+            this.lblsubtitle.Size = new System.Drawing.Size(447, 28);
+            this.lblsubtitle.TabIndex = 1;
+            this.lblsubtitle.Text = "Here\'s what\'s happening with your projects today.";
+            // 
+            // lblGreeting
+            // 
+            this.lblGreeting.AutoSize = true;
+            this.lblGreeting.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGreeting.Location = new System.Drawing.Point(28, 21);
+            this.lblGreeting.Name = "lblGreeting";
+            this.lblGreeting.Size = new System.Drawing.Size(294, 32);
+            this.lblGreeting.TabIndex = 0;
+            this.lblGreeting.Text = "Welcome back, Jane";
             // 
             // ClientDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1062, 597);
-            this.Controls.Add(this.guna2Panel3);
-            this.Controls.Add(this.guna2Panel2);
+            this.ClientSize = new System.Drawing.Size(1062, 753);
+            this.Controls.Add(this.panelDashboardContent);
             this.Controls.Add(this.guna2Panel1);
             this.Name = "ClientDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ClientDashboard";
             this.Load += new System.EventHandler(this.ClientDashboard_Load);
             this.guna2Panel1.ResumeLayout(false);
-            this.guna2Panel2.ResumeLayout(false);
-            this.guna2Panel2.PerformLayout();
+            this.panelDashboardContent.ResumeLayout(false);
             this.guna2Panel3.ResumeLayout(false);
             this.guna2Panel4.ResumeLayout(false);
             this.guna2Panel4.PerformLayout();
@@ -506,6 +525,8 @@
             this.pnlCompleteProject.ResumeLayout(false);
             this.pnlCompleteProject.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
+            this.guna2Panel2.ResumeLayout(false);
+            this.guna2Panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -513,32 +534,33 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private Guna.UI2.WinForms.Guna2Panel pnlPendingProposals;
-        private Guna.UI2.WinForms.Guna2Panel pnlProjects;
-        private System.Windows.Forms.Label lblProject;
-        private Guna.UI2.WinForms.Guna2Panel pnlFreelanceRating;
-        private Guna.UI2.WinForms.Guna2Panel pnlCompleteProject;
-        private System.Windows.Forms.Label label1;
         private FontAwesome.Sharp.IconButton btnDashboard;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private FontAwesome.Sharp.IconButton iconButton4;
         private FontAwesome.Sharp.IconButton iconButton3;
         private FontAwesome.Sharp.IconButton iconButton2;
         private FontAwesome.Sharp.IconButton btnProfile;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox4;
+        private Guna.UI2.WinForms.Guna2Panel panelDashboardContent;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel4;
+        private System.Windows.Forms.FlowLayoutPanel projectDisplayLayout;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label lblGreeting;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private Guna.UI2.WinForms.Guna2Panel pnlPendingProposals;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
+        private System.Windows.Forms.Label label2;
+        private Guna.UI2.WinForms.Guna2Panel pnlProjects;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
+        private System.Windows.Forms.Label lblProject;
+        private Guna.UI2.WinForms.Guna2Panel pnlFreelanceRating;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox4;
+        private System.Windows.Forms.Label label3;
+        private Guna.UI2.WinForms.Guna2Panel pnlCompleteProject;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
+        private System.Windows.Forms.Label label1;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private Guna.UI2.WinForms.Guna2Button btnPostProject;
+        private System.Windows.Forms.Label lblsubtitle;
+        private System.Windows.Forms.Label lblGreeting;
     }
 }

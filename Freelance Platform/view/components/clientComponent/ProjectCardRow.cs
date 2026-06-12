@@ -18,7 +18,7 @@ namespace Freelance_Platform.components
             InitializeComponent();
         }
 
-        // Database က လာမယ့် ဒေတာတွေကို UI မှာ လှမ်းပြပေးမယ့် Method
+        
         public void PopulateData(string title, string desc, string budget, string dueDate, string status)
         {
             lblProjectTitle.Text= title;

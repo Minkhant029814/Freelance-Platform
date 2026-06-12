@@ -4,6 +4,7 @@ using Freelance_Platform.Session;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,6 +45,18 @@ namespace Freelance_Platform.Repositories
                 MessageBox.Show(ex.Message);
             }
             return false;
+        }
+
+        public DataTable AllProject()
+        {
+            string query = "Select ProjectTitle,Description,Budget,EndDate,Status from projects where ClientId = @clientId";
+
+            MySqlParameter[] ps =
+            {
+                new MySqlParameter("@clientId",UserSession.ClientId)
+            };
+
+          return  dbconnect.GetData(query, ps);
         }
     }
 }

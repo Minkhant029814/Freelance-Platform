@@ -14,6 +14,7 @@ namespace Freelance_Platform.Session
         public static string UserType { get; set; } 
         public static bool IsLoggedIn { get; set; }
 
+        
         // --- Changeable value based on role ---
         public static int? FreelancerId { get; set; }
         public static int? ClientId { get; set; }
@@ -21,6 +22,11 @@ namespace Freelance_Platform.Session
         // --- Others Data ---
         public static string Phone { get; set; }
         public static string Email { get; set; }
+
+        public static string Imagepath { get; set; }
+
+        public static string Address { get; set; }
+
 
         // --- Logout  Method ---
         public static void Logout()

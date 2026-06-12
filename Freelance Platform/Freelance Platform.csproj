@@ -107,10 +107,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="components\ProjectCardRow.cs">
+    <Compile Include="view\components\clientComponent\ProfileEdit.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="components\ProjectCardRow.Designer.cs">
+    <Compile Include="view\components\clientComponent\ProfileEdit.Designer.cs">
+      <DependentUpon>ProfileEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\components\clientComponent\ProjectCardRow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\components\clientComponent\ProjectCardRow.Designer.cs">
       <DependentUpon>ProjectCardRow.cs</DependentUpon>
     </Compile>
     <Compile Include="Connection\dbConnect.cs" />
@@ -162,7 +168,6 @@
     <Compile Include="model\Freelancer.cs" />
     <Compile Include="model\Portfolio.cs" />
     <Compile Include="model\Project.cs" />
-    <Compile Include="model\ProjectStatus.cs" />
     <Compile Include="model\Review.cs" />
     <Compile Include="model\User.cs" />
     <Compile Include="model\UserFactory.cs" />
@@ -180,7 +185,10 @@
     <Compile Include="Service\ClientService.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="Session\UserSession.cs" />
-    <EmbeddedResource Include="components\ProjectCardRow.resx">
+    <EmbeddedResource Include="view\components\clientComponent\ProfileEdit.resx">
+      <DependentUpon>ProfileEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\components\clientComponent\ProjectCardRow.resx">
       <DependentUpon>ProjectCardRow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
