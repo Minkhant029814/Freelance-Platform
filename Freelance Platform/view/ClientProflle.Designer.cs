@@ -287,6 +287,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Name = "ClientProflle";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ClientProflle";
             this.Load += new System.EventHandler(this.ClientProflle_Load);
             this.panel1.ResumeLayout(false);

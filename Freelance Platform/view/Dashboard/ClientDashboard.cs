@@ -20,18 +20,21 @@ namespace Freelance_Platform.Forms.Dashboard
     {
         private  ProfileEdit profilePage; 
         ProjectService service = new ProjectService();
-        UserService userService = new UserService();
+      
         public ClientDashboard()
         {
             InitializeComponent();
+            lblGreeting.Text = "Welcome back, " + UserSession.Username;
+            lblsubtitle.Text = "Here's what's happening with your projects today.";
         }
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
-            lblGreeting.Text = "Welcome back, Jane ";
+
+            lblGreeting.Text = "Welcome back, " + UserSession.Username;
             lblsubtitle.Text = "Here's what's happening with your projects today.";
 
-            
+
             if (profilePage != null)
             {
                 profilePage.Visible = false;
@@ -96,26 +99,20 @@ namespace Freelance_Platform.Forms.Dashboard
             panelDashboardContent_Resize(null, null);
         }
 
-        //private void projectDisplayLayout_Resize(object sender, EventArgs e)
-        //{
-            
-        //    foreach (Control ctrl in projectDisplayLayout.Controls)
-        //    {
-        //        if (ctrl is ProjectCardRow)
-        //        {
-        //            ctrl.Width = projectDisplayLayout.ClientSize.Width - 30;
-        //        }
-        //    }
-        //}
-
-
+       
         //for Profile NavBar
 
         //Updating User profiel
 
         private void UpdateProfile()
         {
-            profilePage.UpdateProfile(UserSession.Username,UserSession.Email,UserSession.Phone,UserSession.Address,UserSession.Imagepath);
+            profilePage.UpdateProfile(
+            name: UserSession.Username,
+            email: UserSession.Email,
+            phone: UserSession.Phone,
+            location: UserSession.Address,
+            image: UserSession.Imagepath
+     );
         }
       
 

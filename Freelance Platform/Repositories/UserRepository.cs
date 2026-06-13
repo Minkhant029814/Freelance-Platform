@@ -84,7 +84,7 @@ namespace Freelance_Platform.Repositories
             catch (Exception ex)
             {
              
-                throw new Exception("Login လုပ်ဆောင်ရာတွင် အမှားအယွင်းရှိပါသည် - " + ex.Message);
+                throw new Exception("Login - " + ex.Message);
             }
         }
 

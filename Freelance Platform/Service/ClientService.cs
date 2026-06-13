@@ -16,5 +16,11 @@ namespace Freelance_Platform.Service
         {
             return clientRepo.CreateProfile(uid,email,phone,address,profile);
         }
+
+
+        public bool UpdateProfile(string name,string email,string phone, string address, string profile)
+        {
+            return clientRepo.UpdateProfile(name,email,phone,address,profile);
+        }
     }
 }

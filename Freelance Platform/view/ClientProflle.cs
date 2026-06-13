@@ -129,7 +129,7 @@ namespace Freelance_Platform.Forms
                 MessageBox.Show("Profile successfully saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 selectedFilePath = "";
                 this.Hide();
-                new Form1().Show();
+                new frmLogin().Show();
             }
             else
             {

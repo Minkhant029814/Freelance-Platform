@@ -20,8 +20,8 @@ namespace Freelance_Platform.Session
         public static int? ClientId { get; set; }
 
         // --- Others Data ---
-        public static string Phone { get; set; }
         public static string Email { get; set; }
+        public static string Phone { get; set; }
 
         public static string Imagepath { get; set; }
 

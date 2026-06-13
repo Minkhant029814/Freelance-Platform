@@ -15,11 +15,11 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Freelance_Platform
 {
-    public partial class Form1 : Form
+    public partial class frmLogin : Form
     {
 
         private readonly UserService userService;
-        public Form1()
+        public frmLogin()
         {
             InitializeComponent();
             userService = new UserService();

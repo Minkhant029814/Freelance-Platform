@@ -119,7 +119,7 @@ namespace Freelance_Platform.Forms
             // Open Profile Form
             if (type == "Freelancer")
             {
-                new FreelancerProfile().Show();
+                new FreelancerProfile(userId,type,name).Show();
 
                 
             }
