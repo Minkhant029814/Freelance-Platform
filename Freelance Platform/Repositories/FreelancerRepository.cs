@@ -4,6 +4,7 @@ using Freelance_Platform.Session;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -88,6 +89,40 @@ namespace Freelance_Platform.Repositories
                     }
                 }
             }
+        }
+
+
+       public Freelancer Dashboard()
+        {
+            string freelancerQuery = " SELECT      f.Expertise,   f.HourlyRate,   p.OwnerName,   p.ProfessionalTitle,   p.Biography,    p.ContactEmail," +
+                "    p.ProjectTitle,   GROUP_CONCAT(s.SkillName SEPARATOR ', ') AS SkillsList " +
+                "FROM freelancers f " +
+                "LEFT JOIN portfolios p ON f.FreelancerId = p.FreelancerId" +
+                "LEFT JOIN freelancer_skills s ON f.FreelancerId = s.FreelancerId" +
+                "WHERE f.FreelancerId = @freeId" +
+                "GROUP BY f.FreelancerId;";
+
+            MySqlParameter[] para =
+            {
+                new MySqlParameter("@freeId",UserSession.FreelancerId)
+            };
+
+            DataTable dTable = dbConn.GetData(freelancerQuery, para);
+            if (dTable != null & dTable.Rows.Count > 0)
+            {
+
+                Freelancer f = new Freelancer();
+                f.Expertise = dTable.Rows[0]["Expertise"].ToString();
+                f.HourlyRate = (decimal)dTable.Rows[0]["HourlyRate"];
+                f.Portfolio.OwnerName = dTable.Rows[0]["OwnerName"].ToString();
+                f.Portfolio.ProfessionalTitle = dTable.Rows[0]["ProfessionalTitle"].ToString();
+                f.Portfolio.Biography = dTable.Rows[0]["Biography"].ToString();
+                f.Portfolio.ContactEmail = dTable.Rows[0]["ContactEmail"].ToString();
+                f.Portfolio.ProfessionalTitle = dTable.Rows[0]["ProjectTitle"].ToString();
+                return f;
+            }
+
+            return null;
         }
     }
 }

@@ -2,6 +2,7 @@
 using Freelance_Platform.Forms.Dashboard;
 using Freelance_Platform.model;
 using Freelance_Platform.Service;
+using Freelance_Platform.Session;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -122,16 +123,22 @@ namespace Freelance_Platform
                 return;
             }
 
-            if (userService.Login(name,password))
+            if (userService.Login(name,password) && UserSession.UserType.Equals("Freelancer"))
             {
                 MessageBox.Show("login successful");
+                this.Hide();
+                new FreelancerDashboard().Show();
+            }
+            else if(userService.Login(name, password) && UserSession.UserType.Equals("Client"))
+            {
+                MessageBox.Show("Login Successful");
                 this.Hide();
                 new ClientDashboard().Show();
             }
             else
             {
                 MessageBox.Show("Login Failed");
-               
+
             }
         }
 
