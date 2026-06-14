@@ -71,8 +71,8 @@ namespace Freelance_Platform.Repositories
                
                 if (userType == "Freelancer")
                 {
-                    //LoadFreelancerSession(userId);
-                    MessageBox.Show("Wait for Freelaner....");
+                    LoadFreelancerSession(userId);
+                    //MessageBox.Show("Wait for Freelaner....");
                 }
                 else if (userType == "Client")
                 {
@@ -88,22 +88,22 @@ namespace Freelance_Platform.Repositories
             }
         }
 
-     
-        //private void LoadFreelancerSession(int userId)
-        //{
-        //    string query = "SELECT FreelancerId, Phone, Email FROM freelancers WHERE UserId = @id";
-        //    MySqlParameter[] ps = { new MySqlParameter("@id", userId) };
-        //    DataTable dt = db.GetData(query, ps);
 
-        //    if (dt != null && dt.Rows.Count > 0)
-        //    {
-        //        UserSession.FreelancerId = Convert.ToInt32(dt.Rows[0]["FreelancerId"]);
-        //        UserSession.Phone = dt.Rows[0]["Phone"].ToString();
-        //        UserSession.Email = dt.Rows[0]["Email"].ToString();
-        //    }
-        //}
+        private void LoadFreelancerSession(int userId)
+        {
+            string query = "SELECT FreelancerId, Phone, Email FROM freelancers WHERE UserId = @id";
+            MySqlParameter[] ps = { new MySqlParameter("@id", userId) };
+            DataTable dt = db.GetData(query, ps);
 
-       
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                UserSession.FreelancerId = Convert.ToInt32(dt.Rows[0]["FreelancerId"]);
+                UserSession.Phone = dt.Rows[0]["Phone"].ToString();
+                UserSession.Email = dt.Rows[0]["Email"].ToString();
+            }
+        }
+
+
         private void LoadClientSession(int userId)
         {
             string query = "SELECT ClientId, Phone, Email,ProfilePic,Address FROM clients WHERE UserId = @id";

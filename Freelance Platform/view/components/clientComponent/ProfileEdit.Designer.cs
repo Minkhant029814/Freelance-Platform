@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnEditProfile = new FontAwesome.Sharp.IconButton();
             this.txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
             this.ProfilePict = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.btnSaveChanges = new Guna.UI2.WinForms.Guna2Button();
@@ -43,7 +44,6 @@
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtName = new Guna.UI2.WinForms.Guna2TextBox();
-            this.btnEditProfile = new FontAwesome.Sharp.IconButton();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProfilePict)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).BeginInit();
@@ -78,6 +78,27 @@
             this.guna2Panel1.Size = new System.Drawing.Size(733, 567);
             this.guna2Panel1.TabIndex = 0;
             // 
+            // btnEditProfile
+            // 
+            this.btnEditProfile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
+            this.btnEditProfile.FlatAppearance.BorderSize = 0;
+            this.btnEditProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditProfile.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditProfile.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnEditProfile.IconChar = FontAwesome.Sharp.IconChar.Edit;
+            this.btnEditProfile.IconColor = System.Drawing.Color.White;
+            this.btnEditProfile.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnEditProfile.IconSize = 30;
+            this.btnEditProfile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditProfile.Location = new System.Drawing.Point(273, 176);
+            this.btnEditProfile.Name = "btnEditProfile";
+            this.btnEditProfile.Size = new System.Drawing.Size(155, 45);
+            this.btnEditProfile.TabIndex = 16;
+            this.btnEditProfile.Text = "Edit Profile";
+            this.btnEditProfile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEditProfile.UseVisualStyleBackColor = false;
+            this.btnEditProfile.Click += new System.EventHandler(this.btnEditProfile_Click);
+            // 
             // txtEmail
             // 
             this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -106,7 +127,7 @@
             this.ProfilePict.Location = new System.Drawing.Point(273, 8);
             this.ProfilePict.Name = "ProfilePict";
             this.ProfilePict.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.ProfilePict.Size = new System.Drawing.Size(168, 150);
+            this.ProfilePict.Size = new System.Drawing.Size(168, 168);
             this.ProfilePict.TabIndex = 14;
             this.ProfilePict.TabStop = false;
             this.ProfilePict.Click += new System.EventHandler(this.ProfilePict_Click);
@@ -287,27 +308,6 @@
             this.txtName.SelectedText = "";
             this.txtName.Size = new System.Drawing.Size(286, 60);
             this.txtName.TabIndex = 1;
-            // 
-            // btnEditProfile
-            // 
-            this.btnEditProfile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
-            this.btnEditProfile.FlatAppearance.BorderSize = 0;
-            this.btnEditProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditProfile.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditProfile.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnEditProfile.IconChar = FontAwesome.Sharp.IconChar.Edit;
-            this.btnEditProfile.IconColor = System.Drawing.Color.White;
-            this.btnEditProfile.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnEditProfile.IconSize = 30;
-            this.btnEditProfile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditProfile.Location = new System.Drawing.Point(273, 176);
-            this.btnEditProfile.Name = "btnEditProfile";
-            this.btnEditProfile.Size = new System.Drawing.Size(155, 45);
-            this.btnEditProfile.TabIndex = 16;
-            this.btnEditProfile.Text = "Edit Profile";
-            this.btnEditProfile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEditProfile.UseVisualStyleBackColor = false;
-            this.btnEditProfile.Click += new System.EventHandler(this.btnEditProfile_Click);
             // 
             // ProfileEdit
             // 

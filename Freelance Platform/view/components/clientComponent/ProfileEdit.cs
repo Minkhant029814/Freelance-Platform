@@ -38,7 +38,7 @@ namespace Freelance_Platform.view.components.clientComponent
             {
                 
                
-                profileName = HandleImageUpload(UserSession.UserId, selectedFilePath);
+               profileName = HandleImageUpload(UserSession.UserId, selectedFilePath);
 
                 if (profileName == "ERROR")
                 {
@@ -131,7 +131,7 @@ namespace Freelance_Platform.view.components.clientComponent
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Image upload လုပ်ရာတွင် အမှားအယွင်းဖြစ်ပါသည်: " + ex.Message, "Upload Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Image upload Failed.... " + ex.Message, "Upload Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return "ERROR";
             }
         }

@@ -11,6 +11,10 @@ namespace Freelance_Platform.Connection
 
         private readonly string connection = "server=localhost;user=root;password=029814;database=freelance;";
 
+        public MySqlConnection GetConnection()
+        {
+            return new MySqlConnection(connection);
+        }
 
         // For Insert ,Update, Delete Method
         public bool ExecuteCommand(string query, MySqlParameter[] parameters)
@@ -52,6 +56,48 @@ namespace Freelance_Platform.Connection
                 if (parameters != null) cmd.Parameters.AddRange(parameters);
                 return Convert.ToInt32(cmd.ExecuteScalar());
                 
+            }
+        }
+
+        public bool ExecuteTransaction(List<string> queries, List<MySqlParameter[]> parameterList)
+        {
+            if (queries.Count != parameterList.Count) return false;
+
+            using (MySqlConnection conn = new MySqlConnection(connection))
+            {
+                try
+                {
+                    conn.Open();
+                    using (MySqlTransaction transaction = conn.BeginTransaction())
+                    {
+                        try
+                        {
+                            for (int i = 0; i < queries.Count; i++)
+                            {
+                                using (MySqlCommand cmd = new MySqlCommand(queries[i], conn, transaction))
+                                {
+                                    if (parameterList[i] != null)
+                                    {
+                                        cmd.Parameters.AddRange(parameterList[i]);
+                                    }
+                                    cmd.ExecuteNonQuery();
+                                }
+                            }
+
+                            transaction.Commit();
+                            return true;
+                        }
+                        catch
+                        {
+                            transaction.Rollback();
+                            throw;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Transaction Failed " + ex.Message);
+                }
             }
         }
     }

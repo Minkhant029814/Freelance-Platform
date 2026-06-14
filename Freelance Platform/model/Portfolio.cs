@@ -1,31 +1,50 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Freelance_Platform.model
 {
     internal class Portfolio
     {
-
+       
         public int PortfolioId { get; set; }
         public string OwnerName { get; set; }
-
         public string ProfessionalTitle { get; set; }
-
         public string Biography { get; set; }
 
         public string ContactEmail { get; set; }
 
-        public void DisplayPortfolio()
+        public string ExternalLink { get; set; }
+
+        public Project project { get; set; }
+
+        
+
+       
+        public Portfolio()
         {
-            Console.WriteLine(ProfessionalTitle);
+            OwnerName = string.Empty;
+            ProfessionalTitle = string.Empty;
+            Biography = string.Empty;
         }
 
-        public void UpdateBio(string newBio)
+        public Portfolio(string ownerName, string professionalTitle, string biography,string conEmail,string externalLink,Project project)
         {
-            this.Biography = newBio;
+            OwnerName = ownerName;
+            ProfessionalTitle = professionalTitle;
+            Biography = biography;
+            ContactEmail = conEmail;
+            ExternalLink = externalLink;
+            this.project = project;
         }
+
+       
+        //public void DisplayPortfolio()
+        //{
+        //    Console.WriteLine($"Title: {ProfessionalTitle} | Owner: {OwnerName}");
+        //}
+
+        //public void UpdateBio(string newBio)
+        //{
+        //    this.Biography = newBio;
+        //}
     }
 }

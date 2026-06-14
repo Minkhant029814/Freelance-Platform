@@ -107,6 +107,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Repositories\FreelancerRepository.cs" />
+    <Compile Include="Service\FreelancerService.cs" />
     <Compile Include="view\components\clientComponent\ProfileEdit.cs">
       <SubType>UserControl</SubType>
     </Compile>

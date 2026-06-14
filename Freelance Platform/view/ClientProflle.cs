@@ -167,7 +167,7 @@ namespace Freelance_Platform.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Image upload လုပ်ရာတွင် အမှားအယွင်းဖြစ်ပါသည်: " + ex.Message, "Upload Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Image upload failed.... " + ex.Message, "Upload Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return "ERROR"; 
             }
         }

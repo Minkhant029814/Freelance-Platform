@@ -1,33 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Freelance_Platform.model
 {
     internal class Freelancer : User
     {
-        public int FreelancerId { get; set; }
-        public List<string> Skills { get; set; }
-        public string Expertise { get; set; }
-        public List<string> PastWork { get; set; }
-        public List<Portfolio> Portfolio { get; set; }
         
-        public Freelancer(string username,string password,string type):base(username, password,type)
+        public int FreelancerId { get; set; }
+        public decimal HourlyRate { get; set; } 
+        public string Expertise { get; set; } 
+
+       
+
+        public List<string> Skills { get; set; } 
+
+       
+        public Portfolio Portfolio { get; set; }
+
+        
+        public Freelancer() : base("", "", "")
         {
             Skills = new List<string>();
-            PastWork = new List<string>();
-            Portfolio = new List<Portfolio>();
+            Portfolio = new Portfolio();
         }
+
+        
+        public Freelancer(string username, string password, string type) : base(username, password, type)
+        {
+            Skills = new List<string>();
+            Portfolio = new Portfolio();
+        }
+
+       
         public override void CreateProfile()
         {
-            Console.WriteLine("some thins");
+           
+            Console.WriteLine("Creating Profile with Database Transaction...");
         }
 
         public void BrowseProjects(List<Project> projects)
         {
-            foreach(var p in projects)
+            foreach (var p in projects)
             {
                 Console.WriteLine(p.ProjectTitle);
             }
@@ -35,12 +48,12 @@ namespace Freelance_Platform.model
 
         public void SubmitProposal(Bidding Bid)
         {
-            Console.WriteLine("Bid Subbmitted");
+            Console.WriteLine("Bid Submitted");
         }
 
         public void ManageProject()
         {
-            Console.WriteLine("Managine Projects");
+            Console.WriteLine("Managing Projects");
         }
     }
 }
