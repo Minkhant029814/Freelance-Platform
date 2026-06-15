@@ -19,7 +19,7 @@ namespace Freelance_Platform
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FreelancerDashboard());
+            Application.Run(new frmLogin());
         }
     }
 }

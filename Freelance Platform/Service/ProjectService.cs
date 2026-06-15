@@ -29,29 +29,7 @@ namespace Freelance_Platform.Service
 
         public List<Project> GetAllProjectsListById()
         {
-            List<Project> projectList = new List<Project>();
-
-          
-            DataTable dt = projectRepo.AllProjectById();
-
-          
-            foreach (DataRow row in dt.Rows)
-            {
-                Project p = new Project();
-                p.ProjectTitle = row["ProjectTitle"].ToString();
-                p.Description = row["Description"].ToString();
-
-               
-                p.BaselineBudget = row["Budget"] != DBNull.Value ? Convert.ToDecimal(row["Budget"]) : 0;
-                p.EndDate = Convert.ToDateTime(row["EndDate"]);
-
-               
-                p.CurrentStatus = (string) row["Status"];
-
-                projectList.Add(p);
-            }
-
-            return projectList;
+            return projectRepo.AllProjectById();
         }
 
         public List<Project> GetAllProjects()

@@ -46,6 +46,10 @@ namespace Freelance_Platform.components
         }
         private void ProjectCardRow_Load(object sender, EventArgs e)
         {
+            // FreeLancerProjectCard.Designer.cs
+            lblProjectDesc.AutoSize = false;
+            lblProjectDesc.Width = 600;
+            lblProjectDesc.Height = 50;
 
         }
     }

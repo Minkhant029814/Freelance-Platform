@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,64 +19,77 @@ namespace Freelance_Platform.Forms.Dashboard
     public partial class FreelancerDashboard : Form
     {
 
-        //private readonly FreelancerService freelancerService = new FreelancerService();
         private readonly ProjectService projectService = new ProjectService();
+        private readonly FreelancerService freelanerService = new FreelancerService();
+       
         public FreelancerDashboard()
         {
             InitializeComponent();
+            flowCardDisplay.Resize += flowCardDisplay_Resize;
         }
 
         private void FreelancerDashboard_Load(object sender, EventArgs e)
         {
+            
+            //flowCardDisplay.Dock = DockStyle.Fill;
+            flowCardDisplay.AutoScroll = true;
+            flowCardDisplay.WrapContents = false;
+            flowCardDisplay.FlowDirection = FlowDirection.TopDown;
+            DisplayDashboard();
             DisplayProjectCards();
-
-            //mainPanel_Resize(null, null);
         }
 
-       
 
-        private void DisplayProjectCards()
+        private void DisplayDashboard()
         {
-
-            flowCardDisplay.SuspendLayout();
-            flowCardDisplay.Controls.Clear();
-
-
-
-            List<Project> activeProjects = projectService.GetAllProjects();
-
-            if(activeProjects.Count == 0)
+            Freelancer f = freelanerService.DashboardInfo();
+            lblGreeting.Text = f.Portfolio.OwnerName;
+            string image = f.Portfolio.Profile;
+            lblName.Text = f.Portfolio.OwnerName;
+            //MessageBox.Show("The image name is.......... " + image);
+            if (!string.IsNullOrEmpty(image))
             {
-                Label lblEmpty = new Label() { Text = "No active projects found.", AutoSize = true };
-                flowCardDisplay.Controls.Add(lblEmpty);
-                return;
+                string imgPath = Path.Combine(Application.StartupPath, "Uploads", image);
+
+
+                if (File.Exists(imgPath))
+                {
+
+                    ProfilePict.Image = Image.FromFile(imgPath);
+                    return;
+                }
             }
 
 
+            ProfilePict.Image = Properties.Resources.register;
+        }
+
+
+        private void DisplayProjectCards()
+        {
+            flowCardDisplay.SuspendLayout();
+            flowCardDisplay.Controls.Clear();
+
+            List<Project> activeProjects = projectService.GetAllProjects();
+
             foreach (Project proj in activeProjects)
             {
-
-               
-
                 FreeLancerProjectCard card = new FreeLancerProjectCard();
 
-
                 card.PopulateData(
-
                     proj.ProjectTitle,
                     proj.Description,
                     proj.BaselineBudget.ToString("N0"),
                     proj.EndDate.ToString("d/M/yyyy")
-                    //proj.CurrentStatus.ToString()
                 );
 
-
-                card.Width = flowCardDisplay.ClientSize.Width - 30;
-
+                card.Width = flowCardDisplay.ClientSize.Width - 25;
+                card.Height = 173;
 
                 flowCardDisplay.Controls.Add(card);
             }
-           flowCardDisplay.ResumeLayout();
+
+            flowCardDisplay.ResumeLayout();
         }
 
         private void btnDashboard_Click(object sender, EventArgs e)
@@ -83,18 +97,22 @@ namespace Freelance_Platform.Forms.Dashboard
             
         }
 
-        //private void mainPanel_Resize(object sender, EventArgs e)
-        //{
-        //    ProjectsLayout.Width = mainPanel.ClientSize.Width - 30;
+        private void flowCardDisplay_Paint(object sender, PaintEventArgs e)
+        {
 
+        }
 
-        //    foreach (Control ctrl in ProjectsLayout.Controls)
-        //    {
-        //        if (ctrl is ProjectCardRow)
-        //        {
-        //            ctrl.Width = ProjectsLayout.ClientSize.Width - 30;
-        //        }
-        //    }
-        //}
+        private void FreelancerDashboard_Shown(object sender, EventArgs e)
+        {
+            //DisplayProjectCards();
+        }
+
+        private void flowCardDisplay_Resize(object sender, EventArgs e)
+        {
+            foreach (Control c in flowCardDisplay.Controls)
+            {
+                c.Width = flowCardDisplay.ClientSize.Width - 25;
+            }
+        }
     }
 }

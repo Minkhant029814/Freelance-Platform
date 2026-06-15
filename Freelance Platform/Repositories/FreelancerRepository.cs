@@ -94,14 +94,14 @@ namespace Freelance_Platform.Repositories
 
        public Freelancer DashboardInfo()
         {
-            string freelancerQuery = @"SELECT f.Expertise, f.HourlyRate, p.OwnerName, p.ProfessionalTitle, 
+            string freelancerQuery = @"SELECT f.Expertise, f.HourlyRate, p.OwnerName, p.ProfessionalTitle, p.ProfilePic,
        p.Biography, p.ContactEmail, p.ProjectTitle, 
        GROUP_CONCAT(s.SkillName SEPARATOR ', ') AS SkillsList 
-FROM freelancers f 
-LEFT JOIN portfolios p ON f.FreelancerId = p.FreelancerId 
-LEFT JOIN freelancer_skills s ON f.FreelancerId = s.FreelancerId 
-WHERE f.FreelancerId = @freeId 
-GROUP BY f.FreelancerId, f.Expertise, f.HourlyRate, p.OwnerName, p.ProfessionalTitle, p.Biography, p.ContactEmail, p.ProjectTitle;";
+        FROM freelancers f 
+        LEFT JOIN portfolios p ON f.FreelancerId = p.FreelancerId 
+        LEFT JOIN freelancer_skills s ON f.FreelancerId = s.FreelancerId 
+        WHERE f.FreelancerId = @freeId 
+        GROUP BY f.FreelancerId, f.Expertise, f.HourlyRate, p.OwnerName, p.ProfessionalTitle,p.ProfilePic, p.Biography, p.ContactEmail, p.ProjectTitle;";
             MySqlParameter[] para =
             {
                 new MySqlParameter("@freeId",UserSession.FreelancerId)
@@ -125,6 +125,7 @@ GROUP BY f.FreelancerId, f.Expertise, f.HourlyRate, p.OwnerName, p.ProfessionalT
                 f.Portfolio.ProfessionalTitle = dTable.Rows[0]["ProfessionalTitle"].ToString();
                 f.Portfolio.Biography = dTable.Rows[0]["Biography"].ToString();
                 f.Portfolio.ContactEmail = dTable.Rows[0]["ContactEmail"].ToString();
+                f.Portfolio.Profile = dTable.Rows[0]["ProfilePic"].ToString();
 
                 if (f.Portfolio.project == null)
                 {

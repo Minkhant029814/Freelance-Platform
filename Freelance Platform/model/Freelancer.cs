@@ -11,6 +11,7 @@ namespace Freelance_Platform.model
         public string Expertise { get; set; } 
 
        
+       
 
         public List<string> Skills { get; set; } 
 

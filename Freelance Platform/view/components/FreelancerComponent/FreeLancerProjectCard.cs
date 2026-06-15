@@ -28,12 +28,27 @@ namespace Freelance_Platform.view.components.FreelancerComponent
             lblProjectDate.Text = $"Due{dueDate}";
 
 
-            
+
         }
 
         private void FreeLancerProjectCard_Load(object sender, EventArgs e)
         {
+            this.Anchor = AnchorStyles.Left;
+            this.Anchor = AnchorStyles.Right;
 
+            // FreeLancerProjectCard.Designer.cs
+            lblProjectDesc.AutoSize = false;
+            lblProjectDesc.Width = 600;
+            lblProjectDesc.Height = 50;
+
+            this.Margin = new Padding(5);
+            this.Name = "FreeLancerProjectCard";
+            this.Size = new System.Drawing.Size(750, 173);
+
+            this.btnBidProject.Anchor =
+    ((System.Windows.Forms.AnchorStyles)
+    ((System.Windows.Forms.AnchorStyles.Top |
+      System.Windows.Forms.AnchorStyles.Right)));
         }
     }
 }

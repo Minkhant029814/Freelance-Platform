@@ -66,7 +66,7 @@
             this.lblProjectBudget.AutoSize = true;
             this.lblProjectBudget.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProjectBudget.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblProjectBudget.Location = new System.Drawing.Point(64, 93);
+            this.lblProjectBudget.Location = new System.Drawing.Point(80, 137);
             this.lblProjectBudget.Name = "lblProjectBudget";
             this.lblProjectBudget.Size = new System.Drawing.Size(120, 20);
             this.lblProjectBudget.TabIndex = 2;
@@ -77,7 +77,7 @@
             this.lblProjectDate.AutoSize = true;
             this.lblProjectDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProjectDate.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblProjectDate.Location = new System.Drawing.Point(283, 93);
+            this.lblProjectDate.Location = new System.Drawing.Point(284, 137);
             this.lblProjectDate.Name = "lblProjectDate";
             this.lblProjectDate.Size = new System.Drawing.Size(103, 20);
             this.lblProjectDate.TabIndex = 3;
@@ -102,7 +102,7 @@
             this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.CalendarWeek;
             this.iconPictureBox1.IconColor = System.Drawing.SystemColors.ControlLightLight;
             this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox1.Location = new System.Drawing.Point(245, 93);
+            this.iconPictureBox1.Location = new System.Drawing.Point(246, 125);
             this.iconPictureBox1.Name = "iconPictureBox1";
             this.iconPictureBox1.Size = new System.Drawing.Size(32, 32);
             this.iconPictureBox1.TabIndex = 5;
@@ -115,7 +115,7 @@
             this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.Suitcase;
             this.iconPictureBox2.IconColor = System.Drawing.SystemColors.ControlLightLight;
             this.iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox2.Location = new System.Drawing.Point(26, 93);
+            this.iconPictureBox2.Location = new System.Drawing.Point(28, 125);
             this.iconPictureBox2.Name = "iconPictureBox2";
             this.iconPictureBox2.Size = new System.Drawing.Size(32, 32);
             this.iconPictureBox2.TabIndex = 6;
@@ -137,7 +137,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
             this.Name = "ProjectCardRow";
             this.Padding = new System.Windows.Forms.Padding(10);
-            this.Size = new System.Drawing.Size(696, 145);
+            this.Size = new System.Drawing.Size(696, 177);
             this.Load += new System.EventHandler(this.ProjectCardRow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();

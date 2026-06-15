@@ -42,36 +42,32 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lblGreeting = new System.Windows.Forms.Label();
             this.CardLayout = new System.Windows.Forms.TableLayoutPanel();
-            this.ActiveBidPanel = new Guna.UI2.WinForms.Guna2Panel();
-            this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
-            this.JobSuccessRatePanel = new Guna.UI2.WinForms.Guna2Panel();
-            this.iconPictureBox5 = new FontAwesome.Sharp.IconPictureBox();
-            this.onGoingProject = new Guna.UI2.WinForms.Guna2Panel();
-            this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             this.MonthlyEarningPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.iconPictureBox4 = new FontAwesome.Sharp.IconPictureBox();
+            this.onGoingProject = new Guna.UI2.WinForms.Guna2Panel();
+            this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
+            this.JobSuccessRatePanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.iconPictureBox5 = new FontAwesome.Sharp.IconPictureBox();
+            this.ActiveBidPanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
             this.mainPanel = new Guna.UI2.WinForms.Guna2Panel();
-            this.CardDisplayPanel = new Guna.UI2.WinForms.Guna2Panel();
-            this.label4 = new System.Windows.Forms.Label();
             this.flowCardDisplay = new System.Windows.Forms.FlowLayoutPanel();
-            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             this.upperPanel.SuspendLayout();
             this.picturePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProfilePict)).BeginInit();
             this.CardLayout.SuspendLayout();
-            this.ActiveBidPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
-            this.JobSuccessRatePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).BeginInit();
-            this.onGoingProject.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
             this.MonthlyEarningPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).BeginInit();
+            this.onGoingProject.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
+            this.JobSuccessRatePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).BeginInit();
+            this.ActiveBidPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
             this.mainPanel.SuspendLayout();
-            this.CardDisplayPanel.SuspendLayout();
-            this.guna2Panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -181,6 +177,7 @@
             // 
             // upperPanel
             // 
+            this.upperPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
             this.upperPanel.Controls.Add(this.picturePanel);
             this.upperPanel.Controls.Add(this.label3);
             this.upperPanel.Controls.Add(this.lblGreeting);
@@ -196,9 +193,9 @@
             this.picturePanel.Controls.Add(this.label2);
             this.picturePanel.Controls.Add(this.ProfilePict);
             this.picturePanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.picturePanel.Location = new System.Drawing.Point(560, 0);
+            this.picturePanel.Location = new System.Drawing.Point(508, 0);
             this.picturePanel.Name = "picturePanel";
-            this.picturePanel.Size = new System.Drawing.Size(256, 100);
+            this.picturePanel.Size = new System.Drawing.Size(308, 100);
             this.picturePanel.TabIndex = 4;
             // 
             // lblName
@@ -206,7 +203,7 @@
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblName.Location = new System.Drawing.Point(60, 36);
+            this.lblName.Location = new System.Drawing.Point(44, 14);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(92, 23);
             this.lblName.TabIndex = 6;
@@ -217,7 +214,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label2.Location = new System.Drawing.Point(64, 68);
+            this.label2.Location = new System.Drawing.Point(48, 62);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 23);
             this.label2.TabIndex = 5;
@@ -229,7 +226,7 @@
             this.ProfilePict.Location = new System.Drawing.Point(171, 12);
             this.ProfilePict.Name = "ProfilePict";
             this.ProfilePict.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.ProfilePict.Size = new System.Drawing.Size(64, 64);
+            this.ProfilePict.Size = new System.Drawing.Size(88, 82);
             this.ProfilePict.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ProfilePict.TabIndex = 0;
             this.ProfilePict.TabStop = false;
@@ -275,57 +272,31 @@
             this.CardLayout.Size = new System.Drawing.Size(816, 179);
             this.CardLayout.TabIndex = 0;
             // 
-            // ActiveBidPanel
+            // MonthlyEarningPanel
             // 
-            this.ActiveBidPanel.BorderRadius = 15;
-            this.ActiveBidPanel.Controls.Add(this.iconPictureBox3);
-            this.ActiveBidPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ActiveBidPanel.FillColor = System.Drawing.Color.White;
-            this.ActiveBidPanel.Location = new System.Drawing.Point(214, 10);
-            this.ActiveBidPanel.Margin = new System.Windows.Forms.Padding(10);
-            this.ActiveBidPanel.Name = "ActiveBidPanel";
-            this.ActiveBidPanel.Size = new System.Drawing.Size(184, 159);
-            this.ActiveBidPanel.TabIndex = 1;
+            this.MonthlyEarningPanel.BorderRadius = 15;
+            this.MonthlyEarningPanel.Controls.Add(this.iconPictureBox4);
+            this.MonthlyEarningPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MonthlyEarningPanel.FillColor = System.Drawing.Color.White;
+            this.MonthlyEarningPanel.Location = new System.Drawing.Point(418, 10);
+            this.MonthlyEarningPanel.Margin = new System.Windows.Forms.Padding(10);
+            this.MonthlyEarningPanel.Name = "MonthlyEarningPanel";
+            this.MonthlyEarningPanel.Size = new System.Drawing.Size(184, 159);
+            this.MonthlyEarningPanel.TabIndex = 1;
             // 
-            // iconPictureBox3
+            // iconPictureBox4
             // 
-            this.iconPictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
-            this.iconPictureBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
-            this.iconPictureBox3.IconChar = FontAwesome.Sharp.IconChar.ClockFour;
-            this.iconPictureBox3.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
-            this.iconPictureBox3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox3.IconSize = 40;
-            this.iconPictureBox3.Location = new System.Drawing.Point(15, 7);
-            this.iconPictureBox3.Name = "iconPictureBox3";
-            this.iconPictureBox3.Size = new System.Drawing.Size(40, 40);
-            this.iconPictureBox3.TabIndex = 11;
-            this.iconPictureBox3.TabStop = false;
-            // 
-            // JobSuccessRatePanel
-            // 
-            this.JobSuccessRatePanel.BorderRadius = 15;
-            this.JobSuccessRatePanel.Controls.Add(this.iconPictureBox5);
-            this.JobSuccessRatePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.JobSuccessRatePanel.FillColor = System.Drawing.Color.White;
-            this.JobSuccessRatePanel.Location = new System.Drawing.Point(622, 10);
-            this.JobSuccessRatePanel.Margin = new System.Windows.Forms.Padding(10);
-            this.JobSuccessRatePanel.Name = "JobSuccessRatePanel";
-            this.JobSuccessRatePanel.Size = new System.Drawing.Size(184, 159);
-            this.JobSuccessRatePanel.TabIndex = 1;
-            // 
-            // iconPictureBox5
-            // 
-            this.iconPictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
-            this.iconPictureBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
-            this.iconPictureBox5.IconChar = FontAwesome.Sharp.IconChar.Trophy;
-            this.iconPictureBox5.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
-            this.iconPictureBox5.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox5.IconSize = 40;
-            this.iconPictureBox5.Location = new System.Drawing.Point(13, 7);
-            this.iconPictureBox5.Name = "iconPictureBox5";
-            this.iconPictureBox5.Size = new System.Drawing.Size(40, 40);
-            this.iconPictureBox5.TabIndex = 13;
-            this.iconPictureBox5.TabStop = false;
+            this.iconPictureBox4.BackColor = System.Drawing.Color.White;
+            this.iconPictureBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
+            this.iconPictureBox4.IconChar = FontAwesome.Sharp.IconChar.DollarSign;
+            this.iconPictureBox4.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
+            this.iconPictureBox4.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox4.IconSize = 40;
+            this.iconPictureBox4.Location = new System.Drawing.Point(14, 7);
+            this.iconPictureBox4.Name = "iconPictureBox4";
+            this.iconPictureBox4.Size = new System.Drawing.Size(40, 40);
+            this.iconPictureBox4.TabIndex = 12;
+            this.iconPictureBox4.TabStop = false;
             // 
             // onGoingProject
             // 
@@ -341,7 +312,7 @@
             // 
             // iconPictureBox2
             // 
-            this.iconPictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
+            this.iconPictureBox2.BackColor = System.Drawing.Color.White;
             this.iconPictureBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
             this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.Suitcase;
             this.iconPictureBox2.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
@@ -353,35 +324,62 @@
             this.iconPictureBox2.TabIndex = 10;
             this.iconPictureBox2.TabStop = false;
             // 
-            // MonthlyEarningPanel
+            // JobSuccessRatePanel
             // 
-            this.MonthlyEarningPanel.BorderRadius = 15;
-            this.MonthlyEarningPanel.Controls.Add(this.iconPictureBox4);
-            this.MonthlyEarningPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MonthlyEarningPanel.FillColor = System.Drawing.Color.White;
-            this.MonthlyEarningPanel.Location = new System.Drawing.Point(418, 10);
-            this.MonthlyEarningPanel.Margin = new System.Windows.Forms.Padding(10);
-            this.MonthlyEarningPanel.Name = "MonthlyEarningPanel";
-            this.MonthlyEarningPanel.Size = new System.Drawing.Size(184, 159);
-            this.MonthlyEarningPanel.TabIndex = 1;
+            this.JobSuccessRatePanel.BorderRadius = 15;
+            this.JobSuccessRatePanel.Controls.Add(this.iconPictureBox5);
+            this.JobSuccessRatePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.JobSuccessRatePanel.FillColor = System.Drawing.Color.White;
+            this.JobSuccessRatePanel.Location = new System.Drawing.Point(622, 10);
+            this.JobSuccessRatePanel.Margin = new System.Windows.Forms.Padding(10);
+            this.JobSuccessRatePanel.Name = "JobSuccessRatePanel";
+            this.JobSuccessRatePanel.Size = new System.Drawing.Size(184, 159);
+            this.JobSuccessRatePanel.TabIndex = 1;
             // 
-            // iconPictureBox4
+            // iconPictureBox5
             // 
-            this.iconPictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
-            this.iconPictureBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
-            this.iconPictureBox4.IconChar = FontAwesome.Sharp.IconChar.DollarSign;
-            this.iconPictureBox4.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
-            this.iconPictureBox4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox4.IconSize = 40;
-            this.iconPictureBox4.Location = new System.Drawing.Point(14, 7);
-            this.iconPictureBox4.Name = "iconPictureBox4";
-            this.iconPictureBox4.Size = new System.Drawing.Size(40, 40);
-            this.iconPictureBox4.TabIndex = 12;
-            this.iconPictureBox4.TabStop = false;
+            this.iconPictureBox5.BackColor = System.Drawing.Color.White;
+            this.iconPictureBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
+            this.iconPictureBox5.IconChar = FontAwesome.Sharp.IconChar.Trophy;
+            this.iconPictureBox5.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
+            this.iconPictureBox5.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox5.IconSize = 40;
+            this.iconPictureBox5.Location = new System.Drawing.Point(13, 7);
+            this.iconPictureBox5.Name = "iconPictureBox5";
+            this.iconPictureBox5.Size = new System.Drawing.Size(40, 40);
+            this.iconPictureBox5.TabIndex = 13;
+            this.iconPictureBox5.TabStop = false;
+            // 
+            // ActiveBidPanel
+            // 
+            this.ActiveBidPanel.BorderRadius = 15;
+            this.ActiveBidPanel.Controls.Add(this.iconPictureBox3);
+            this.ActiveBidPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ActiveBidPanel.FillColor = System.Drawing.Color.White;
+            this.ActiveBidPanel.Location = new System.Drawing.Point(214, 10);
+            this.ActiveBidPanel.Margin = new System.Windows.Forms.Padding(10);
+            this.ActiveBidPanel.Name = "ActiveBidPanel";
+            this.ActiveBidPanel.Size = new System.Drawing.Size(184, 159);
+            this.ActiveBidPanel.TabIndex = 1;
+            // 
+            // iconPictureBox3
+            // 
+            this.iconPictureBox3.BackColor = System.Drawing.Color.White;
+            this.iconPictureBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
+            this.iconPictureBox3.IconChar = FontAwesome.Sharp.IconChar.ClockFour;
+            this.iconPictureBox3.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
+            this.iconPictureBox3.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox3.IconSize = 40;
+            this.iconPictureBox3.Location = new System.Drawing.Point(15, 7);
+            this.iconPictureBox3.Name = "iconPictureBox3";
+            this.iconPictureBox3.Size = new System.Drawing.Size(40, 40);
+            this.iconPictureBox3.TabIndex = 11;
+            this.iconPictureBox3.TabStop = false;
             // 
             // mainPanel
             // 
-            this.mainPanel.Controls.Add(this.CardDisplayPanel);
+            this.mainPanel.Controls.Add(this.label4);
+            this.mainPanel.Controls.Add(this.flowCardDisplay);
             this.mainPanel.Controls.Add(this.CardLayout);
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPanel.Location = new System.Drawing.Point(250, 100);
@@ -389,48 +387,31 @@
             this.mainPanel.Size = new System.Drawing.Size(816, 544);
             this.mainPanel.TabIndex = 2;
             // 
-            // CardDisplayPanel
+            // flowCardDisplay
             // 
-            this.CardDisplayPanel.Controls.Add(this.guna2Panel2);
-            this.CardDisplayPanel.Controls.Add(this.flowCardDisplay);
-            this.CardDisplayPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CardDisplayPanel.Location = new System.Drawing.Point(0, 179);
-            this.CardDisplayPanel.Name = "CardDisplayPanel";
-            this.CardDisplayPanel.Size = new System.Drawing.Size(816, 365);
-            this.CardDisplayPanel.TabIndex = 1;
+            this.flowCardDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowCardDisplay.AutoScroll = true;
+            this.flowCardDisplay.BackColor = System.Drawing.Color.White;
+            this.flowCardDisplay.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowCardDisplay.Location = new System.Drawing.Point(22, 240);
+            this.flowCardDisplay.Name = "flowCardDisplay";
+            this.flowCardDisplay.Size = new System.Drawing.Size(773, 274);
+            this.flowCardDisplay.TabIndex = 1;
+            this.flowCardDisplay.WrapContents = false;
+            this.flowCardDisplay.Resize += new System.EventHandler(this.flowCardDisplay_Resize);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label4.Location = new System.Drawing.Point(6, 3);
+            this.label4.Location = new System.Drawing.Point(17, 199);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(310, 28);
+            this.label4.Size = new System.Drawing.Size(311, 28);
             this.label4.TabIndex = 5;
-            this.label4.Text = "Recommended Projects For You";
-            // 
-            // flowCardDisplay
-            // 
-            this.flowCardDisplay.AutoScroll = true;
-            this.flowCardDisplay.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowCardDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowCardDisplay.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowCardDisplay.Location = new System.Drawing.Point(0, 0);
-            this.flowCardDisplay.Margin = new System.Windows.Forms.Padding(3, 15, 3, 3);
-            this.flowCardDisplay.Name = "flowCardDisplay";
-            this.flowCardDisplay.Size = new System.Drawing.Size(816, 365);
-            this.flowCardDisplay.TabIndex = 6;
-            this.flowCardDisplay.WrapContents = false;
-            // 
-            // guna2Panel2
-            // 
-            this.guna2Panel2.Controls.Add(this.label4);
-            this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Panel2.Location = new System.Drawing.Point(0, 0);
-            this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(816, 41);
-            this.guna2Panel2.TabIndex = 7;
+            this.label4.Text = "Recommended Projects For you";
             // 
             // FreelancerDashboard
             // 
@@ -443,6 +424,7 @@
             this.Name = "FreelancerDashboard";
             this.Text = "FreelancerDashboard";
             this.Load += new System.EventHandler(this.FreelancerDashboard_Load);
+            this.Shown += new System.EventHandler(this.FreelancerDashboard_Shown);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
@@ -452,18 +434,16 @@
             this.picturePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProfilePict)).EndInit();
             this.CardLayout.ResumeLayout(false);
-            this.ActiveBidPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).EndInit();
-            this.JobSuccessRatePanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).EndInit();
-            this.onGoingProject.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
             this.MonthlyEarningPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).EndInit();
+            this.onGoingProject.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
+            this.JobSuccessRatePanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).EndInit();
+            this.ActiveBidPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).EndInit();
             this.mainPanel.ResumeLayout(false);
-            this.CardDisplayPanel.ResumeLayout(false);
-            this.guna2Panel2.ResumeLayout(false);
-            this.guna2Panel2.PerformLayout();
+            this.mainPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -493,9 +473,7 @@
         private Guna.UI2.WinForms.Guna2Panel ActiveBidPanel;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
         private Guna.UI2.WinForms.Guna2Panel mainPanel;
-        private Guna.UI2.WinForms.Guna2Panel CardDisplayPanel;
         private System.Windows.Forms.FlowLayoutPanel flowCardDisplay;
         private System.Windows.Forms.Label label4;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
     }
 }

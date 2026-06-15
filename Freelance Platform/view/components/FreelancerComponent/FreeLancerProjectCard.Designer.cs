@@ -85,10 +85,10 @@
             // 
             // iconPictureBox2
             // 
-            this.iconPictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
-            this.iconPictureBox2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.iconPictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
+            this.iconPictureBox2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.Suitcase;
-            this.iconPictureBox2.IconColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.iconPictureBox2.IconColor = System.Drawing.SystemColors.ButtonHighlight;
             this.iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconPictureBox2.Location = new System.Drawing.Point(42, 128);
             this.iconPictureBox2.Name = "iconPictureBox2";
@@ -98,10 +98,10 @@
             // 
             // iconPictureBox1
             // 
-            this.iconPictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
-            this.iconPictureBox1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.iconPictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
+            this.iconPictureBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.CalendarWeek;
-            this.iconPictureBox1.IconColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.iconPictureBox1.IconColor = System.Drawing.SystemColors.ButtonHighlight;
             this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconPictureBox1.Location = new System.Drawing.Point(306, 128);
             this.iconPictureBox1.Name = "iconPictureBox1";
@@ -120,7 +120,7 @@
             this.btnBidProject.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
             this.btnBidProject.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnBidProject.ForeColor = System.Drawing.Color.White;
-            this.btnBidProject.Location = new System.Drawing.Point(972, 3);
+            this.btnBidProject.Location = new System.Drawing.Point(454, 3);
             this.btnBidProject.Name = "btnBidProject";
             this.btnBidProject.Size = new System.Drawing.Size(118, 45);
             this.btnBidProject.TabIndex = 13;
@@ -128,9 +128,9 @@
             // 
             // FreeLancerProjectCard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
             this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Controls.Add(this.btnBidProject);
             this.Controls.Add(this.iconPictureBox2);
@@ -141,7 +141,7 @@
             this.Controls.Add(this.lblProjectTitle);
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "FreeLancerProjectCard";
-            this.Size = new System.Drawing.Size(1103, 173);
+            this.Size = new System.Drawing.Size(585, 173);
             this.Load += new System.EventHandler(this.FreeLancerProjectCard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
@@ -159,5 +159,9 @@
         private System.Windows.Forms.Label lblProjectDesc;
         private System.Windows.Forms.Label lblProjectTitle;
         private Guna.UI2.WinForms.Guna2Button btnBidProject;
+
+        // FreeLancerProjectCard.Designer.cs
+
+
     }
 }

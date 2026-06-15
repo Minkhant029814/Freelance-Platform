@@ -23,7 +23,7 @@ namespace Freelance_Platform.Forms
         private readonly string type;
         private readonly string name;
         private readonly FreelancerService freelancerService = new FreelancerService();
-        List<string> selectedSkillsList = new List<string>();
+        private readonly List<string> selectedSkillsList = new List<string>();
         public FreelancerProfile(int userId,string type,string name)
         {
             InitializeComponent();
