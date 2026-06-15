@@ -47,7 +47,7 @@ namespace Freelance_Platform.Repositories
             return false;
         }
 
-        public DataTable AllProject()
+        public DataTable AllProjectById()
         {
             string query = "Select ProjectTitle,Description,Budget,EndDate,Status from projects where ClientId = @clientId";
 
@@ -57,6 +57,46 @@ namespace Freelance_Platform.Repositories
             };
 
           return  dbconnect.GetData(query, ps);
+        }
+
+
+        public List<Project> AllProject()
+        {
+            string query = "SELECT  * from Projects";
+
+            using (MySqlConnection conn = dbconnect.GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+             
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                List<Project> projects = new List<Project>();
+
+                foreach(DataRow row in dt.Rows)
+                {
+                    Project p = new Project
+                    {
+                        ProjectId = Convert.ToInt32(row["ProjectId"]), 
+                        ClientId = Convert.ToInt32(row["ClientId"]),
+                        ProjectTitle = row["ProjectTitle"].ToString(),
+                        Description = row["Description"].ToString(),
+                        BaselineBudget = Convert.ToDecimal(row["Budget"]),
+                        EndDate = Convert.ToDateTime(row["EndDate"])
+
+                    };
+                    projects.Add(p);
+
+                };
+
+
+
+                return projects;
+            }
+
+
         }
     }
 }

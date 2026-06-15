@@ -63,7 +63,7 @@ namespace Freelance_Platform.Forms.Dashboard
 
            
            
-            List<Project> activeProjects = service.GetAllProjectsList();
+            List<Project> activeProjects = service.GetAllProjectsListById();
 
            
             foreach (Project proj in activeProjects)

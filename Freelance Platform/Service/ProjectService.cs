@@ -27,12 +27,12 @@ namespace Freelance_Platform.Service
 
         }
 
-        public List<Project> GetAllProjectsList()
+        public List<Project> GetAllProjectsListById()
         {
             List<Project> projectList = new List<Project>();
 
           
-            DataTable dt = projectRepo.AllProject();
+            DataTable dt = projectRepo.AllProjectById();
 
           
             foreach (DataRow row in dt.Rows)
@@ -52,6 +52,11 @@ namespace Freelance_Platform.Service
             }
 
             return projectList;
+        }
+
+        public List<Project> GetAllProjects()
+        {
+            return projectRepo.AllProject();
         }
     }
 }

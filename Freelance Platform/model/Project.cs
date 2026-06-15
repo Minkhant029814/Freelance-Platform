@@ -9,6 +9,8 @@ namespace Freelance_Platform.model
     internal class Project
     {
         public int ProjectId { get; set; }
+
+        public int ClientId { get; set; }
         public string ProjectTitle { get; set; }
         public string Description { get; set; }
         public decimal BaselineBudget { get; set; }

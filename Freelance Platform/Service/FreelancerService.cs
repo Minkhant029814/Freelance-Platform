@@ -21,5 +21,11 @@ namespace Freelance_Platform.Service
         {
             return freelanerRepo.CreateProfile(freelancer,profile);
         }
+
+
+        public Freelancer DashboardInfo()
+        {
+            return freelanerRepo.DashboardInfo();
+        }
     }
 }

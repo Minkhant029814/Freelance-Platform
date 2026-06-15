@@ -135,6 +135,12 @@
     <Compile Include="view\ClientProflle.Designer.cs">
       <DependentUpon>ClientProflle.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\components\FreelancerComponent\FreeLancerProjectCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\components\FreelancerComponent\FreeLancerProjectCard.Designer.cs">
+      <DependentUpon>FreeLancerProjectCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\Dashboard\ClientDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,6 +204,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="view\ClientProflle.resx">
       <DependentUpon>ClientProflle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\components\FreelancerComponent\FreeLancerProjectCard.resx">
+      <DependentUpon>FreeLancerProjectCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\Dashboard\ClientDashboard.resx">
       <DependentUpon>ClientDashboard.cs</DependentUpon>
