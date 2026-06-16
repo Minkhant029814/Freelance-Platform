@@ -30,7 +30,7 @@
         {
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.btnProfile = new FontAwesome.Sharp.IconButton();
             this.btnDashboard = new FontAwesome.Sharp.IconButton();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -51,8 +51,8 @@
             this.ActiveBidPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
             this.mainPanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.lblRecommend = new System.Windows.Forms.Label();
             this.flowCardDisplay = new System.Windows.Forms.FlowLayoutPanel();
-            this.label4 = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             this.upperPanel.SuspendLayout();
@@ -74,14 +74,14 @@
             // 
             this.guna2Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
             this.guna2Panel1.Controls.Add(this.iconButton2);
-            this.guna2Panel1.Controls.Add(this.iconButton1);
+            this.guna2Panel1.Controls.Add(this.btnProfile);
             this.guna2Panel1.Controls.Add(this.btnDashboard);
             this.guna2Panel1.Controls.Add(this.iconPictureBox1);
             this.guna2Panel1.Controls.Add(this.label1);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(250, 644);
+            this.guna2Panel1.Size = new System.Drawing.Size(286, 644);
             this.guna2Panel1.TabIndex = 0;
             // 
             // iconButton2
@@ -96,37 +96,38 @@
             this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton2.IconSize = 30;
             this.iconButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton2.Location = new System.Drawing.Point(3, 299);
-            this.iconButton2.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
+            this.iconButton2.Location = new System.Drawing.Point(3, 326);
+            this.iconButton2.Margin = new System.Windows.Forms.Padding(15);
             this.iconButton2.Name = "iconButton2";
             this.iconButton2.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.iconButton2.Size = new System.Drawing.Size(241, 50);
+            this.iconButton2.Size = new System.Drawing.Size(247, 50);
             this.iconButton2.TabIndex = 9;
             this.iconButton2.Text = "Dashboard";
             this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton2.UseVisualStyleBackColor = false;
             // 
-            // iconButton1
+            // btnProfile
             // 
-            this.iconButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.HomeUser;
-            this.iconButton1.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.IconSize = 30;
-            this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton1.Location = new System.Drawing.Point(3, 229);
-            this.iconButton1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.iconButton1.Size = new System.Drawing.Size(241, 50);
-            this.iconButton1.TabIndex = 8;
-            this.iconButton1.Text = "Dashboard";
-            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton1.UseVisualStyleBackColor = false;
+            this.btnProfile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
+            this.btnProfile.FlatAppearance.BorderSize = 0;
+            this.btnProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProfile.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProfile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
+            this.btnProfile.IconChar = FontAwesome.Sharp.IconChar.UserShield;
+            this.btnProfile.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
+            this.btnProfile.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnProfile.IconSize = 30;
+            this.btnProfile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProfile.Location = new System.Drawing.Point(6, 230);
+            this.btnProfile.Margin = new System.Windows.Forms.Padding(15);
+            this.btnProfile.Name = "btnProfile";
+            this.btnProfile.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnProfile.Size = new System.Drawing.Size(244, 50);
+            this.btnProfile.TabIndex = 8;
+            this.btnProfile.Text = "Proflie";
+            this.btnProfile.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnProfile.UseVisualStyleBackColor = false;
+            this.btnProfile.Click += new System.EventHandler(this.btnProfile_Click);
             // 
             // btnDashboard
             // 
@@ -140,8 +141,8 @@
             this.btnDashboard.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnDashboard.IconSize = 30;
             this.btnDashboard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDashboard.Location = new System.Drawing.Point(3, 150);
-            this.btnDashboard.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
+            this.btnDashboard.Location = new System.Drawing.Point(9, 150);
+            this.btnDashboard.Margin = new System.Windows.Forms.Padding(15);
             this.btnDashboard.Name = "btnDashboard";
             this.btnDashboard.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnDashboard.Size = new System.Drawing.Size(241, 50);
@@ -158,7 +159,7 @@
             this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.ChessBoard;
             this.iconPictureBox1.IconColor = System.Drawing.SystemColors.ButtonHighlight;
             this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox1.Location = new System.Drawing.Point(23, 36);
+            this.iconPictureBox1.Location = new System.Drawing.Point(23, 62);
             this.iconPictureBox1.Name = "iconPictureBox1";
             this.iconPictureBox1.Size = new System.Drawing.Size(32, 32);
             this.iconPictureBox1.TabIndex = 1;
@@ -166,10 +167,9 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(61, 36);
+            this.label1.Location = new System.Drawing.Point(61, 66);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(173, 28);
             this.label1.TabIndex = 0;
@@ -182,9 +182,9 @@
             this.upperPanel.Controls.Add(this.label3);
             this.upperPanel.Controls.Add(this.lblGreeting);
             this.upperPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.upperPanel.Location = new System.Drawing.Point(250, 0);
+            this.upperPanel.Location = new System.Drawing.Point(286, 0);
             this.upperPanel.Name = "upperPanel";
-            this.upperPanel.Size = new System.Drawing.Size(816, 100);
+            this.upperPanel.Size = new System.Drawing.Size(780, 133);
             this.upperPanel.TabIndex = 1;
             // 
             // picturePanel
@@ -193,9 +193,9 @@
             this.picturePanel.Controls.Add(this.label2);
             this.picturePanel.Controls.Add(this.ProfilePict);
             this.picturePanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.picturePanel.Location = new System.Drawing.Point(508, 0);
+            this.picturePanel.Location = new System.Drawing.Point(472, 0);
             this.picturePanel.Name = "picturePanel";
-            this.picturePanel.Size = new System.Drawing.Size(308, 100);
+            this.picturePanel.Size = new System.Drawing.Size(308, 133);
             this.picturePanel.TabIndex = 4;
             // 
             // lblName
@@ -236,7 +236,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label3.Location = new System.Drawing.Point(6, 40);
+            this.label3.Location = new System.Drawing.Point(7, 71);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(246, 23);
             this.label3.TabIndex = 3;
@@ -244,10 +244,9 @@
             // 
             // lblGreeting
             // 
-            this.lblGreeting.AutoSize = true;
             this.lblGreeting.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGreeting.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblGreeting.Location = new System.Drawing.Point(6, 9);
+            this.lblGreeting.Location = new System.Drawing.Point(17, 23);
             this.lblGreeting.Name = "lblGreeting";
             this.lblGreeting.Size = new System.Drawing.Size(173, 28);
             this.lblGreeting.TabIndex = 2;
@@ -269,7 +268,7 @@
             this.CardLayout.Name = "CardLayout";
             this.CardLayout.RowCount = 1;
             this.CardLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.CardLayout.Size = new System.Drawing.Size(816, 179);
+            this.CardLayout.Size = new System.Drawing.Size(780, 179);
             this.CardLayout.TabIndex = 0;
             // 
             // MonthlyEarningPanel
@@ -278,10 +277,10 @@
             this.MonthlyEarningPanel.Controls.Add(this.iconPictureBox4);
             this.MonthlyEarningPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MonthlyEarningPanel.FillColor = System.Drawing.Color.White;
-            this.MonthlyEarningPanel.Location = new System.Drawing.Point(418, 10);
+            this.MonthlyEarningPanel.Location = new System.Drawing.Point(400, 10);
             this.MonthlyEarningPanel.Margin = new System.Windows.Forms.Padding(10);
             this.MonthlyEarningPanel.Name = "MonthlyEarningPanel";
-            this.MonthlyEarningPanel.Size = new System.Drawing.Size(184, 159);
+            this.MonthlyEarningPanel.Size = new System.Drawing.Size(175, 159);
             this.MonthlyEarningPanel.TabIndex = 1;
             // 
             // iconPictureBox4
@@ -307,7 +306,7 @@
             this.onGoingProject.Location = new System.Drawing.Point(10, 10);
             this.onGoingProject.Margin = new System.Windows.Forms.Padding(10);
             this.onGoingProject.Name = "onGoingProject";
-            this.onGoingProject.Size = new System.Drawing.Size(184, 159);
+            this.onGoingProject.Size = new System.Drawing.Size(175, 159);
             this.onGoingProject.TabIndex = 0;
             // 
             // iconPictureBox2
@@ -330,10 +329,10 @@
             this.JobSuccessRatePanel.Controls.Add(this.iconPictureBox5);
             this.JobSuccessRatePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.JobSuccessRatePanel.FillColor = System.Drawing.Color.White;
-            this.JobSuccessRatePanel.Location = new System.Drawing.Point(622, 10);
+            this.JobSuccessRatePanel.Location = new System.Drawing.Point(595, 10);
             this.JobSuccessRatePanel.Margin = new System.Windows.Forms.Padding(10);
             this.JobSuccessRatePanel.Name = "JobSuccessRatePanel";
-            this.JobSuccessRatePanel.Size = new System.Drawing.Size(184, 159);
+            this.JobSuccessRatePanel.Size = new System.Drawing.Size(175, 159);
             this.JobSuccessRatePanel.TabIndex = 1;
             // 
             // iconPictureBox5
@@ -356,10 +355,10 @@
             this.ActiveBidPanel.Controls.Add(this.iconPictureBox3);
             this.ActiveBidPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ActiveBidPanel.FillColor = System.Drawing.Color.White;
-            this.ActiveBidPanel.Location = new System.Drawing.Point(214, 10);
+            this.ActiveBidPanel.Location = new System.Drawing.Point(205, 10);
             this.ActiveBidPanel.Margin = new System.Windows.Forms.Padding(10);
             this.ActiveBidPanel.Name = "ActiveBidPanel";
-            this.ActiveBidPanel.Size = new System.Drawing.Size(184, 159);
+            this.ActiveBidPanel.Size = new System.Drawing.Size(175, 159);
             this.ActiveBidPanel.TabIndex = 1;
             // 
             // iconPictureBox3
@@ -378,14 +377,24 @@
             // 
             // mainPanel
             // 
-            this.mainPanel.Controls.Add(this.label4);
+            this.mainPanel.Controls.Add(this.lblRecommend);
             this.mainPanel.Controls.Add(this.flowCardDisplay);
             this.mainPanel.Controls.Add(this.CardLayout);
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainPanel.Location = new System.Drawing.Point(250, 100);
+            this.mainPanel.Location = new System.Drawing.Point(286, 133);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(816, 544);
+            this.mainPanel.Size = new System.Drawing.Size(780, 511);
             this.mainPanel.TabIndex = 2;
+            // 
+            // lblRecommend
+            // 
+            this.lblRecommend.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecommend.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRecommend.Location = new System.Drawing.Point(17, 182);
+            this.lblRecommend.Name = "lblRecommend";
+            this.lblRecommend.Size = new System.Drawing.Size(311, 28);
+            this.lblRecommend.TabIndex = 5;
+            this.lblRecommend.Text = "Recommended Projects For you";
             // 
             // flowCardDisplay
             // 
@@ -397,21 +406,10 @@
             this.flowCardDisplay.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowCardDisplay.Location = new System.Drawing.Point(22, 240);
             this.flowCardDisplay.Name = "flowCardDisplay";
-            this.flowCardDisplay.Size = new System.Drawing.Size(773, 274);
+            this.flowCardDisplay.Size = new System.Drawing.Size(727, 241);
             this.flowCardDisplay.TabIndex = 1;
             this.flowCardDisplay.WrapContents = false;
             this.flowCardDisplay.Resize += new System.EventHandler(this.flowCardDisplay_Resize);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label4.Location = new System.Drawing.Point(17, 199);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(311, 28);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Recommended Projects For you";
             // 
             // FreelancerDashboard
             // 
@@ -426,7 +424,6 @@
             this.Load += new System.EventHandler(this.FreelancerDashboard_Load);
             this.Shown += new System.EventHandler(this.FreelancerDashboard_Shown);
             this.guna2Panel1.ResumeLayout(false);
-            this.guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
             this.upperPanel.ResumeLayout(false);
             this.upperPanel.PerformLayout();
@@ -443,7 +440,6 @@
             this.ActiveBidPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).EndInit();
             this.mainPanel.ResumeLayout(false);
-            this.mainPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -462,7 +458,7 @@
         private System.Windows.Forms.Label lblName;
         private FontAwesome.Sharp.IconButton btnDashboard;
         private FontAwesome.Sharp.IconButton iconButton2;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton btnProfile;
         private System.Windows.Forms.TableLayoutPanel CardLayout;
         private Guna.UI2.WinForms.Guna2Panel MonthlyEarningPanel;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox4;
@@ -474,6 +470,6 @@
         private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
         private Guna.UI2.WinForms.Guna2Panel mainPanel;
         private System.Windows.Forms.FlowLayoutPanel flowCardDisplay;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblRecommend;
     }
 }

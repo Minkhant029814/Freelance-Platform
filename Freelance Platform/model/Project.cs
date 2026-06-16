@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Freelance_Platform.model
 {
-    internal class Project
+    public class Project
     {
         public int ProjectId { get; set; }
 

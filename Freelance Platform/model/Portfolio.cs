@@ -2,7 +2,7 @@
 
 namespace Freelance_Platform.model
 {
-    internal class Portfolio
+    public class Portfolio
     {
        
         public int PortfolioId { get; set; }

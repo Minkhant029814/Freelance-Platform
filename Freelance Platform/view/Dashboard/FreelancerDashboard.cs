@@ -21,7 +21,8 @@ namespace Freelance_Platform.Forms.Dashboard
 
         private readonly ProjectService projectService = new ProjectService();
         private readonly FreelancerService freelanerService = new FreelancerService();
-       
+        private readonly FreelancerEdit profile = new FreelancerEdit();
+
         public FreelancerDashboard()
         {
             InitializeComponent();
@@ -30,7 +31,10 @@ namespace Freelance_Platform.Forms.Dashboard
 
         private void FreelancerDashboard_Load(object sender, EventArgs e)
         {
-            
+            profile.Dock = DockStyle.Fill;
+            profile.Visible = false;
+            mainPanel.Controls.Add(profile);
+
             //flowCardDisplay.Dock = DockStyle.Fill;
             flowCardDisplay.AutoScroll = true;
             flowCardDisplay.WrapContents = false;
@@ -94,7 +98,24 @@ namespace Freelance_Platform.Forms.Dashboard
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
+            lblRecommend.Visible = true;
+            CardLayout.Visible = true;
+            flowCardDisplay.Visible = true;
+
+            profile.Visible = false;
             
+        }
+
+
+        //Display Freelancer Profile
+
+           
+        private void DisplayProfile()
+        {
+            //profile.LoadData(freelanerService.DashboardInfo().Portfolio.OwnerName,freelanerService.DashboardInfo().Portfolio.ProfessionalTitle,freelanerService.DashboardInfo().Portfolio.Profile);
+            profile.LoadData(freelanerService.DashboardInfo(),freelanerService.SkillTag());
+            mainPanel.Controls.Add(profile);
+            mainPanel.Padding = new Padding(10, 10, 10, 10);
         }
 
         private void flowCardDisplay_Paint(object sender, PaintEventArgs e)
@@ -114,5 +135,17 @@ namespace Freelance_Platform.Forms.Dashboard
                 c.Width = flowCardDisplay.ClientSize.Width - 25;
             }
         }
+
+        private void btnProfile_Click(object sender, EventArgs e)
+        {
+            lblRecommend.Visible = false;
+            CardLayout.Visible = false;
+            flowCardDisplay.Visible = false;
+
+            DisplayProfile();
+            profile.Visible = true;
+            profile.BringToFront();
+        }
+
     }
 }

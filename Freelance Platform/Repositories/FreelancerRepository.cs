@@ -18,7 +18,7 @@ namespace Freelance_Platform.Repositories
 
         public FreelancerRepository()
         {
-            
+
         }
 
         public bool CreateProfile(Freelancer freelancer, string profile)
@@ -30,7 +30,7 @@ namespace Freelance_Platform.Repositories
                 {
                     try
                     {
-                       
+
                         string queryFreelancer = @"INSERT INTO freelancers (UserId, Expertise, HourlyRate) 
                                            VALUES (@UserId, @Expertise, @HourlyRate);";
 
@@ -42,14 +42,14 @@ namespace Freelance_Platform.Repositories
                             cmd.ExecuteNonQuery();
                         }
 
-                      
+
                         long lastId;
                         using (MySqlCommand cmdId = new MySqlCommand("SELECT LAST_INSERT_ID();", conn, trans))
                         {
                             lastId = Convert.ToInt64(cmdId.ExecuteScalar());
                         }
 
-                       
+
                         string queryPortfolio = @"INSERT INTO portfolios (FreelancerId, OwnerName, ProfilePic, ProfessionalTitle, Biography, ContactEmail, ExternalLinks, ProjectTitle, ProjectDescription) 
                                           VALUES (@fid, @OwnerName, @pic, @Title, @Bio, @contact, @link, @proTitle, @prodesc);";
 
@@ -67,7 +67,7 @@ namespace Freelance_Platform.Repositories
                             cmd.ExecuteNonQuery();
                         }
 
-                       
+
                         foreach (var skill in freelancer.Skills)
                         {
                             string querySkill = "INSERT INTO freelancer_skills (FreelancerId, SkillName) VALUES (@fid, @SkillName);";
@@ -92,7 +92,7 @@ namespace Freelance_Platform.Repositories
         }
 
 
-       public Freelancer DashboardInfo()
+        public Freelancer DashboardInfo()
         {
             string freelancerQuery = @"SELECT f.Expertise, f.HourlyRate, p.OwnerName, p.ProfessionalTitle, p.ProfilePic,
        p.Biography, p.ContactEmail, p.ProjectTitle, 
@@ -116,11 +116,11 @@ namespace Freelance_Platform.Repositories
                 {
                     Expertise = dTable.Rows[0]["Expertise"].ToString(),
                     HourlyRate = (decimal)dTable.Rows[0]["HourlyRate"],
-                    
+
                 };
-               
-                
-                
+
+
+
                 f.Portfolio.OwnerName = dTable.Rows[0]["OwnerName"].ToString();
                 f.Portfolio.ProfessionalTitle = dTable.Rows[0]["ProfessionalTitle"].ToString();
                 f.Portfolio.Biography = dTable.Rows[0]["Biography"].ToString();
@@ -137,5 +137,25 @@ namespace Freelance_Platform.Repositories
 
             return null;
         }
+
+        //Skills Tage 
+
+        public List<string> SkillsTag()
+        {
+            List<string> skillsNames = new List<string>();
+            string query = "Select SkillName from Freelancer_Skills where FreelancerId = @fid";
+
+            MySqlParameter[] ps =
+            {
+                new MySqlParameter("@fid",UserSession.FreelancerId),
+            };
+           DataTable dt = dbConn.GetData(query, ps);
+            foreach(DataRow row in dt.Rows)
+            {
+                string name = row["SkillName"].ToString();
+                skillsNames.Add(name);
+            }
+            return skillsNames;
+       }
     }
 }

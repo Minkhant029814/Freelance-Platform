@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Freelance_Platform.model
 {
-    internal  class User
+    public  class User
     {
         
         public string Username { get; set; }
