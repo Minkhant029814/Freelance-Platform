@@ -83,11 +83,13 @@ namespace Freelance_Platform.Repositories
             }
             catch (Exception ex)
             {
-             
-                throw new Exception("Login - " + ex.Message);
-            }
-        }
 
+                // throw new Exception("Login - " + ex.Message);
+                MessageBox.Show("Make sure connect to MySQL server \n" + ex.Message);
+            }
+                return false;
+        }
+        
 
         private void LoadFreelancerSession(int userId)
         {

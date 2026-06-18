@@ -34,20 +34,23 @@
             this.profilePic = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.guna2ContextMenuStrip1 = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
             this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
-            this.label6 = new System.Windows.Forms.Label();
+            this.comboSkill = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.btnAddSkills = new Guna.UI2.WinForms.Guna2Button();
             this.skillTagPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.label6 = new System.Windows.Forms.Label();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
-            this.label5 = new System.Windows.Forms.Label();
             this.rtxtBio = new System.Windows.Forms.RichTextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtName = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.ComboExpertise = new Guna.UI2.WinForms.Guna2ComboBox();
             this.numPayRate = new Guna.UI2.WinForms.Guna2NumericUpDown();
+            this.ComboExpertise = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtName = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.projectpanel = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilePic)).BeginInit();
             this.guna2Panel4.SuspendLayout();
@@ -121,23 +124,63 @@
             // 
             // guna2Panel4
             // 
+            this.guna2Panel4.Controls.Add(this.comboSkill);
+            this.guna2Panel4.Controls.Add(this.btnAddSkills);
             this.guna2Panel4.Controls.Add(this.skillTagPanel);
             this.guna2Panel4.Controls.Add(this.label6);
             this.guna2Panel4.Location = new System.Drawing.Point(3, 523);
             this.guna2Panel4.Name = "guna2Panel4";
-            this.guna2Panel4.Size = new System.Drawing.Size(645, 224);
+            this.guna2Panel4.Size = new System.Drawing.Size(645, 241);
             this.guna2Panel4.TabIndex = 10;
             // 
-            // label6
+            // comboSkill
             // 
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(16, 15);
-            this.label6.Margin = new System.Windows.Forms.Padding(15);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(193, 40);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Skills Tag";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.comboSkill.BackColor = System.Drawing.Color.Transparent;
+            this.comboSkill.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboSkill.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboSkill.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.comboSkill.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.comboSkill.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.comboSkill.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.comboSkill.ItemHeight = 30;
+            this.comboSkill.Items.AddRange(new object[] {
+            "C# (.NET)",
+            "Java",
+            "Python",
+            "JavaScript",
+            "TypeScript",
+            "PHP",
+            "C++",
+            "Go (Golang)",
+            "Ruby",
+            "Flutter (Dart)",
+            "React Native",
+            "Android Development (Kotlin)",
+            "iOS Development (Swift)"});
+            this.comboSkill.Location = new System.Drawing.Point(244, 166);
+            this.comboSkill.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
+            this.comboSkill.Name = "comboSkill";
+            this.comboSkill.Size = new System.Drawing.Size(366, 36);
+            this.comboSkill.StartIndex = 0;
+            this.comboSkill.TabIndex = 16;
+            // 
+            // btnAddSkills
+            // 
+            this.btnAddSkills.BorderColor = System.Drawing.Color.Gray;
+            this.btnAddSkills.BorderThickness = 1;
+            this.btnAddSkills.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnAddSkills.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnAddSkills.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnAddSkills.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnAddSkills.FillColor = System.Drawing.Color.Transparent;
+            this.btnAddSkills.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnAddSkills.ForeColor = System.Drawing.Color.White;
+            this.btnAddSkills.Location = new System.Drawing.Point(30, 166);
+            this.btnAddSkills.Name = "btnAddSkills";
+            this.btnAddSkills.Size = new System.Drawing.Size(180, 45);
+            this.btnAddSkills.TabIndex = 10;
+            this.btnAddSkills.Text = "Add Skills";
+            this.btnAddSkills.Click += new System.EventHandler(this.btnAddSkills_Click);
             // 
             // skillTagPanel
             // 
@@ -150,6 +193,17 @@
             this.skillTagPanel.Size = new System.Drawing.Size(600, 95);
             this.skillTagPanel.TabIndex = 9;
             // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(16, 15);
+            this.label6.Margin = new System.Windows.Forms.Padding(15);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(193, 40);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Skills Tag";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // guna2Panel3
             // 
             this.guna2Panel3.Controls.Add(this.rtxtBio);
@@ -158,16 +212,6 @@
             this.guna2Panel3.Name = "guna2Panel3";
             this.guna2Panel3.Size = new System.Drawing.Size(645, 209);
             this.guna2Panel3.TabIndex = 2;
-            // 
-            // label5
-            // 
-            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(16, 15);
-            this.label5.Margin = new System.Windows.Forms.Padding(15);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(193, 25);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Bio/ Overview";
             // 
             // rtxtBio
             // 
@@ -183,6 +227,16 @@
             this.rtxtBio.TabIndex = 9;
             this.rtxtBio.Text = "";
             // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(16, 15);
+            this.label5.Margin = new System.Windows.Forms.Padding(15);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(193, 25);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Bio/ Overview";
+            // 
             // guna2Panel2
             // 
             this.guna2Panel2.Controls.Add(this.numPayRate);
@@ -197,73 +251,28 @@
             this.guna2Panel2.Size = new System.Drawing.Size(645, 299);
             this.guna2Panel2.TabIndex = 0;
             // 
-            // label1
+            // numPayRate
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.numPayRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(15, 15);
-            this.label1.Margin = new System.Windows.Forms.Padding(15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(615, 38);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Personal Information";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label2
-            // 
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(16, 63);
-            this.label2.Margin = new System.Windows.Forms.Padding(15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 31);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Name";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtName
-            // 
-            this.txtName.BorderRadius = 15;
-            this.txtName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtName.DefaultText = "";
-            this.txtName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtName.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtName.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtName.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtName.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtName.Location = new System.Drawing.Point(21, 107);
-            this.txtName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtName.Name = "txtName";
-            this.txtName.PlaceholderText = "";
-            this.txtName.SelectedText = "";
-            this.txtName.Size = new System.Drawing.Size(229, 48);
-            this.txtName.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(426, 54);
-            this.label3.Margin = new System.Windows.Forms.Padding(15);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(204, 40);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Hourly Rate";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label4
-            // 
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(16, 190);
-            this.label4.Margin = new System.Windows.Forms.Padding(15);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(193, 25);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Profession Title";
+            this.numPayRate.BackColor = System.Drawing.Color.Transparent;
+            this.numPayRate.BorderThickness = 0;
+            this.numPayRate.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.numPayRate.DecimalPlaces = 2;
+            this.numPayRate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
+            this.numPayRate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numPayRate.Location = new System.Drawing.Point(457, 95);
+            this.numPayRate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.numPayRate.Name = "numPayRate";
+            this.numPayRate.Size = new System.Drawing.Size(173, 48);
+            this.numPayRate.TabIndex = 8;
+            this.numPayRate.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
+            this.numPayRate.UpDownButtonForeColor = System.Drawing.Color.Blue;
+            this.numPayRate.Value = new decimal(new int[] {
+            45,
+            0,
+            0,
+            0});
             // 
             // ComboExpertise
             // 
@@ -293,28 +302,73 @@
             this.ComboExpertise.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.ComboExpertise.TabIndex = 7;
             // 
-            // numPayRate
+            // label4
             // 
-            this.numPayRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(16, 190);
+            this.label4.Margin = new System.Windows.Forms.Padding(15);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(193, 25);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Profession Title";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.numPayRate.BackColor = System.Drawing.Color.Transparent;
-            this.numPayRate.BorderThickness = 0;
-            this.numPayRate.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.numPayRate.DecimalPlaces = 2;
-            this.numPayRate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
-            this.numPayRate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numPayRate.Location = new System.Drawing.Point(457, 95);
-            this.numPayRate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.numPayRate.Name = "numPayRate";
-            this.numPayRate.Size = new System.Drawing.Size(173, 48);
-            this.numPayRate.TabIndex = 8;
-            this.numPayRate.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
-            this.numPayRate.UpDownButtonForeColor = System.Drawing.Color.Blue;
-            this.numPayRate.Value = new decimal(new int[] {
-            45,
-            0,
-            0,
-            0});
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(426, 54);
+            this.label3.Margin = new System.Windows.Forms.Padding(15);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(204, 40);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Hourly Rate";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtName
+            // 
+            this.txtName.BorderRadius = 15;
+            this.txtName.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtName.DefaultText = "";
+            this.txtName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtName.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtName.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtName.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtName.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtName.Location = new System.Drawing.Point(21, 107);
+            this.txtName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtName.Name = "txtName";
+            this.txtName.PlaceholderText = "";
+            this.txtName.SelectedText = "";
+            this.txtName.Size = new System.Drawing.Size(229, 48);
+            this.txtName.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(16, 63);
+            this.label2.Margin = new System.Windows.Forms.Padding(15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(111, 31);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Name";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(15, 15);
+            this.label1.Margin = new System.Windows.Forms.Padding(15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(615, 38);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Personal Information";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // flowLayoutPanel1
             // 
@@ -325,13 +379,22 @@
             this.flowLayoutPanel1.Controls.Add(this.guna2Panel2);
             this.flowLayoutPanel1.Controls.Add(this.guna2Panel3);
             this.flowLayoutPanel1.Controls.Add(this.guna2Panel4);
+            this.flowLayoutPanel1.Controls.Add(this.projectpanel);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(456, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(677, 618);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(677, 588);
             this.flowLayoutPanel1.TabIndex = 1;
             this.flowLayoutPanel1.WrapContents = false;
             this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
+            // 
+            // projectpanel
+            // 
+            this.projectpanel.AutoScroll = true;
+            this.projectpanel.Location = new System.Drawing.Point(3, 770);
+            this.projectpanel.Name = "projectpanel";
+            this.projectpanel.Size = new System.Drawing.Size(645, 604);
+            this.projectpanel.TabIndex = 2;
             // 
             // FreelancerEdit
             // 
@@ -342,7 +405,7 @@
             this.Controls.Add(this.guna2Panel1);
             this.Margin = new System.Windows.Forms.Padding(15);
             this.Name = "FreelancerEdit";
-            this.Size = new System.Drawing.Size(1169, 643);
+            this.Size = new System.Drawing.Size(1169, 1004);
             this.Load += new System.EventHandler(this.FreelancerProfile_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
@@ -378,5 +441,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private Guna.UI2.WinForms.Guna2Button btnAddSkills;
+        private Guna.UI2.WinForms.Guna2ComboBox comboSkill;
+        private Guna.UI2.WinForms.Guna2Panel projectpanel;
     }
 }

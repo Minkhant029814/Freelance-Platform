@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 
 namespace Freelance_Platform.model
 {
@@ -16,7 +18,10 @@ namespace Freelance_Platform.model
 
         public string ExternalLink { get; set; }
 
-        public Project project { get; set; }
+        //public  project { get; set; }
+        public List<Project> Projects { get; set; }
+
+       
 
         
 
@@ -28,15 +33,15 @@ namespace Freelance_Platform.model
             Biography = string.Empty;
         }
 
-        public Portfolio(string ownerName, string professionalTitle, string biography,string conEmail,string externalLink,Project project)
-        {
-            OwnerName = ownerName;
-            ProfessionalTitle = professionalTitle;
-            Biography = biography;
-            ContactEmail = conEmail;
-            ExternalLink = externalLink;
-            this.project = project;
-        }
+        //public Portfolio(string ownerName, string professionalTitle, string biography,string conEmail,string externalLink)
+        //{
+        //    OwnerName = ownerName;
+        //    ProfessionalTitle = professionalTitle;
+        //    Biography = biography;
+        //    ContactEmail = conEmail;
+        //    ExternalLink = externalLink;
+        //    //this.project = project;
+        //}
 
        
         //public void DisplayPortfolio()

@@ -113,7 +113,7 @@ namespace Freelance_Platform.Forms.Dashboard
         private void DisplayProfile()
         {
             //profile.LoadData(freelanerService.DashboardInfo().Portfolio.OwnerName,freelanerService.DashboardInfo().Portfolio.ProfessionalTitle,freelanerService.DashboardInfo().Portfolio.Profile);
-            profile.LoadData(freelanerService.DashboardInfo(),freelanerService.SkillTag());
+            profile.LoadData(freelanerService.DashboardInfo());
             mainPanel.Controls.Add(profile);
             mainPanel.Padding = new Padding(10, 10, 10, 10);
         }

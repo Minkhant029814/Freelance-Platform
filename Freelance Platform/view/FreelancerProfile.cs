@@ -1,6 +1,7 @@
 ﻿using FontAwesome.Sharp;
 using Freelance_Platform.model;
 using Freelance_Platform.Service;
+using Freelance_Platform.view.components.FreelancerComponent;
 using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
@@ -129,7 +130,7 @@ namespace Freelance_Platform.Forms
                 }
             }
         }
-
+      private readonly  Freelancer freelancer = new Freelancer();
         private void btnSaveProfile_Click(object sender, EventArgs e)
         {
             
@@ -142,7 +143,7 @@ namespace Freelance_Platform.Forms
             try
             {
                
-                Freelancer freelancer = new Freelancer();
+               
 
               
                 freelancer.FreelancerId = this.userId;
@@ -158,13 +159,7 @@ namespace Freelance_Platform.Forms
                 freelancer.Portfolio.ExternalLink = txtExternalLink.Text;
 
              
-                if (freelancer.Portfolio.project == null)
-                {
-                    freelancer.Portfolio.project = new Project(); 
-                }
-
-                freelancer.Portfolio.project.ProjectTitle = txtProjectTitle.Text;
-                freelancer.Portfolio.project.Description = txtProejctDescription.Text;
+                
 
                 
                 freelancer.Skills = selectedSkillsList;
@@ -237,5 +232,9 @@ namespace Freelance_Platform.Forms
             }
         }
 
+        private void btnAddPastWork_Click(object sender, EventArgs e)
+        {
+            new AddPastWorksForm(this.freelancer).ShowDialog();
+        }
     }
 }

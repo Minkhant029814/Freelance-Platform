@@ -37,12 +37,8 @@
             this.btnUploadPhoto = new Guna.UI2.WinForms.Guna2Button();
             this.profilePict = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.Rightpanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnAddPastWork = new Guna.UI2.WinForms.Guna2Button();
             this.FormLayout = new Guna.UI2.WinForms.Guna2Panel();
-            this.txtProejctDescription = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtProjectTitle = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.comboSkill = new Guna.UI2.WinForms.Guna2ComboBox();
             this.SkillDisplayLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAddSkill = new Guna.UI2.WinForms.Guna2Button();
@@ -210,6 +206,7 @@
             // Rightpanel
             // 
             this.Rightpanel.BackColor = System.Drawing.Color.White;
+            this.Rightpanel.Controls.Add(this.btnAddPastWork);
             this.Rightpanel.Controls.Add(this.FormLayout);
             this.Rightpanel.Controls.Add(this.label4);
             this.Rightpanel.Controls.Add(this.label1);
@@ -221,6 +218,24 @@
             this.Rightpanel.Size = new System.Drawing.Size(828, 753);
             this.Rightpanel.TabIndex = 1;
             // 
+            // btnAddPastWork
+            // 
+            this.btnAddPastWork.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddPastWork.BorderRadius = 10;
+            this.btnAddPastWork.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnAddPastWork.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnAddPastWork.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnAddPastWork.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnAddPastWork.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
+            this.btnAddPastWork.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnAddPastWork.ForeColor = System.Drawing.Color.White;
+            this.btnAddPastWork.Location = new System.Drawing.Point(615, 32);
+            this.btnAddPastWork.Name = "btnAddPastWork";
+            this.btnAddPastWork.Size = new System.Drawing.Size(180, 45);
+            this.btnAddPastWork.TabIndex = 12;
+            this.btnAddPastWork.Text = "Add Past Works\r\n";
+            this.btnAddPastWork.Click += new System.EventHandler(this.btnAddPastWork_Click);
+            // 
             // FormLayout
             // 
             this.FormLayout.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -229,11 +244,6 @@
             this.FormLayout.AutoScroll = true;
             this.FormLayout.BorderColor = System.Drawing.Color.Transparent;
             this.FormLayout.BorderRadius = 15;
-            this.FormLayout.Controls.Add(this.txtProejctDescription);
-            this.FormLayout.Controls.Add(this.label13);
-            this.FormLayout.Controls.Add(this.txtProjectTitle);
-            this.FormLayout.Controls.Add(this.label12);
-            this.FormLayout.Controls.Add(this.label11);
             this.FormLayout.Controls.Add(this.comboSkill);
             this.FormLayout.Controls.Add(this.SkillDisplayLayout);
             this.FormLayout.Controls.Add(this.btnAddSkill);
@@ -247,96 +257,13 @@
             this.FormLayout.Controls.Add(this.label6);
             this.FormLayout.Controls.Add(this.label5);
             this.FormLayout.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
-            this.FormLayout.Location = new System.Drawing.Point(53, 121);
+            this.FormLayout.Location = new System.Drawing.Point(53, 98);
             this.FormLayout.Name = "FormLayout";
             this.FormLayout.Padding = new System.Windows.Forms.Padding(0, 0, 50, 40);
-            this.FormLayout.Size = new System.Drawing.Size(753, 404);
+            this.FormLayout.Size = new System.Drawing.Size(753, 531);
             this.FormLayout.TabIndex = 2;
             this.FormLayout.Scroll += new System.Windows.Forms.ScrollEventHandler(this.FormLayout_Scroll);
             this.FormLayout.Paint += new System.Windows.Forms.PaintEventHandler(this.FormLayout_Paint);
-            // 
-            // txtProejctDescription
-            // 
-            this.txtProejctDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtProejctDescription.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
-            this.txtProejctDescription.BorderRadius = 10;
-            this.txtProejctDescription.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtProejctDescription.DefaultText = "";
-            this.txtProejctDescription.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtProejctDescription.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtProejctDescription.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtProejctDescription.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtProejctDescription.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtProejctDescription.Font = new System.Drawing.Font("Segoe UI", 10.8F);
-            this.txtProejctDescription.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtProejctDescription.Location = new System.Drawing.Point(23, 917);
-            this.txtProejctDescription.Margin = new System.Windows.Forms.Padding(0, 0, 3, 15);
-            this.txtProejctDescription.Multiline = true;
-            this.txtProejctDescription.Name = "txtProejctDescription";
-            this.txtProejctDescription.PlaceholderText = "Describe the project, your role and technologies used";
-            this.txtProejctDescription.SelectedText = "";
-            this.txtProejctDescription.Size = new System.Drawing.Size(614, 115);
-            this.txtProejctDescription.TabIndex = 20;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(18, 894);
-            this.label13.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(154, 23);
-            this.label13.TabIndex = 19;
-            this.label13.Text = "Project Description";
-            // 
-            // txtProjectTitle
-            // 
-            this.txtProjectTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtProjectTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
-            this.txtProjectTitle.BorderRadius = 10;
-            this.txtProjectTitle.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtProjectTitle.DefaultText = "";
-            this.txtProjectTitle.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtProjectTitle.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtProjectTitle.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtProjectTitle.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtProjectTitle.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtProjectTitle.Font = new System.Drawing.Font("Segoe UI", 10.8F);
-            this.txtProjectTitle.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtProjectTitle.Location = new System.Drawing.Point(22, 806);
-            this.txtProjectTitle.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.txtProjectTitle.Name = "txtProjectTitle";
-            this.txtProjectTitle.PlaceholderText = "e.g. E-Commerce Platform Redesign";
-            this.txtProjectTitle.SelectedText = "";
-            this.txtProjectTitle.Size = new System.Drawing.Size(615, 60);
-            this.txtProjectTitle.TabIndex = 18;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(18, 754);
-            this.label12.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(100, 23);
-            this.label12.TabIndex = 17;
-            this.label12.Text = "Project Title";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(18, 713);
-            this.label11.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(260, 28);
-            this.label11.TabIndex = 16;
-            this.label11.Text = "Featured Past Work / Project";
             // 
             // comboSkill
             // 
@@ -362,7 +289,7 @@
             "React Native",
             "Android Development (Kotlin)",
             "iOS Development (Swift)"});
-            this.comboSkill.Location = new System.Drawing.Point(33, 508);
+            this.comboSkill.Location = new System.Drawing.Point(22, 578);
             this.comboSkill.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
             this.comboSkill.Name = "comboSkill";
             this.comboSkill.Size = new System.Drawing.Size(366, 36);
@@ -376,7 +303,7 @@
             this.SkillDisplayLayout.AutoScroll = true;
             this.SkillDisplayLayout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
             this.SkillDisplayLayout.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SkillDisplayLayout.Location = new System.Drawing.Point(33, 575);
+            this.SkillDisplayLayout.Location = new System.Drawing.Point(22, 627);
             this.SkillDisplayLayout.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.SkillDisplayLayout.Name = "SkillDisplayLayout";
             this.SkillDisplayLayout.Padding = new System.Windows.Forms.Padding(10);
@@ -395,7 +322,7 @@
             this.btnAddSkill.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
             this.btnAddSkill.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnAddSkill.ForeColor = System.Drawing.Color.White;
-            this.btnAddSkill.Location = new System.Drawing.Point(461, 499);
+            this.btnAddSkill.Location = new System.Drawing.Point(467, 504);
             this.btnAddSkill.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.btnAddSkill.Name = "btnAddSkill";
             this.btnAddSkill.Size = new System.Drawing.Size(180, 45);
@@ -405,13 +332,12 @@
             // 
             // label10
             // 
-            this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
             this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(18, 455);
+            this.label10.Location = new System.Drawing.Point(17, 521);
             this.label10.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(230, 28);
+            this.label10.Size = new System.Drawing.Size(258, 28);
             this.label10.TabIndex = 10;
             this.label10.Text = "Technical Skill & Tech Stack\r\n";
             // 
@@ -429,7 +355,7 @@
             this.txtExternalLink.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtExternalLink.Font = new System.Drawing.Font("Segoe UI", 10.8F);
             this.txtExternalLink.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtExternalLink.Location = new System.Drawing.Point(347, 365);
+            this.txtExternalLink.Location = new System.Drawing.Point(404, 422);
             this.txtExternalLink.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.txtExternalLink.Name = "txtExternalLink";
             this.txtExternalLink.PlaceholderText = "https://github.com/alexdev";
@@ -451,7 +377,7 @@
             this.txtEmail.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 10.8F);
             this.txtEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtEmail.Location = new System.Drawing.Point(23, 358);
+            this.txtEmail.Location = new System.Drawing.Point(22, 422);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PlaceholderText = "alex@example.com";
@@ -465,7 +391,7 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
             this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(343, 325);
+            this.label9.Location = new System.Drawing.Point(410, 357);
             this.label9.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(290, 28);
@@ -477,7 +403,7 @@
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(18, 325);
+            this.label8.Location = new System.Drawing.Point(18, 357);
             this.label8.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(132, 28);
@@ -489,7 +415,7 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(18, 255);
+            this.label7.Location = new System.Drawing.Point(17, 278);
             this.label7.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(164, 28);
@@ -513,7 +439,7 @@
             this.txtBiogarphy.Font = new System.Drawing.Font("Segoe UI", 10.8F);
             this.txtBiogarphy.ForeColor = System.Drawing.Color.Blue;
             this.txtBiogarphy.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBiogarphy.Location = new System.Drawing.Point(23, 109);
+            this.txtBiogarphy.Location = new System.Drawing.Point(13, 118);
             this.txtBiogarphy.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.txtBiogarphy.Multiline = true;
             this.txtBiogarphy.Name = "txtBiogarphy";
@@ -526,13 +452,12 @@
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(19, 63);
+            this.label6.Location = new System.Drawing.Point(9, 70);
             this.label6.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(504, 20);
+            this.label6.Size = new System.Drawing.Size(504, 33);
             this.label6.TabIndex = 3;
             this.label6.Text = "Tell clients about your professional experience and core strengths.";
             // 
@@ -541,7 +466,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(18, 17);
+            this.label5.Location = new System.Drawing.Point(17, 11);
             this.label5.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(208, 28);
@@ -581,7 +506,7 @@
             this.btnSaveProfile.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
             this.btnSaveProfile.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveProfile.ForeColor = System.Drawing.Color.White;
-            this.btnSaveProfile.Location = new System.Drawing.Point(75, 578);
+            this.btnSaveProfile.Location = new System.Drawing.Point(76, 645);
             this.btnSaveProfile.Name = "btnSaveProfile";
             this.btnSaveProfile.Size = new System.Drawing.Size(701, 65);
             this.btnSaveProfile.TabIndex = 11;
@@ -627,11 +552,6 @@
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2Panel FormLayout;
         private Guna.UI2.WinForms.Guna2Button btnSaveProfile;
-        private Guna.UI2.WinForms.Guna2TextBox txtProejctDescription;
-        private System.Windows.Forms.Label label13;
-        private Guna.UI2.WinForms.Guna2TextBox txtProjectTitle;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
         private Guna.UI2.WinForms.Guna2ComboBox comboSkill;
         private System.Windows.Forms.FlowLayoutPanel SkillDisplayLayout;
         private Guna.UI2.WinForms.Guna2Button btnAddSkill;
@@ -644,5 +564,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtBiogarphy;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
+        private Guna.UI2.WinForms.Guna2Button btnAddPastWork;
     }
 }

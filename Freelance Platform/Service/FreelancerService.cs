@@ -28,9 +28,6 @@ namespace Freelance_Platform.Service
             return freelanerRepo.DashboardInfo();
         }
 
-        public List<string> SkillTag()
-        {
-            return freelanerRepo.SkillsTag();
-        }
+       
     }
 }

@@ -135,6 +135,12 @@
     <Compile Include="view\ClientProflle.Designer.cs">
       <DependentUpon>ClientProflle.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\components\FreelancerComponent\AddPastWorksForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\components\FreelancerComponent\AddPastWorksForm.Designer.cs">
+      <DependentUpon>AddPastWorksForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\components\FreelancerComponent\FreelancerEdit.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -146,6 +152,12 @@
     </Compile>
     <Compile Include="view\components\FreelancerComponent\FreeLancerProjectCard.Designer.cs">
       <DependentUpon>FreeLancerProjectCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\components\FreelancerComponent\PastWorksCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\components\FreelancerComponent\PastWorksCard.Designer.cs">
+      <DependentUpon>PastWorksCard.cs</DependentUpon>
     </Compile>
     <Compile Include="view\Dashboard\ClientDashboard.cs">
       <SubType>Form</SubType>
@@ -165,10 +177,10 @@
     <Compile Include="view\FreelancerProfile.Designer.cs">
       <DependentUpon>FreelancerProfile.cs</DependentUpon>
     </Compile>
-    <Compile Include="view\PostProjectForm.cs">
+    <Compile Include="view\components\clientComponent\PostProjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="view\PostProjectForm.Designer.cs">
+    <Compile Include="view\components\clientComponent\PostProjectForm.Designer.cs">
       <DependentUpon>PostProjectForm.cs</DependentUpon>
     </Compile>
     <Compile Include="view\Register.cs">
@@ -211,11 +223,17 @@
     <EmbeddedResource Include="view\ClientProflle.resx">
       <DependentUpon>ClientProflle.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="view\components\FreelancerComponent\AddPastWorksForm.resx">
+      <DependentUpon>AddPastWorksForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="view\components\FreelancerComponent\FreelancerEdit.resx">
       <DependentUpon>FreelancerEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\components\FreelancerComponent\FreeLancerProjectCard.resx">
       <DependentUpon>FreeLancerProjectCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\components\FreelancerComponent\PastWorksCard.resx">
+      <DependentUpon>PastWorksCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\Dashboard\ClientDashboard.resx">
       <DependentUpon>ClientDashboard.cs</DependentUpon>
@@ -226,7 +244,7 @@
     <EmbeddedResource Include="view\FreelancerProfile.resx">
       <DependentUpon>FreelancerProfile.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="view\PostProjectForm.resx">
+    <EmbeddedResource Include="view\components\clientComponent\PostProjectForm.resx">
       <DependentUpon>PostProjectForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\Register.resx">
