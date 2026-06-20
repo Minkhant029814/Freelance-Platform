@@ -141,6 +141,12 @@
     <Compile Include="view\components\FreelancerComponent\AddPastWorksForm.Designer.cs">
       <DependentUpon>AddPastWorksForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\components\FreelancerComponent\AddProjectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\components\FreelancerComponent\AddProjectForm.Designer.cs">
+      <DependentUpon>AddProjectForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\components\FreelancerComponent\FreelancerEdit.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -225,6 +231,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="view\components\FreelancerComponent\AddPastWorksForm.resx">
       <DependentUpon>AddPastWorksForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\components\FreelancerComponent\AddProjectForm.resx">
+      <DependentUpon>AddProjectForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\components\FreelancerComponent\FreelancerEdit.resx">
       <DependentUpon>FreelancerEdit.cs</DependentUpon>

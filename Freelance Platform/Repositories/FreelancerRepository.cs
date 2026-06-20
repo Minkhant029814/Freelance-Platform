@@ -8,6 +8,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Freelance_Platform.Repositories
 {
@@ -106,27 +107,110 @@ namespace Freelance_Platform.Repositories
             }
         }
 
+        public bool UpdateProfile(Freelancer freelancer, string profile)
+        {
+            using (MySqlConnection conn = dbConn.GetConnection())
+            {
+                conn.Open();
+                using (MySqlTransaction trans = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        
+                        string queryFreelancer = @"UPDATE freelancers SET Expertise = @Expertise, HourlyRate = @HourlyRate 
+                                          WHERE FreelancerId = @fid;";
 
+                        using (MySqlCommand cmd = new MySqlCommand(queryFreelancer, conn, trans))
+                        {
+                            cmd.Parameters.AddWithValue("@fid", freelancer.FreelancerId);
+                            cmd.Parameters.AddWithValue("@Expertise", freelancer.Expertise);
+                            cmd.Parameters.AddWithValue("@HourlyRate", freelancer.HourlyRate);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                       
+                        string queryPortfolio = @"UPDATE portfolios SET OwnerName = @OwnerName, ProfilePic = @pic, 
+                                        ProfessionalTitle = @Title, Biography = @Bio, 
+                                        ContactEmail = @contact, ExternalLinks = @link 
+                                        WHERE FreelancerId = @fid;";
+
+                        using (MySqlCommand cmd = new MySqlCommand(queryPortfolio, conn, trans))
+                        {
+                            cmd.Parameters.AddWithValue("@fid", freelancer.FreelancerId);
+                            cmd.Parameters.AddWithValue("@OwnerName", freelancer.Portfolio.OwnerName);
+                            cmd.Parameters.AddWithValue("@pic", profile);
+                            cmd.Parameters.AddWithValue("@Title", freelancer.Portfolio.ProfessionalTitle);
+                            cmd.Parameters.AddWithValue("@Bio", freelancer.Portfolio.Biography);
+                            cmd.Parameters.AddWithValue("@contact", freelancer.Portfolio.ContactEmail);
+                            cmd.Parameters.AddWithValue("@link", freelancer.Portfolio.ExternalLink);
+                            cmd.ExecuteNonQuery();
+                        }
+
+               
+                        string delWorks = "DELETE FROM freelancer_pastworks WHERE freelancerId = @fid;";
+                        string delSkills = "DELETE FROM freelancer_skills WHERE FreelancerId = @fid;";
+
+                        using (MySqlCommand cmd = new MySqlCommand(delWorks, conn, trans)) { cmd.Parameters.AddWithValue("@fid", freelancer.FreelancerId); cmd.ExecuteNonQuery(); }
+                        using (MySqlCommand cmd = new MySqlCommand(delSkills, conn, trans)) { cmd.Parameters.AddWithValue("@fid", freelancer.FreelancerId); cmd.ExecuteNonQuery(); }
+
+                        
+                        foreach (var project in freelancer.Portfolio.Projects)
+                        {
+                            string insWork = "INSERT INTO freelancer_pastworks (freelancerId, ProjectTitle, ProjectDescription) VALUES (@fid, @pTitle, @pDesc);";
+                            using (MySqlCommand cmd = new MySqlCommand(insWork, conn, trans))
+                            {
+                                cmd.Parameters.AddWithValue("@fid", freelancer.FreelancerId);
+                                cmd.Parameters.AddWithValue("@pTitle", project.ProjectTitle ?? (object)DBNull.Value);
+                                cmd.Parameters.AddWithValue("@pDesc", project.Description ?? (object)DBNull.Value);
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+
+                       
+                        foreach (var skill in freelancer.Skills)
+                        {
+                            string insSkill = "INSERT INTO freelancer_skills (FreelancerId, SkillName) VALUES (@fid, @SkillName);";
+                            using (MySqlCommand cmd = new MySqlCommand(insSkill, conn, trans))
+                            {
+                                cmd.Parameters.AddWithValue("@fid", freelancer.FreelancerId);
+                                cmd.Parameters.AddWithValue("@SkillName", skill);
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+
+                        trans.Commit();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        trans.Rollback();
+                        throw new Exception("Profile Updating Failed: " + ex.Message);
+                    }
+                }
+            }
+        }
         public Freelancer DashboardInfo()
         {
 
             string freelancerQuery = @"SELECT f.Expertise, f.HourlyRate, p.OwnerName, p.ProfessionalTitle, p.ProfilePic,
-        p.Biography, p.ContactEmail, p.ExternalLinks,
-        GROUP_CONCAT(s.SkillName SEPARATOR ', ') AS SkillsList,
-        GROUP_CONCAT(pw.ProjectTitle SEPARATOR '||') AS PastProjectTitles,
-        GROUP_CONCAT(pw.ProjectDescription SEPARATOR '||') AS PastProjectDescriptions
-        FROM freelancers f
-        LEFT JOIN portfolios p ON f.FreelancerId = p.FreelancerId
-        LEFT JOIN freelancer_skills s ON f.FreelancerId = s.FreelancerId
-        LEFT JOIN freelancer_pastworks pw ON f.FreelancerId = pw.freelancerId
-        WHERE f.FreelancerId = @freeId
-        GROUP BY f.FreelancerId, f.Expertise, f.HourlyRate, p.OwnerName, p.ProfessionalTitle, p.ProfilePic, p.Biography, p.ContactEmail, p.ExternalLinks;";
+       p.Biography, p.ContactEmail, p.ExternalLinks,
+       GROUP_CONCAT(DISTINCT s.SkillName SEPARATOR ', ') AS SkillsList,
+       GROUP_CONCAT(DISTINCT pw.ProjectTitle SEPARATOR '||') AS PastProjectTitles,
+       GROUP_CONCAT(DISTINCT pw.ProjectDescription SEPARATOR '||') AS PastProjectDescriptions
+    FROM freelancers f
+    LEFT JOIN portfolios p ON f.FreelancerId = p.FreelancerId
+    LEFT JOIN freelancer_skills s ON f.FreelancerId = s.FreelancerId
+    LEFT JOIN freelancer_pastworks pw ON f.FreelancerId = pw.freelancerId
+    WHERE f.FreelancerId = @freeId
+    GROUP BY f.FreelancerId, f.Expertise, f.HourlyRate, p.OwnerName, p.ProfessionalTitle, 
+         p.ProfilePic, p.Biography, p.ContactEmail, p.ExternalLinks;";
             MySqlParameter[] para =
             {
                 new MySqlParameter("@freeId",UserSession.FreelancerId)
             };
 
             DataTable dTable = dbConn.GetData(freelancerQuery, para);
+         
             if (dTable != null & dTable.Rows.Count > 0)
             {
 
@@ -158,6 +242,8 @@ namespace Freelance_Platform.Repositories
                 {
                     var titles = titlesRaw.Split(new string[] { "||" }, StringSplitOptions.None);
                     var descs = descsRaw.Split(new string[] { "||" }, StringSplitOptions.None);
+                   
+                    //MessageBox.Show("Titles count: " + titles.Length + "\nDescs count: " + descs.Length);
 
                     f.Portfolio.Projects = titles.Select((t, i) => new Project
                     {

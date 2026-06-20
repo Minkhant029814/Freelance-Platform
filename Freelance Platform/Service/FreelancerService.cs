@@ -28,6 +28,10 @@ namespace Freelance_Platform.Service
             return freelanerRepo.DashboardInfo();
         }
 
+        public bool UpdateProfile(Freelancer freelancer,string profile)
+        {
+            return freelanerRepo.UpdateProfile(freelancer,profile);
+        }
        
     }
 }

@@ -44,7 +44,7 @@ namespace Freelance_Platform.Forms.Dashboard
         }
 
 
-        private void DisplayDashboard()
+        public void DisplayDashboard()
         {
             Freelancer f = freelanerService.DashboardInfo();
             lblGreeting.Text = f.Portfolio.OwnerName;
@@ -101,7 +101,7 @@ namespace Freelance_Platform.Forms.Dashboard
             lblRecommend.Visible = true;
             CardLayout.Visible = true;
             flowCardDisplay.Visible = true;
-
+            DisplayDashboard();
             profile.Visible = false;
             
         }
@@ -112,10 +112,11 @@ namespace Freelance_Platform.Forms.Dashboard
            
         private void DisplayProfile()
         {
-            //profile.LoadData(freelanerService.DashboardInfo().Portfolio.OwnerName,freelanerService.DashboardInfo().Portfolio.ProfessionalTitle,freelanerService.DashboardInfo().Portfolio.Profile);
+            
             profile.LoadData(freelanerService.DashboardInfo());
+            
             mainPanel.Controls.Add(profile);
-            mainPanel.Padding = new Padding(10, 10, 10, 10);
+            
         }
 
         private void flowCardDisplay_Paint(object sender, PaintEventArgs e)

@@ -31,6 +31,7 @@ namespace Freelance_Platform.model
             OwnerName = string.Empty;
             ProfessionalTitle = string.Empty;
             Biography = string.Empty;
+           
         }
 
         //public Portfolio(string ownerName, string professionalTitle, string biography,string conEmail,string externalLink)
