@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.iconButton2 = new FontAwesome.Sharp.IconButton();
+            this.btnSignOut = new FontAwesome.Sharp.IconButton();
+            this.btnBrowseProject = new FontAwesome.Sharp.IconButton();
             this.btnProfile = new FontAwesome.Sharp.IconButton();
             this.btnDashboard = new FontAwesome.Sharp.IconButton();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
@@ -39,7 +40,7 @@
             this.lblName = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.ProfilePict = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblDesc = new System.Windows.Forms.Label();
             this.lblGreeting = new System.Windows.Forms.Label();
             this.CardLayout = new System.Windows.Forms.TableLayoutPanel();
             this.MonthlyEarningPanel = new Guna.UI2.WinForms.Guna2Panel();
@@ -73,7 +74,8 @@
             // guna2Panel1
             // 
             this.guna2Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
-            this.guna2Panel1.Controls.Add(this.iconButton2);
+            this.guna2Panel1.Controls.Add(this.btnSignOut);
+            this.guna2Panel1.Controls.Add(this.btnBrowseProject);
             this.guna2Panel1.Controls.Add(this.btnProfile);
             this.guna2Panel1.Controls.Add(this.btnDashboard);
             this.guna2Panel1.Controls.Add(this.iconPictureBox1);
@@ -84,27 +86,50 @@
             this.guna2Panel1.Size = new System.Drawing.Size(286, 644);
             this.guna2Panel1.TabIndex = 0;
             // 
-            // iconButton2
+            // btnSignOut
             // 
-            this.iconButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
-            this.iconButton2.FlatAppearance.BorderSize = 0;
-            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
-            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.HomeUser;
-            this.iconButton2.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
-            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton2.IconSize = 30;
-            this.iconButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton2.Location = new System.Drawing.Point(3, 326);
-            this.iconButton2.Margin = new System.Windows.Forms.Padding(15);
-            this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.iconButton2.Size = new System.Drawing.Size(247, 50);
-            this.iconButton2.TabIndex = 9;
-            this.iconButton2.Text = "Dashboard";
-            this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton2.UseVisualStyleBackColor = false;
+            this.btnSignOut.BackColor = System.Drawing.Color.IndianRed;
+            this.btnSignOut.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnSignOut.FlatAppearance.BorderSize = 0;
+            this.btnSignOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSignOut.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSignOut.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSignOut.IconChar = FontAwesome.Sharp.IconChar.SignOut;
+            this.btnSignOut.IconColor = System.Drawing.Color.White;
+            this.btnSignOut.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnSignOut.IconSize = 30;
+            this.btnSignOut.Location = new System.Drawing.Point(0, 594);
+            this.btnSignOut.Name = "btnSignOut";
+            this.btnSignOut.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnSignOut.Size = new System.Drawing.Size(286, 50);
+            this.btnSignOut.TabIndex = 10;
+            this.btnSignOut.Text = "Sign Out";
+            this.btnSignOut.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSignOut.UseVisualStyleBackColor = false;
+            this.btnSignOut.Click += new System.EventHandler(this.btnSignOut_Click);
+            // 
+            // btnBrowseProject
+            // 
+            this.btnBrowseProject.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
+            this.btnBrowseProject.FlatAppearance.BorderSize = 0;
+            this.btnBrowseProject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBrowseProject.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBrowseProject.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
+            this.btnBrowseProject.IconChar = FontAwesome.Sharp.IconChar.Searchengin;
+            this.btnBrowseProject.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
+            this.btnBrowseProject.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnBrowseProject.IconSize = 30;
+            this.btnBrowseProject.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBrowseProject.Location = new System.Drawing.Point(3, 310);
+            this.btnBrowseProject.Margin = new System.Windows.Forms.Padding(15);
+            this.btnBrowseProject.Name = "btnBrowseProject";
+            this.btnBrowseProject.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnBrowseProject.Size = new System.Drawing.Size(247, 50);
+            this.btnBrowseProject.TabIndex = 9;
+            this.btnBrowseProject.Text = "Browse Projects";
+            this.btnBrowseProject.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBrowseProject.UseVisualStyleBackColor = false;
+            this.btnBrowseProject.Click += new System.EventHandler(this.btnBrowseProject_Click);
             // 
             // btnProfile
             // 
@@ -179,7 +204,7 @@
             // 
             this.upperPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
             this.upperPanel.Controls.Add(this.picturePanel);
-            this.upperPanel.Controls.Add(this.label3);
+            this.upperPanel.Controls.Add(this.lblDesc);
             this.upperPanel.Controls.Add(this.lblGreeting);
             this.upperPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.upperPanel.Location = new System.Drawing.Point(286, 0);
@@ -231,16 +256,16 @@
             this.ProfilePict.TabIndex = 0;
             this.ProfilePict.TabStop = false;
             // 
-            // label3
+            // lblDesc
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label3.Location = new System.Drawing.Point(7, 71);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(246, 23);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Here is your freelance overview";
+            this.lblDesc.AutoSize = true;
+            this.lblDesc.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDesc.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblDesc.Location = new System.Drawing.Point(7, 71);
+            this.lblDesc.Name = "lblDesc";
+            this.lblDesc.Size = new System.Drawing.Size(246, 23);
+            this.lblDesc.TabIndex = 3;
+            this.lblDesc.Text = "Here is your freelance overview";
             // 
             // lblGreeting
             // 
@@ -453,11 +478,11 @@
         private Guna.UI2.WinForms.Guna2Panel picturePanel;
         private System.Windows.Forms.Label label2;
         private Guna.UI2.WinForms.Guna2CirclePictureBox ProfilePict;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblDesc;
         private System.Windows.Forms.Label lblGreeting;
         private System.Windows.Forms.Label lblName;
         private FontAwesome.Sharp.IconButton btnDashboard;
-        private FontAwesome.Sharp.IconButton iconButton2;
+        private FontAwesome.Sharp.IconButton btnBrowseProject;
         private FontAwesome.Sharp.IconButton btnProfile;
         private System.Windows.Forms.TableLayoutPanel CardLayout;
         private Guna.UI2.WinForms.Guna2Panel MonthlyEarningPanel;
@@ -471,5 +496,6 @@
         private Guna.UI2.WinForms.Guna2Panel mainPanel;
         private System.Windows.Forms.FlowLayoutPanel flowCardDisplay;
         private System.Windows.Forms.Label lblRecommend;
+        private FontAwesome.Sharp.IconButton btnSignOut;
     }
 }

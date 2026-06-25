@@ -165,6 +165,12 @@
     <Compile Include="view\components\FreelancerComponent\PastWorksCard.Designer.cs">
       <DependentUpon>PastWorksCard.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\components\FreelancerComponent\SearchProjects.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\components\FreelancerComponent\SearchProjects.Designer.cs">
+      <DependentUpon>SearchProjects.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\Dashboard\ClientDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -243,6 +249,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="view\components\FreelancerComponent\PastWorksCard.resx">
       <DependentUpon>PastWorksCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\components\FreelancerComponent\SearchProjects.resx">
+      <DependentUpon>SearchProjects.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\Dashboard\ClientDashboard.resx">
       <DependentUpon>ClientDashboard.cs</DependentUpon>

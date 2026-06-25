@@ -125,6 +125,7 @@
             this.btnBidProject.Size = new System.Drawing.Size(118, 45);
             this.btnBidProject.TabIndex = 13;
             this.btnBidProject.Text = "Bid / View";
+            this.btnBidProject.Click += new System.EventHandler(this.btnBidProject_Click);
             // 
             // FreeLancerProjectCard
             // 

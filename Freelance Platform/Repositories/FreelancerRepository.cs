@@ -251,6 +251,10 @@ namespace Freelance_Platform.Repositories
                         Description = descs[i].Trim()
                     }).ToList();
                 }
+                else
+                {
+                    f.Portfolio.Projects = new List<Project>();
+                }
 
                 return f;
             }

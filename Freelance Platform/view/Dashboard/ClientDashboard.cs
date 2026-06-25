@@ -163,9 +163,24 @@ namespace Freelance_Platform.Forms.Dashboard
 
         private void iconButton4_Click(object sender, EventArgs e)
         {
-            UserSession.Logout();
-            this.Hide();
-            new frmLogin().Show();
+            DialogResult result = MessageBox.Show("Are you sure to log out?",
+                                                   "Sign Out",
+                                                   MessageBoxButtons.YesNo,
+                                                   MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+
+                UserSession.Logout();
+
+
+                frmLogin loginForm = new frmLogin();
+                loginForm.Show();
+
+
+                this.Hide();
+
+            }
         }
     }
 }

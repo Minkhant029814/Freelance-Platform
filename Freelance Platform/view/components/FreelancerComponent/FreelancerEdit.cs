@@ -23,11 +23,13 @@ namespace Freelance_Platform.view.components.FreelancerComponent
         private List<string> currentSkills = new List<string>();
         private  Freelancer freelancer = new Freelancer();
         private readonly FreelancerService service = new FreelancerService();
+        private readonly FreelancerDashboard dashboard;
         //private readonly PastWorksCard  = new PastWorksCard();
 
       
-        public FreelancerEdit()
+        public FreelancerEdit(FreelancerDashboard d)
         {
+            this.dashboard = d;
           
             InitializeComponent();
             btnAddProjects.Image = IconChar.Add.ToBitmap(Color.White, 30);
@@ -57,7 +59,7 @@ namespace Freelance_Platform.view.components.FreelancerComponent
             }
         }
 
-
+    
 
         public void LoadData(Freelancer f)
         {
@@ -67,7 +69,15 @@ namespace Freelance_Platform.view.components.FreelancerComponent
             txtName.Text = freelancer.Portfolio.OwnerName;
             numPayRate.Value = freelancer.HourlyRate;
             rtxtBio.Text = freelancer.Portfolio.Biography;
-            lblProjectsCount.Text = freelancer.Portfolio.Projects.Count.ToString() + " Projects";
+            ComboExpertise.Text = f.Expertise;
+            if(freelancer.Portfolio.Projects.Count == 0)
+            {
+                lblProjectsCount.Text =  " no Projects";
+            }else
+            {
+                lblProjectsCount.Text = freelancer.Portfolio.Projects.Count.ToString() + " Projects";
+            }
+                
             this.currentSkills = new List<string>(f.Skills);
             DisplaySkillBlock();
             DisplayPastProjects(freelancer.Portfolio.Projects);
@@ -219,6 +229,12 @@ namespace Freelance_Platform.view.components.FreelancerComponent
                 freelancer.Portfolio.Biography = rtxtBio.Text;
                 freelancer.Portfolio.OwnerName = txtName.Text;
 
+                if (profilePic.Image != null)
+                {
+                    profilePic.Image.Dispose(); 
+                    profilePic.Image = null;    
+                }
+
                 string profileFileName = HandleImageUpload(Convert.ToInt32(UserSession.FreelancerId), selectedFilePath);
 
                 if (profileFileName == "ERROR")
@@ -232,7 +248,8 @@ namespace Freelance_Platform.view.components.FreelancerComponent
                 {
                     
                     MessageBox.Show("Profile successfully saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    new FreelancerDashboard().DisplayDashboard();
+                    dashboard.DisplayDashboard();
+                   
                     selectedFilePath = "";
 
 

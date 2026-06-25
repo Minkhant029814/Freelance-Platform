@@ -2,6 +2,7 @@
 using Freelance_Platform.components;
 using Freelance_Platform.model;
 using Freelance_Platform.Service;
+using Freelance_Platform.Session;
 using Freelance_Platform.view.components.FreelancerComponent;
 using System;
 using System.Collections.Generic;
@@ -21,11 +22,15 @@ namespace Freelance_Platform.Forms.Dashboard
 
         private readonly ProjectService projectService = new ProjectService();
         private readonly FreelancerService freelanerService = new FreelancerService();
-        private readonly FreelancerEdit profile = new FreelancerEdit();
+        
+        private readonly FreelancerEdit profile;
+        private readonly SearchProjects searchProjects;
 
         public FreelancerDashboard()
         {
             InitializeComponent();
+            profile = new FreelancerEdit(this);
+            searchProjects = new SearchProjects(projectService.GetAllProjects());
             flowCardDisplay.Resize += flowCardDisplay_Resize;
         }
 
@@ -103,6 +108,7 @@ namespace Freelance_Platform.Forms.Dashboard
             flowCardDisplay.Visible = true;
             DisplayDashboard();
             profile.Visible = false;
+            mainPanel.Controls.Remove(searchProjects);
             
         }
 
@@ -139,6 +145,8 @@ namespace Freelance_Platform.Forms.Dashboard
 
         private void btnProfile_Click(object sender, EventArgs e)
         {
+            lblGreeting.Text = "Profile Setup";
+            lblDesc.Text = "Complete your profile to win more projects";
             lblRecommend.Visible = false;
             CardLayout.Visible = false;
             flowCardDisplay.Visible = false;
@@ -148,5 +156,52 @@ namespace Freelance_Platform.Forms.Dashboard
             profile.BringToFront();
         }
 
+        private void btnSignOut_Click(object sender, EventArgs e)
+        {
+            
+            DialogResult result = MessageBox.Show("Are you sure to log out?",
+                                                  "Sign Out",
+                                                  MessageBoxButtons.YesNo,
+                                                  MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                
+                UserSession.Logout();
+
+               
+                frmLogin loginForm = new frmLogin();
+                loginForm.Show();
+
+             
+                this.Hide();
+                
+            }
+        }
+
+        private void btnBrowseProject_Click(object sender, EventArgs e)
+        {
+            lblGreeting.Text = "Browse Projects";
+            lblDesc.Text = "Find work that matches your skills";
+            lblRecommend.Visible = false;
+            CardLayout.Visible = false;
+            flowCardDisplay.Visible = false;
+            DisplayProjectsViews();
+            
+
+        }
+
+        
+        private void DisplayProjectsViews()
+        {
+            //mainPanel.Controls.Clear();
+            searchProjects.Dock = DockStyle.Fill; // အရေးကြီးဆုံးအချက် - mainPanel အပြည့်ဆန့်စေရန်
+            if (!mainPanel.Controls.Contains(searchProjects))
+            {
+                mainPanel.Controls.Add(searchProjects);
+            }
+            searchProjects.Visible = true;
+            searchProjects.BringToFront();
+        }
     }
 }
