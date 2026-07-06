@@ -36,5 +36,10 @@ namespace Freelance_Platform.Service
         {
             return projectRepo.AllProject();
         }
+
+        public bool FreelancerBids(int projectId)
+        {
+            return projectRepo.ToggleProjectStatus(projectId);
+        }
     }
 }

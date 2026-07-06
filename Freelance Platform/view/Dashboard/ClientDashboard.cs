@@ -182,5 +182,11 @@ namespace Freelance_Platform.Forms.Dashboard
 
             }
         }
+
+        private void btnBidReceived_Click(object sender, EventArgs e)
+        {
+            lblGreeting.Text = "Bid Received";
+            lblsubtitle.Text = "Review and Respond to Freelancer Proposal ";
+        }
     }
 }

@@ -31,7 +31,7 @@
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.iconButton4 = new FontAwesome.Sharp.IconButton();
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
-            this.iconButton2 = new FontAwesome.Sharp.IconButton();
+            this.btnBidReceived = new FontAwesome.Sharp.IconButton();
             this.btnProfile = new FontAwesome.Sharp.IconButton();
             this.btnDashboard = new FontAwesome.Sharp.IconButton();
             this.panelDashboardContent = new Guna.UI2.WinForms.Guna2Panel();
@@ -78,7 +78,7 @@
             this.guna2Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
             this.guna2Panel1.Controls.Add(this.iconButton4);
             this.guna2Panel1.Controls.Add(this.iconButton3);
-            this.guna2Panel1.Controls.Add(this.iconButton2);
+            this.guna2Panel1.Controls.Add(this.btnBidReceived);
             this.guna2Panel1.Controls.Add(this.btnProfile);
             this.guna2Panel1.Controls.Add(this.btnDashboard);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -131,27 +131,28 @@
             this.iconButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton3.UseVisualStyleBackColor = false;
             // 
-            // iconButton2
+            // btnBidReceived
             // 
-            this.iconButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
-            this.iconButton2.FlatAppearance.BorderSize = 0;
-            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.SearchMinus;
-            this.iconButton2.IconColor = System.Drawing.Color.White;
-            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton2.IconSize = 30;
-            this.iconButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton2.Location = new System.Drawing.Point(12, 260);
-            this.iconButton2.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
-            this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.iconButton2.Size = new System.Drawing.Size(241, 50);
-            this.iconButton2.TabIndex = 2;
-            this.iconButton2.Text = "Browse Freelancer";
-            this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton2.UseVisualStyleBackColor = false;
+            this.btnBidReceived.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
+            this.btnBidReceived.FlatAppearance.BorderSize = 0;
+            this.btnBidReceived.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBidReceived.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBidReceived.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnBidReceived.IconChar = FontAwesome.Sharp.IconChar.Bacon;
+            this.btnBidReceived.IconColor = System.Drawing.Color.White;
+            this.btnBidReceived.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnBidReceived.IconSize = 30;
+            this.btnBidReceived.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBidReceived.Location = new System.Drawing.Point(12, 260);
+            this.btnBidReceived.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
+            this.btnBidReceived.Name = "btnBidReceived";
+            this.btnBidReceived.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnBidReceived.Size = new System.Drawing.Size(241, 50);
+            this.btnBidReceived.TabIndex = 2;
+            this.btnBidReceived.Text = "Bids Received";
+            this.btnBidReceived.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBidReceived.UseVisualStyleBackColor = false;
+            this.btnBidReceived.Click += new System.EventHandler(this.btnBidReceived_Click);
             // 
             // btnProfile
             // 
@@ -538,7 +539,7 @@
         private FontAwesome.Sharp.IconButton btnDashboard;
         private FontAwesome.Sharp.IconButton iconButton4;
         private FontAwesome.Sharp.IconButton iconButton3;
-        private FontAwesome.Sharp.IconButton iconButton2;
+        private FontAwesome.Sharp.IconButton btnBidReceived;
         private FontAwesome.Sharp.IconButton btnProfile;
         private Guna.UI2.WinForms.Guna2Panel panelDashboardContent;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel3;

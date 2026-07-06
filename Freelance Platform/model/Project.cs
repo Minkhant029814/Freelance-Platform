@@ -15,6 +15,7 @@ namespace Freelance_Platform.model
         public string Description { get; set; }
         public decimal BaselineBudget { get; set; }
 
+        public string Status { get; set; }
         public DateTime StartDate { get; set; }
 
 

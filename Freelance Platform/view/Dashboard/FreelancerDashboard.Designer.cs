@@ -447,7 +447,7 @@
             this.Name = "FreelancerDashboard";
             this.Text = "FreelancerDashboard";
             this.Load += new System.EventHandler(this.FreelancerDashboard_Load);
-            this.Shown += new System.EventHandler(this.FreelancerDashboard_Shown);
+            //this.Shown += new System.EventHandler(this.FreelancerDashboard_Shown);
             this.guna2Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
             this.upperPanel.ResumeLayout(false);

@@ -97,12 +97,15 @@ namespace Freelance_Platform.Repositories
                 {
                     Project p = new Project
                     {
-                        ProjectId = Convert.ToInt32(row["ProjectId"]), 
+                        ProjectId = Convert.ToInt32(row["ProjectId"]),
                         ClientId = Convert.ToInt32(row["ClientId"]),
                         ProjectTitle = row["ProjectTitle"].ToString(),
                         Description = row["Description"].ToString(),
                         BaselineBudget = Convert.ToDecimal(row["Budget"]),
-                        EndDate = Convert.ToDateTime(row["EndDate"])
+                        EndDate = Convert.ToDateTime(row["EndDate"]),
+                        Status = row["Status"].ToString()
+
+
 
                     };
                     projects.Add(p);
@@ -115,6 +118,31 @@ namespace Freelance_Platform.Repositories
             }
 
 
+        }
+
+
+        public bool ToggleProjectStatus(int projectId)
+        {
+            try
+            {
+               
+                string query = @"UPDATE projects 
+                         SET Status = CASE 
+                            WHEN Status = 'PLANNING' THEN 'ON_HOLD' 
+                            WHEN Status = 'ON_HOLD' THEN 'PLANNING' 
+                            ELSE Status 
+                         END 
+                         WHERE ProjectId = @pid;";
+
+                MySqlParameter[] ps = { new MySqlParameter("@pid", projectId) };
+
+                return dbconnect.ExecuteCommand(query, ps);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
         }
     }
 }

@@ -109,6 +109,12 @@
   <ItemGroup>
     <Compile Include="Repositories\FreelancerRepository.cs" />
     <Compile Include="Service\FreelancerService.cs" />
+    <Compile Include="view\components\clientComponent\BidReceived.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\components\clientComponent\BidReceived.Designer.cs">
+      <DependentUpon>BidReceived.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\components\clientComponent\ProfileEdit.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -223,6 +229,9 @@
     <Compile Include="Service\ClientService.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="Session\UserSession.cs" />
+    <EmbeddedResource Include="view\components\clientComponent\BidReceived.resx">
+      <DependentUpon>BidReceived.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="view\components\clientComponent\ProfileEdit.resx">
       <DependentUpon>ProfileEdit.cs</DependentUpon>
     </EmbeddedResource>

@@ -1,10 +1,12 @@
 ﻿using FontAwesome.Sharp;
+using Freelance_Platform.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,20 +15,35 @@ namespace Freelance_Platform.view.components.FreelancerComponent
 {
     public partial class FreeLancerProjectCard : UserControl
     {
+        private  int projectId;
+        private readonly ProjectService pService;
+        private string projectStatus;
+
+        public event EventHandler OnBidChanged;
+
         public FreeLancerProjectCard()
         {
             InitializeComponent();
+            pService = new ProjectService();
         }
 
-        public void PopulateData(string title, string desc, string budget, string dueDate)
+        public void PopulateData(int pid,string title, string desc, string budget, string dueDate,string status)
         {
             lblProjectTitle.Text = title;
-
+            this.projectId = pid;
+            this.projectStatus = status;
             lblProjectDesc.Text = desc;
             lblProjectBudget.Text = $"${budget}";
+            UpdateUIBasedOnStatus();
+            OnBidChanged?.Invoke(this, EventArgs.Empty);
+
+
+
 
 
             lblProjectDate.Text = $"Due{dueDate}";
+
+          
 
 
 
@@ -54,41 +71,64 @@ namespace Freelance_Platform.view.components.FreelancerComponent
 
         private void btnBidProject_Click(object sender, EventArgs e)
         {
+            projectStatus = (projectStatus == "PLANNING") ? "ON_HOLD" : "PLANNING";
 
-            ChangeButtonStyle();
-        }
-
-        private void ChangeButtonStyle()
-        {
-            
-            if (btnBidProject.Tag == null || btnBidProject.Tag.ToString() == "Bid")
+            if (FreelancerBids())
             {
-               
-                btnBidProject.Text = "Bid Submitted";
-                btnBidProject.Width = 130;
-                btnBidProject.BackColor = Color.FromArgb(159, 223, 232); 
                 
-                btnBidProject.ForeColor = Color.Green;
-                btnBidProject.Image = IconChar.Check.ToBitmap(Color.Green, 20);
-                btnBidProject.FillColor = Color.FromArgb(88, 227, 109);
+                UpdateUIBasedOnStatus();
 
-                btnBidProject.Tag = "Submitted"; 
+
+                if (projectStatus == "ON_HOLD")
+                {
+                    MessageBox.Show("Bid submitted successfully!");
+                }
+                else
+                {
+                    MessageBox.Show("Bid cancelled successfully.");
+                }
             }
             else
             {
-                
-                btnBidProject.Text = "Bid Project";
-                btnBidProject.Width = 118; 
-                btnBidProject.BackColor = Color.FromArgb(159, 223, 232); 
+                MessageBox.Show("Operation failed. Please try again.");
+            }
+
+
+        }
+
+        private void UpdateUIBasedOnStatus()
+        {
+            
+            
+
+            if (projectStatus.Equals("ON_HOLD")) 
+            {
+                btnBidProject.Text = "Bid Submitted";
+                btnBidProject.Width = 130;
+                btnBidProject.FillColor = Color.FromArgb(88, 227, 109); 
+                btnBidProject.Tag = "Submitted";
+                btnBidProject.Image = IconChar.Check.ToBitmap(Color.Green, 20);
+            }
+            else 
+            {
+                btnBidProject.Text = "Bid/ View";
+                btnBidProject.Width = 118;
                 btnBidProject.ForeColor = Color.White;
                 btnBidProject.FillColor = Color.FromArgb(11, 115, 168);
-                btnBidProject.Image = null; 
-
-                btnBidProject.Tag = "Bid"; 
+                btnBidProject.Tag = "Bid";
+                btnBidProject.Image = null;
             }
         }
 
 
+
+       
+
+       
+        private bool FreelancerBids()
+        {
+          return  pService.FreelancerBids(projectId);
+        }
 
     }
 }
