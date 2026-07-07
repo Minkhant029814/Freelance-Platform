@@ -43,6 +43,8 @@ namespace Freelance_Platform.Forms.Dashboard
            
             tableLayoutPanel1.Visible = true;
             btnPostProject.Visible = true;
+            guna2Panel5.Visible = true;
+            projectDisplayLayout.Visible = true;
             panelDashboardContent.Visible = true;
             panelDashboardContent.BringToFront();
 
@@ -187,6 +189,14 @@ namespace Freelance_Platform.Forms.Dashboard
         {
             lblGreeting.Text = "Bid Received";
             lblsubtitle.Text = "Review and Respond to Freelancer Proposal ";
+            guna2Panel5.Visible = false;
+            projectDisplayLayout.Visible = false;
+            if (profilePage != null)
+            {
+                profilePage.Visible = false;
+            }
+            tableLayoutPanel1.Visible = true;
+            btnPostProject.Visible = false;
         }
     }
 }

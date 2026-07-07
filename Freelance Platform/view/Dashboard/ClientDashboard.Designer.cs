@@ -57,6 +57,7 @@
             this.btnPostProject = new Guna.UI2.WinForms.Guna2Button();
             this.lblsubtitle = new System.Windows.Forms.Label();
             this.lblGreeting = new System.Windows.Forms.Label();
+            this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel1.SuspendLayout();
             this.panelDashboardContent.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
@@ -71,6 +72,7 @@
             this.pnlCompleteProject.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
             this.guna2Panel2.SuspendLayout();
+            this.guna2Panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -207,7 +209,7 @@
             this.panelDashboardContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDashboardContent.Location = new System.Drawing.Point(272, 0);
             this.panelDashboardContent.Name = "panelDashboardContent";
-            this.panelDashboardContent.Size = new System.Drawing.Size(790, 753);
+            this.panelDashboardContent.Size = new System.Drawing.Size(827, 753);
             this.panelDashboardContent.TabIndex = 1;
             this.panelDashboardContent.Resize += new System.EventHandler(this.panelDashboardContent_Resize);
             // 
@@ -219,20 +221,19 @@
             this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel3.Location = new System.Drawing.Point(0, 104);
             this.guna2Panel3.Name = "guna2Panel3";
-            this.guna2Panel3.Size = new System.Drawing.Size(790, 649);
+            this.guna2Panel3.Size = new System.Drawing.Size(827, 649);
             this.guna2Panel3.TabIndex = 4;
             this.guna2Panel3.UseTransparentBackground = true;
             // 
             // guna2Panel4
             // 
+            this.guna2Panel4.Controls.Add(this.guna2Panel5);
             this.guna2Panel4.Controls.Add(this.projectDisplayLayout);
-            this.guna2Panel4.Controls.Add(this.label5);
-            this.guna2Panel4.Controls.Add(this.label4);
             this.guna2Panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel4.Location = new System.Drawing.Point(0, 274);
             this.guna2Panel4.Margin = new System.Windows.Forms.Padding(8);
             this.guna2Panel4.Name = "guna2Panel4";
-            this.guna2Panel4.Size = new System.Drawing.Size(790, 375);
+            this.guna2Panel4.Size = new System.Drawing.Size(827, 375);
             this.guna2Panel4.TabIndex = 1;
             // 
             // projectDisplayLayout
@@ -244,7 +245,7 @@
             this.projectDisplayLayout.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.projectDisplayLayout.Location = new System.Drawing.Point(0, 71);
             this.projectDisplayLayout.Name = "projectDisplayLayout";
-            this.projectDisplayLayout.Size = new System.Drawing.Size(759, 328);
+            this.projectDisplayLayout.Size = new System.Drawing.Size(796, 328);
             this.projectDisplayLayout.TabIndex = 2;
             this.projectDisplayLayout.WrapContents = false;
             // 
@@ -253,7 +254,7 @@
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(640, 25);
+            this.label5.Location = new System.Drawing.Point(695, 5);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(81, 25);
             this.label5.TabIndex = 1;
@@ -263,7 +264,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(19, 25);
+            this.label4.Location = new System.Drawing.Point(13, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(163, 31);
             this.label4.TabIndex = 0;
@@ -286,7 +287,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(790, 274);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(827, 274);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // pnlPendingProposals
@@ -300,7 +301,7 @@
             this.pnlPendingProposals.Location = new System.Drawing.Point(25, 147);
             this.pnlPendingProposals.Margin = new System.Windows.Forms.Padding(10);
             this.pnlPendingProposals.Name = "pnlPendingProposals";
-            this.pnlPendingProposals.Size = new System.Drawing.Size(360, 102);
+            this.pnlPendingProposals.Size = new System.Drawing.Size(378, 102);
             this.pnlPendingProposals.TabIndex = 1;
             this.pnlPendingProposals.UseTransparentBackground = true;
             // 
@@ -312,7 +313,7 @@
             this.iconPictureBox3.IconChar = FontAwesome.Sharp.IconChar.ClockFour;
             this.iconPictureBox3.IconColor = System.Drawing.SystemColors.ControlLightLight;
             this.iconPictureBox3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox3.Location = new System.Drawing.Point(290, 25);
+            this.iconPictureBox3.Location = new System.Drawing.Point(308, 25);
             this.iconPictureBox3.Name = "iconPictureBox3";
             this.iconPictureBox3.Size = new System.Drawing.Size(32, 32);
             this.iconPictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -340,7 +341,7 @@
             this.pnlProjects.Location = new System.Drawing.Point(25, 25);
             this.pnlProjects.Margin = new System.Windows.Forms.Padding(10);
             this.pnlProjects.Name = "pnlProjects";
-            this.pnlProjects.Size = new System.Drawing.Size(360, 102);
+            this.pnlProjects.Size = new System.Drawing.Size(378, 102);
             this.pnlProjects.TabIndex = 0;
             this.pnlProjects.UseTransparentBackground = true;
             // 
@@ -352,7 +353,7 @@
             this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Suitcase;
             this.iconPictureBox1.IconColor = System.Drawing.SystemColors.ControlLightLight;
             this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox1.Location = new System.Drawing.Point(290, 27);
+            this.iconPictureBox1.Location = new System.Drawing.Point(308, 27);
             this.iconPictureBox1.Name = "iconPictureBox1";
             this.iconPictureBox1.Size = new System.Drawing.Size(32, 32);
             this.iconPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -377,10 +378,10 @@
             this.pnlFreelanceRating.Controls.Add(this.label3);
             this.pnlFreelanceRating.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlFreelanceRating.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
-            this.pnlFreelanceRating.Location = new System.Drawing.Point(405, 147);
+            this.pnlFreelanceRating.Location = new System.Drawing.Point(423, 147);
             this.pnlFreelanceRating.Margin = new System.Windows.Forms.Padding(10);
             this.pnlFreelanceRating.Name = "pnlFreelanceRating";
-            this.pnlFreelanceRating.Size = new System.Drawing.Size(360, 102);
+            this.pnlFreelanceRating.Size = new System.Drawing.Size(379, 102);
             this.pnlFreelanceRating.TabIndex = 1;
             this.pnlFreelanceRating.UseTransparentBackground = true;
             // 
@@ -392,7 +393,7 @@
             this.iconPictureBox4.IconChar = FontAwesome.Sharp.IconChar.Star;
             this.iconPictureBox4.IconColor = System.Drawing.SystemColors.ControlLightLight;
             this.iconPictureBox4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox4.Location = new System.Drawing.Point(297, 25);
+            this.iconPictureBox4.Location = new System.Drawing.Point(316, 25);
             this.iconPictureBox4.Name = "iconPictureBox4";
             this.iconPictureBox4.Size = new System.Drawing.Size(32, 32);
             this.iconPictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -417,10 +418,10 @@
             this.pnlCompleteProject.Controls.Add(this.label1);
             this.pnlCompleteProject.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlCompleteProject.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
-            this.pnlCompleteProject.Location = new System.Drawing.Point(405, 25);
+            this.pnlCompleteProject.Location = new System.Drawing.Point(423, 25);
             this.pnlCompleteProject.Margin = new System.Windows.Forms.Padding(10);
             this.pnlCompleteProject.Name = "pnlCompleteProject";
-            this.pnlCompleteProject.Size = new System.Drawing.Size(360, 102);
+            this.pnlCompleteProject.Size = new System.Drawing.Size(379, 102);
             this.pnlCompleteProject.TabIndex = 1;
             this.pnlCompleteProject.UseTransparentBackground = true;
             // 
@@ -432,7 +433,7 @@
             this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.Check;
             this.iconPictureBox2.IconColor = System.Drawing.SystemColors.ControlLightLight;
             this.iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox2.Location = new System.Drawing.Point(297, 27);
+            this.iconPictureBox2.Location = new System.Drawing.Point(316, 27);
             this.iconPictureBox2.Name = "iconPictureBox2";
             this.iconPictureBox2.Size = new System.Drawing.Size(32, 32);
             this.iconPictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -458,7 +459,7 @@
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Panel2.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(790, 104);
+            this.guna2Panel2.Size = new System.Drawing.Size(827, 104);
             this.guna2Panel2.TabIndex = 3;
             // 
             // btnPostProject
@@ -471,7 +472,7 @@
             this.btnPostProject.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnPostProject.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPostProject.ForeColor = System.Drawing.Color.White;
-            this.btnPostProject.Location = new System.Drawing.Point(555, 21);
+            this.btnPostProject.Location = new System.Drawing.Point(592, 21);
             this.btnPostProject.Name = "btnPostProject";
             this.btnPostProject.Size = new System.Drawing.Size(180, 45);
             this.btnPostProject.TabIndex = 2;
@@ -498,11 +499,22 @@
             this.lblGreeting.TabIndex = 0;
             this.lblGreeting.Text = "Welcome back, Jane";
             // 
+            // guna2Panel5
+            // 
+            this.guna2Panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2Panel5.Controls.Add(this.label4);
+            this.guna2Panel5.Controls.Add(this.label5);
+            this.guna2Panel5.Location = new System.Drawing.Point(6, 23);
+            this.guna2Panel5.Name = "guna2Panel5";
+            this.guna2Panel5.Size = new System.Drawing.Size(790, 42);
+            this.guna2Panel5.TabIndex = 3;
+            // 
             // ClientDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1062, 753);
+            this.ClientSize = new System.Drawing.Size(1099, 753);
             this.Controls.Add(this.panelDashboardContent);
             this.Controls.Add(this.guna2Panel1);
             this.Name = "ClientDashboard";
@@ -513,7 +525,6 @@
             this.panelDashboardContent.ResumeLayout(false);
             this.guna2Panel3.ResumeLayout(false);
             this.guna2Panel4.ResumeLayout(false);
-            this.guna2Panel4.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.pnlPendingProposals.ResumeLayout(false);
             this.pnlPendingProposals.PerformLayout();
@@ -529,6 +540,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
+            this.guna2Panel5.ResumeLayout(false);
+            this.guna2Panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -564,5 +577,6 @@
         private Guna.UI2.WinForms.Guna2Button btnPostProject;
         private System.Windows.Forms.Label lblsubtitle;
         private System.Windows.Forms.Label lblGreeting;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel5;
     }
 }
