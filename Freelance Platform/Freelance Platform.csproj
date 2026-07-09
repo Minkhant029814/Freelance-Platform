@@ -108,7 +108,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Repositories\FreelancerRepository.cs" />
+    <Compile Include="Service\BidService.cs" />
     <Compile Include="Service\FreelancerService.cs" />
+    <Compile Include="view\components\clientComponent\BiddingReceived.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\components\clientComponent\BiddingReceived.Designer.cs">
+      <DependentUpon>BiddingReceived.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\components\clientComponent\BidReceived.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -152,6 +159,12 @@
     </Compile>
     <Compile Include="view\components\FreelancerComponent\AddProjectForm.Designer.cs">
       <DependentUpon>AddProjectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\components\FreelancerComponent\BidProjectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\components\FreelancerComponent\BidProjectForm.Designer.cs">
+      <DependentUpon>BidProjectForm.cs</DependentUpon>
     </Compile>
     <Compile Include="view\components\FreelancerComponent\FreelancerEdit.cs">
       <SubType>UserControl</SubType>
@@ -229,6 +242,9 @@
     <Compile Include="Service\ClientService.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="Session\UserSession.cs" />
+    <EmbeddedResource Include="view\components\clientComponent\BiddingReceived.resx">
+      <DependentUpon>BiddingReceived.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="view\components\clientComponent\BidReceived.resx">
       <DependentUpon>BidReceived.cs</DependentUpon>
     </EmbeddedResource>
@@ -249,6 +265,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="view\components\FreelancerComponent\AddProjectForm.resx">
       <DependentUpon>AddProjectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\components\FreelancerComponent\BidProjectForm.resx">
+      <DependentUpon>BidProjectForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\components\FreelancerComponent\FreelancerEdit.resx">
       <DependentUpon>FreelancerEdit.cs</DependentUpon>

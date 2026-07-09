@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Freelance_Platform.model
 {
-    internal class Bidding
+    public class Bidding
     {
         public int BiddingId { get; set; }
         public int ProjectId { get; set; }
@@ -15,6 +15,8 @@ namespace Freelance_Platform.model
         public int ClientId { get; set; }
 
         public decimal BidAmount { get; set; }
+        public string Status { get; set; }
+        public string Message { get; set; }
         public DateTime SubmissionDate { get; set; }
     }
 }
