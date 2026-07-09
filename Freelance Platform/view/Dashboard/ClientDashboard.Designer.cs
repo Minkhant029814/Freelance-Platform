@@ -37,9 +37,10 @@
             this.panelDashboardContent = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
-            this.projectDisplayLayout = new System.Windows.Forms.FlowLayoutPanel();
-            this.label5 = new System.Windows.Forms.Label();
+            this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.projectDisplayLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pnlPendingProposals = new Guna.UI2.WinForms.Guna2Panel();
             this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
@@ -57,11 +58,11 @@
             this.btnPostProject = new Guna.UI2.WinForms.Guna2Button();
             this.lblsubtitle = new System.Windows.Forms.Label();
             this.lblGreeting = new System.Windows.Forms.Label();
-            this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel1.SuspendLayout();
             this.panelDashboardContent.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
             this.guna2Panel4.SuspendLayout();
+            this.guna2Panel5.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.pnlPendingProposals.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
@@ -72,7 +73,6 @@
             this.pnlCompleteProject.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
             this.guna2Panel2.SuspendLayout();
-            this.guna2Panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -227,6 +227,7 @@
             // 
             // guna2Panel4
             // 
+            this.guna2Panel4.BackColor = System.Drawing.Color.Transparent;
             this.guna2Panel4.Controls.Add(this.guna2Panel5);
             this.guna2Panel4.Controls.Add(this.projectDisplayLayout);
             this.guna2Panel4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -235,6 +236,39 @@
             this.guna2Panel4.Name = "guna2Panel4";
             this.guna2Panel4.Size = new System.Drawing.Size(827, 375);
             this.guna2Panel4.TabIndex = 1;
+            // 
+            // guna2Panel5
+            // 
+            this.guna2Panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2Panel5.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Panel5.Controls.Add(this.label4);
+            this.guna2Panel5.Controls.Add(this.label5);
+            this.guna2Panel5.Location = new System.Drawing.Point(6, 23);
+            this.guna2Panel5.Name = "guna2Panel5";
+            this.guna2Panel5.Size = new System.Drawing.Size(790, 42);
+            this.guna2Panel5.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(13, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(163, 31);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Active Project";
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(695, 5);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(81, 25);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "View All";
             // 
             // projectDisplayLayout
             // 
@@ -248,27 +282,6 @@
             this.projectDisplayLayout.Size = new System.Drawing.Size(796, 328);
             this.projectDisplayLayout.TabIndex = 2;
             this.projectDisplayLayout.WrapContents = false;
-            // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(695, 5);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 25);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "View All";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(13, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(163, 31);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Active Project";
             // 
             // tableLayoutPanel1
             // 
@@ -499,17 +512,6 @@
             this.lblGreeting.TabIndex = 0;
             this.lblGreeting.Text = "Welcome back, Jane";
             // 
-            // guna2Panel5
-            // 
-            this.guna2Panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2Panel5.Controls.Add(this.label4);
-            this.guna2Panel5.Controls.Add(this.label5);
-            this.guna2Panel5.Location = new System.Drawing.Point(6, 23);
-            this.guna2Panel5.Name = "guna2Panel5";
-            this.guna2Panel5.Size = new System.Drawing.Size(790, 42);
-            this.guna2Panel5.TabIndex = 3;
-            // 
             // ClientDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -525,6 +527,8 @@
             this.panelDashboardContent.ResumeLayout(false);
             this.guna2Panel3.ResumeLayout(false);
             this.guna2Panel4.ResumeLayout(false);
+            this.guna2Panel5.ResumeLayout(false);
+            this.guna2Panel5.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.pnlPendingProposals.ResumeLayout(false);
             this.pnlPendingProposals.PerformLayout();
@@ -540,8 +544,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
-            this.guna2Panel5.ResumeLayout(false);
-            this.guna2Panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }

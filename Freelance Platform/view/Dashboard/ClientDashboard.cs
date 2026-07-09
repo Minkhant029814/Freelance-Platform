@@ -18,8 +18,10 @@ namespace Freelance_Platform.Forms.Dashboard
 {
     public partial class ClientDashboard : Form
     {
-        private  ProfileEdit profilePage; 
-        ProjectService service = new ProjectService();
+        private  ProfileEdit profilePage;
+        private BidReceived bidReceived;
+       
+      private readonly  ProjectService service = new ProjectService();
       
         public ClientDashboard()
         {
@@ -40,11 +42,17 @@ namespace Freelance_Platform.Forms.Dashboard
                 profilePage.Visible = false;
             }
 
+            if(bidReceived != null)
+            {
+                bidReceived.Visible = false;
+               
+            }
+            
            
             tableLayoutPanel1.Visible = true;
             btnPostProject.Visible = true;
-            guna2Panel5.Visible = true;
             projectDisplayLayout.Visible = true;
+            guna2Panel5.Visible = true;
             panelDashboardContent.Visible = true;
             panelDashboardContent.BringToFront();
 
@@ -187,6 +195,7 @@ namespace Freelance_Platform.Forms.Dashboard
 
         private void btnBidReceived_Click(object sender, EventArgs e)
         {
+            
             lblGreeting.Text = "Bid Received";
             lblsubtitle.Text = "Review and Respond to Freelancer Proposal ";
             guna2Panel5.Visible = false;
@@ -197,6 +206,13 @@ namespace Freelance_Platform.Forms.Dashboard
             }
             tableLayoutPanel1.Visible = true;
             btnPostProject.Visible = false;
+
+          
+            bidReceived = new BidReceived();
+            guna2Panel4.Controls.Add(bidReceived);
+            bidReceived.Dock = DockStyle.Fill;
+            bidReceived.BringToFront();
+            bidReceived.Visible = true;
         }
     }
 }
