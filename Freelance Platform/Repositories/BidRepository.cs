@@ -1,8 +1,11 @@
 ﻿using Freelance_Platform.Connection;
+using Freelance_Platform.DTO;
 using Freelance_Platform.model;
+using Freelance_Platform.Session;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +13,7 @@ using System.Windows;
 
 namespace Freelance_Platform.Repositories
 {
-    internal class BidRepository
+    public class BidRepository
     {
         private readonly dbConnect db = new dbConnect();
 
@@ -78,5 +81,82 @@ namespace Freelance_Platform.Repositories
             
             return Convert.ToInt32(db.GetScaler(query,ps)) > 0;
         }
+
+
+        public List<BidProjectModel> GetBidProjects()
+        {
+          
+            string query = @"SELECT 
+    p.ProjectId, 
+    p.ProjectTitle, 
+    p.Budget, 
+    COUNT(b.BidId) AS TotalBids, 
+   
+    SUM(CASE WHEN b.SubmissionDate >= NOW() - INTERVAL 1 DAY THEN 1 ELSE 0 END) AS NewBidsCount
+    FROM Projects p
+    INNER JOIN Biddings b ON p.ProjectId = b.ProjectId
+    WHERE p.ClientId = @ClientId
+    GROUP BY p.ProjectId, p.ProjectTitle, p.Budget;";
+
+            MySqlParameter[] ps =
+            {
+        new MySqlParameter("@ClientId", UserSession.ClientId) 
+    };
+
+            DataTable dt = db.GetData(query, ps);
+            List<BidProjectModel> projects = new List<BidProjectModel>();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                BidProjectModel p = new BidProjectModel
+                {
+                    ProjectId = Convert.ToInt32(row["ProjectId"]),
+                    Title = row["ProjectTitle"].ToString(),
+                    Budget = Convert.ToDecimal(row["Budget"]),
+                    TotalBids = Convert.ToInt32(row["TotalBids"]),
+                    NewBids = Convert.ToInt32(row["NewBidsCount"]), 
+                };
+
+                projects.Add(p);
+            }
+
+            return projects;
+        }
+
+
+        public List<FreelancerBidDTO> GetFreelancerBids(int projectId)
+        {
+            string query = @"SELECT p.OwnerName, p.ProfilePic, p.ProfessionalTitle, b.BidAmount, b.Message 
+                 FROM Biddings b 
+                 JOIN Portfolios p ON b.FreelancerId = p.FreelancerId 
+                 WHERE b.ProjectId = @ProjectId AND b.Status = 'Pending'";
+            MySqlParameter[] ps =
+            {
+                new MySqlParameter("@ProjectId", projectId),
+             };
+
+            DataTable dt = db.GetData(query, ps);
+            List<FreelancerBidDTO> freelancerBids = new List<FreelancerBidDTO>();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                FreelancerBidDTO bid = new FreelancerBidDTO
+                {
+                    OwnerName = row["OwnerName"].ToString(),
+                    BidAmount = Convert.ToDecimal(row["BidAmount"]),
+                    Message = row["Message"].ToString(),
+                    ProfessionalTitle = row["ProfessionalTitle"].ToString(),
+                    ProfilePic = row["ProfilePic"].ToString(),
+                    
+                };
+
+                freelancerBids.Add(bid);
+            }
+
+            return freelancerBids;
+
+        }
+
     }
+
 }

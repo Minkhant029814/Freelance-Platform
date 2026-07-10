@@ -107,14 +107,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="model\BidProjectModel.cs" />
     <Compile Include="Repositories\FreelancerRepository.cs" />
     <Compile Include="Service\BidService.cs" />
     <Compile Include="Service\FreelancerService.cs" />
-    <Compile Include="view\components\clientComponent\BiddingReceived.cs">
+    <Compile Include="view\components\clientComponent\BidProjectsCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="view\components\clientComponent\BiddingReceived.Designer.cs">
-      <DependentUpon>BiddingReceived.cs</DependentUpon>
+    <Compile Include="view\components\clientComponent\BidProjectsCard.Designer.cs">
+      <DependentUpon>BidProjectsCard.cs</DependentUpon>
     </Compile>
     <Compile Include="view\components\clientComponent\BidReceived.cs">
       <SubType>UserControl</SubType>
@@ -242,8 +243,8 @@
     <Compile Include="Service\ClientService.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="Session\UserSession.cs" />
-    <EmbeddedResource Include="view\components\clientComponent\BiddingReceived.resx">
-      <DependentUpon>BiddingReceived.cs</DependentUpon>
+    <EmbeddedResource Include="view\components\clientComponent\BidProjectsCard.resx">
+      <DependentUpon>BidProjectsCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\components\clientComponent\BidReceived.resx">
       <DependentUpon>BidReceived.cs</DependentUpon>

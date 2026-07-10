@@ -1,4 +1,5 @@
-﻿using Freelance_Platform.model;
+﻿using Freelance_Platform.DTO;
+using Freelance_Platform.model;
 using Freelance_Platform.Repositories;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,16 @@ namespace Freelance_Platform.Service
         public bool HasUserBidded(int projectId,int freelancerId)
         {
             return bidRepository.HasUserBidded(projectId, freelancerId);
+        }
+
+        public List<BidProjectModel> GetBidProjects()
+        {
+            return bidRepository.GetBidProjects();
+        }
+
+        public List<FreelancerBidDTO> GetFreelancerBids(int projectId)
+        {
+            return bidRepository.GetFreelancerBids(projectId);
         }
     }
 }
