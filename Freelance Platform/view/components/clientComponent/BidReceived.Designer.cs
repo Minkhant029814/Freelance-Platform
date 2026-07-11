@@ -35,12 +35,8 @@
             this.leftPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.topPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.BiddingFreelancersView = new Guna.UI2.WinForms.Guna2Panel();
             this.BiddingFreelancerView = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.pnlTitle = new Guna.UI2.WinForms.Guna2Panel();
-            this.lblBudget = new System.Windows.Forms.Label();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.freelancerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.reject = new System.Windows.Forms.DataGridViewButtonColumn();
             this.accept = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -48,9 +44,13 @@
             this.profile = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.message = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlTitle = new Guna.UI2.WinForms.Guna2Panel();
+            this.lblBudget = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.mainPanel.SuspendLayout();
             this.topPanel.SuspendLayout();
-            this.guna2Panel1.SuspendLayout();
+            this.BiddingFreelancersView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BiddingFreelancerView)).BeginInit();
             this.pnlTitle.SuspendLayout();
             this.SuspendLayout();
@@ -63,7 +63,7 @@
             this.mainPanel.AutoScroll = true;
             this.mainPanel.Controls.Add(this.leftPanel);
             this.mainPanel.Controls.Add(this.topPanel);
-            this.mainPanel.Controls.Add(this.guna2Panel1);
+            this.mainPanel.Controls.Add(this.BiddingFreelancersView);
             this.mainPanel.Location = new System.Drawing.Point(57, 60);
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(1041, 428);
@@ -78,7 +78,7 @@
             this.leftPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.leftPanel.Location = new System.Drawing.Point(6, 88);
             this.leftPanel.Name = "leftPanel";
-            this.leftPanel.Size = new System.Drawing.Size(957, 224);
+            this.leftPanel.Size = new System.Drawing.Size(936, 224);
             this.leftPanel.TabIndex = 2;
             this.leftPanel.WrapContents = false;
             this.leftPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.leftPanel_Paint);
@@ -104,18 +104,18 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Your Posted Projects";
             // 
-            // guna2Panel1
+            // BiddingFreelancersView
             // 
-            this.guna2Panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.BiddingFreelancersView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2Panel1.BackColor = System.Drawing.Color.Lime;
-            this.guna2Panel1.Controls.Add(this.BiddingFreelancerView);
-            this.guna2Panel1.Controls.Add(this.pnlTitle);
-            this.guna2Panel1.Location = new System.Drawing.Point(6, 318);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(960, 287);
-            this.guna2Panel1.TabIndex = 3;
-            this.guna2Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
+            this.BiddingFreelancersView.BackColor = System.Drawing.Color.Lime;
+            this.BiddingFreelancersView.Controls.Add(this.BiddingFreelancerView);
+            this.BiddingFreelancersView.Controls.Add(this.pnlTitle);
+            this.BiddingFreelancersView.Location = new System.Drawing.Point(6, 318);
+            this.BiddingFreelancersView.Name = "BiddingFreelancersView";
+            this.BiddingFreelancersView.Size = new System.Drawing.Size(939, 287);
+            this.BiddingFreelancersView.TabIndex = 3;
+            this.BiddingFreelancersView.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
             // 
             // BiddingFreelancerView
             // 
@@ -154,7 +154,7 @@
             this.BiddingFreelancerView.RowHeadersVisible = false;
             this.BiddingFreelancerView.RowHeadersWidth = 60;
             this.BiddingFreelancerView.RowTemplate.Height = 24;
-            this.BiddingFreelancerView.Size = new System.Drawing.Size(960, 187);
+            this.BiddingFreelancerView.Size = new System.Drawing.Size(939, 187);
             this.BiddingFreelancerView.TabIndex = 1;
             this.BiddingFreelancerView.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.BiddingFreelancerView.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -163,48 +163,6 @@
             this.BiddingFreelancerView.ThemeStyle.RowsStyle.Height = 24;
             this.BiddingFreelancerView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.BiddingFreelancerView_CellContentClick);
             this.BiddingFreelancerView.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.BiddingFreelancerView_CellPainting);
-            // 
-            // pnlTitle
-            // 
-            this.pnlTitle.BackColor = System.Drawing.Color.Cyan;
-            this.pnlTitle.Controls.Add(this.lblBudget);
-            this.pnlTitle.Controls.Add(this.lblTitle);
-            this.pnlTitle.Controls.Add(this.label2);
-            this.pnlTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTitle.Location = new System.Drawing.Point(0, 0);
-            this.pnlTitle.Name = "pnlTitle";
-            this.pnlTitle.Size = new System.Drawing.Size(960, 100);
-            this.pnlTitle.TabIndex = 0;
-            // 
-            // lblBudget
-            // 
-            this.lblBudget.AutoSize = true;
-            this.lblBudget.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBudget.Location = new System.Drawing.Point(23, 60);
-            this.lblBudget.Name = "lblBudget";
-            this.lblBudget.Size = new System.Drawing.Size(65, 23);
-            this.lblBudget.TabIndex = 2;
-            this.lblBudget.Text = "budget";
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(139, 15);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(144, 28);
-            this.lblTitle.TabIndex = 1;
-            this.lblTitle.Text = "Dynamic Title";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(19, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 28);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Bid For";
             // 
             // freelancerName
             // 
@@ -261,6 +219,48 @@
             this.message.MinimumWidth = 6;
             this.message.Name = "message";
             // 
+            // pnlTitle
+            // 
+            this.pnlTitle.BackColor = System.Drawing.Color.Cyan;
+            this.pnlTitle.Controls.Add(this.lblBudget);
+            this.pnlTitle.Controls.Add(this.lblTitle);
+            this.pnlTitle.Controls.Add(this.label2);
+            this.pnlTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTitle.Location = new System.Drawing.Point(0, 0);
+            this.pnlTitle.Name = "pnlTitle";
+            this.pnlTitle.Size = new System.Drawing.Size(939, 100);
+            this.pnlTitle.TabIndex = 0;
+            // 
+            // lblBudget
+            // 
+            this.lblBudget.AutoSize = true;
+            this.lblBudget.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBudget.Location = new System.Drawing.Point(23, 60);
+            this.lblBudget.Name = "lblBudget";
+            this.lblBudget.Size = new System.Drawing.Size(65, 23);
+            this.lblBudget.TabIndex = 2;
+            this.lblBudget.Text = "budget";
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(139, 15);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(144, 28);
+            this.lblTitle.TabIndex = 1;
+            this.lblTitle.Text = "Dynamic Title";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(19, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 28);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Bid For";
+            // 
             // BidReceived
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -274,7 +274,7 @@
             this.mainPanel.ResumeLayout(false);
             this.topPanel.ResumeLayout(false);
             this.topPanel.PerformLayout();
-            this.guna2Panel1.ResumeLayout(false);
+            this.BiddingFreelancersView.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.BiddingFreelancerView)).EndInit();
             this.pnlTitle.ResumeLayout(false);
             this.pnlTitle.PerformLayout();
@@ -288,7 +288,7 @@
         private Guna.UI2.WinForms.Guna2Panel topPanel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FlowLayoutPanel leftPanel;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private Guna.UI2.WinForms.Guna2Panel BiddingFreelancersView;
         private Guna.UI2.WinForms.Guna2DataGridView BiddingFreelancerView;
         private Guna.UI2.WinForms.Guna2Panel pnlTitle;
         private System.Windows.Forms.Label lblBudget;

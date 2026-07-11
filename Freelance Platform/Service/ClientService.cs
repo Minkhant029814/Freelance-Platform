@@ -27,5 +27,10 @@ namespace Freelance_Platform.Service
         {
             return clientRepo.AcceptFreelancer(bidId, projectId);
         }
+
+        public bool RejectFreelancer(int bidId)
+        {
+            return clientRepo.RejectFreelancer(bidId);
+        }
     }
 }

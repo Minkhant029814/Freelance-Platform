@@ -105,38 +105,49 @@ namespace Freelance_Platform.view.components.FreelancerComponent
             //    MessageBox.Show("Operation failed. Please try again.");
             //}
 
-            if (projectStatus == "PLANNING") 
+            bool alreadyBidded = bidService.HasUserBidded(projectId, Convert.ToInt32(UserSession.FreelancerId));
+
+            if (!alreadyBidded)
             {
-                BidProjectForm bidForm = new BidProjectForm(Budget,projectId);
+                // Bid မတင်ရသေးရင် Bid တင်မလားလို့ မေးပြီး Form ခေါ်ပါ
+                BidProjectForm bidForm = new BidProjectForm(Budget, projectId);
                 bidForm.ShowDialog();
 
                 if (bidForm.IsSubmitted)
                 {
-                   
-
+                    // Bid အောင်မြင်သွားရင် UI ကို ON_HOLD ပုံစံပြောင်းပါ
                     projectStatus = "ON_HOLD";
-                    FreelancerBids(); 
+                    FreelancerBids();
                     UpdateUIBasedOnStatus();
                     MessageBox.Show("Bid submitted successfully!");
                 }
             }
-            else 
+            else
             {
-                projectStatus = "PLANNING";
-                FreelancerBids();
-                UpdateUIBasedOnStatus();
-                bidService.CancelSubmit(projectId,Convert.ToInt32(UserSession.FreelancerId));
-                MessageBox.Show("Bid cancelled successfully.");
+                // Bid တင်ပြီးသားဆိုရင် Cancel လုပ်ဖို့သာ ခွင့်ပြုပါ
+                var confirm = MessageBox.Show("You have already bid for this project. Do you want to cancel?",
+                                              "Confirm Cancellation", MessageBoxButtons.YesNo);
+
+                if (confirm == DialogResult.Yes)
+                {
+                    bidService.CancelSubmit(projectId, Convert.ToInt32(UserSession.FreelancerId));
+
+                    // Cancel လုပ်ပြီးရင် Status ကို PLANNING ပြန်ပြောင်းပါ
+                    projectStatus = "PLANNING";
+                    FreelancerBids();
+                    UpdateUIBasedOnStatus();
+                    MessageBox.Show("Bid cancelled successfully.");
+                }
             }
 
         }
 
         private void UpdateUIBasedOnStatus()
         {
-           
             bool alreadyBidded = bidService.HasUserBidded(projectId, Convert.ToInt32(UserSession.FreelancerId));
 
             
+           
             if (alreadyBidded && projectStatus.Equals("ON_HOLD"))
             {
                 btnBidProject.Text = "Bid Submitted";

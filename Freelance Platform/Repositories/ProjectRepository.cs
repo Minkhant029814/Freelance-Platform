@@ -80,7 +80,7 @@ namespace Freelance_Platform.Repositories
 
         public List<Project> AllProject()
         {
-            string query = "SELECT  * from Projects";
+            string query = "SELECT * FROM Projects WHERE STATUS IN ('PLANNING', 'ON_HOLD');";
 
             using (MySqlConnection conn = dbconnect.GetConnection())
             {

@@ -6,11 +6,13 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Freelance_Platform.Repositories
 {
@@ -142,6 +144,29 @@ namespace Freelance_Platform.Repositories
                     }
                 }
             }
+        }
+
+        public bool RejectFreelancer(int bidId)
+        {
+            try
+            {
+                string query = "UPDATE biddings SET Status = 'Rejected' WHERE BidId = @BidId;";
+                MySqlParameter[] ps =
+                    {
+                new MySqlParameter("@BidId",bidId),
+                
+                };
+
+                return db.ExecuteCommand(query, ps);
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+
+            return false;
         }
 
     }

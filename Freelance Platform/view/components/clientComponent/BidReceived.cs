@@ -15,7 +15,7 @@ namespace Freelance_Platform.view.components.clientComponent
 {
     public partial class BidReceived : UserControl
     {
-        private List<BidProjectModel> bidProjects;
+        private readonly List<BidProjectModel> bidProjects;
         private readonly BidService bidService;
         private readonly ClientService clientService;
         public BidReceived()
@@ -38,6 +38,7 @@ namespace Freelance_Platform.view.components.clientComponent
         private void BidReceived_Load(object sender, EventArgs e)
         {
             MessageBox.Show("Total Projects Found: " + bidProjects.Count.ToString());
+            //when there is no bidding projects
             if (bidProjects.Count == 0)
             {
 
@@ -60,9 +61,12 @@ namespace Freelance_Platform.view.components.clientComponent
 
                 containerPanel.Controls.Add(lblMessage);
                 leftPanel.Controls.Add(containerPanel);
+                BiddingFreelancersView.Visible = false;
 
                 return;
             }
+            //**************************************//
+
             leftPanel.Controls.Clear();
             foreach (var p in bidProjects)
             {
@@ -119,20 +123,27 @@ namespace Freelance_Platform.view.components.clientComponent
 
             
             var selectedBid = (FreelancerBidDTO)BiddingFreelancerView.Rows[e.RowIndex].DataBoundItem;
-
+            int projectId = selectedBid.ProjectId;
+            int bidId = selectedBid.BidId;
             if (columnName == "accept")
             {
                 //Accept Logic
                 if (clientService.AcceptFreelancers(bidId,projectId))
                 {
                 MessageBox.Show(selectedBid.OwnerName + " has been accepted..");
+                    BiddingFreelancersView.Visible = false;
 
                 }
             }
             else if (columnName == "reject")
             {
                 // Reject Logic
+                if (clientService.RejectFreelancer(bidId))
+                {
                 MessageBox.Show(selectedBid.OwnerName + " has been rejected..");
+                    BiddingFreelancerView.DataSource = bidService.GetFreelancerBids(selectedBid.ProjectId);
+
+                }
             }
         }
 
