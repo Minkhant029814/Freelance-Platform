@@ -107,7 +107,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="model\BidProjectModel.cs" />
+    <Compile Include="DTO\BidProjectModel.cs" />
+    <Compile Include="DTO\FreelancerBidDTO.cs" />
     <Compile Include="Repositories\FreelancerRepository.cs" />
     <Compile Include="Service\BidService.cs" />
     <Compile Include="Service\FreelancerService.cs" />

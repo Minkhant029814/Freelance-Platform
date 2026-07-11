@@ -8,6 +8,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
@@ -88,6 +89,60 @@ namespace Freelance_Platform.Repositories
         throw new Exception("Profile Update Failed..... " + ex.Message);
     }
 }
+
+        public bool AcceptFreelancer(int bidId,int projectId)
+        {
+            using (MySqlConnection conn = db.GetConnection())
+            {
+                conn.Open();
+                using(MySqlTransaction transaction = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        // ၁။ ရွေးချယ်လိုက်တဲ့ Freelancer ကို Accepted လုပ်ခြင်း
+                        string updateSelectedBid = "UPDATE biddings SET Status = 'Accepted' WHERE BidId = @BidId";
+
+                        // ၂။ အဲ့ဒီ Project ထဲက တခြား Freelancer တွေကို Reject လုပ်ခြင်း
+                        // (BidId မတူတဲ့သူတွေကို ရှာပြီး Reject လုပ်တာပါ)
+                        string rejectOthers = "UPDATE biddings SET Status = 'Rejected' WHERE ProjectId = @ProjectId AND BidId != @BidId";
+
+                        
+                        string updateProjectStatus = "UPDATE projects SET Status = 'IN_PROGRESS' WHERE ProjectId = @ProjectId";
+
+
+                        // Command များ run ခြင်း
+                        using (var cmd = new MySqlCommand(updateSelectedBid, conn, transaction))
+                        {
+                            cmd.Parameters.AddWithValue("@BidId", bidId);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        using (var cmd = new MySqlCommand(rejectOthers, conn, transaction))
+                        {
+                            cmd.Parameters.AddWithValue("@ProjectId", projectId);
+                            cmd.Parameters.AddWithValue("@BidId", bidId);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        using (var cmd = new MySqlCommand(updateProjectStatus, conn, transaction))
+                        {
+                            cmd.Parameters.AddWithValue("@ProjectId", projectId);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        transaction.Commit();
+                        return true;
+
+                    }
+                    catch (Exception ex)
+                    {
+
+                        transaction.Rollback();
+                        throw new Exception("Profile Updating Failed: " + ex.Message);
+                    }
+                }
+            }
+        }
 
     }
 }

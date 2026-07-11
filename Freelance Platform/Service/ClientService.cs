@@ -22,5 +22,10 @@ namespace Freelance_Platform.Service
         {
             return clientRepo.UpdateProfile(name,email,phone,address,profile);
         }
+
+        public bool AcceptFreelancers(int bidId,int projectId)
+        {
+            return clientRepo.AcceptFreelancer(bidId, projectId);
+        }
     }
 }

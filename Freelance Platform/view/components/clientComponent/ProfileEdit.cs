@@ -1,5 +1,6 @@
 ﻿using FontAwesome.Sharp;
 using Freelance_Platform.Repositories;
+using Freelance_Platform.Service;
 using Freelance_Platform.Session;
 using System;
 using System.Collections.Generic;
@@ -16,11 +17,11 @@ namespace Freelance_Platform.view.components.clientComponent
 {
     public partial class ProfileEdit : UserControl
     {
-        private readonly ClientRepository clientRepo;
+        private readonly ClientService clientService;
         public ProfileEdit()
         {
             InitializeComponent();
-            clientRepo = new ClientRepository();
+            clientService = new ClientService();
         }
 
         private void txtAddress_TextChanged(object sender, EventArgs e)
@@ -51,7 +52,7 @@ namespace Freelance_Platform.view.components.clientComponent
                 profileName = UserSession.Imagepath; 
             }
 
-            bool flag = clientRepo.UpdateProfile(txtName.Text, txtEmail.Text, txtPhone.Text, txtAddress.Text,profileName);
+            bool flag = clientService.UpdateProfile(txtName.Text, txtEmail.Text, txtPhone.Text, txtAddress.Text,profileName);
 
             if (flag)
             {
