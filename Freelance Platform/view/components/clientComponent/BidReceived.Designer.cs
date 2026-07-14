@@ -41,8 +41,9 @@
             this.reject = new System.Windows.Forms.DataGridViewButtonColumn();
             this.accept = new System.Windows.Forms.DataGridViewButtonColumn();
             this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.profile = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProfilePic = new System.Windows.Forms.DataGridViewImageColumn();
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.message = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlTitle = new Guna.UI2.WinForms.Guna2Panel();
             this.lblBudget = new System.Windows.Forms.Label();
@@ -78,10 +79,9 @@
             this.leftPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.leftPanel.Location = new System.Drawing.Point(6, 88);
             this.leftPanel.Name = "leftPanel";
-            this.leftPanel.Size = new System.Drawing.Size(936, 224);
+            this.leftPanel.Size = new System.Drawing.Size(852, 224);
             this.leftPanel.TabIndex = 2;
             this.leftPanel.WrapContents = false;
-            this.leftPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.leftPanel_Paint);
             this.leftPanel.Resize += new System.EventHandler(this.leftPanel_Resize);
             // 
             // topPanel
@@ -113,9 +113,8 @@
             this.BiddingFreelancersView.Controls.Add(this.pnlTitle);
             this.BiddingFreelancersView.Location = new System.Drawing.Point(6, 318);
             this.BiddingFreelancersView.Name = "BiddingFreelancersView";
-            this.BiddingFreelancersView.Size = new System.Drawing.Size(939, 287);
+            this.BiddingFreelancersView.Size = new System.Drawing.Size(855, 287);
             this.BiddingFreelancersView.TabIndex = 3;
-            this.BiddingFreelancersView.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
             // 
             // BiddingFreelancerView
             // 
@@ -136,8 +135,9 @@
             this.reject,
             this.accept,
             this.title,
-            this.profile,
+            this.ProfilePic,
             this.amount,
+            this.Status,
             this.message});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
@@ -154,7 +154,7 @@
             this.BiddingFreelancerView.RowHeadersVisible = false;
             this.BiddingFreelancerView.RowHeadersWidth = 60;
             this.BiddingFreelancerView.RowTemplate.Height = 24;
-            this.BiddingFreelancerView.Size = new System.Drawing.Size(939, 187);
+            this.BiddingFreelancerView.Size = new System.Drawing.Size(855, 187);
             this.BiddingFreelancerView.TabIndex = 1;
             this.BiddingFreelancerView.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.BiddingFreelancerView.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -198,12 +198,14 @@
             this.title.MinimumWidth = 6;
             this.title.Name = "title";
             // 
-            // profile
+            // ProfilePic
             // 
-            this.profile.DataPropertyName = "ProfilePic";
-            this.profile.HeaderText = "Profile";
-            this.profile.MinimumWidth = 6;
-            this.profile.Name = "profile";
+            this.ProfilePic.DataPropertyName = "ProfileImage";
+            this.ProfilePic.HeaderText = "Profile";
+            this.ProfilePic.MinimumWidth = 6;
+            this.ProfilePic.Name = "ProfilePic";
+            this.ProfilePic.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ProfilePic.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // amount
             // 
@@ -211,6 +213,13 @@
             this.amount.HeaderText = "Bid Amount";
             this.amount.MinimumWidth = 6;
             this.amount.Name = "amount";
+            // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "Status";
+            this.Status.HeaderText = "Status";
+            this.Status.MinimumWidth = 6;
+            this.Status.Name = "Status";
             // 
             // message
             // 
@@ -228,7 +237,7 @@
             this.pnlTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTitle.Location = new System.Drawing.Point(0, 0);
             this.pnlTitle.Name = "pnlTitle";
-            this.pnlTitle.Size = new System.Drawing.Size(939, 100);
+            this.pnlTitle.Size = new System.Drawing.Size(855, 100);
             this.pnlTitle.TabIndex = 0;
             // 
             // lblBudget
@@ -298,8 +307,9 @@
         private System.Windows.Forms.DataGridViewButtonColumn reject;
         private System.Windows.Forms.DataGridViewButtonColumn accept;
         private System.Windows.Forms.DataGridViewTextBoxColumn title;
-        private System.Windows.Forms.DataGridViewTextBoxColumn profile;
+        private System.Windows.Forms.DataGridViewImageColumn ProfilePic;
         private System.Windows.Forms.DataGridViewTextBoxColumn amount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.DataGridViewTextBoxColumn message;
     }
 }

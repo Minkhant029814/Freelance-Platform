@@ -229,13 +229,19 @@ namespace Freelance_Platform.view.components.FreelancerComponent
                 freelancer.Portfolio.Biography = rtxtBio.Text;
                 freelancer.Portfolio.OwnerName = txtName.Text;
 
-                if (profilePic.Image != null)
-                {
-                    profilePic.Image.Dispose(); 
-                    profilePic.Image = null;    
-                }
 
-                string profileFileName = HandleImageUpload(Convert.ToInt32(UserSession.FreelancerId), selectedFilePath);
+
+
+                string profileFileName;
+                if (string.IsNullOrEmpty(selectedFilePath))
+                {
+                    profileFileName = freelancer.Portfolio.Profile;
+                }
+                else
+                {
+                    profileFileName   = HandleImageUpload(Convert.ToInt32(UserSession.FreelancerId), selectedFilePath);
+                }
+                   
 
                 if (profileFileName == "ERROR")
                 {
@@ -288,7 +294,7 @@ namespace Freelance_Platform.view.components.FreelancerComponent
         private string HandleImageUpload(int userId, string sourceFilePath)
         {
 
-            if (string.IsNullOrEmpty(sourceFilePath))
+            if (string.IsNullOrEmpty(sourceFilePath) || !File.Exists(sourceFilePath))
             {
                 return null;
             }

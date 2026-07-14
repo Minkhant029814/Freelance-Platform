@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,11 +15,15 @@ namespace Freelance_Platform.DTO
         public string OwnerName { get; set; }
 
         public string ProfilePic { get; set; }
+
+        public Image ProfileImage { get; set; }
         public string ProfessionalTitle { get; set; }
 
         // Biddings Table ကနေလာမယ့် Data များ
         public decimal BidAmount { get; set; }
         public string Message { get; set; }
+
+        public string Status { get; set; }
        
     }
 }

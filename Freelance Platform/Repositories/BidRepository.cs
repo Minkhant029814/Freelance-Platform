@@ -92,10 +92,10 @@ namespace Freelance_Platform.Repositories
     p.Budget, 
     COUNT(b.BidId) AS TotalBids, 
    
-    SUM(CASE WHEN b.SubmissionDate >= NOW() - INTERVAL 1 DAY THEN 1 ELSE 0 END) AS NewBidsCount
+    SUM(CASE WHEN b.SubmissionDate >= NOW() - INTERVAL 1 DAY AND b.Status = 'PENDING' THEN 1 ELSE 0 END) AS NewBidsCount
     FROM Projects p
     INNER JOIN Biddings b ON p.ProjectId = b.ProjectId
-    WHERE p.ClientId = @ClientId AND b.STATUS = 'PENDING'
+    WHERE p.ClientId = @ClientId 
     GROUP BY p.ProjectId, p.ProjectTitle, p.Budget;";
 
             MySqlParameter[] ps =
@@ -126,10 +126,10 @@ namespace Freelance_Platform.Repositories
 
         public List<FreelancerBidDTO> GetFreelancerBids(int projectId)
         {
-            string query = @"SELECT  p.OwnerName, p.ProfilePic, p.ProfessionalTitle,b.BidId,b.ProjectId, b.BidAmount, b.Message 
+            string query = @"SELECT  p.OwnerName, p.ProfilePic, p.ProfessionalTitle,b.BidId,b.ProjectId, b.BidAmount, b.Message ,b.Status
                  FROM Biddings b 
                  JOIN Portfolios p ON b.FreelancerId = p.FreelancerId 
-                 WHERE b.ProjectId = @ProjectId AND b.Status = 'Pending'";
+                 WHERE b.ProjectId = @ProjectId";
             MySqlParameter[] ps =
             {
                 new MySqlParameter("@ProjectId", projectId),
@@ -148,6 +148,7 @@ namespace Freelance_Platform.Repositories
                     BidAmount = Convert.ToDecimal(row["BidAmount"]),
                     Message = row["Message"].ToString(),
                     ProfessionalTitle = row["ProfessionalTitle"].ToString(),
+                    Status = row["Status"].ToString(),
                     ProfilePic = row["ProfilePic"].ToString(),
                     
                 };
