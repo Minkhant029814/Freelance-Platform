@@ -1,8 +1,10 @@
 ﻿using Freelance_Platform.Connection;
+using Freelance_Platform.DTO;
 using Freelance_Platform.model;
 using Freelance_Platform.Session;
 using MySql.Data.MySqlClient;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -262,8 +264,79 @@ namespace Freelance_Platform.Repositories
             return null;
         }
 
-      
 
-       
+        public List<FreelancerCardDTO> GetFreelancerCards(string searchTerm = "")
+        {
+            string query = @"
+    SELECT
+        f.FreelancerId,
+        f.Expertise,
+        f.HourlyRate,
+        p.OwnerName,
+        p.ProfessionalTitle,
+        p.ProfilePic,
+        LEFT(IFNULL(p.Biography,''), 120) AS Biography,
+        GROUP_CONCAT(DISTINCT s.SkillName SEPARATOR ', ') AS Skills
+    FROM freelancers f
+    LEFT JOIN portfolios p
+        ON f.FreelancerId = p.FreelancerId
+    LEFT JOIN freelancer_skills s
+        ON f.FreelancerId = s.FreelancerId";
+
+            List<MySqlParameter> parameters = new List<MySqlParameter>();
+
+            if (!string.IsNullOrWhiteSpace(searchTerm))
+            {
+                query += @"
+        WHERE
+            p.OwnerName LIKE @Search
+            OR p.ProfessionalTitle LIKE @Search
+            OR f.Expertise LIKE @Search
+            OR s.SkillName LIKE @Search";
+
+                parameters.Add(new MySqlParameter("@Search", "%" + searchTerm + "%"));
+            }
+
+            query += @"
+    GROUP BY
+        f.FreelancerId,
+        f.Expertise,
+        f.HourlyRate,
+        p.OwnerName,
+        p.ProfessionalTitle,
+        p.ProfilePic,
+        p.Biography
+    ORDER BY p.OwnerName;";
+
+            DataTable dt = dbConn.GetData(query, parameters.ToArray());
+
+            List<FreelancerCardDTO> freelancers = new List<FreelancerCardDTO>();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                FreelancerCardDTO card = new FreelancerCardDTO
+                {
+                    FreelancerId = Convert.ToInt32(row["FreelancerId"]),
+                    OwnerName = row["OwnerName"].ToString(),
+                    ProfessionalTitle = row["ProfessionalTitle"].ToString(),
+                    Expertise = row["Expertise"].ToString(),
+                    HourlyRate = Convert.ToDecimal(row["HourlyRate"]),
+                    ProfilePic = row["ProfilePic"].ToString(),
+                    Biography = row["Biography"].ToString()
+                };
+
+                string skills = row["Skills"].ToString();
+
+                card.Skills = string.IsNullOrWhiteSpace(skills)
+                    ? new List<string>()
+                    : skills.Split(',')
+                            .Select(x => x.Trim())
+                            .ToList();
+
+                freelancers.Add(card);
+            }
+
+            return freelancers;
+        }
     }
 }

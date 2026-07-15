@@ -109,6 +109,7 @@
   <ItemGroup>
     <Compile Include="DTO\BidProjectModel.cs" />
     <Compile Include="DTO\FreelancerBidDTO.cs" />
+    <Compile Include="DTO\FreelancerCardDTO.cs" />
     <Compile Include="Repositories\FreelancerRepository.cs" />
     <Compile Include="Service\BidService.cs" />
     <Compile Include="Service\FreelancerService.cs" />
@@ -123,6 +124,18 @@
     </Compile>
     <Compile Include="view\components\clientComponent\BidReceived.Designer.cs">
       <DependentUpon>BidReceived.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\components\clientComponent\FindFreelancersAndReview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\components\clientComponent\FindFreelancersAndReview.Designer.cs">
+      <DependentUpon>FindFreelancersAndReview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\components\clientComponent\FreelancerCards.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\components\clientComponent\FreelancerCards.Designer.cs">
+      <DependentUpon>FreelancerCards.cs</DependentUpon>
     </Compile>
     <Compile Include="view\components\clientComponent\ProfileEdit.cs">
       <SubType>UserControl</SubType>
@@ -249,6 +262,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="view\components\clientComponent\BidReceived.resx">
       <DependentUpon>BidReceived.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\components\clientComponent\FindFreelancersAndReview.resx">
+      <DependentUpon>FindFreelancersAndReview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\components\clientComponent\FreelancerCards.resx">
+      <DependentUpon>FreelancerCards.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\components\clientComponent\ProfileEdit.resx">
       <DependentUpon>ProfileEdit.cs</DependentUpon>

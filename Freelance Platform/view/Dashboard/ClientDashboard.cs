@@ -1,5 +1,6 @@
 ﻿using FontAwesome.Sharp;
 using Freelance_Platform.components;
+using Freelance_Platform.DTO;
 using Freelance_Platform.model;
 using Freelance_Platform.Service;
 using Freelance_Platform.Session;
@@ -20,6 +21,8 @@ namespace Freelance_Platform.Forms.Dashboard
     {
         private  ProfileEdit profilePage;
         private BidReceived bidReceived;
+        private FindFreelancersAndReview findFreelancerPage;
+        private FreelancerService freelancerService;
        
       private readonly  ProjectService service = new ProjectService();
       
@@ -28,6 +31,7 @@ namespace Freelance_Platform.Forms.Dashboard
             InitializeComponent();
             lblGreeting.Text = "Welcome back, " + UserSession.Username;
             lblsubtitle.Text = "Here's what's happening with your projects today.";
+            freelancerService = new FreelancerService();
         }
 
         private void btnDashboard_Click(object sender, EventArgs e)
@@ -35,6 +39,7 @@ namespace Freelance_Platform.Forms.Dashboard
 
             lblGreeting.Text = "Welcome back, " + UserSession.Username;
             lblsubtitle.Text = "Here's what's happening with your projects today.";
+           
 
 
             if (profilePage != null)
@@ -52,6 +57,7 @@ namespace Freelance_Platform.Forms.Dashboard
             tableLayoutPanel1.Visible = true;
             btnPostProject.Visible = true;
             projectDisplayLayout.Visible = true;
+            guna2Panel4.Visible = true;
             guna2Panel5.Visible = true;
             panelDashboardContent.Visible = true;
             panelDashboardContent.BringToFront();
@@ -198,7 +204,9 @@ namespace Freelance_Platform.Forms.Dashboard
             
             lblGreeting.Text = "Bid Received";
             lblsubtitle.Text = "Review and Respond to Freelancer Proposal ";
+            
             guna2Panel5.Visible = false;
+            guna2Panel4.Visible = true;
             projectDisplayLayout.Visible = false;
             if (profilePage != null)
             {
@@ -213,6 +221,24 @@ namespace Freelance_Platform.Forms.Dashboard
             bidReceived.Dock = DockStyle.Fill;
             bidReceived.BringToFront();
             bidReceived.Visible = true;
+        }
+
+        private void btnFindFreelancers_Click(object sender, EventArgs e)
+        {
+            lblGreeting.Text = "Find Freelancers";
+            lblsubtitle.Text = "Discover proven professionals for your next project";
+            guna2Panel4.Visible = false;
+            tableLayoutPanel1.Visible = false;
+            if(findFreelancerPage == null)
+            {
+                List<FreelancerCardDTO> freelancers = freelancerService.GetFreelancerCards();
+                findFreelancerPage = new FindFreelancersAndReview(freelancers);
+                findFreelancerPage.Dock = DockStyle.Fill;
+                guna2Panel3.Controls.Add(findFreelancerPage);
+            }
+            findFreelancerPage.Visible = true;
+            findFreelancerPage.BringToFront();
+            
         }
     }
 }
