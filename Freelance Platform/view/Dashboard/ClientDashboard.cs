@@ -24,7 +24,7 @@ namespace Freelance_Platform.Forms.Dashboard
         private FindFreelancersAndReview findFreelancerPage;
         private readonly FreelancerService freelancerService;
 
-        public event Action<int> OpenDetails;
+    
 
         private readonly ProjectService service = new ProjectService();
 
@@ -38,45 +38,12 @@ namespace Freelance_Platform.Forms.Dashboard
 
         //Navigation Helper Method
        
-        //for event
-        FreelancerCardDetails details;
-        private void Uc_OpendDetails(int freelancerId)
-        {
-            details =
-               new FreelancerCardDetails(freelancerId);
+        
+        
 
+       
 
-
-            details.Dock = DockStyle.Fill;
-            details.closedClick += Details_CloseClicked;
-
-            guna2Panel3.Controls.Clear();
-            guna2Panel3.Controls.Add(details);
-
-
-        }
-
-
-        private void Details_CloseClicked()
-        {
-            ////guna2Panel3.Controls.Clear();
-            details.Visible = false;
-            details = null;
-            if (details != null)
-            {
-                MessageBox.Show("It's still here...");
-            }
-            else
-            {
-                MessageBox.Show("It's not here....");
-            }
-            guna2Panel3.Controls.Add(findFreelancerPage);
-
-
-            
-
-
-        }
+        
         private void btnDashboard_Click(object sender, EventArgs e)
         {
 
@@ -297,7 +264,7 @@ namespace Freelance_Platform.Forms.Dashboard
             {
                 List<FreelancerCardDTO> freelancers = freelancerService.GetFreelancerCards();
                 findFreelancerPage = new FindFreelancersAndReview(freelancers);
-                findFreelancerPage.OpendDetails += Uc_OpendDetails;
+               
                 findFreelancerPage.Dock = DockStyle.Fill;
                 guna2Panel3.Controls.Add(findFreelancerPage);
             }

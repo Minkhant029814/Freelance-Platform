@@ -20,7 +20,7 @@ namespace Freelance_Platform.view.components.clientComponent
         private readonly FreelancerCardDTO freelancer;
         private readonly int freelancerId;
 
-        public event Action<int> ViewProfileClicked;
+     
         public FreelancerCards(FreelancerCardDTO f)
         {
             InitializeComponent();
@@ -75,7 +75,7 @@ namespace Freelance_Platform.view.components.clientComponent
 
         private void btnViewProfile_Click(object sender, EventArgs e)
         {
-            ViewProfileClicked?.Invoke(freelancerId);
+            new FreelancerDetails().ShowDialog();
         }
     }
 }

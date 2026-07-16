@@ -1,13 +1,13 @@
 ﻿namespace Freelance_Platform.view.components.clientComponent
 {
-    partial class FreelancerCardDetails
+    partial class FreelancerDetails
     {
-        /// <summary> 
+        /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
+        /// <summary>
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -20,10 +20,10 @@
             base.Dispose(disposing);
         }
 
-        #region Component Designer generated code
+        #region Windows Form Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
+        /// <summary>
+        /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
@@ -40,6 +40,7 @@
             this.lblBio = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.headContainer = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnClose = new FontAwesome.Sharp.IconButton();
             this.lblReviewCount = new System.Windows.Forms.Label();
             this.lblRating = new System.Windows.Forms.Label();
             this.guna2RatingStar1 = new Guna.UI2.WinForms.Guna2RatingStar();
@@ -47,7 +48,6 @@
             this.lblProfessionalTitle = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.ProfilePic = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            this.btnClose = new FontAwesome.Sharp.IconButton();
             this.mainContainer.SuspendLayout();
             this.bodyContainer.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
@@ -65,10 +65,10 @@
             this.mainContainer.BackColor = System.Drawing.Color.White;
             this.mainContainer.Controls.Add(this.bodyContainer);
             this.mainContainer.Controls.Add(this.headContainer);
-            this.mainContainer.Location = new System.Drawing.Point(9, 15);
+            this.mainContainer.Location = new System.Drawing.Point(30, -6);
             this.mainContainer.Name = "mainContainer";
-            this.mainContainer.Size = new System.Drawing.Size(996, 633);
-            this.mainContainer.TabIndex = 0;
+            this.mainContainer.Size = new System.Drawing.Size(935, 633);
+            this.mainContainer.TabIndex = 1;
             // 
             // bodyContainer
             // 
@@ -80,9 +80,8 @@
             this.bodyContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bodyContainer.Location = new System.Drawing.Point(0, 193);
             this.bodyContainer.Name = "bodyContainer";
-            this.bodyContainer.Size = new System.Drawing.Size(996, 440);
+            this.bodyContainer.Size = new System.Drawing.Size(935, 440);
             this.bodyContainer.TabIndex = 1;
-            this.bodyContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.bodyContainer_Paint);
             // 
             // guna2Panel3
             // 
@@ -177,19 +176,31 @@
             // 
             // headContainer
             // 
+            this.headContainer.Controls.Add(this.lblHourlyRate);
             this.headContainer.Controls.Add(this.btnClose);
             this.headContainer.Controls.Add(this.lblReviewCount);
             this.headContainer.Controls.Add(this.lblRating);
             this.headContainer.Controls.Add(this.guna2RatingStar1);
-            this.headContainer.Controls.Add(this.lblHourlyRate);
             this.headContainer.Controls.Add(this.lblProfessionalTitle);
             this.headContainer.Controls.Add(this.lblName);
             this.headContainer.Controls.Add(this.ProfilePic);
             this.headContainer.Dock = System.Windows.Forms.DockStyle.Top;
             this.headContainer.Location = new System.Drawing.Point(0, 0);
             this.headContainer.Name = "headContainer";
-            this.headContainer.Size = new System.Drawing.Size(996, 193);
+            this.headContainer.Size = new System.Drawing.Size(935, 193);
             this.headContainer.TabIndex = 0;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.IconChar = FontAwesome.Sharp.IconChar.X;
+            this.btnClose.IconColor = System.Drawing.Color.IndianRed;
+            this.btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnClose.Location = new System.Drawing.Point(831, 25);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(39, 38);
+            this.btnClose.TabIndex = 7;
+            this.btnClose.UseVisualStyleBackColor = true;
             // 
             // lblReviewCount
             // 
@@ -223,7 +234,7 @@
             this.lblHourlyRate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblHourlyRate.AutoSize = true;
             this.lblHourlyRate.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHourlyRate.Location = new System.Drawing.Point(826, 73);
+            this.lblHourlyRate.Location = new System.Drawing.Point(765, 73);
             this.lblHourlyRate.Name = "lblHourlyRate";
             this.lblHourlyRate.Size = new System.Drawing.Size(105, 25);
             this.lblHourlyRate.TabIndex = 3;
@@ -260,26 +271,14 @@
             this.ProfilePic.TabIndex = 0;
             this.ProfilePic.TabStop = false;
             // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.IconChar = FontAwesome.Sharp.IconChar.X;
-            this.btnClose.IconColor = System.Drawing.Color.IndianRed;
-            this.btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnClose.Location = new System.Drawing.Point(892, 25);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(39, 38);
-            this.btnClose.TabIndex = 7;
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // FreelancerCardDetails
+            // FreelancerDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(995, 621);
             this.Controls.Add(this.mainContainer);
-            this.Name = "FreelancerCardDetails";
-            this.Size = new System.Drawing.Size(1019, 667);
+            this.Name = "FreelancerDetails";
+            this.Text = "FreelancerDetails";
             this.mainContainer.ResumeLayout(false);
             this.bodyContainer.ResumeLayout(false);
             this.guna2Panel3.ResumeLayout(false);
@@ -298,24 +297,24 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2Panel mainContainer;
-        private Guna.UI2.WinForms.Guna2Panel headContainer;
-        private System.Windows.Forms.Label lblProfessionalTitle;
-        private System.Windows.Forms.Label lblName;
-        private Guna.UI2.WinForms.Guna2CirclePictureBox ProfilePic;
-        private Guna.UI2.WinForms.Guna2RatingStar guna2RatingStar1;
-        private System.Windows.Forms.Label lblHourlyRate;
-        private System.Windows.Forms.Label lblReviewCount;
-        private System.Windows.Forms.Label lblRating;
         private Guna.UI2.WinForms.Guna2Panel bodyContainer;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.FlowLayoutPanel SkillsPanel;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblBio;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
         private System.Windows.Forms.FlowLayoutPanel PastWorkDisplay;
         private System.Windows.Forms.Label label3;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
+        private System.Windows.Forms.FlowLayoutPanel SkillsPanel;
+        private System.Windows.Forms.Label label2;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private System.Windows.Forms.Label lblBio;
+        private System.Windows.Forms.Label label1;
+        private Guna.UI2.WinForms.Guna2Panel headContainer;
+        private System.Windows.Forms.Label lblHourlyRate;
         private FontAwesome.Sharp.IconButton btnClose;
+        private System.Windows.Forms.Label lblReviewCount;
+        private System.Windows.Forms.Label lblRating;
+        private Guna.UI2.WinForms.Guna2RatingStar guna2RatingStar1;
+        private System.Windows.Forms.Label lblProfessionalTitle;
+        private System.Windows.Forms.Label lblName;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox ProfilePic;
     }
 }

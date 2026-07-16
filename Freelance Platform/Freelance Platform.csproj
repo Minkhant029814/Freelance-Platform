@@ -131,17 +131,17 @@
     <Compile Include="view\components\clientComponent\FindFreelancersAndReview.Designer.cs">
       <DependentUpon>FindFreelancersAndReview.cs</DependentUpon>
     </Compile>
-    <Compile Include="view\components\clientComponent\FreelancerCardDetails.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="view\components\clientComponent\FreelancerCardDetails.Designer.cs">
-      <DependentUpon>FreelancerCardDetails.cs</DependentUpon>
-    </Compile>
     <Compile Include="view\components\clientComponent\FreelancerCards.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="view\components\clientComponent\FreelancerCards.Designer.cs">
       <DependentUpon>FreelancerCards.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\components\clientComponent\FreelancerDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\components\clientComponent\FreelancerDetails.Designer.cs">
+      <DependentUpon>FreelancerDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="view\components\clientComponent\ProfileEdit.cs">
       <SubType>UserControl</SubType>
@@ -272,11 +272,11 @@
     <EmbeddedResource Include="view\components\clientComponent\FindFreelancersAndReview.resx">
       <DependentUpon>FindFreelancersAndReview.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="view\components\clientComponent\FreelancerCardDetails.resx">
-      <DependentUpon>FreelancerCardDetails.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="view\components\clientComponent\FreelancerCards.resx">
       <DependentUpon>FreelancerCards.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\components\clientComponent\FreelancerDetails.resx">
+      <DependentUpon>FreelancerDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\components\clientComponent\ProfileEdit.resx">
       <DependentUpon>ProfileEdit.cs</DependentUpon>
