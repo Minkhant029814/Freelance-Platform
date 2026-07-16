@@ -53,8 +53,8 @@ namespace Freelance_Platform.view.components.FreelancerComponent
                 PastWorksCard card = new PastWorksCard();
 
                 card.LoadData(p);
-                
 
+                //card.Dock = DockStyle.Fill;
                 cardDisplayLayout.Controls.Add(card);
             }
         }

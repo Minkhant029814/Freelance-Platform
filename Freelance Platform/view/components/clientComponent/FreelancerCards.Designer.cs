@@ -62,7 +62,7 @@
             this.guna2Panel1.FillColor = System.Drawing.Color.White;
             this.guna2Panel1.Location = new System.Drawing.Point(37, 38);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(551, 528);
+            this.guna2Panel1.Size = new System.Drawing.Size(551, 465);
             this.guna2Panel1.TabIndex = 0;
             // 
             // btnViewProfile
@@ -79,30 +79,34 @@
             this.btnViewProfile.FillColor = System.Drawing.Color.White;
             this.btnViewProfile.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnViewProfile.ForeColor = System.Drawing.Color.Black;
-            this.btnViewProfile.Location = new System.Drawing.Point(21, 400);
+            this.btnViewProfile.Location = new System.Drawing.Point(21, 361);
             this.btnViewProfile.Name = "btnViewProfile";
             this.btnViewProfile.Size = new System.Drawing.Size(511, 64);
             this.btnViewProfile.TabIndex = 9;
             this.btnViewProfile.Text = "View Profile\r\n";
+            this.btnViewProfile.Click += new System.EventHandler(this.btnViewProfile_Click);
             // 
             // lblDescription
             // 
             this.lblDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDescription.AutoEllipsis = true;
             this.lblDescription.BackColor = System.Drawing.Color.White;
             this.lblDescription.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescription.Location = new System.Drawing.Point(26, 302);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(506, 50);
+            this.lblDescription.Size = new System.Drawing.Size(506, 42);
             this.lblDescription.TabIndex = 8;
             this.lblDescription.Text = "description";
             // 
             // skillDisplayPanel
             // 
+            this.skillDisplayPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.skillDisplayPanel.AutoScroll = true;
             this.skillDisplayPanel.Location = new System.Drawing.Point(27, 190);
             this.skillDisplayPanel.Name = "skillDisplayPanel";
-            this.skillDisplayPanel.Size = new System.Drawing.Size(383, 83);
+            this.skillDisplayPanel.Size = new System.Drawing.Size(505, 83);
             this.skillDisplayPanel.TabIndex = 7;
             // 
             // lblReviewCount
@@ -180,7 +184,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.guna2Panel1);
             this.Name = "FreelancerCards";
-            this.Size = new System.Drawing.Size(610, 592);
+            this.Size = new System.Drawing.Size(610, 528);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilePic)).EndInit();

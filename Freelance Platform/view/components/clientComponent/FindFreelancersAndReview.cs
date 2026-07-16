@@ -17,6 +17,8 @@ namespace Freelance_Platform.view.components.clientComponent
         private readonly List<FreelancerCardDTO> freelancers;
         private FreelancerCards card;
         private FreelancerService fservice;
+
+        public event Action<int> OpendDetails;
         public FindFreelancersAndReview(List<FreelancerCardDTO> f)
         {
             InitializeComponent();
@@ -36,9 +38,15 @@ namespace Freelance_Platform.view.components.clientComponent
                 foreach(FreelancerCardDTO f in fs)
                 {
                     card = new FreelancerCards(f);
+                    card.ViewProfileClicked += Card_ViewProfileClicked;
                     professionalDisplayPanel.Controls.Add(card);
                 }
             }
+        }
+
+        private void Card_ViewProfileClicked(int freelancerId)
+        {
+            OpendDetails?.Invoke(freelancerId);
         }
 
         //Search by Text
@@ -50,8 +58,11 @@ namespace Freelance_Platform.view.components.clientComponent
 
             foreach (var item in freelancers)
             {
-                 card = new FreelancerCards(item);
-               professionalDisplayPanel.Controls.Add(card);
+                card = new FreelancerCards(item);
+
+                card.ViewProfileClicked += Card_ViewProfileClicked;
+
+                professionalDisplayPanel.Controls.Add(card);
             }
         }
     }

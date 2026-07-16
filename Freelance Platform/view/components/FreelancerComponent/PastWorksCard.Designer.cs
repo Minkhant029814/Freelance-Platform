@@ -28,50 +28,71 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.mainContainer = new Guna.UI2.WinForms.Guna2Panel();
             this.lblProjectTitle = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
+            this.mainContainer.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // mainContainer
+            // 
+            this.mainContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainContainer.BorderRadius = 15;
+            this.mainContainer.Controls.Add(this.lblDescription);
+            this.mainContainer.Controls.Add(this.lblProjectTitle);
+            this.mainContainer.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
+            this.mainContainer.Location = new System.Drawing.Point(20, 18);
+            this.mainContainer.Name = "mainContainer";
+            this.mainContainer.Size = new System.Drawing.Size(679, 181);
+            this.mainContainer.TabIndex = 0;
             // 
             // lblProjectTitle
             // 
-            this.lblProjectTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProjectTitle.ForeColor = System.Drawing.Color.White;
-            this.lblProjectTitle.Location = new System.Drawing.Point(41, 22);
+            this.lblProjectTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblProjectTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
+            this.lblProjectTitle.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProjectTitle.Location = new System.Drawing.Point(13, 19);
             this.lblProjectTitle.Name = "lblProjectTitle";
-            this.lblProjectTitle.Size = new System.Drawing.Size(239, 38);
+            this.lblProjectTitle.Size = new System.Drawing.Size(650, 58);
             this.lblProjectTitle.TabIndex = 0;
-            this.lblProjectTitle.Text = "Project Title";
+            this.lblProjectTitle.Text = "label1";
             // 
             // lblDescription
             // 
-            this.lblDescription.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescription.ForeColor = System.Drawing.Color.White;
-            this.lblDescription.Location = new System.Drawing.Point(0, 94);
+            this.lblDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDescription.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
+            this.lblDescription.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescription.Location = new System.Drawing.Point(15, 77);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(667, 71);
+            this.lblDescription.Size = new System.Drawing.Size(648, 88);
             this.lblDescription.TabIndex = 1;
-            this.lblDescription.Text = "Description";
+            this.lblDescription.Text = "label1";
             // 
             // PastWorksCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
             this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Controls.Add(this.lblDescription);
-            this.Controls.Add(this.lblProjectTitle);
-            this.Margin = new System.Windows.Forms.Padding(5);
+            this.Controls.Add(this.mainContainer);
+            this.Margin = new System.Windows.Forms.Padding(15);
             this.Name = "PastWorksCard";
-            this.Size = new System.Drawing.Size(667, 165);
+            this.Size = new System.Drawing.Size(715, 209);
             this.Load += new System.EventHandler(this.PastWorksCard_Load);
+            this.mainContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label lblProjectTitle;
+        private Guna.UI2.WinForms.Guna2Panel mainContainer;
         private System.Windows.Forms.Label lblDescription;
+        private System.Windows.Forms.Label lblProjectTitle;
     }
 }

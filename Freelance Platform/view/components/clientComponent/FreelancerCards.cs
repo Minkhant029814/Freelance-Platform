@@ -18,10 +18,14 @@ namespace Freelance_Platform.view.components.clientComponent
     public partial class FreelancerCards : UserControl
     {
         private readonly FreelancerCardDTO freelancer;
+        private readonly int freelancerId;
+
+        public event Action<int> ViewProfileClicked;
         public FreelancerCards(FreelancerCardDTO f)
         {
             InitializeComponent();
             this.freelancer = f;
+            this.freelancerId = f.FreelancerId;
             DisplayData(freelancer);
         }
 
@@ -69,5 +73,9 @@ namespace Freelance_Platform.view.components.clientComponent
             skillDisplayPanel.Controls.Add(btnSkillTag);
         }
 
+        private void btnViewProfile_Click(object sender, EventArgs e)
+        {
+            ViewProfileClicked?.Invoke(freelancerId);
+        }
     }
 }
