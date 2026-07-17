@@ -18,7 +18,11 @@ namespace Freelance_Platform.model
        
         public Portfolio Portfolio { get; set; }
 
-        
+        public float AverageRating { get; set; }
+
+        public int TotalReviews { get; set; }
+
+
         public Freelancer() : base("", "", "")
         {
             Skills = new List<string>();

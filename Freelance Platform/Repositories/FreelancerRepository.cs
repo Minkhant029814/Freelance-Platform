@@ -338,5 +338,136 @@ namespace Freelance_Platform.Repositories
 
             return freelancers;
         }
+
+
+        public Freelancer FreelancerDetails(int freelancerId)
+        {
+            string freelancerQuery = @"
+    SELECT
+        f.FreelancerId,
+        f.Expertise,
+        f.HourlyRate,
+
+        p.OwnerName,
+        p.ProfessionalTitle,
+        p.ProfilePic,
+        p.Biography,
+        p.ContactEmail,
+        p.ExternalLinks,
+
+        COALESCE(rv.AverageRating, 0) AS AverageRating,
+        COALESCE(rv.TotalReviews, 0) AS TotalReviews,
+
+        sk.SkillsList,
+
+        pw.PastProjectTitles,
+        pw.PastProjectDescriptions
+
+    FROM freelancers f
+
+    LEFT JOIN portfolios p
+        ON f.FreelancerId = p.FreelancerId
+
+    /* Skills */
+    LEFT JOIN
+    (
+        SELECT
+            FreelancerId,
+            GROUP_CONCAT(SkillName SEPARATOR ', ') AS SkillsList
+        FROM freelancer_skills
+        GROUP BY FreelancerId
+    ) sk
+        ON f.FreelancerId = sk.FreelancerId
+
+    /* Past Works */
+    LEFT JOIN
+    (
+        SELECT
+            FreelancerId,
+            GROUP_CONCAT(ProjectTitle SEPARATOR '||') AS PastProjectTitles,
+            GROUP_CONCAT(ProjectDescription SEPARATOR '||') AS PastProjectDescriptions
+        FROM freelancer_pastworks
+        GROUP BY FreelancerId
+    ) pw
+        ON f.FreelancerId = pw.FreelancerId
+
+    /* Rating Summary */
+    LEFT JOIN
+    (
+        SELECT
+            FreelancerId,
+            ROUND(AVG(Rating),1) AS AverageRating,
+            COUNT(*) AS TotalReviews
+        FROM reviews
+        GROUP BY FreelancerId
+    ) rv
+        ON f.FreelancerId = rv.FreelancerId
+
+    WHERE f.FreelancerId = @freeId;";
+
+            MySqlParameter[] para =
+            {
+        new MySqlParameter("@freeId", freelancerId)
+    };
+
+            DataTable dTable = dbConn.GetData(freelancerQuery, para);
+
+            if (dTable != null && dTable.Rows.Count > 0)
+            {
+                DataRow row = dTable.Rows[0];
+
+                Freelancer freelancer = new Freelancer
+                {
+                    Expertise = row["Expertise"].ToString(),
+                    HourlyRate = Convert.ToDecimal(row["HourlyRate"]),
+
+                    AverageRating = Convert.ToSingle(row["AverageRating"]),
+                    TotalReviews = Convert.ToInt32(row["TotalReviews"])
+                };
+
+                freelancer.Portfolio.OwnerName = row["OwnerName"].ToString();
+                freelancer.Portfolio.ProfessionalTitle = row["ProfessionalTitle"].ToString();
+                freelancer.Portfolio.Biography = row["Biography"].ToString();
+                freelancer.Portfolio.ContactEmail = row["ContactEmail"].ToString();
+                freelancer.Portfolio.Profile = row["ProfilePic"].ToString();
+                freelancer.Portfolio.ExternalLink = row["ExternalLinks"].ToString();
+
+                // Skills
+                string skillsRaw = row["SkillsList"]?.ToString();
+
+                freelancer.Skills = string.IsNullOrWhiteSpace(skillsRaw)
+                    ? new List<string>()
+                    : skillsRaw.Split(',')
+                               .Select(s => s.Trim())
+                               .ToList();
+
+                // Past Works
+                string titlesRaw = row["PastProjectTitles"]?.ToString();
+                string descsRaw = row["PastProjectDescriptions"]?.ToString();
+
+                freelancer.Portfolio.Projects = new List<Project>();
+
+                if (!string.IsNullOrWhiteSpace(titlesRaw))
+                {
+                    string[] titles = titlesRaw.Split(new[] { "||" }, StringSplitOptions.None);
+                    string[] descs = string.IsNullOrWhiteSpace(descsRaw)
+                        ? new string[0]
+                        : descsRaw.Split(new[] { "||" }, StringSplitOptions.None);
+
+                    for (int i = 0; i < titles.Length; i++)
+                    {
+                        freelancer.Portfolio.Projects.Add(new Project
+                        {
+                            ProjectTitle = titles[i],
+                            Description = (i < descs.Length) ? descs[i] : ""
+                        });
+                    }
+                }
+
+                return freelancer;
+            }
+
+            return null;
+        }
     }
 }

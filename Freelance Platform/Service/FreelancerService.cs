@@ -39,5 +39,9 @@ namespace Freelance_Platform.Service
             return freelanerRepo.GetFreelancerCards(search);
         }
 
+        public Freelancer FreelancerDetails(int freelancerId)
+        {
+            return freelanerRepo.FreelancerDetails(freelancerId);
+        }
     }
 }

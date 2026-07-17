@@ -56,8 +56,7 @@ namespace Freelance_Platform.view.components.clientComponent
         {
             Guna2Button btnSkillTag = new Guna2Button
             {
-                Image = IconChar.Xmark.ToBitmap(Color.White, 16),
-                ImageAlign = HorizontalAlignment.Right,
+                
                 Text = skill,
                 TextAlign = HorizontalAlignment.Left,
                 TextOffset = new Point(5, 0),
@@ -75,7 +74,7 @@ namespace Freelance_Platform.view.components.clientComponent
 
         private void btnViewProfile_Click(object sender, EventArgs e)
         {
-            new FreelancerDetails().ShowDialog();
+            new FreelancerDetails(freelancerId).ShowDialog();
         }
     }
 }

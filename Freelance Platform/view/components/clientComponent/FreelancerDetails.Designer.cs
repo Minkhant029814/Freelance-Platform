@@ -40,14 +40,14 @@
             this.lblBio = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.headContainer = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnClose = new FontAwesome.Sharp.IconButton();
+            this.lblHourlyRate = new System.Windows.Forms.Label();
             this.lblReviewCount = new System.Windows.Forms.Label();
             this.lblRating = new System.Windows.Forms.Label();
             this.guna2RatingStar1 = new Guna.UI2.WinForms.Guna2RatingStar();
-            this.lblHourlyRate = new System.Windows.Forms.Label();
             this.lblProfessionalTitle = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.ProfilePic = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            this.lblProjectCount = new System.Windows.Forms.Label();
             this.mainContainer.SuspendLayout();
             this.bodyContainer.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
@@ -72,12 +72,13 @@
             // 
             // bodyContainer
             // 
+            this.bodyContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.bodyContainer.AutoScroll = true;
             this.bodyContainer.BackColor = System.Drawing.Color.Cyan;
             this.bodyContainer.Controls.Add(this.guna2Panel3);
             this.bodyContainer.Controls.Add(this.guna2Panel2);
             this.bodyContainer.Controls.Add(this.guna2Panel1);
-            this.bodyContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bodyContainer.Location = new System.Drawing.Point(0, 193);
             this.bodyContainer.Name = "bodyContainer";
             this.bodyContainer.Size = new System.Drawing.Size(935, 440);
@@ -85,6 +86,7 @@
             // 
             // guna2Panel3
             // 
+            this.guna2Panel3.Controls.Add(this.lblProjectCount);
             this.guna2Panel3.Controls.Add(this.PastWorkDisplay);
             this.guna2Panel3.Controls.Add(this.label3);
             this.guna2Panel3.Location = new System.Drawing.Point(18, 629);
@@ -144,6 +146,8 @@
             // 
             // guna2Panel1
             // 
+            this.guna2Panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.guna2Panel1.Controls.Add(this.lblBio);
             this.guna2Panel1.Controls.Add(this.label1);
             this.guna2Panel1.Location = new System.Drawing.Point(18, 37);
@@ -177,7 +181,6 @@
             // headContainer
             // 
             this.headContainer.Controls.Add(this.lblHourlyRate);
-            this.headContainer.Controls.Add(this.btnClose);
             this.headContainer.Controls.Add(this.lblReviewCount);
             this.headContainer.Controls.Add(this.lblRating);
             this.headContainer.Controls.Add(this.guna2RatingStar1);
@@ -190,17 +193,16 @@
             this.headContainer.Size = new System.Drawing.Size(935, 193);
             this.headContainer.TabIndex = 0;
             // 
-            // btnClose
+            // lblHourlyRate
             // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.IconChar = FontAwesome.Sharp.IconChar.X;
-            this.btnClose.IconColor = System.Drawing.Color.IndianRed;
-            this.btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnClose.Location = new System.Drawing.Point(831, 25);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(39, 38);
-            this.btnClose.TabIndex = 7;
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.lblHourlyRate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblHourlyRate.AutoSize = true;
+            this.lblHourlyRate.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHourlyRate.Location = new System.Drawing.Point(765, 73);
+            this.lblHourlyRate.Name = "lblHourlyRate";
+            this.lblHourlyRate.Size = new System.Drawing.Size(105, 25);
+            this.lblHourlyRate.TabIndex = 3;
+            this.lblHourlyRate.Text = "Hourly Rate";
             // 
             // lblReviewCount
             // 
@@ -228,17 +230,6 @@
             this.guna2RatingStar1.Name = "guna2RatingStar1";
             this.guna2RatingStar1.Size = new System.Drawing.Size(120, 28);
             this.guna2RatingStar1.TabIndex = 4;
-            // 
-            // lblHourlyRate
-            // 
-            this.lblHourlyRate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblHourlyRate.AutoSize = true;
-            this.lblHourlyRate.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHourlyRate.Location = new System.Drawing.Point(765, 73);
-            this.lblHourlyRate.Name = "lblHourlyRate";
-            this.lblHourlyRate.Size = new System.Drawing.Size(105, 25);
-            this.lblHourlyRate.TabIndex = 3;
-            this.lblHourlyRate.Text = "Hourly Rate";
             // 
             // lblProfessionalTitle
             // 
@@ -268,8 +259,19 @@
             this.ProfilePic.Name = "ProfilePic";
             this.ProfilePic.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.ProfilePic.Size = new System.Drawing.Size(82, 83);
+            this.ProfilePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ProfilePic.TabIndex = 0;
             this.ProfilePic.TabStop = false;
+            // 
+            // lblProjectCount
+            // 
+            this.lblProjectCount.AutoSize = true;
+            this.lblProjectCount.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProjectCount.Location = new System.Drawing.Point(251, 17);
+            this.lblProjectCount.Name = "lblProjectCount";
+            this.lblProjectCount.Size = new System.Drawing.Size(161, 31);
+            this.lblProjectCount.TabIndex = 4;
+            this.lblProjectCount.Text = "Project Count";
             // 
             // FreelancerDetails
             // 
@@ -278,7 +280,10 @@
             this.ClientSize = new System.Drawing.Size(995, 621);
             this.Controls.Add(this.mainContainer);
             this.Name = "FreelancerDetails";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FreelancerDetails";
+            this.Load += new System.EventHandler(this.FreelancerDetails_Load);
+            this.Resize += new System.EventHandler(this.FreelancerDetails_Resize);
             this.mainContainer.ResumeLayout(false);
             this.bodyContainer.ResumeLayout(false);
             this.guna2Panel3.ResumeLayout(false);
@@ -309,12 +314,12 @@
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2Panel headContainer;
         private System.Windows.Forms.Label lblHourlyRate;
-        private FontAwesome.Sharp.IconButton btnClose;
         private System.Windows.Forms.Label lblReviewCount;
         private System.Windows.Forms.Label lblRating;
         private Guna.UI2.WinForms.Guna2RatingStar guna2RatingStar1;
         private System.Windows.Forms.Label lblProfessionalTitle;
         private System.Windows.Forms.Label lblName;
         private Guna.UI2.WinForms.Guna2CirclePictureBox ProfilePic;
+        private System.Windows.Forms.Label lblProjectCount;
     }
 }
