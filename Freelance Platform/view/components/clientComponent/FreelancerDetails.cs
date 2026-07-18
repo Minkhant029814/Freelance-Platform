@@ -32,6 +32,7 @@ namespace Freelance_Platform.view.components.clientComponent
         private void FreelancerDetails_Load(object sender, EventArgs e)
         {
             freelancer = fservice.FreelancerDetails(freelancerId);
+            lblNoProject.Visible = false;
             ShowData();
 
         }
@@ -92,7 +93,11 @@ namespace Freelance_Platform.view.components.clientComponent
 
             PastWorkDisplay.Controls.Clear();
 
-            if (projects == null || projects.Count == 0) return;
+            if (projects == null || projects.Count == 0)
+            {
+                lblNoProject.Visible = true;
+                return;
+            }
 
             foreach (Project p in projects)
             {
@@ -102,13 +107,22 @@ namespace Freelance_Platform.view.components.clientComponent
                 card.LoadData(p);
 
                 //card.Dock = DockStyle.Fill;
+                //card.Width = PastWorkDisplay.Width - 30;
                 PastWorkDisplay.Controls.Add(card);
             }
         }
 
         private void FreelancerDetails_Resize(object sender, EventArgs e)
         {
-            guna2Panel3.Width = bodyContainer.Width / 2;
+           
+        }
+
+        private void PastWorkDisplay_Resize(object sender, EventArgs e)
+        {
+            foreach (Control c in PastWorkDisplay.Controls)
+            {
+                c.Width = PastWorkDisplay.Width - 50;
+            }
         }
     }
 }

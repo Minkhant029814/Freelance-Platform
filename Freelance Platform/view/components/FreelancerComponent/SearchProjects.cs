@@ -47,7 +47,7 @@ namespace Freelance_Platform.view.components.FreelancerComponent
                     p.Description,
                     p.BaselineBudget.ToString("N0"),
                     p.EndDate.ToString("d/M/yyyy"),
-                    p.Status
+                    p.CurrentStatus
                 );
 
                 card.OnBidChanged += (s, ev) =>

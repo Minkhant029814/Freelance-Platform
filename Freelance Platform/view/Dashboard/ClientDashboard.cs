@@ -23,6 +23,7 @@ namespace Freelance_Platform.Forms.Dashboard
         private BidReceived bidReceived;
         private FindFreelancersAndReview findFreelancerPage;
         private readonly FreelancerService freelancerService;
+        private  ProjectsReview projectReview;
 
     
 
@@ -69,6 +70,11 @@ namespace Freelance_Platform.Forms.Dashboard
             {
                 findFreelancerPage.Visible = false;
 
+            }
+
+            if (projectReview != null)
+            {
+                projectReview.Visible = false;
             }
 
 
@@ -243,6 +249,10 @@ namespace Freelance_Platform.Forms.Dashboard
                 findFreelancerPage.Visible = false;
                 //guna2Panel3.Controls.Clear();
             }
+            if (projectReview != null)
+            {
+                projectReview.Visible = false;
+            }
             tableLayoutPanel1.Visible = true;
             btnPostProject.Visible = false;
 
@@ -271,6 +281,21 @@ namespace Freelance_Platform.Forms.Dashboard
             findFreelancerPage.Visible = true;
             findFreelancerPage.BringToFront();
 
+        }
+
+        private void btnProjectsDetails_Click(object sender, EventArgs e)
+        {
+            guna2Panel4.Visible = false;
+            tableLayoutPanel1.Visible = false;
+            if (projectReview == null)
+            {
+                projectReview = new ProjectsReview();
+                projectReview.Dock  = DockStyle.Fill;
+                
+                guna2Panel3.Controls.Add(projectReview);
+            }
+            projectReview.Visible = true;
+            projectReview.BringToFront();
         }
     }
 }

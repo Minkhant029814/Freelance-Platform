@@ -31,6 +31,7 @@
             this.mainContainer = new Guna.UI2.WinForms.Guna2Panel();
             this.bodyContainer = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
+            this.lblProjectCount = new System.Windows.Forms.Label();
             this.PastWorkDisplay = new System.Windows.Forms.FlowLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
@@ -47,7 +48,10 @@
             this.lblProfessionalTitle = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.ProfilePic = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            this.lblProjectCount = new System.Windows.Forms.Label();
+            this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.clientReviewPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblNoProject = new System.Windows.Forms.Label();
             this.mainContainer.SuspendLayout();
             this.bodyContainer.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
@@ -55,6 +59,7 @@
             this.guna2Panel1.SuspendLayout();
             this.headContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProfilePic)).BeginInit();
+            this.guna2Panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainContainer
@@ -72,10 +77,12 @@
             // 
             // bodyContainer
             // 
-            this.bodyContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.bodyContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.bodyContainer.AutoScroll = true;
             this.bodyContainer.BackColor = System.Drawing.Color.Cyan;
+            this.bodyContainer.Controls.Add(this.guna2Panel4);
             this.bodyContainer.Controls.Add(this.guna2Panel3);
             this.bodyContainer.Controls.Add(this.guna2Panel2);
             this.bodyContainer.Controls.Add(this.guna2Panel1);
@@ -86,23 +93,41 @@
             // 
             // guna2Panel3
             // 
+            this.guna2Panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2Panel3.Controls.Add(this.lblNoProject);
             this.guna2Panel3.Controls.Add(this.lblProjectCount);
             this.guna2Panel3.Controls.Add(this.PastWorkDisplay);
             this.guna2Panel3.Controls.Add(this.label3);
             this.guna2Panel3.Location = new System.Drawing.Point(18, 629);
             this.guna2Panel3.Name = "guna2Panel3";
-            this.guna2Panel3.Size = new System.Drawing.Size(452, 367);
+            this.guna2Panel3.Size = new System.Drawing.Size(879, 293);
             this.guna2Panel3.TabIndex = 2;
+            // 
+            // lblProjectCount
+            // 
+            this.lblProjectCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblProjectCount.AutoSize = true;
+            this.lblProjectCount.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProjectCount.Location = new System.Drawing.Point(606, 17);
+            this.lblProjectCount.Name = "lblProjectCount";
+            this.lblProjectCount.Size = new System.Drawing.Size(161, 31);
+            this.lblProjectCount.TabIndex = 4;
+            this.lblProjectCount.Text = "Project Count";
             // 
             // PastWorkDisplay
             // 
+            this.PastWorkDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.PastWorkDisplay.AutoScroll = true;
+            this.PastWorkDisplay.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.PastWorkDisplay.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.PastWorkDisplay.Location = new System.Drawing.Point(15, 51);
             this.PastWorkDisplay.Name = "PastWorkDisplay";
-            this.PastWorkDisplay.Size = new System.Drawing.Size(420, 299);
+            this.PastWorkDisplay.Size = new System.Drawing.Size(847, 228);
             this.PastWorkDisplay.TabIndex = 3;
             this.PastWorkDisplay.WrapContents = false;
+            this.PastWorkDisplay.Resize += new System.EventHandler(this.PastWorkDisplay_Resize);
             // 
             // label3
             // 
@@ -116,11 +141,13 @@
             // 
             // guna2Panel2
             // 
+            this.guna2Panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2Panel2.Controls.Add(this.SkillsPanel);
             this.guna2Panel2.Controls.Add(this.label2);
             this.guna2Panel2.Location = new System.Drawing.Point(18, 333);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(452, 269);
+            this.guna2Panel2.Size = new System.Drawing.Size(879, 269);
             this.guna2Panel2.TabIndex = 1;
             // 
             // SkillsPanel
@@ -131,7 +158,7 @@
             this.SkillsPanel.AutoScroll = true;
             this.SkillsPanel.Location = new System.Drawing.Point(20, 51);
             this.SkillsPanel.Name = "SkillsPanel";
-            this.SkillsPanel.Size = new System.Drawing.Size(415, 201);
+            this.SkillsPanel.Size = new System.Drawing.Size(842, 201);
             this.SkillsPanel.TabIndex = 2;
             // 
             // label2
@@ -146,13 +173,13 @@
             // 
             // guna2Panel1
             // 
-            this.guna2Panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.guna2Panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2Panel1.Controls.Add(this.lblBio);
             this.guna2Panel1.Controls.Add(this.label1);
             this.guna2Panel1.Location = new System.Drawing.Point(18, 37);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(452, 273);
+            this.guna2Panel1.Size = new System.Drawing.Size(879, 263);
             this.guna2Panel1.TabIndex = 0;
             // 
             // lblBio
@@ -164,7 +191,7 @@
             this.lblBio.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBio.Location = new System.Drawing.Point(10, 78);
             this.lblBio.Name = "lblBio";
-            this.lblBio.Size = new System.Drawing.Size(429, 181);
+            this.lblBio.Size = new System.Drawing.Size(856, 171);
             this.lblBio.TabIndex = 1;
             this.lblBio.Text = "Bio";
             // 
@@ -263,15 +290,46 @@
             this.ProfilePic.TabIndex = 0;
             this.ProfilePic.TabStop = false;
             // 
-            // lblProjectCount
+            // guna2Panel4
             // 
-            this.lblProjectCount.AutoSize = true;
-            this.lblProjectCount.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProjectCount.Location = new System.Drawing.Point(251, 17);
-            this.lblProjectCount.Name = "lblProjectCount";
-            this.lblProjectCount.Size = new System.Drawing.Size(161, 31);
-            this.lblProjectCount.TabIndex = 4;
-            this.lblProjectCount.Text = "Project Count";
+            this.guna2Panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2Panel4.Controls.Add(this.clientReviewPanel);
+            this.guna2Panel4.Controls.Add(this.label4);
+            this.guna2Panel4.Location = new System.Drawing.Point(18, 939);
+            this.guna2Panel4.Name = "guna2Panel4";
+            this.guna2Panel4.Size = new System.Drawing.Size(879, 364);
+            this.guna2Panel4.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(14, 19);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(168, 31);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Client Reviews";
+            // 
+            // clientReviewPanel
+            // 
+            this.clientReviewPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.clientReviewPanel.Location = new System.Drawing.Point(25, 76);
+            this.clientReviewPanel.Name = "clientReviewPanel";
+            this.clientReviewPanel.Size = new System.Drawing.Size(837, 270);
+            this.clientReviewPanel.TabIndex = 3;
+            // 
+            // lblNoProject
+            // 
+            this.lblNoProject.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblNoProject.AutoSize = true;
+            this.lblNoProject.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNoProject.Location = new System.Drawing.Point(359, 131);
+            this.lblNoProject.Name = "lblNoProject";
+            this.lblNoProject.Size = new System.Drawing.Size(177, 31);
+            this.lblNoProject.TabIndex = 5;
+            this.lblNoProject.Text = "No Projects Yet";
             // 
             // FreelancerDetails
             // 
@@ -295,6 +353,8 @@
             this.headContainer.ResumeLayout(false);
             this.headContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProfilePic)).EndInit();
+            this.guna2Panel4.ResumeLayout(false);
+            this.guna2Panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -321,5 +381,9 @@
         private System.Windows.Forms.Label lblName;
         private Guna.UI2.WinForms.Guna2CirclePictureBox ProfilePic;
         private System.Windows.Forms.Label lblProjectCount;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel4;
+        private System.Windows.Forms.FlowLayoutPanel clientReviewPanel;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblNoProject;
     }
 }

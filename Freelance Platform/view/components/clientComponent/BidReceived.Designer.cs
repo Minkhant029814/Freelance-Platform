@@ -79,7 +79,7 @@
             this.leftPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.leftPanel.Location = new System.Drawing.Point(6, 88);
             this.leftPanel.Name = "leftPanel";
-            this.leftPanel.Size = new System.Drawing.Size(852, 224);
+            this.leftPanel.Size = new System.Drawing.Size(831, 224);
             this.leftPanel.TabIndex = 2;
             this.leftPanel.WrapContents = false;
             this.leftPanel.Resize += new System.EventHandler(this.leftPanel_Resize);
@@ -113,7 +113,7 @@
             this.BiddingFreelancersView.Controls.Add(this.pnlTitle);
             this.BiddingFreelancersView.Location = new System.Drawing.Point(6, 318);
             this.BiddingFreelancersView.Name = "BiddingFreelancersView";
-            this.BiddingFreelancersView.Size = new System.Drawing.Size(855, 287);
+            this.BiddingFreelancersView.Size = new System.Drawing.Size(834, 287);
             this.BiddingFreelancersView.TabIndex = 3;
             // 
             // BiddingFreelancerView
@@ -154,7 +154,7 @@
             this.BiddingFreelancerView.RowHeadersVisible = false;
             this.BiddingFreelancerView.RowHeadersWidth = 60;
             this.BiddingFreelancerView.RowTemplate.Height = 24;
-            this.BiddingFreelancerView.Size = new System.Drawing.Size(855, 187);
+            this.BiddingFreelancerView.Size = new System.Drawing.Size(834, 187);
             this.BiddingFreelancerView.TabIndex = 1;
             this.BiddingFreelancerView.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.BiddingFreelancerView.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -237,7 +237,7 @@
             this.pnlTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTitle.Location = new System.Drawing.Point(0, 0);
             this.pnlTitle.Name = "pnlTitle";
-            this.pnlTitle.Size = new System.Drawing.Size(855, 100);
+            this.pnlTitle.Size = new System.Drawing.Size(834, 100);
             this.pnlTitle.TabIndex = 0;
             // 
             // lblBudget

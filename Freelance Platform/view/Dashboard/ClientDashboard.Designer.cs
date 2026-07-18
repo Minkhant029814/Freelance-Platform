@@ -53,6 +53,7 @@
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.iconPictureBox4 = new FontAwesome.Sharp.IconPictureBox();
             this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
+            this.btnProjectsDetails = new FontAwesome.Sharp.IconButton();
             this.iconButton4 = new FontAwesome.Sharp.IconButton();
             this.btnFindFreelancers = new FontAwesome.Sharp.IconButton();
             this.btnBidReceived = new FontAwesome.Sharp.IconButton();
@@ -78,6 +79,7 @@
             // guna2Panel1
             // 
             this.guna2Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
+            this.guna2Panel1.Controls.Add(this.btnProjectsDetails);
             this.guna2Panel1.Controls.Add(this.iconButton4);
             this.guna2Panel1.Controls.Add(this.btnFindFreelancers);
             this.guna2Panel1.Controls.Add(this.btnBidReceived);
@@ -400,6 +402,29 @@
             this.iconPictureBox2.TabIndex = 2;
             this.iconPictureBox2.TabStop = false;
             // 
+            // btnProjectsDetails
+            // 
+            this.btnProjectsDetails.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
+            this.btnProjectsDetails.FlatAppearance.BorderSize = 0;
+            this.btnProjectsDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProjectsDetails.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProjectsDetails.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnProjectsDetails.IconChar = FontAwesome.Sharp.IconChar.Suitcase;
+            this.btnProjectsDetails.IconColor = System.Drawing.Color.White;
+            this.btnProjectsDetails.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnProjectsDetails.IconSize = 30;
+            this.btnProjectsDetails.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProjectsDetails.Location = new System.Drawing.Point(12, 449);
+            this.btnProjectsDetails.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
+            this.btnProjectsDetails.Name = "btnProjectsDetails";
+            this.btnProjectsDetails.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnProjectsDetails.Size = new System.Drawing.Size(241, 50);
+            this.btnProjectsDetails.TabIndex = 5;
+            this.btnProjectsDetails.Text = "Projects";
+            this.btnProjectsDetails.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnProjectsDetails.UseVisualStyleBackColor = false;
+            this.btnProjectsDetails.Click += new System.EventHandler(this.btnProjectsDetails_Click);
+            // 
             // iconButton4
             // 
             this.iconButton4.BackColor = System.Drawing.Color.IndianRed;
@@ -582,5 +607,6 @@
         private System.Windows.Forms.Label lblsubtitle;
         private System.Windows.Forms.Label lblGreeting;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel5;
+        private FontAwesome.Sharp.IconButton btnProjectsDetails;
     }
 }

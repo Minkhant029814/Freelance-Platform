@@ -78,6 +78,9 @@ namespace Freelance_Platform.Repositories
         }
 
 
+       
+
+
         public List<Project> AllProject()
         {
             string query = "SELECT * FROM Projects WHERE STATUS IN ('PLANNING', 'ON_HOLD');";
@@ -103,7 +106,7 @@ namespace Freelance_Platform.Repositories
                         Description = row["Description"].ToString(),
                         BaselineBudget = Convert.ToDecimal(row["Budget"]),
                         EndDate = Convert.ToDateTime(row["EndDate"]),
-                        Status = row["Status"].ToString()
+                        CurrentStatus = row["Status"].ToString()
 
 
 

@@ -135,7 +135,7 @@ namespace Freelance_Platform.Forms.Dashboard
             {
                 FreeLancerProjectCard card = new FreeLancerProjectCard();
                 card.PopulateData(proj.ProjectId, proj.ProjectTitle, proj.Description,
-                                  proj.BaselineBudget.ToString("N0"), proj.EndDate.ToString("d/M/yyyy"),proj.Status);
+                                  proj.BaselineBudget.ToString("N0"), proj.EndDate.ToString("d/M/yyyy"),proj.CurrentStatus);
 
                 card.OnBidChanged += (s, ev) =>
                 {
