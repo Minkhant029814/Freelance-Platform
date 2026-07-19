@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.lblStatus = new System.Windows.Forms.Label();
-            this.lblDate = new System.Windows.Forms.Label();
-            this.lblProjectTitle = new System.Windows.Forms.Label();
-            this.lblDescription = new System.Windows.Forms.Label();
-            this.lblBudget = new System.Windows.Forms.Label();
             this.lblcheck = new System.Windows.Forms.Label();
+            this.lblBudget = new System.Windows.Forms.Label();
+            this.lblDescription = new System.Windows.Forms.Label();
+            this.lblProjectTitle = new System.Windows.Forms.Label();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.lblStatus = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,39 +57,25 @@
             this.guna2Panel1.Size = new System.Drawing.Size(843, 298);
             this.guna2Panel1.TabIndex = 0;
             // 
-            // lblStatus
+            // lblcheck
             // 
-            this.lblStatus.BackColor = System.Drawing.Color.White;
-            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lblStatus.Location = new System.Drawing.Point(13, 15);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(287, 32);
-            this.lblStatus.TabIndex = 0;
-            this.lblStatus.Text = "label1";
-            this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblcheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblcheck.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblcheck.Location = new System.Drawing.Point(449, 229);
+            this.lblcheck.Name = "lblcheck";
+            this.lblcheck.Size = new System.Drawing.Size(374, 37);
+            this.lblcheck.TabIndex = 5;
+            this.lblcheck.Text = "label1";
             // 
-            // lblDate
+            // lblBudget
             // 
-            this.lblDate.AutoSize = true;
-            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.Location = new System.Drawing.Point(441, 25);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(58, 22);
-            this.lblDate.TabIndex = 1;
-            this.lblDate.Text = "label1";
-            // 
-            // lblProjectTitle
-            // 
-            this.lblProjectTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblProjectTitle.BackColor = System.Drawing.Color.White;
-            this.lblProjectTitle.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProjectTitle.Location = new System.Drawing.Point(29, 47);
-            this.lblProjectTitle.Name = "lblProjectTitle";
-            this.lblProjectTitle.Size = new System.Drawing.Size(650, 45);
-            this.lblProjectTitle.TabIndex = 2;
-            this.lblProjectTitle.Text = "label1";
+            this.lblBudget.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblBudget.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBudget.Location = new System.Drawing.Point(30, 229);
+            this.lblBudget.Name = "lblBudget";
+            this.lblBudget.Size = new System.Drawing.Size(212, 37);
+            this.lblBudget.TabIndex = 4;
+            this.lblBudget.Text = "label1";
             // 
             // lblDescription
             // 
@@ -104,25 +90,39 @@
             this.lblDescription.TabIndex = 3;
             this.lblDescription.Text = "label1";
             // 
-            // lblBudget
+            // lblProjectTitle
             // 
-            this.lblBudget.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblBudget.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBudget.Location = new System.Drawing.Point(30, 229);
-            this.lblBudget.Name = "lblBudget";
-            this.lblBudget.Size = new System.Drawing.Size(212, 37);
-            this.lblBudget.TabIndex = 4;
-            this.lblBudget.Text = "label1";
+            this.lblProjectTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblProjectTitle.BackColor = System.Drawing.Color.White;
+            this.lblProjectTitle.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProjectTitle.Location = new System.Drawing.Point(29, 47);
+            this.lblProjectTitle.Name = "lblProjectTitle";
+            this.lblProjectTitle.Size = new System.Drawing.Size(650, 45);
+            this.lblProjectTitle.TabIndex = 2;
+            this.lblProjectTitle.Text = "label1";
             // 
-            // lblcheck
+            // lblDate
             // 
-            this.lblcheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblcheck.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblcheck.Location = new System.Drawing.Point(449, 229);
-            this.lblcheck.Name = "lblcheck";
-            this.lblcheck.Size = new System.Drawing.Size(374, 37);
-            this.lblcheck.TabIndex = 5;
-            this.lblcheck.Text = "label1";
+            this.lblDate.AutoSize = true;
+            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.Location = new System.Drawing.Point(306, 20);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(58, 22);
+            this.lblDate.TabIndex = 1;
+            this.lblDate.Text = "label1";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.BackColor = System.Drawing.Color.White;
+            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.lblStatus.Location = new System.Drawing.Point(13, 15);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(287, 32);
+            this.lblStatus.TabIndex = 0;
+            this.lblStatus.Text = "label1";
+            this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // PlanningCard
             // 

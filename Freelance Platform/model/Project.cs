@@ -21,5 +21,7 @@ namespace Freelance_Platform.model
 
         public string CurrentStatus { get; set; }
         public DateTime EndDate { get; set; }
+
+        public int BidCount { get; set; }
     }
 }

@@ -29,21 +29,25 @@
         private void InitializeComponent()
         {
             this.mainContainer = new Guna.UI2.WinForms.Guna2Panel();
-            this.headContainer = new Guna.UI2.WinForms.Guna2Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblTotalProjects = new System.Windows.Forms.Label();
             this.guna2TabControl1 = new Guna.UI2.WinForms.Guna2TabControl();
             this.planning = new System.Windows.Forms.TabPage();
-            this.inProgress = new System.Windows.Forms.TabPage();
-            this.completed = new System.Windows.Forms.TabPage();
-            this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
-            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.planningCardDisplay = new System.Windows.Forms.FlowLayoutPanel();
+            this.inProgress = new System.Windows.Forms.TabPage();
+            this.InProgressDisplay = new System.Windows.Forms.FlowLayoutPanel();
+            this.completed = new System.Windows.Forms.TabPage();
+            this.headContainer = new Guna.UI2.WinForms.Guna2Panel();
+            this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
+            this.lblTotalProjects = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
+            this.CompletedDisplay = new System.Windows.Forms.FlowLayoutPanel();
             this.mainContainer.SuspendLayout();
-            this.headContainer.SuspendLayout();
             this.guna2TabControl1.SuspendLayout();
             this.planning.SuspendLayout();
+            this.inProgress.SuspendLayout();
+            this.completed.SuspendLayout();
+            this.headContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -58,53 +62,8 @@
             this.mainContainer.Controls.Add(this.headContainer);
             this.mainContainer.Location = new System.Drawing.Point(14, 15);
             this.mainContainer.Name = "mainContainer";
-            this.mainContainer.Size = new System.Drawing.Size(940, 597);
+            this.mainContainer.Size = new System.Drawing.Size(980, 597);
             this.mainContainer.TabIndex = 0;
-            // 
-            // headContainer
-            // 
-            this.headContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.headContainer.Controls.Add(this.iconPictureBox2);
-            this.headContainer.Controls.Add(this.lblTotalProjects);
-            this.headContainer.Controls.Add(this.label2);
-            this.headContainer.Controls.Add(this.label1);
-            this.headContainer.Controls.Add(this.iconPictureBox1);
-            this.headContainer.Location = new System.Drawing.Point(18, 18);
-            this.headContainer.Name = "headContainer";
-            this.headContainer.Size = new System.Drawing.Size(904, 100);
-            this.headContainer.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(70, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(222, 31);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Project  WorkSpace";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(71, 60);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(396, 25);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Manage project planning, delivery, and feedback";
-            // 
-            // lblTotalProjects
-            // 
-            this.lblTotalProjects.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTotalProjects.AutoSize = true;
-            this.lblTotalProjects.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalProjects.Location = new System.Drawing.Point(723, 50);
-            this.lblTotalProjects.Name = "lblTotalProjects";
-            this.lblTotalProjects.Size = new System.Drawing.Size(116, 25);
-            this.lblTotalProjects.TabIndex = 3;
-            this.lblTotalProjects.Text = "Total Projects";
             // 
             // guna2TabControl1
             // 
@@ -118,7 +77,7 @@
             this.guna2TabControl1.Location = new System.Drawing.Point(18, 154);
             this.guna2TabControl1.Name = "guna2TabControl1";
             this.guna2TabControl1.SelectedIndex = 0;
-            this.guna2TabControl1.Size = new System.Drawing.Size(904, 417);
+            this.guna2TabControl1.Size = new System.Drawing.Size(944, 417);
             this.guna2TabControl1.TabButtonHoverState.BorderColor = System.Drawing.Color.Empty;
             this.guna2TabControl1.TabButtonHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(52)))), ((int)(((byte)(70)))));
             this.guna2TabControl1.TabButtonHoverState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
@@ -138,6 +97,7 @@
             this.guna2TabControl1.TabIndex = 1;
             this.guna2TabControl1.TabMenuBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
             this.guna2TabControl1.TabMenuOrientation = Guna.UI2.WinForms.TabMenuOrientation.HorizontalTop;
+            this.guna2TabControl1.SelectedIndexChanged += new System.EventHandler(this.guna2TabControl1_SelectedIndexChanged);
             // 
             // planning
             // 
@@ -145,46 +105,118 @@
             this.planning.Location = new System.Drawing.Point(4, 44);
             this.planning.Name = "planning";
             this.planning.Padding = new System.Windows.Forms.Padding(3);
-            this.planning.Size = new System.Drawing.Size(896, 369);
+            this.planning.Size = new System.Drawing.Size(936, 369);
             this.planning.TabIndex = 0;
             this.planning.Text = "Planning";
             this.planning.UseVisualStyleBackColor = true;
-            this.planning.Click += new System.EventHandler(this.planning_Click);
+            // 
+            // planningCardDisplay
+            // 
+            this.planningCardDisplay.AutoScroll = true;
+            this.planningCardDisplay.BackColor = System.Drawing.Color.IndianRed;
+            this.planningCardDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.planningCardDisplay.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.planningCardDisplay.Location = new System.Drawing.Point(3, 3);
+            this.planningCardDisplay.Name = "planningCardDisplay";
+            this.planningCardDisplay.Size = new System.Drawing.Size(930, 363);
+            this.planningCardDisplay.TabIndex = 0;
+            this.planningCardDisplay.WrapContents = false;
+            this.planningCardDisplay.Resize += new System.EventHandler(this.planningCardDisplay_Resize);
             // 
             // inProgress
             // 
+            this.inProgress.Controls.Add(this.InProgressDisplay);
             this.inProgress.Location = new System.Drawing.Point(4, 44);
             this.inProgress.Name = "inProgress";
             this.inProgress.Padding = new System.Windows.Forms.Padding(3);
-            this.inProgress.Size = new System.Drawing.Size(896, 369);
+            this.inProgress.Size = new System.Drawing.Size(936, 369);
             this.inProgress.TabIndex = 1;
             this.inProgress.Text = "In Progress";
             this.inProgress.UseVisualStyleBackColor = true;
-            this.inProgress.Click += new System.EventHandler(this.inProgress_Click);
+            // 
+            // InProgressDisplay
+            // 
+            this.InProgressDisplay.AutoScroll = true;
+            this.InProgressDisplay.BackColor = System.Drawing.Color.Lime;
+            this.InProgressDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.InProgressDisplay.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.InProgressDisplay.Location = new System.Drawing.Point(3, 3);
+            this.InProgressDisplay.Name = "InProgressDisplay";
+            this.InProgressDisplay.Size = new System.Drawing.Size(930, 363);
+            this.InProgressDisplay.TabIndex = 0;
+            this.InProgressDisplay.WrapContents = false;
+            this.InProgressDisplay.Resize += new System.EventHandler(this.InProgressDisplay_Resize);
             // 
             // completed
             // 
+            this.completed.Controls.Add(this.CompletedDisplay);
             this.completed.Location = new System.Drawing.Point(4, 44);
             this.completed.Name = "completed";
             this.completed.Padding = new System.Windows.Forms.Padding(3);
-            this.completed.Size = new System.Drawing.Size(896, 369);
+            this.completed.Size = new System.Drawing.Size(936, 369);
             this.completed.TabIndex = 2;
             this.completed.Text = "Completed";
             this.completed.UseVisualStyleBackColor = true;
             // 
+            // headContainer
+            // 
+            this.headContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.headContainer.Controls.Add(this.iconPictureBox2);
+            this.headContainer.Controls.Add(this.lblTotalProjects);
+            this.headContainer.Controls.Add(this.label2);
+            this.headContainer.Controls.Add(this.label1);
+            this.headContainer.Controls.Add(this.iconPictureBox1);
+            this.headContainer.Location = new System.Drawing.Point(18, 18);
+            this.headContainer.Name = "headContainer";
+            this.headContainer.Size = new System.Drawing.Size(944, 100);
+            this.headContainer.TabIndex = 0;
+            // 
             // iconPictureBox2
             // 
+            this.iconPictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.iconPictureBox2.BackColor = System.Drawing.Color.White;
             this.iconPictureBox2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.Users;
             this.iconPictureBox2.IconColor = System.Drawing.SystemColors.ControlText;
             this.iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconPictureBox2.IconSize = 47;
-            this.iconPictureBox2.Location = new System.Drawing.Point(656, 28);
+            this.iconPictureBox2.Location = new System.Drawing.Point(671, 38);
             this.iconPictureBox2.Name = "iconPictureBox2";
             this.iconPictureBox2.Size = new System.Drawing.Size(47, 47);
             this.iconPictureBox2.TabIndex = 4;
             this.iconPictureBox2.TabStop = false;
+            // 
+            // lblTotalProjects
+            // 
+            this.lblTotalProjects.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTotalProjects.AutoSize = true;
+            this.lblTotalProjects.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalProjects.Location = new System.Drawing.Point(763, 50);
+            this.lblTotalProjects.Name = "lblTotalProjects";
+            this.lblTotalProjects.Size = new System.Drawing.Size(116, 25);
+            this.lblTotalProjects.TabIndex = 3;
+            this.lblTotalProjects.Text = "Total Projects";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(71, 60);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(396, 25);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Manage project planning, delivery, and feedback";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(70, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(222, 31);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Project  WorkSpace";
             // 
             // iconPictureBox1
             // 
@@ -200,18 +232,18 @@
             this.iconPictureBox1.TabIndex = 0;
             this.iconPictureBox1.TabStop = false;
             // 
-            // planningCardDisplay
+            // CompletedDisplay
             // 
-            this.planningCardDisplay.AutoScroll = true;
-            this.planningCardDisplay.BackColor = System.Drawing.Color.IndianRed;
-            this.planningCardDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.planningCardDisplay.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.planningCardDisplay.Location = new System.Drawing.Point(3, 3);
-            this.planningCardDisplay.Name = "planningCardDisplay";
-            this.planningCardDisplay.Size = new System.Drawing.Size(890, 363);
-            this.planningCardDisplay.TabIndex = 0;
-            this.planningCardDisplay.WrapContents = false;
-            this.planningCardDisplay.Resize += new System.EventHandler(this.planningCardDisplay_Resize);
+            this.CompletedDisplay.AutoScroll = true;
+            this.CompletedDisplay.BackColor = System.Drawing.Color.SpringGreen;
+            this.CompletedDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CompletedDisplay.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.CompletedDisplay.Location = new System.Drawing.Point(3, 3);
+            this.CompletedDisplay.Name = "CompletedDisplay";
+            this.CompletedDisplay.Size = new System.Drawing.Size(930, 363);
+            this.CompletedDisplay.TabIndex = 0;
+            this.CompletedDisplay.WrapContents = false;
+            this.CompletedDisplay.Resize += new System.EventHandler(this.CompletedDisplay_Resize);
             // 
             // ProjectsReview
             // 
@@ -219,12 +251,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.mainContainer);
             this.Name = "ProjectsReview";
-            this.Size = new System.Drawing.Size(967, 626);
+            this.Size = new System.Drawing.Size(1007, 626);
             this.mainContainer.ResumeLayout(false);
-            this.headContainer.ResumeLayout(false);
-            this.headContainer.PerformLayout();
             this.guna2TabControl1.ResumeLayout(false);
             this.planning.ResumeLayout(false);
+            this.inProgress.ResumeLayout(false);
+            this.completed.ResumeLayout(false);
+            this.headContainer.ResumeLayout(false);
+            this.headContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -245,5 +279,7 @@
         private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
         private System.Windows.Forms.Label lblTotalProjects;
         private System.Windows.Forms.FlowLayoutPanel planningCardDisplay;
+        private System.Windows.Forms.FlowLayoutPanel InProgressDisplay;
+        private System.Windows.Forms.FlowLayoutPanel CompletedDisplay;
     }
 }

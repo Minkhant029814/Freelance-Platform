@@ -1,4 +1,5 @@
 ﻿using Freelance_Platform.Connection;
+using Freelance_Platform.DTO;
 using Freelance_Platform.model;
 using Freelance_Platform.Repositories;
 using System;
@@ -37,9 +38,21 @@ namespace Freelance_Platform.Service
             return projectRepo.AllProject();
         }
 
-        public bool FreelancerBids(int projectId)
+       
+
+        public List<Project> GetProjectByStatus(string status)
         {
-            return projectRepo.ToggleProjectStatus(projectId);
+            return projectRepo.GetprojectByStatus(status);
+        }
+
+        public List<AssignedProjectDTO> GetProjectsAssigned()
+        {
+            return projectRepo.GetProjectsWithAssigned();
+        }
+
+        public List<AssignedProjectDTO> GetCompletedProjects()
+        {
+            return projectRepo.GetCompletedProjects();
         }
     }
 }

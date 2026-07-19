@@ -28,6 +28,15 @@ namespace Freelance_Platform.view.components.projectsComponent
             lblProjectTitle.Text = p.ProjectTitle;
             lblDescription.Text = p.Description;
             lblBudget.Text = p.BaselineBudget.ToString();
+            lblDate.Text = p.StartDate.ToString("dd MMMM yyyy");
+
+            if(p.BidCount == 0)
+            {
+                lblcheck.Text = "Opens for Bids";
+            }else
+            {
+                lblcheck.Text = $"{p.BidCount} proposals received..";
+            }
         }
     }
 }
