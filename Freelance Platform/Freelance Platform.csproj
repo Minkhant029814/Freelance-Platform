@@ -107,6 +107,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\AcceptedProjectDTO.cs" />
     <Compile Include="DTO\BidProjectModel.cs" />
     <Compile Include="DTO\FreelancerBidDTO.cs" />
     <Compile Include="DTO\FreelancerCardDTO.cs" />
@@ -119,6 +120,18 @@
     </Compile>
     <Compile Include="view\components\clientComponent\RatingFreelancer.Designer.cs">
       <DependentUpon>RatingFreelancer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\components\FreelancerComponent\myBidsView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\components\FreelancerComponent\myBidsView.Designer.cs">
+      <DependentUpon>myBidsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\components\projectsComponent\AcceptedProjectCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\components\projectsComponent\AcceptedProjectCard.Designer.cs">
+      <DependentUpon>AcceptedProjectCard.cs</DependentUpon>
     </Compile>
     <Compile Include="view\components\projectsComponent\BidProjectsCard.cs">
       <SubType>UserControl</SubType>
@@ -296,6 +309,12 @@
     <Compile Include="Session\UserSession.cs" />
     <EmbeddedResource Include="view\components\clientComponent\RatingFreelancer.resx">
       <DependentUpon>RatingFreelancer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\components\FreelancerComponent\myBidsView.resx">
+      <DependentUpon>myBidsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\components\projectsComponent\AcceptedProjectCard.resx">
+      <DependentUpon>AcceptedProjectCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\components\projectsComponent\BidProjectsCard.resx">
       <DependentUpon>BidProjectsCard.cs</DependentUpon>

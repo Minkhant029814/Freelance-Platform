@@ -19,28 +19,30 @@ namespace Freelance_Platform.Forms.Dashboard
         // Components
         private readonly FreelancerEdit profile;
         private readonly SearchProjects searchProjects;
+        private readonly myBidsView mybids;
 
         public FreelancerDashboard()
         {
             InitializeComponent();
+            searchProjects = new SearchProjects();
+            mybids = new myBidsView();
 
-           
             profile = new FreelancerEdit(this) { Visible = false, Dock = DockStyle.Fill };
-            searchProjects = new SearchProjects(projectService.GetAllProjects()) { Visible = false, Dock = DockStyle.Fill };
-
-            
+           
             mainPanel.Controls.Add(profile);
+            searchProjects.Dock = DockStyle.Fill;
+            mybids.Dock = DockStyle.Fill;
             mainPanel.Controls.Add(searchProjects);
+            mainPanel.Controls.Add(mybids);
+            
 
           
-            flowCardDisplay.AutoScroll = true;
-            flowCardDisplay.WrapContents = false;
-            flowCardDisplay.FlowDirection = FlowDirection.TopDown;
-            flowCardDisplay.Resize += flowCardDisplay_Resize;
+          
         }
 
         private void FreelancerDashboard_Load(object sender, EventArgs e)
         {
+            ShowDashboardView();
             DisplayDashboard();
             DisplayProjectCards();
         }
@@ -49,16 +51,16 @@ namespace Freelance_Platform.Forms.Dashboard
         private void ShowDashboardView()
         {
             foreach (Control ctrl in mainPanel.Controls) ctrl.Visible = false;
-            flowCardDisplay.Visible = true;
+            bottomContainer.Visible = true;
             CardLayout.Visible = true;
-            lblRecommend.Visible = true;
+           
         }
 
         private void ShowProfileView()
         {
-            flowCardDisplay.Visible = false;
+            bottomContainer.Visible = false;
             CardLayout.Visible = false;
-            lblRecommend.Visible = false;
+            
 
             foreach (Control ctrl in mainPanel.Controls) ctrl.Visible = false;
 
@@ -73,16 +75,17 @@ namespace Freelance_Platform.Forms.Dashboard
             List<Project> updatedList = projectService.GetAllProjects();
 
             // Dashboard ကို ပြန်ဆောက်
-            DisplayProjectCards();
+            //DisplayProjectCards();
 
-            // SearchProjects ကို Data အသစ်နဲ့ Update လုပ်
-            searchProjects.ShowProjects(updatedList);
+            
+         
         }
         private void ShowBrowseView()
         {
-            flowCardDisplay.Visible = false;
+           
             CardLayout.Visible = false;
-            lblRecommend.Visible = false;
+           
+            bottomContainer.Visible = false;
 
             foreach (Control ctrl in mainPanel.Controls) ctrl.Visible = false;
 
@@ -90,10 +93,21 @@ namespace Freelance_Platform.Forms.Dashboard
             searchProjects.BringToFront();
         }
 
+        private void ShowBidsView()
+        {
+            CardLayout.Visible = false;
+            bottomContainer.Visible = false;
+            foreach (Control c in mainPanel.Controls) c.Visible = false;
+            mybids.Visible = true;
+            mybids.BringToFront();
+
+        }
+
         // Navigation Buttons
         private void btnDashboard_Click(object sender, EventArgs e)
         {
             lblGreeting.Text = freelancerService.DashboardInfo().Portfolio.OwnerName;
+            lblDesc.Text = "Here is your freelance overview";
             ShowDashboardView();
             DisplayDashboard();
         }
@@ -102,7 +116,7 @@ namespace Freelance_Platform.Forms.Dashboard
         {
             lblGreeting.Text = "Profile Setup";
             lblDesc.Text = "Complete your profile to win more projects";
-            RefreshAllViews();
+            //RefreshAllViews();
             ShowProfileView();
         }
 
@@ -110,7 +124,7 @@ namespace Freelance_Platform.Forms.Dashboard
         {
             lblGreeting.Text = "Browse Projects";
             lblDesc.Text = "Find work that matches your skills";
-            RefreshAllViews();
+            //RefreshAllViews();
             ShowBrowseView();
         }
 
@@ -127,28 +141,21 @@ namespace Freelance_Platform.Forms.Dashboard
 
         private void DisplayProjectCards()
         {
-            flowCardDisplay.SuspendLayout();
+           
             flowCardDisplay.Controls.Clear();
+
+            
             List<Project> activeProjects = projectService.GetAllProjects();
 
+          
             foreach (Project proj in activeProjects)
             {
-                FreeLancerProjectCard card = new FreeLancerProjectCard();
-                card.PopulateData(proj.ProjectId, proj.ProjectTitle, proj.Description,
-                                  proj.BaselineBudget.ToString("N0"), proj.EndDate.ToString("d/M/yyyy"),proj.CurrentStatus);
-
-                card.OnBidChanged += (s, ev) =>
-                {
-                    // တစ်ဖက်ဖက်မှာ နှိပ်လိုက်တာနဲ့ နှစ်နေရာလုံးကို Update လုပ်မယ်
-                    DisplayProjectCards();
-                    searchProjects.ShowProjects(projectService.GetAllProjects());
-                };
+                FreeLancerProjectCard card = new FreeLancerProjectCard(proj);
+            
                 card.Width = flowCardDisplay.ClientSize.Width - 25;
                 flowCardDisplay.Controls.Add(card);
             }
-            flowCardDisplay.ResumeLayout();
         }
-
         private void flowCardDisplay_Resize(object sender, EventArgs e)
         {
             foreach (Control c in flowCardDisplay.Controls) c.Width = flowCardDisplay.ClientSize.Width - 25;
@@ -162,6 +169,19 @@ namespace Freelance_Platform.Forms.Dashboard
                 new frmLogin().Show();
                 this.Hide();
             }
+        }
+
+        private void FreelancerDashboard_Shown(object sender, EventArgs e)
+        {
+            DisplayProjectCards();
+        }
+
+        private void btnMyBids_Click(object sender, EventArgs e)
+        {
+            lblGreeting.Text = "My Bids";
+            lblDesc.Text = "Track client decisions and your next steps";
+
+            ShowBidsView();
         }
     }
 }

@@ -43,5 +43,15 @@ namespace Freelance_Platform.Service
         {
             return freelanerRepo.FreelancerDetails(freelancerId);
         }
+
+        public List<Project> BrowseProjects(string search)
+        {
+            return freelanerRepo.BrowseProjects(search);
+        }
+
+        public List<AcceptedProjectDTO> GetAcceptedProjects()
+        {
+            return freelanerRepo.GetAcceptedProjects();
+        }
     }
 }

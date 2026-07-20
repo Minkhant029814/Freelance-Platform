@@ -469,5 +469,79 @@ namespace Freelance_Platform.Repositories
 
             return null;
         }
+
+        public List<Project> BrowseProjects(string searchTerm = "")
+        {
+            
+            string query = "SELECT * FROM projects WHERE Status = 'PLANNING'";
+            List<MySqlParameter> parameters = new List<MySqlParameter>();
+
+            
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                query += " AND (ProjectTitle LIKE @search OR Description LIKE @search)";
+                parameters.Add(new MySqlParameter("@search", "%" + searchTerm + "%"));
+            }
+
+           
+            DataTable dt = dbConn.GetData(query, parameters.ToArray());
+            List<Project> projects = new List<Project>();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                Project p = new Project
+                {
+                    ProjectId = Convert.ToInt32(row["ProjectId"]),
+                    ProjectTitle = row["ProjectTitle"].ToString(),
+                    Description = row["Description"].ToString(),
+                    BaselineBudget = Convert.ToDecimal(row["Budget"]),
+                    EndDate = Convert.ToDateTime(row["EndDate"]),
+                    CurrentStatus = row["Status"].ToString()
+                };
+                projects.Add(p);
+            }
+
+            return projects;
+        }
+
+
+        public List<AcceptedProjectDTO> GetAcceptedProjects()
+        {
+            string query = @"SELECT 
+    b.Status AS BiddingStatus,
+    p.ProjectTitle,
+    p.Budget AS ProjectBudget,
+    u.Username AS ClientName,
+    b.SubmissionDate AS BiddingDate
+FROM biddings b
+INNER JOIN projects p ON b.ProjectId = p.ProjectId
+INNER JOIN clients c ON p.ClientId = c.ClientId
+INNER JOIN users u ON c.UserId = u.UserId
+WHERE b.Status = 'Accepted' AND b.FreelancerId = @freelancerId;";
+
+            MySqlParameter[] para =
+            {
+                new MySqlParameter("@freelancerId",UserSession.FreelancerId)
+            };
+
+            DataTable dt = dbConn.GetData(query, para);
+            List<AcceptedProjectDTO> accepted = new List<AcceptedProjectDTO>();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                AcceptedProjectDTO p = new AcceptedProjectDTO
+                {
+                    BiddingStatus = row["BiddingStatus"].ToString(),
+                    ProjectTitle = row["ProjectTitle"].ToString(),
+                    ProjectBudget = Convert.ToDecimal(row["ProjectBudget"]),
+                    BiddingDate = Convert.ToDateTime(row["BiddingDate"]),
+                    ClientName = row["ClientName"].ToString()
+                };
+                accepted.Add(p);
+            }
+
+            return accepted;
+
+        }
     }
 }

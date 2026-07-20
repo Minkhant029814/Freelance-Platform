@@ -1,4 +1,5 @@
 ﻿using FontAwesome.Sharp;
+using Freelance_Platform.model;
 using Freelance_Platform.Service;
 using Freelance_Platform.Session;
 using System;
@@ -20,64 +21,39 @@ namespace Freelance_Platform.view.components.FreelancerComponent
         private  int projectId;
         private readonly ProjectService pService;
         private string projectStatus;
-        private  decimal Budget;
+        private readonly decimal Budget;
         private readonly BidService bidService;
 
       
 
         public event EventHandler OnBidChanged;
 
-        public FreeLancerProjectCard()
+        public FreeLancerProjectCard(Project p)
         {
             InitializeComponent();
             pService = new ProjectService();
             bidService = new BidService();
+            LoadData(p);
+
          
         }
 
-        public void PopulateData(int pid,string title, string desc, string budget, string dueDate,string status)
+        
+
+        private void LoadData(Project p)
         {
-            lblProjectTitle.Text = title;
-            this.projectId = pid;
-            this.Budget = Convert.ToDecimal(budget);
-            this.projectStatus = status;
-            lblProjectDesc.Text = desc;
-            lblProjectBudget.Text = $"${budget}";
+            this.projectId = p.ProjectId;
+            this.projectStatus = p.CurrentStatus;
+            lblProjectTitle.Text = p.ProjectTitle;
+            lblProjectDesc.Text = p.Description;
+            lblProjectBudget.Text = $"${p.BaselineBudget}";
+            lblProjectDate.Text = $" Due {p.EndDate.ToString("d/M/yyyy")}";
             UpdateUIBasedOnStatus();
             OnBidChanged?.Invoke(this, EventArgs.Empty);
 
-
-
-
-
-            lblProjectDate.Text = $"Due{dueDate}";
-
-          
-
-
-
         }
 
-        private void FreeLancerProjectCard_Load(object sender, EventArgs e)
-        {
-            this.Anchor = AnchorStyles.Left;
-            this.Anchor = AnchorStyles.Right;
-
-            // FreeLancerProjectCard.Designer.cs
-            lblProjectDesc.AutoSize = false;
-            lblProjectDesc.Width = 600;
-            lblProjectDesc.Height = 50;
-
-            this.Margin = new Padding(5);
-            this.Name = "FreeLancerProjectCard";
-            this.Size = new System.Drawing.Size(750, 173);
-
-            this.btnBidProject.Anchor =
-    ((System.Windows.Forms.AnchorStyles)
-    ((System.Windows.Forms.AnchorStyles.Top |
-      System.Windows.Forms.AnchorStyles.Right)));
-        }
-
+    //  
         private void btnBidProject_Click(object sender, EventArgs e)
         {
 

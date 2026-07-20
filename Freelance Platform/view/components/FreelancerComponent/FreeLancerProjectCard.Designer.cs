@@ -120,9 +120,9 @@
             this.btnBidProject.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
             this.btnBidProject.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnBidProject.ForeColor = System.Drawing.Color.White;
-            this.btnBidProject.Location = new System.Drawing.Point(454, 3);
+            this.btnBidProject.Location = new System.Drawing.Point(451, 3);
             this.btnBidProject.Name = "btnBidProject";
-            this.btnBidProject.Size = new System.Drawing.Size(118, 45);
+            this.btnBidProject.Size = new System.Drawing.Size(158, 45);
             this.btnBidProject.TabIndex = 13;
             this.btnBidProject.Text = "Bid / View";
             this.btnBidProject.Click += new System.EventHandler(this.btnBidProject_Click);
@@ -142,8 +142,7 @@
             this.Controls.Add(this.lblProjectTitle);
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "FreeLancerProjectCard";
-            this.Size = new System.Drawing.Size(585, 173);
-            this.Load += new System.EventHandler(this.FreeLancerProjectCard_Load);
+            this.Size = new System.Drawing.Size(622, 173);
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
             this.ResumeLayout(false);

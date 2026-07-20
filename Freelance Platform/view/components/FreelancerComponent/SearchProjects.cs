@@ -1,5 +1,6 @@
 ﻿using Freelance_Platform.Forms.Dashboard;
 using Freelance_Platform.model;
+using Freelance_Platform.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,12 +15,20 @@ namespace Freelance_Platform.view.components.FreelancerComponent
 {
     public partial class SearchProjects : UserControl
     {
+
         private readonly List<Project> projects;
-        public SearchProjects(List<Project> ps)
+        private readonly FreelancerService fservice;
+        private FreeLancerProjectCard card;
+        
+        public SearchProjects()
         {
-            this.projects = ps;
+           
             InitializeComponent();
-            ShowProjects(projects);
+            fservice = new FreelancerService();
+
+            this.projects = fservice.BrowseProjects(txtSearch.Text);
+            CreatingCard();
+           
         }
 
         private void SearchProjects_Load(object sender, EventArgs e)
@@ -27,47 +36,18 @@ namespace Freelance_Platform.view.components.FreelancerComponent
 
         }
 
-
-
-        public void ShowProjects(List<Project> projects)
+        private void CreatingCard()
         {
-            DisplayContainer.SuspendLayout();
-            DisplayContainer.Controls.Clear();
-
-           
-           
-
-            foreach (Project p in projects)
+            foreach(Project p in projects)
             {
-                FreeLancerProjectCard card = new FreeLancerProjectCard();
-
-                card.PopulateData(
-                    p.ProjectId,
-                    p.ProjectTitle,
-                    p.Description,
-                    p.BaselineBudget.ToString("N0"),
-                    p.EndDate.ToString("d/M/yyyy"),
-                    p.CurrentStatus
-                );
-
-                card.OnBidChanged += (s, ev) =>
-                {
-                    // Dashboard ကို လှမ်းခေါ်ပြီး Data အသစ်ပြန် Load ခိုင်းမယ်
-                    // (ParentForm က FreelancerDashboard ဖြစ်လို့ Casting သုံးပါတယ်)
-                    if (this.ParentForm is FreelancerDashboard dashboard)
-                    {
-                        dashboard.RefreshAllViews(); // ဒီ method လေး အောက်မှာ ကြည့်ပါ
-                    }
-                };
-
-
-                card.Width = DisplayContainer.Width - 32;
-                
-
-                DisplayContainer.Controls.Add(card);
+                card = new FreeLancerProjectCard(p);
+                ProjectDisplay.Controls.Add(card);
             }
-            DisplayContainer.ResumeLayout();
         }
+
+
+
+      
 
         private void guna2Panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -77,6 +57,19 @@ namespace Freelance_Platform.view.components.FreelancerComponent
         private void guna2Panel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void ProjectDisplay_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void ProjectDisplay_Resize(object sender, EventArgs e)
+        {
+            foreach(Control c in ProjectDisplay.Controls)
+            {
+                c.Width = ProjectDisplay.ClientSize.Width - 25;
+            }
         }
     }
 }
