@@ -112,6 +112,7 @@
     <Compile Include="DTO\FreelancerBidDTO.cs" />
     <Compile Include="DTO\FreelancerCardDTO.cs" />
     <Compile Include="DTO\AssignedProjectDTO.cs" />
+    <Compile Include="model\MileStone.cs" />
     <Compile Include="Repositories\FreelancerRepository.cs" />
     <Compile Include="Service\BidService.cs" />
     <Compile Include="Service\FreelancerService.cs" />
@@ -121,11 +122,23 @@
     <Compile Include="view\components\clientComponent\RatingFreelancer.Designer.cs">
       <DependentUpon>RatingFreelancer.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\components\FreelancerComponent\mileStoneAddComponent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\components\FreelancerComponent\mileStoneAddComponent.Designer.cs">
+      <DependentUpon>mileStoneAddComponent.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\components\FreelancerComponent\myBidsView.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="view\components\FreelancerComponent\myBidsView.Designer.cs">
       <DependentUpon>myBidsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\components\FreelancerComponent\SettingMileStone.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\components\FreelancerComponent\SettingMileStone.Designer.cs">
+      <DependentUpon>SettingMileStone.cs</DependentUpon>
     </Compile>
     <Compile Include="view\components\projectsComponent\AcceptedProjectCard.cs">
       <SubType>UserControl</SubType>
@@ -310,8 +323,14 @@
     <EmbeddedResource Include="view\components\clientComponent\RatingFreelancer.resx">
       <DependentUpon>RatingFreelancer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="view\components\FreelancerComponent\mileStoneAddComponent.resx">
+      <DependentUpon>mileStoneAddComponent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="view\components\FreelancerComponent\myBidsView.resx">
       <DependentUpon>myBidsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\components\FreelancerComponent\SettingMileStone.resx">
+      <DependentUpon>SettingMileStone.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\components\projectsComponent\AcceptedProjectCard.resx">
       <DependentUpon>AcceptedProjectCard.cs</DependentUpon>

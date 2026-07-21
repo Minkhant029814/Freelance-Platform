@@ -105,7 +105,7 @@
             // acceptedLayout
             // 
             this.acceptedLayout.AutoScroll = true;
-            this.acceptedLayout.BackColor = System.Drawing.Color.Lime;
+            this.acceptedLayout.BackColor = System.Drawing.Color.Silver;
             this.acceptedLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.acceptedLayout.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.acceptedLayout.Location = new System.Drawing.Point(3, 3);

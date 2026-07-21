@@ -8,6 +8,7 @@ namespace Freelance_Platform.DTO
 {
     public class AcceptedProjectDTO
     {
+        public int ProjectId { get; set; }
         public string BiddingStatus { get; set; }
         public string ProjectTitle { get; set; }
         public decimal ProjectBudget { get; set; }

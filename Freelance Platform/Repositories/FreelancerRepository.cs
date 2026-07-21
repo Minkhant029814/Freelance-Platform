@@ -3,6 +3,7 @@ using Freelance_Platform.DTO;
 using Freelance_Platform.model;
 using Freelance_Platform.Session;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -509,6 +510,7 @@ namespace Freelance_Platform.Repositories
         {
             string query = @"SELECT 
     b.Status AS BiddingStatus,
+    p.ProjectId,
     p.ProjectTitle,
     p.Budget AS ProjectBudget,
     u.Username AS ClientName,
@@ -531,6 +533,7 @@ WHERE b.Status = 'Accepted' AND b.FreelancerId = @freelancerId;";
             {
                 AcceptedProjectDTO p = new AcceptedProjectDTO
                 {
+                    ProjectId = Convert.ToInt32(row["ProjectId"]),
                     BiddingStatus = row["BiddingStatus"].ToString(),
                     ProjectTitle = row["ProjectTitle"].ToString(),
                     ProjectBudget = Convert.ToDecimal(row["ProjectBudget"]),
@@ -542,6 +545,45 @@ WHERE b.Status = 'Accepted' AND b.FreelancerId = @freelancerId;";
 
             return accepted;
 
+        }
+
+        public bool SetMileStones(int projectId, int freelancerId, List<Milestone> milestones)
+        {
+            try
+            {
+                foreach (var m in milestones)
+                {
+                    string query = "INSERT INTO milestones (ProjectId, FreelancerId, Title, Description, Weight, Progress, Status) " +
+                                   "VALUES (@pid, @fid, @title, @desc, @weight, @prog, @status)";
+
+                   
+                    MySqlParameter[] para = new MySqlParameter[]
+                    {
+                new MySqlParameter("@pid", projectId),
+                new MySqlParameter("@fid", freelancerId),
+                new MySqlParameter("@title", m.Title),
+                new MySqlParameter("@desc", m.Description),
+                new MySqlParameter("@weight", m.Weight),
+                new MySqlParameter("@prog", m.Progress),
+                new MySqlParameter("@status", m.Status)
+                    };
+
+                    
+                    bool success = dbConn.ExecuteCommand(query, para); 
+
+                    if (!success)
+                    {
+                        return false; 
+                    }
+                }
+
+                return true; 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
         }
     }
 }

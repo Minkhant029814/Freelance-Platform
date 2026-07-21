@@ -53,5 +53,10 @@ namespace Freelance_Platform.Service
         {
             return freelanerRepo.GetAcceptedProjects();
         }
+
+        public bool SetMileStones(int projectId,int FreelancerId,List<Milestone> ms)
+        {
+            return freelanerRepo.SetMileStones(projectId, FreelancerId, ms);
+        }
     }
 }

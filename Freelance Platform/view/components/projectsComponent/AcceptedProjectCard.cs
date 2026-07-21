@@ -1,4 +1,5 @@
 ﻿using Freelance_Platform.DTO;
+using Freelance_Platform.view.components.FreelancerComponent;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,10 +15,12 @@ namespace Freelance_Platform.view.components.projectsComponent
     public partial class AcceptedProjectCard : UserControl
     {
         private readonly AcceptedProjectDTO project;
+       
         public AcceptedProjectCard(AcceptedProjectDTO p)
         {
             InitializeComponent();
             this.project = p;
+            
             LoadData(project);
         }
 
@@ -33,6 +36,19 @@ namespace Freelance_Platform.view.components.projectsComponent
 
         private void btnStatus_Click(object sender, EventArgs e)
         {
+
+        }
+
+        
+        private void headContainer_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnSetMileStone_Click_1(object sender, EventArgs e)
+        {
+            Form setMileStone = new SettingMileStone(project.ProjectId);
+            setMileStone.ShowDialog();
 
         }
     }
