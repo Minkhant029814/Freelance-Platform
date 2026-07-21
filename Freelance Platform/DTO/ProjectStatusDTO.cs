@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Freelance_Platform.DTO
 {
-    public class AcceptedProjectDTO
+    public class ProjectStatusDTO
     {
         public int ProjectId { get; set; }
         public string BiddingStatus { get; set; }

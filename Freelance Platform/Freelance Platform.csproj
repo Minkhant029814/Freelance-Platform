@@ -107,7 +107,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DTO\AcceptedProjectDTO.cs" />
+    <Compile Include="DTO\ProjectStatusDTO.cs" />
     <Compile Include="DTO\BidProjectModel.cs" />
     <Compile Include="DTO\FreelancerBidDTO.cs" />
     <Compile Include="DTO\FreelancerCardDTO.cs" />
@@ -194,6 +194,12 @@
     <Compile Include="view\components\projectsComponent\InProgressCard.Designer.cs">
       <DependentUpon>InProgressCard.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\components\projectsComponent\PendingProjectCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\components\projectsComponent\PendingProjectCard.Designer.cs">
+      <DependentUpon>PendingProjectCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\components\projectsComponent\PlanningCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -267,6 +273,12 @@
     </Compile>
     <Compile Include="view\components\FreelancerComponent\SearchProjects.Designer.cs">
       <DependentUpon>SearchProjects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\components\projectsComponent\RejectedProjectCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\components\projectsComponent\RejectedProjectCard.Designer.cs">
+      <DependentUpon>RejectedProjectCard.cs</DependentUpon>
     </Compile>
     <Compile Include="view\Dashboard\ClientDashboard.cs">
       <SubType>Form</SubType>
@@ -359,6 +371,9 @@
     <EmbeddedResource Include="view\components\projectsComponent\InProgressCard.resx">
       <DependentUpon>InProgressCard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="view\components\projectsComponent\PendingProjectCard.resx">
+      <DependentUpon>PendingProjectCard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="view\components\projectsComponent\PlanningCard.resx">
       <DependentUpon>PlanningCard.cs</DependentUpon>
     </EmbeddedResource>
@@ -394,6 +409,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="view\components\FreelancerComponent\SearchProjects.resx">
       <DependentUpon>SearchProjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\components\projectsComponent\RejectedProjectCard.resx">
+      <DependentUpon>RejectedProjectCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\Dashboard\ClientDashboard.resx">
       <DependentUpon>ClientDashboard.cs</DependentUpon>

@@ -14,9 +14,9 @@ namespace Freelance_Platform.view.components.projectsComponent
 {
     public partial class AcceptedProjectCard : UserControl
     {
-        private readonly AcceptedProjectDTO project;
+        private readonly ProjectStatusDTO project;
        
-        public AcceptedProjectCard(AcceptedProjectDTO p)
+        public AcceptedProjectCard(ProjectStatusDTO p)
         {
             InitializeComponent();
             this.project = p;
@@ -25,7 +25,7 @@ namespace Freelance_Platform.view.components.projectsComponent
         }
 
 
-        private void LoadData(AcceptedProjectDTO p)
+        private void LoadData(ProjectStatusDTO p)
         {
             btnStatus.Text = p.BiddingStatus;
             lblAcceptDate.Text = p.BiddingDate.ToString();

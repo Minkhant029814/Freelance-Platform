@@ -33,6 +33,7 @@ namespace Freelance_Platform.view.components.FreelancerComponent
             InitializeComponent();
             pService = new ProjectService();
             bidService = new BidService();
+            Budget = p.BaselineBudget;
             LoadData(p);
 
          

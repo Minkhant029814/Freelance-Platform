@@ -49,10 +49,15 @@ namespace Freelance_Platform.Service
             return freelanerRepo.BrowseProjects(search);
         }
 
-        public List<AcceptedProjectDTO> GetAcceptedProjects()
+        public List<ProjectStatusDTO> GetBiddingProjectsByStatus(string status)
         {
-            return freelanerRepo.GetAcceptedProjects();
+            return freelanerRepo.GetBiddingProjectsByStatus(status);
         }
+
+        //public List<ProjectStatusDTO> GetPendingProjects()
+        //{
+        //    return freelanerRepo.GetPendingProjects();
+        //}
 
         public bool SetMileStones(int projectId,int FreelancerId,List<Milestone> ms)
         {

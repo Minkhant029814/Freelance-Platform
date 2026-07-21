@@ -30,6 +30,7 @@
         {
             this.mainContainer = new Guna.UI2.WinForms.Guna2Panel();
             this.bottomContainer = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnSetMileStone = new FontAwesome.Sharp.IconButton();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,7 +43,6 @@
             this.lblBudget = new System.Windows.Forms.Label();
             this.lblAcceptDate = new System.Windows.Forms.Label();
             this.btnStatus = new Guna.UI2.WinForms.Guna2Button();
-            this.btnSetMileStone = new FontAwesome.Sharp.IconButton();
             this.mainContainer.SuspendLayout();
             this.bottomContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
@@ -62,7 +62,7 @@
             this.mainContainer.FillColor = System.Drawing.Color.White;
             this.mainContainer.Location = new System.Drawing.Point(13, 12);
             this.mainContainer.Name = "mainContainer";
-            this.mainContainer.Size = new System.Drawing.Size(1000, 509);
+            this.mainContainer.Size = new System.Drawing.Size(1018, 509);
             this.mainContainer.TabIndex = 0;
             // 
             // bottomContainer
@@ -76,8 +76,32 @@
             this.bottomContainer.FillColor = System.Drawing.Color.White;
             this.bottomContainer.Location = new System.Drawing.Point(22, 342);
             this.bottomContainer.Name = "bottomContainer";
-            this.bottomContainer.Size = new System.Drawing.Size(961, 144);
+            this.bottomContainer.Size = new System.Drawing.Size(979, 144);
             this.bottomContainer.TabIndex = 2;
+            // 
+            // btnSetMileStone
+            // 
+            this.btnSetMileStone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSetMileStone.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
+            this.btnSetMileStone.FlatAppearance.BorderSize = 0;
+            this.btnSetMileStone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSetMileStone.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSetMileStone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
+            this.btnSetMileStone.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
+            this.btnSetMileStone.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
+            this.btnSetMileStone.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnSetMileStone.IconSize = 30;
+            this.btnSetMileStone.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSetMileStone.Location = new System.Drawing.Point(700, 47);
+            this.btnSetMileStone.Margin = new System.Windows.Forms.Padding(15);
+            this.btnSetMileStone.Name = "btnSetMileStone";
+            this.btnSetMileStone.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnSetMileStone.Size = new System.Drawing.Size(247, 50);
+            this.btnSetMileStone.TabIndex = 12;
+            this.btnSetMileStone.Text = "Set MileStones";
+            this.btnSetMileStone.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSetMileStone.UseVisualStyleBackColor = false;
+            this.btnSetMileStone.Click += new System.EventHandler(this.btnSetMileStone_Click_1);
             // 
             // iconPictureBox1
             // 
@@ -124,7 +148,7 @@
             this.middleContainer.FillColor = System.Drawing.Color.White;
             this.middleContainer.Location = new System.Drawing.Point(22, 190);
             this.middleContainer.Name = "middleContainer";
-            this.middleContainer.Size = new System.Drawing.Size(961, 135);
+            this.middleContainer.Size = new System.Drawing.Size(979, 135);
             this.middleContainer.TabIndex = 1;
             // 
             // lblDetails
@@ -147,7 +171,7 @@
             this.lblNote.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNote.Location = new System.Drawing.Point(23, 15);
             this.lblNote.Name = "lblNote";
-            this.lblNote.Size = new System.Drawing.Size(919, 60);
+            this.lblNote.Size = new System.Drawing.Size(937, 60);
             this.lblNote.TabIndex = 0;
             this.lblNote.Text = "label1";
             // 
@@ -163,7 +187,7 @@
             this.headContainer.FillColor = System.Drawing.Color.White;
             this.headContainer.Location = new System.Drawing.Point(15, 12);
             this.headContainer.Name = "headContainer";
-            this.headContainer.Size = new System.Drawing.Size(968, 156);
+            this.headContainer.Size = new System.Drawing.Size(986, 156);
             this.headContainer.TabIndex = 0;
             this.headContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.headContainer_Paint);
             // 
@@ -194,7 +218,7 @@
             this.lblBudget.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblBudget.BackColor = System.Drawing.Color.Transparent;
             this.lblBudget.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBudget.Location = new System.Drawing.Point(781, 19);
+            this.lblBudget.Location = new System.Drawing.Point(799, 19);
             this.lblBudget.Name = "lblBudget";
             this.lblBudget.Size = new System.Drawing.Size(140, 39);
             this.lblBudget.TabIndex = 2;
@@ -217,6 +241,7 @@
             this.btnStatus.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnStatus.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnStatus.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnStatus.FillColor = System.Drawing.Color.SpringGreen;
             this.btnStatus.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnStatus.ForeColor = System.Drawing.Color.White;
             this.btnStatus.Location = new System.Drawing.Point(15, 19);
@@ -226,37 +251,13 @@
             this.btnStatus.Text = "guna2Button1";
             this.btnStatus.Click += new System.EventHandler(this.btnStatus_Click);
             // 
-            // btnSetMileStone
-            // 
-            this.btnSetMileStone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSetMileStone.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
-            this.btnSetMileStone.FlatAppearance.BorderSize = 0;
-            this.btnSetMileStone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSetMileStone.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSetMileStone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
-            this.btnSetMileStone.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
-            this.btnSetMileStone.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
-            this.btnSetMileStone.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnSetMileStone.IconSize = 30;
-            this.btnSetMileStone.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSetMileStone.Location = new System.Drawing.Point(682, 47);
-            this.btnSetMileStone.Margin = new System.Windows.Forms.Padding(15);
-            this.btnSetMileStone.Name = "btnSetMileStone";
-            this.btnSetMileStone.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnSetMileStone.Size = new System.Drawing.Size(247, 50);
-            this.btnSetMileStone.TabIndex = 12;
-            this.btnSetMileStone.Text = "Set MileStones";
-            this.btnSetMileStone.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSetMileStone.UseVisualStyleBackColor = false;
-            this.btnSetMileStone.Click += new System.EventHandler(this.btnSetMileStone_Click_1);
-            // 
             // AcceptedProjectCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.mainContainer);
             this.Name = "AcceptedProjectCard";
-            this.Size = new System.Drawing.Size(1028, 537);
+            this.Size = new System.Drawing.Size(1046, 537);
             this.mainContainer.ResumeLayout(false);
             this.bottomContainer.ResumeLayout(false);
             this.bottomContainer.PerformLayout();

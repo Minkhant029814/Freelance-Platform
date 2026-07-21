@@ -506,7 +506,7 @@ namespace Freelance_Platform.Repositories
         }
 
 
-        public List<AcceptedProjectDTO> GetAcceptedProjects()
+        public List<ProjectStatusDTO> GetBiddingProjectsByStatus(string status)
         {
             string query = @"SELECT 
     b.Status AS BiddingStatus,
@@ -519,19 +519,20 @@ FROM biddings b
 INNER JOIN projects p ON b.ProjectId = p.ProjectId
 INNER JOIN clients c ON p.ClientId = c.ClientId
 INNER JOIN users u ON c.UserId = u.UserId
-WHERE b.Status = 'Accepted' AND b.FreelancerId = @freelancerId;";
+WHERE b.Status = @status AND b.FreelancerId = @freelancerId;";
 
             MySqlParameter[] para =
             {
-                new MySqlParameter("@freelancerId",UserSession.FreelancerId)
+                new MySqlParameter("@freelancerId",UserSession.FreelancerId),
+                new MySqlParameter("@status",status),
             };
 
             DataTable dt = dbConn.GetData(query, para);
-            List<AcceptedProjectDTO> accepted = new List<AcceptedProjectDTO>();
+            List<ProjectStatusDTO> accepted = new List<ProjectStatusDTO>();
 
             foreach (DataRow row in dt.Rows)
             {
-                AcceptedProjectDTO p = new AcceptedProjectDTO
+                ProjectStatusDTO p = new ProjectStatusDTO
                 {
                     ProjectId = Convert.ToInt32(row["ProjectId"]),
                     BiddingStatus = row["BiddingStatus"].ToString(),
@@ -546,6 +547,8 @@ WHERE b.Status = 'Accepted' AND b.FreelancerId = @freelancerId;";
             return accepted;
 
         }
+
+
 
         public bool SetMileStones(int projectId, int freelancerId, List<Milestone> milestones)
         {
