@@ -29,17 +29,18 @@
         private void InitializeComponent()
         {
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.FreelancerPanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.lblPayrate = new System.Windows.Forms.Label();
+            this.lblProfessionalTitle = new System.Windows.Forms.Label();
+            this.lblFreelancerName = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.profilePic = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            this.progressBar = new Guna.UI2.WinForms.Guna2ProgressBar();
             this.lblDescription = new System.Windows.Forms.Label();
             this.lblProjectTitle = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
-            this.progressBar = new Guna.UI2.WinForms.Guna2ProgressBar();
-            this.FreelancerPanel = new Guna.UI2.WinForms.Guna2Panel();
-            this.profilePic = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblFreelancerName = new System.Windows.Forms.Label();
-            this.lblProfessionalTitle = new System.Windows.Forms.Label();
-            this.lblPayrate = new System.Windows.Forms.Label();
+            this.lblProgressPercent = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
             this.FreelancerPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilePic)).BeginInit();
@@ -52,6 +53,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2Panel1.BackColor = System.Drawing.SystemColors.Control;
             this.guna2Panel1.BorderRadius = 20;
+            this.guna2Panel1.Controls.Add(this.lblProgressPercent);
             this.guna2Panel1.Controls.Add(this.FreelancerPanel);
             this.guna2Panel1.Controls.Add(this.progressBar);
             this.guna2Panel1.Controls.Add(this.lblDescription);
@@ -63,6 +65,79 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(856, 391);
             this.guna2Panel1.TabIndex = 1;
+            // 
+            // FreelancerPanel
+            // 
+            this.FreelancerPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.FreelancerPanel.Controls.Add(this.lblPayrate);
+            this.FreelancerPanel.Controls.Add(this.lblProfessionalTitle);
+            this.FreelancerPanel.Controls.Add(this.lblFreelancerName);
+            this.FreelancerPanel.Controls.Add(this.label1);
+            this.FreelancerPanel.Controls.Add(this.profilePic);
+            this.FreelancerPanel.Location = new System.Drawing.Point(445, 92);
+            this.FreelancerPanel.Name = "FreelancerPanel";
+            this.FreelancerPanel.Size = new System.Drawing.Size(379, 198);
+            this.FreelancerPanel.TabIndex = 5;
+            // 
+            // lblPayrate
+            // 
+            this.lblPayrate.AutoSize = true;
+            this.lblPayrate.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPayrate.Location = new System.Drawing.Point(107, 122);
+            this.lblPayrate.Name = "lblPayrate";
+            this.lblPayrate.Size = new System.Drawing.Size(55, 23);
+            this.lblPayrate.TabIndex = 4;
+            this.lblPayrate.Text = "label2";
+            // 
+            // lblProfessionalTitle
+            // 
+            this.lblProfessionalTitle.AutoSize = true;
+            this.lblProfessionalTitle.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProfessionalTitle.Location = new System.Drawing.Point(107, 87);
+            this.lblProfessionalTitle.Name = "lblProfessionalTitle";
+            this.lblProfessionalTitle.Size = new System.Drawing.Size(55, 23);
+            this.lblProfessionalTitle.TabIndex = 3;
+            this.lblProfessionalTitle.Text = "label2";
+            // 
+            // lblFreelancerName
+            // 
+            this.lblFreelancerName.AutoSize = true;
+            this.lblFreelancerName.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFreelancerName.Location = new System.Drawing.Point(107, 53);
+            this.lblFreelancerName.Name = "lblFreelancerName";
+            this.lblFreelancerName.Size = new System.Drawing.Size(55, 23);
+            this.lblFreelancerName.TabIndex = 2;
+            this.lblFreelancerName.Text = "label2";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(105, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(179, 25);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Assigned Freelancer\r\n";
+            // 
+            // profilePic
+            // 
+            this.profilePic.ImageRotate = 0F;
+            this.profilePic.Location = new System.Drawing.Point(16, 17);
+            this.profilePic.Name = "profilePic";
+            this.profilePic.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.profilePic.Size = new System.Drawing.Size(64, 64);
+            this.profilePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.profilePic.TabIndex = 0;
+            this.profilePic.TabStop = false;
+            // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(35, 349);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(505, 20);
+            this.progressBar.TabIndex = 4;
+            this.progressBar.Text = "guna2ProgressBar1";
+            this.progressBar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
             // 
             // lblDescription
             // 
@@ -111,78 +186,15 @@
             this.lblStatus.Text = "label1";
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // progressBar
+            // lblProgressPercent
             // 
-            this.progressBar.Location = new System.Drawing.Point(35, 349);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(485, 10);
-            this.progressBar.TabIndex = 4;
-            this.progressBar.Text = "guna2ProgressBar1";
-            this.progressBar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            // 
-            // FreelancerPanel
-            // 
-            this.FreelancerPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.FreelancerPanel.Controls.Add(this.lblPayrate);
-            this.FreelancerPanel.Controls.Add(this.lblProfessionalTitle);
-            this.FreelancerPanel.Controls.Add(this.lblFreelancerName);
-            this.FreelancerPanel.Controls.Add(this.label1);
-            this.FreelancerPanel.Controls.Add(this.profilePic);
-            this.FreelancerPanel.Location = new System.Drawing.Point(445, 92);
-            this.FreelancerPanel.Name = "FreelancerPanel";
-            this.FreelancerPanel.Size = new System.Drawing.Size(379, 198);
-            this.FreelancerPanel.TabIndex = 5;
-            // 
-            // profilePic
-            // 
-            this.profilePic.ImageRotate = 0F;
-            this.profilePic.Location = new System.Drawing.Point(16, 17);
-            this.profilePic.Name = "profilePic";
-            this.profilePic.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.profilePic.Size = new System.Drawing.Size(64, 64);
-            this.profilePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.profilePic.TabIndex = 0;
-            this.profilePic.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(105, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(179, 25);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Assigned Freelancer\r\n";
-            // 
-            // lblFreelancerName
-            // 
-            this.lblFreelancerName.AutoSize = true;
-            this.lblFreelancerName.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFreelancerName.Location = new System.Drawing.Point(107, 53);
-            this.lblFreelancerName.Name = "lblFreelancerName";
-            this.lblFreelancerName.Size = new System.Drawing.Size(55, 23);
-            this.lblFreelancerName.TabIndex = 2;
-            this.lblFreelancerName.Text = "label2";
-            // 
-            // lblProfessionalTitle
-            // 
-            this.lblProfessionalTitle.AutoSize = true;
-            this.lblProfessionalTitle.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProfessionalTitle.Location = new System.Drawing.Point(107, 87);
-            this.lblProfessionalTitle.Name = "lblProfessionalTitle";
-            this.lblProfessionalTitle.Size = new System.Drawing.Size(55, 23);
-            this.lblProfessionalTitle.TabIndex = 3;
-            this.lblProfessionalTitle.Text = "label2";
-            // 
-            // lblPayrate
-            // 
-            this.lblPayrate.AutoSize = true;
-            this.lblPayrate.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPayrate.Location = new System.Drawing.Point(107, 122);
-            this.lblPayrate.Name = "lblPayrate";
-            this.lblPayrate.Size = new System.Drawing.Size(55, 23);
-            this.lblPayrate.TabIndex = 4;
-            this.lblPayrate.Text = "label2";
+            this.lblProgressPercent.AutoSize = true;
+            this.lblProgressPercent.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProgressPercent.Location = new System.Drawing.Point(30, 312);
+            this.lblProgressPercent.Name = "lblProgressPercent";
+            this.lblProgressPercent.Size = new System.Drawing.Size(62, 25);
+            this.lblProgressPercent.TabIndex = 6;
+            this.lblProgressPercent.Text = "label2";
             // 
             // InProgressCard
             // 
@@ -214,5 +226,6 @@
         private Guna.UI2.WinForms.Guna2CirclePictureBox profilePic;
         private System.Windows.Forms.Label lblPayrate;
         private System.Windows.Forms.Label lblProfessionalTitle;
+        private System.Windows.Forms.Label lblProgressPercent;
     }
 }

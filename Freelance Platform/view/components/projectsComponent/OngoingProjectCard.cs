@@ -14,8 +14,11 @@ namespace Freelance_Platform.view.components.projectsComponent
 {
     public partial class OngoingProjectCard : UserControl
     {
+        public event Action ProjectDataChanged;
+        private readonly int projectId;
         public OngoingProjectCard(ProjectWithMilestonesDTO p)
         {
+            this.projectId = p.ProjectId;
             InitializeComponent();
             LoadData(p);
         }
@@ -25,10 +28,15 @@ namespace Freelance_Platform.view.components.projectsComponent
             lblClientName.Text = p.ClientName;
             lblProjectTitle.Text = p.ProjectTitle;
             btnEndate.Text = p.ProjectEndDate.ToString();
+            progressBar.Value = p.OverAllProgress;
 
+            mileStoneLayout.Controls.Clear();
             foreach(Milestone m in p.Milestones)
             {
-                MilestoneProgress mileStone = new MilestoneProgress(m);
+                MilestoneProgress mileStone = new MilestoneProgress(m,projectId);
+                mileStone.UpdatedProgress += () => {
+                    ProjectDataChanged?.Invoke();
+                };
                 mileStone.Width = mileStoneLayout.ClientSize.Width - 25;
                 mileStoneLayout.Controls.Add(mileStone);
 
@@ -42,5 +50,7 @@ namespace Freelance_Platform.view.components.projectsComponent
                 c.Width = mileStoneLayout.ClientSize.Width - 25;
             }
         }
+
+        
     }
 }

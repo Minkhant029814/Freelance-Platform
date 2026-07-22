@@ -90,7 +90,7 @@ namespace Freelance_Platform.view.components.clientComponent
             CompletedDisplay.SuspendLayout();
             CompletedDisplay.Controls.Clear();
 
-            // Completed DTO ကိုကိုယ့် Method နဲ့ယူ
+            
             List<AssignedProjectDTO> projects =
                 pservice.GetCompletedProjects();
 

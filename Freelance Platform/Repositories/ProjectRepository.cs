@@ -188,6 +188,7 @@ namespace Freelance_Platform.Repositories
     p.Budget, 
     p.EndDate,
     p.Status,
+    p.OverAllProgress,
     f.FreelancerId, 
     f.HourlyRate,
     po.OwnerName AS FreelancerName, 
@@ -215,11 +216,12 @@ WHERE p.ClientId = @clientId AND p.Status = 'IN_PROGRESS'
                 p.Freelancer.Portfolio.OwnerName = row["FreelancerName"].ToString();
                 p.Freelancer.Portfolio.ProfessionalTitle = row["ProfessionalTitle"].ToString();
                 p.Freelancer.Portfolio.Profile = row["ProfilePic"].ToString();
-
+                
                 p.Project.EndDate = Convert.ToDateTime(row["EndDate"]);
                 p.Project.ProjectTitle = row["ProjectTitle"].ToString();
                 p.Project.Description = row["Description"].ToString();
                 p.Project.BaselineBudget = Convert.ToDecimal(row["Budget"]);
+                p.Project.OverAllProgress = Convert.ToInt32(row["OverAllProgress"]);
                 p.Project.CurrentStatus = row["Status"].ToString();
                 projects.Add(p);
 
@@ -228,7 +230,7 @@ WHERE p.ClientId = @clientId AND p.Status = 'IN_PROGRESS'
             return projects;
         }
 
-
+        //Get Completed Projects By Clients
         public List<AssignedProjectDTO> GetCompletedProjects()
         {
             string query = @"SELECT 
@@ -278,5 +280,44 @@ WHERE p.ClientId = @clientId AND p.Status = 'IN_PROGRESS'
             return projects;
 
         }
+
+
+        //Calculation Progress Rate for onGoing (In_Progress) projects
+
+        public bool CalculateProjectProgressRate(int projectId)
+        {
+            
+            string getMilestonesQuery = "SELECT Weight, Progress FROM milestones WHERE ProjectId = @pId";
+            MySqlParameter[] pParams = { new MySqlParameter("@pId", projectId) };
+            DataTable dt = dbconnect.GetData(getMilestonesQuery, pParams);
+
+            double totalWeightedProgress = 0;
+            double totalWeight = 0;
+
+            foreach (DataRow row in dt.Rows)
+            {
+                double weight = Convert.ToDouble(row["Weight"]);
+                double progress = Convert.ToDouble(row["Progress"]);
+
+                totalWeightedProgress += (progress * weight);
+                totalWeight += weight;
+            }
+
+            int overallProgress = 0;
+            if (totalWeight > 0)
+            {
+                overallProgress = (int)(totalWeightedProgress / totalWeight);
+            }
+
+           
+            string updateProjectQuery = "UPDATE projects SET OverallProgress = @overall WHERE ProjectId = @pId";
+            MySqlParameter[] projParams = {
+        new MySqlParameter("@overall", overallProgress),
+        new MySqlParameter("@pId", projectId)
+    };
+
+            return dbconnect.ExecuteCommand(updateProjectQuery, projParams);
+        }
+
     }
 }

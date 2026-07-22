@@ -14,6 +14,8 @@ namespace Freelance_Platform.DTO
         public DateTime ProjectEndDate { get; set; }
         public string ClientName { get; set; }
 
+        public int OverAllProgress { get; set; }
+
         public List<Milestone> Milestones { get; set; } = new List<Milestone>();
     }
 }

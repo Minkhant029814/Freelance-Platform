@@ -15,6 +15,8 @@ namespace Freelance_Platform.model
         public string Description { get; set; }
         public int Weight { get; set; }
         public int Progress { get; set; }
+
+        public int OverAllProgress { get; set; }
         public string Status { get; set; } // PENDING, IN_PROGRESS, COMPLETED
     }
 }

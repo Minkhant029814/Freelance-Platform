@@ -29,6 +29,8 @@ namespace Freelance_Platform.view.components.projectsComponent
             lblDescription.Text = pf.Project.Description;
             lblDate.Text = pf.Project.EndDate.ToString("dd MMMM yyyy");
             lblStatus.Text = pf.Project.CurrentStatus;
+            progressBar.Value = pf.Project.OverAllProgress;
+            lblProgressPercent.Text = $"Mile Stone Completed Percentage is {pf.Project.OverAllProgress} %";
 
 
             //Freelancers info

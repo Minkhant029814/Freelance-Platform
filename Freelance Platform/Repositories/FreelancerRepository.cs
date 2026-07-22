@@ -66,13 +66,13 @@ namespace Freelance_Platform.Repositories
                             cmd.Parameters.AddWithValue("@Bio", freelancer.Portfolio.Biography);
                             cmd.Parameters.AddWithValue("@contact", freelancer.Portfolio.ContactEmail);
                             cmd.Parameters.AddWithValue("@link", freelancer.Portfolio.ExternalLink);
-                            
+
                             cmd.ExecuteNonQuery();
                         }
 
                         var projects = freelancer.Portfolio?.Projects ?? new List<Project>();
 
-                        foreach (var project in projects )
+                        foreach (var project in projects)
                         {
                             string freelancer_pastWorkQuery = "Insert into freelancer_pastworks (freelancerId,ProjectTitle,ProjectDescription) values (@fid,@pTitle,@pDesc);";
 
@@ -80,12 +80,12 @@ namespace Freelance_Platform.Repositories
                             {
                                 cmd.Parameters.AddWithValue("@fid", lastId);
                                 cmd.Parameters.AddWithValue("@pTitle", project.ProjectTitle ?? (object)DBNull.Value);
-                                cmd.Parameters.AddWithValue("@pDesc", project.Description ?? (object) DBNull.Value);
+                                cmd.Parameters.AddWithValue("@pDesc", project.Description ?? (object)DBNull.Value);
                                 cmd.ExecuteNonQuery();
                             }
 
                         }
-                        
+
 
                         foreach (var skill in freelancer.Skills)
                         {
@@ -119,7 +119,7 @@ namespace Freelance_Platform.Repositories
                 {
                     try
                     {
-                        
+
                         string queryFreelancer = @"UPDATE freelancers SET Expertise = @Expertise, HourlyRate = @HourlyRate 
                                           WHERE FreelancerId = @fid;";
 
@@ -131,7 +131,7 @@ namespace Freelance_Platform.Repositories
                             cmd.ExecuteNonQuery();
                         }
 
-                       
+
                         string queryPortfolio = @"UPDATE portfolios SET OwnerName = @OwnerName, ProfilePic = @pic, 
                                         ProfessionalTitle = @Title, Biography = @Bio, 
                                         ContactEmail = @contact, ExternalLinks = @link 
@@ -149,14 +149,14 @@ namespace Freelance_Platform.Repositories
                             cmd.ExecuteNonQuery();
                         }
 
-               
+
                         string delWorks = "DELETE FROM freelancer_pastworks WHERE freelancerId = @fid;";
                         string delSkills = "DELETE FROM freelancer_skills WHERE FreelancerId = @fid;";
 
                         using (MySqlCommand cmd = new MySqlCommand(delWorks, conn, trans)) { cmd.Parameters.AddWithValue("@fid", freelancer.FreelancerId); cmd.ExecuteNonQuery(); }
                         using (MySqlCommand cmd = new MySqlCommand(delSkills, conn, trans)) { cmd.Parameters.AddWithValue("@fid", freelancer.FreelancerId); cmd.ExecuteNonQuery(); }
 
-                        
+
                         foreach (var project in freelancer.Portfolio.Projects)
                         {
                             string insWork = "INSERT INTO freelancer_pastworks (freelancerId, ProjectTitle, ProjectDescription) VALUES (@fid, @pTitle, @pDesc);";
@@ -169,7 +169,7 @@ namespace Freelance_Platform.Repositories
                             }
                         }
 
-                       
+
                         foreach (var skill in freelancer.Skills)
                         {
                             string insSkill = "INSERT INTO freelancer_skills (FreelancerId, SkillName) VALUES (@fid, @SkillName);";
@@ -213,7 +213,7 @@ namespace Freelance_Platform.Repositories
             };
 
             DataTable dTable = dbConn.GetData(freelancerQuery, para);
-         
+
             if (dTable != null & dTable.Rows.Count > 0)
             {
 
@@ -236,16 +236,16 @@ namespace Freelance_Platform.Repositories
                 string skillsRaw = dTable.Rows[0]["SkillsList"].ToString();
                 f.Skills = string.IsNullOrEmpty(skillsRaw) ? new List<string>() : skillsRaw.Split(',').Select(s => s.Trim()).ToList();
 
-               
+
                 string titlesRaw = dTable.Rows[0]["PastProjectTitles"].ToString();
-                
+
                 string descsRaw = dTable.Rows[0]["PastProjectDescriptions"].ToString();
 
                 if (!string.IsNullOrEmpty(titlesRaw))
                 {
                     var titles = titlesRaw.Split(new string[] { "||" }, StringSplitOptions.None);
                     var descs = descsRaw.Split(new string[] { "||" }, StringSplitOptions.None);
-                   
+
                     //MessageBox.Show("Titles count: " + titles.Length + "\nDescs count: " + descs.Length);
 
                     f.Portfolio.Projects = titles.Select((t, i) => new Project
@@ -473,18 +473,18 @@ namespace Freelance_Platform.Repositories
 
         public List<Project> BrowseProjects(string searchTerm = "")
         {
-            
+
             string query = "SELECT * FROM projects WHERE Status = 'PLANNING'";
             List<MySqlParameter> parameters = new List<MySqlParameter>();
 
-            
+
             if (!string.IsNullOrEmpty(searchTerm))
             {
                 query += " AND (ProjectTitle LIKE @search OR Description LIKE @search)";
                 parameters.Add(new MySqlParameter("@search", "%" + searchTerm + "%"));
             }
 
-           
+
             DataTable dt = dbConn.GetData(query, parameters.ToArray());
             List<Project> projects = new List<Project>();
 
@@ -559,7 +559,7 @@ WHERE b.Status = @status AND b.FreelancerId = @freelancerId;";
                     string query = "INSERT INTO milestones (ProjectId, FreelancerId, Title, Description, Weight, Progress, Status) " +
                                    "VALUES (@pid, @fid, @title, @desc, @weight, @prog, @status)";
 
-                   
+
                     MySqlParameter[] para = new MySqlParameter[]
                     {
                 new MySqlParameter("@pid", projectId),
@@ -571,16 +571,16 @@ WHERE b.Status = @status AND b.FreelancerId = @freelancerId;";
                 new MySqlParameter("@status", m.Status)
                     };
 
-                    
-                    bool success = dbConn.ExecuteCommand(query, para); 
+
+                    bool success = dbConn.ExecuteCommand(query, para);
 
                     if (!success)
                     {
-                        return false; 
+                        return false;
                     }
                 }
 
-                return true; 
+                return true;
             }
             catch (Exception ex)
             {
@@ -595,6 +595,7 @@ WHERE b.Status = @status AND b.FreelancerId = @freelancerId;";
     p.ProjectId,
     p.ProjectTitle,
     p.EndDate AS projectEndDate,
+    p.OverAllProgress,
     u.Username AS ClientName,
 
     m.MilestoneId,
@@ -629,14 +630,14 @@ ORDER BY p.ProjectId,m.MilestoneId;";
 
             DataTable dt = dbConn.GetData(query, ps);
 
-            
+
             Dictionary<int, ProjectWithMilestonesDTO> projectDict = new Dictionary<int, ProjectWithMilestonesDTO>();
 
             foreach (DataRow row in dt.Rows)
             {
                 int projectId = Convert.ToInt32(row["ProjectId"]);
 
-                
+
                 if (!projectDict.ContainsKey(projectId))
                 {
                     ProjectWithMilestonesDTO p = new ProjectWithMilestonesDTO
@@ -644,13 +645,14 @@ ORDER BY p.ProjectId,m.MilestoneId;";
                         ProjectId = projectId,
                         ProjectTitle = row["projectTitle"].ToString(),
                         ProjectEndDate = Convert.ToDateTime(row["projectEndDate"]),
+                        OverAllProgress = Convert.ToInt32(row["OverAllProgress"]),
                         ClientName = row["ClientName"].ToString(),
-                        Milestones = new List<Milestone>() 
+                        Milestones = new List<Milestone>()
                     };
                     projectDict.Add(projectId, p);
                 }
 
-               
+
                 if (row["MilestoneId"] != DBNull.Value)
                 {
                     Milestone milestone = new Milestone
@@ -666,8 +668,32 @@ ORDER BY p.ProjectId,m.MilestoneId;";
                 }
             }
 
-           
+
             return new List<ProjectWithMilestonesDTO>(projectDict.Values);
         }
+
+        public bool UpdateMileStoneProgress(int milestoneId, int newProgress, string newStatus)
+        {
+            try
+            {
+                string query = "UPDATE milestones SET Progress = @progress, Status = @status, UpdatedAt = NOW() WHERE MilestoneId = @milestoneId";
+
+                MySqlParameter[] ps =
+                {
+               new  MySqlParameter("@milestoneId",milestoneId),
+               new MySqlParameter("@progress",newProgress),
+               new MySqlParameter("@status",newStatus)
+            };
+
+                return dbConn.ExecuteCommand(query, ps);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
+
     }
 }

@@ -54,5 +54,10 @@ namespace Freelance_Platform.Service
         {
             return projectRepo.GetCompletedProjects();
         }
+
+        public bool CalculateProjectProgressRate(int projectId)
+        {
+            return projectRepo.CalculateProjectProgressRate(projectId);
+        }
     }
 }

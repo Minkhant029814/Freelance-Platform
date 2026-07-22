@@ -17,25 +17,32 @@ namespace Freelance_Platform.view.components.FreelancerComponent
     public partial class OngoingProjectComponent : UserControl
     {
         private readonly FreelancerService fservice;
-        private readonly List<ProjectWithMilestonesDTO> projectsWithMilestones;
+        private  List<ProjectWithMilestonesDTO> projectsWithMilestones;
         public OngoingProjectComponent()
         {
             InitializeComponent();
             fservice = new FreelancerService();
+            LoadAllProjects();
+        }
+
+        private void LoadAllProjects()
+        {
             projectsWithMilestones = fservice.GetProjectsWithMilestones(Convert.ToInt32(UserSession.FreelancerId));
-            MessageBox.Show("Freelancer Id is ..." + UserSession.FreelancerId + "\n" + "Project counts is " + projectsWithMilestones.Count) ;
+
             LoadData(projectsWithMilestones);
-            
-            
 
         }
 
         private void LoadData(List<ProjectWithMilestonesDTO> ps)
         {
+            ongoingProjectLayout.Controls.Clear();
             foreach(ProjectWithMilestonesDTO p in ps)
             {
                 OngoingProjectCard card = new OngoingProjectCard(p);
-
+                card.ProjectDataChanged += () =>
+                {
+                    LoadAllProjects();
+                };
                 card.Width = ongoingProjectLayout.ClientSize.Width - 25;
                 ongoingProjectLayout.Controls.Add(card);
             }
