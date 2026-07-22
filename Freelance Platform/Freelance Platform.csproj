@@ -112,6 +112,7 @@
     <Compile Include="DTO\FreelancerBidDTO.cs" />
     <Compile Include="DTO\FreelancerCardDTO.cs" />
     <Compile Include="DTO\AssignedProjectDTO.cs" />
+    <Compile Include="DTO\ProjectWithMilestoneDTO.cs" />
     <Compile Include="model\MileStone.cs" />
     <Compile Include="Repositories\FreelancerRepository.cs" />
     <Compile Include="Service\BidService.cs" />
@@ -133,6 +134,12 @@
     </Compile>
     <Compile Include="view\components\FreelancerComponent\myBidsView.Designer.cs">
       <DependentUpon>myBidsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\components\FreelancerComponent\OngoingProjectComponent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\components\FreelancerComponent\OngoingProjectComponent.Designer.cs">
+      <DependentUpon>OngoingProjectComponent.cs</DependentUpon>
     </Compile>
     <Compile Include="view\components\FreelancerComponent\SettingMileStone.cs">
       <SubType>Form</SubType>
@@ -193,6 +200,18 @@
     </Compile>
     <Compile Include="view\components\projectsComponent\InProgressCard.Designer.cs">
       <DependentUpon>InProgressCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\components\projectsComponent\MilestoneProgress.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\components\projectsComponent\MilestoneProgress.Designer.cs">
+      <DependentUpon>MilestoneProgress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\components\projectsComponent\OngoingProjectCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\components\projectsComponent\OngoingProjectCard.Designer.cs">
+      <DependentUpon>OngoingProjectCard.cs</DependentUpon>
     </Compile>
     <Compile Include="view\components\projectsComponent\PendingProjectCard.cs">
       <SubType>UserControl</SubType>
@@ -341,6 +360,9 @@
     <EmbeddedResource Include="view\components\FreelancerComponent\myBidsView.resx">
       <DependentUpon>myBidsView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="view\components\FreelancerComponent\OngoingProjectComponent.resx">
+      <DependentUpon>OngoingProjectComponent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="view\components\FreelancerComponent\SettingMileStone.resx">
       <DependentUpon>SettingMileStone.cs</DependentUpon>
     </EmbeddedResource>
@@ -370,6 +392,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="view\components\projectsComponent\InProgressCard.resx">
       <DependentUpon>InProgressCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\components\projectsComponent\MilestoneProgress.resx">
+      <DependentUpon>MilestoneProgress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\components\projectsComponent\OngoingProjectCard.resx">
+      <DependentUpon>OngoingProjectCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\components\projectsComponent\PendingProjectCard.resx">
       <DependentUpon>PendingProjectCard.cs</DependentUpon>

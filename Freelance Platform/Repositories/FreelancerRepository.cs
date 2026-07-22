@@ -588,5 +588,86 @@ WHERE b.Status = @status AND b.FreelancerId = @freelancerId;";
                 return false;
             }
         }
+
+        public List<ProjectWithMilestonesDTO> GetProjectWithMileStone(int freelancerId)
+        {
+            string query = @"SELECT
+    p.ProjectId,
+    p.ProjectTitle,
+    p.EndDate AS projectEndDate,
+    u.Username AS ClientName,
+
+    m.MilestoneId,
+    m.Title,
+    m.Weight,
+    m.Progress,
+    m.Status
+
+FROM milestones m
+
+INNER JOIN projects p
+    ON p.ProjectId = m.ProjectId
+
+INNER JOIN clients c
+    ON p.ClientId = c.ClientId
+
+INNER JOIN users u
+    ON c.UserId = u.UserId
+
+WHERE m.FreelancerId = @freelancerId
+
+ORDER BY p.ProjectId,m.MilestoneId;";
+
+
+
+
+
+            MySqlParameter[] ps =
+            {
+        new MySqlParameter("@freelancerId", freelancerId),
+    };
+
+            DataTable dt = dbConn.GetData(query, ps);
+
+            
+            Dictionary<int, ProjectWithMilestonesDTO> projectDict = new Dictionary<int, ProjectWithMilestonesDTO>();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                int projectId = Convert.ToInt32(row["ProjectId"]);
+
+                
+                if (!projectDict.ContainsKey(projectId))
+                {
+                    ProjectWithMilestonesDTO p = new ProjectWithMilestonesDTO
+                    {
+                        ProjectId = projectId,
+                        ProjectTitle = row["projectTitle"].ToString(),
+                        ProjectEndDate = Convert.ToDateTime(row["projectEndDate"]),
+                        ClientName = row["ClientName"].ToString(),
+                        Milestones = new List<Milestone>() 
+                    };
+                    projectDict.Add(projectId, p);
+                }
+
+               
+                if (row["MilestoneId"] != DBNull.Value)
+                {
+                    Milestone milestone = new Milestone
+                    {
+                        MilestoneId = Convert.ToInt32(row["MilestoneId"]),
+                        Title = row["Title"].ToString(),
+                        Weight = Convert.ToInt32(row["Weight"]),
+                        Progress = Convert.ToInt32(row["Progress"]),
+                        Status = row["Status"].ToString()
+                    };
+
+                    projectDict[projectId].Milestones.Add(milestone);
+                }
+            }
+
+           
+            return new List<ProjectWithMilestonesDTO>(projectDict.Values);
+        }
     }
 }

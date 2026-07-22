@@ -20,20 +20,24 @@ namespace Freelance_Platform.Forms.Dashboard
         private readonly FreelancerEdit profile;
         private readonly SearchProjects searchProjects;
         private readonly myBidsView mybids;
+        private  OngoingProjectComponent ongoingPage;
 
         public FreelancerDashboard()
         {
             InitializeComponent();
             searchProjects = new SearchProjects();
             mybids = new myBidsView();
-
+            
             profile = new FreelancerEdit(this) { Visible = false, Dock = DockStyle.Fill };
+            
            
             mainPanel.Controls.Add(profile);
             searchProjects.Dock = DockStyle.Fill;
             mybids.Dock = DockStyle.Fill;
+            
             mainPanel.Controls.Add(searchProjects);
             mainPanel.Controls.Add(mybids);
+            
             
 
           
@@ -101,6 +105,20 @@ namespace Freelance_Platform.Forms.Dashboard
             mybids.Visible = true;
             mybids.BringToFront();
 
+        }
+
+
+        private void ShowOngoingPage()
+        {
+            ongoingPage = new OngoingProjectComponent();
+            CardLayout.Visible = false;
+            bottomContainer.Visible = false;
+            foreach (Control c in mainPanel.Controls) c.Visible = false;
+            ongoingPage.Dock = DockStyle.Fill;
+            mainPanel.Controls.Add(ongoingPage);
+
+            ongoingPage.Visible = true;
+            ongoingPage.BringToFront();
         }
 
         // Navigation Buttons
@@ -182,6 +200,13 @@ namespace Freelance_Platform.Forms.Dashboard
             lblDesc.Text = "Track client decisions and your next steps";
 
             ShowBidsView();
+        }
+
+        private void btnOngoingProjects_Click(object sender, EventArgs e)
+        {
+            lblGreeting.Text = "Ongoing Projects";
+            lblDesc.Text = "Track your active contracts and milestones";
+            ShowOngoingPage();
         }
     }
 }
