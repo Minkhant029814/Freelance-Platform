@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Freelance_Platform.Forms;
+using Freelance_Platform.Forms.Dashboard;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 
 namespace Freelance_Platform
@@ -16,7 +19,7 @@ namespace Freelance_Platform
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new frmLogin());
         }
     }
 }
