@@ -21,6 +21,7 @@ namespace Freelance_Platform.Forms.Dashboard
         private readonly SearchProjects searchProjects;
         private readonly myBidsView mybids;
         private  OngoingProjectComponent ongoingPage;
+        private CompletedProjectComponent completedPage;
 
         public FreelancerDashboard()
         {
@@ -121,6 +122,20 @@ namespace Freelance_Platform.Forms.Dashboard
             ongoingPage.BringToFront();
         }
 
+        private void ShowCompletedPage()
+        {
+            completedPage = new CompletedProjectComponent();
+            CardLayout.Visible = false;
+            bottomContainer.Visible = false;
+            foreach (Control c in mainPanel.Controls) c.Visible = false;
+            completedPage.Dock = DockStyle.Fill;
+            mainPanel.Controls.Add(completedPage);
+
+            completedPage.Visible = true;
+            completedPage.BringToFront();
+
+        }
+
         // Navigation Buttons
         private void btnDashboard_Click(object sender, EventArgs e)
         {
@@ -207,6 +222,13 @@ namespace Freelance_Platform.Forms.Dashboard
             lblGreeting.Text = "Ongoing Projects";
             lblDesc.Text = "Track your active contracts and milestones";
             ShowOngoingPage();
+        }
+
+        private void btnCompletedProject_Click(object sender, EventArgs e)
+        {
+            lblGreeting.Text = "Completed Projects";
+            lblDesc.Text = "Your finished work and client Feedback";
+            ShowCompletedPage();
         }
     }
 }

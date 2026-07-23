@@ -41,9 +41,9 @@ namespace Freelance_Platform.Service
         }
 
         //Rating Freelancer
-        public bool RatingFreelancer(Review review)
+        public bool RatingFreelancer( Review review)
         {
-            return clientRepo.RatingFreelancer(review);
+            return clientRepo.RatingFreelancer(  review);
         }
     }
 }

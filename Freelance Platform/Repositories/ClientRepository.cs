@@ -193,7 +193,7 @@ namespace Freelance_Platform.Repositories
 
         }
 
-        public bool RatingFreelancer(Review review)
+        public bool RatingFreelancer( Review review)
         {
             try
             {

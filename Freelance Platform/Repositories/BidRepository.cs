@@ -83,7 +83,7 @@ namespace Freelance_Platform.Repositories
         }
 
 
-        public List<BidProjectModel> GetBidProjects()
+        public List<BidProjectModelDTO> GetBidProjects()
         {
           
             string query = @"SELECT 
@@ -104,11 +104,11 @@ namespace Freelance_Platform.Repositories
     };
 
             DataTable dt = db.GetData(query, ps);
-            List<BidProjectModel> projects = new List<BidProjectModel>();
+            List<BidProjectModelDTO> projects = new List<BidProjectModelDTO>();
 
             foreach (DataRow row in dt.Rows)
             {
-                BidProjectModel p = new BidProjectModel
+                BidProjectModelDTO p = new BidProjectModelDTO
                 {
                     ProjectId = Convert.ToInt32(row["ProjectId"]),
                     Title = row["ProjectTitle"].ToString(),

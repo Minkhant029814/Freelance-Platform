@@ -91,7 +91,10 @@ namespace Freelance_Platform.view.components.clientComponent
                 foreach (AssignedProjectDTO project in projects)
                 {
                     ReviewSubmissionProjectCard card = new ReviewSubmissionProjectCard(project);
-                    card.Width = ReviewLayout.ClientSize.Width - 25;
+                card.ProjectApproved += () => {
+                    RefreshAllTabs();
+                };
+                card.Width = ReviewLayout.ClientSize.Width - 25;
                     ReviewLayout.Controls.Add(card);
                 }
                 guna2TabControl1.TabPages[2].Text =
@@ -117,7 +120,7 @@ namespace Freelance_Platform.view.components.clientComponent
 
             foreach (AssignedProjectDTO project in projects)
             {
-                CompletedCard card = new CompletedCard(project);
+                CompletedCardByClient card = new CompletedCardByClient(project);
 
                 card.Width = CompletedDisplay.ClientSize.Width - 25;
 

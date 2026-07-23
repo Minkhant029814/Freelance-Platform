@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnOngoingProjects = new FontAwesome.Sharp.IconButton();
             this.btnMyBids = new FontAwesome.Sharp.IconButton();
             this.btnSignOut = new FontAwesome.Sharp.IconButton();
             this.btnBrowseProject = new FontAwesome.Sharp.IconButton();
@@ -56,7 +57,7 @@
             this.bottomContainer = new Guna.UI2.WinForms.Guna2Panel();
             this.lblRecommend = new System.Windows.Forms.Label();
             this.flowCardDisplay = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnOngoingProjects = new FontAwesome.Sharp.IconButton();
+            this.btnCompletedProject = new FontAwesome.Sharp.IconButton();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             this.upperPanel.SuspendLayout();
@@ -78,6 +79,7 @@
             // guna2Panel1
             // 
             this.guna2Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
+            this.guna2Panel1.Controls.Add(this.btnCompletedProject);
             this.guna2Panel1.Controls.Add(this.btnOngoingProjects);
             this.guna2Panel1.Controls.Add(this.btnMyBids);
             this.guna2Panel1.Controls.Add(this.btnSignOut);
@@ -91,6 +93,29 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(286, 697);
             this.guna2Panel1.TabIndex = 0;
+            // 
+            // btnOngoingProjects
+            // 
+            this.btnOngoingProjects.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
+            this.btnOngoingProjects.FlatAppearance.BorderSize = 0;
+            this.btnOngoingProjects.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOngoingProjects.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOngoingProjects.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
+            this.btnOngoingProjects.IconChar = FontAwesome.Sharp.IconChar.Briefcase;
+            this.btnOngoingProjects.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
+            this.btnOngoingProjects.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnOngoingProjects.IconSize = 30;
+            this.btnOngoingProjects.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOngoingProjects.Location = new System.Drawing.Point(6, 481);
+            this.btnOngoingProjects.Margin = new System.Windows.Forms.Padding(15);
+            this.btnOngoingProjects.Name = "btnOngoingProjects";
+            this.btnOngoingProjects.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnOngoingProjects.Size = new System.Drawing.Size(247, 50);
+            this.btnOngoingProjects.TabIndex = 12;
+            this.btnOngoingProjects.Text = "Ongoing Projects";
+            this.btnOngoingProjects.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnOngoingProjects.UseVisualStyleBackColor = false;
+            this.btnOngoingProjects.Click += new System.EventHandler(this.btnOngoingProjects_Click);
             // 
             // btnMyBids
             // 
@@ -476,28 +501,28 @@
             this.flowCardDisplay.WrapContents = false;
             this.flowCardDisplay.Resize += new System.EventHandler(this.flowCardDisplay_Resize);
             // 
-            // btnOngoingProjects
+            // btnCompletedProject
             // 
-            this.btnOngoingProjects.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
-            this.btnOngoingProjects.FlatAppearance.BorderSize = 0;
-            this.btnOngoingProjects.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOngoingProjects.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOngoingProjects.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
-            this.btnOngoingProjects.IconChar = FontAwesome.Sharp.IconChar.Briefcase;
-            this.btnOngoingProjects.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
-            this.btnOngoingProjects.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnOngoingProjects.IconSize = 30;
-            this.btnOngoingProjects.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOngoingProjects.Location = new System.Drawing.Point(6, 481);
-            this.btnOngoingProjects.Margin = new System.Windows.Forms.Padding(15);
-            this.btnOngoingProjects.Name = "btnOngoingProjects";
-            this.btnOngoingProjects.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnOngoingProjects.Size = new System.Drawing.Size(247, 50);
-            this.btnOngoingProjects.TabIndex = 12;
-            this.btnOngoingProjects.Text = "Ongoing Projects";
-            this.btnOngoingProjects.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnOngoingProjects.UseVisualStyleBackColor = false;
-            this.btnOngoingProjects.Click += new System.EventHandler(this.btnOngoingProjects_Click);
+            this.btnCompletedProject.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
+            this.btnCompletedProject.FlatAppearance.BorderSize = 0;
+            this.btnCompletedProject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCompletedProject.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCompletedProject.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
+            this.btnCompletedProject.IconChar = FontAwesome.Sharp.IconChar.Flag;
+            this.btnCompletedProject.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
+            this.btnCompletedProject.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnCompletedProject.IconSize = 30;
+            this.btnCompletedProject.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCompletedProject.Location = new System.Drawing.Point(6, 561);
+            this.btnCompletedProject.Margin = new System.Windows.Forms.Padding(15);
+            this.btnCompletedProject.Name = "btnCompletedProject";
+            this.btnCompletedProject.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnCompletedProject.Size = new System.Drawing.Size(247, 50);
+            this.btnCompletedProject.TabIndex = 13;
+            this.btnCompletedProject.Text = "Completed Projects";
+            this.btnCompletedProject.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCompletedProject.UseVisualStyleBackColor = false;
+            this.btnCompletedProject.Click += new System.EventHandler(this.btnCompletedProject_Click);
             // 
             // FreelancerDashboard
             // 
@@ -564,5 +589,6 @@
         private Guna.UI2.WinForms.Guna2Panel bottomContainer;
         private FontAwesome.Sharp.IconButton btnMyBids;
         private FontAwesome.Sharp.IconButton btnOngoingProjects;
+        private FontAwesome.Sharp.IconButton btnCompletedProject;
     }
 }

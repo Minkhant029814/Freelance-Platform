@@ -107,8 +107,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\CompletedProjectReviewDTO.cs" />
     <Compile Include="DTO\ProjectStatusDTO.cs" />
-    <Compile Include="DTO\BidProjectModel.cs" />
+    <Compile Include="DTO\BidProjectModelDTO.cs" />
     <Compile Include="DTO\FreelancerBidDTO.cs" />
     <Compile Include="DTO\FreelancerCardDTO.cs" />
     <Compile Include="DTO\AssignedProjectDTO.cs" />
@@ -122,6 +123,12 @@
     </Compile>
     <Compile Include="view\components\clientComponent\RatingFreelancer.Designer.cs">
       <DependentUpon>RatingFreelancer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\components\FreelancerComponent\CompletedProjectComponent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\components\FreelancerComponent\CompletedProjectComponent.Designer.cs">
+      <DependentUpon>CompletedProjectComponent.cs</DependentUpon>
     </Compile>
     <Compile Include="view\components\FreelancerComponent\mileStoneAddComponent.cs">
       <SubType>UserControl</SubType>
@@ -189,11 +196,17 @@
     <Compile Include="view\components\clientComponent\ProfileEdit.Designer.cs">
       <DependentUpon>ProfileEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="view\components\projectsComponent\CompletedCard.cs">
+    <Compile Include="view\components\projectsComponent\CompletedCardByClient.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="view\components\projectsComponent\CompletedCard.Designer.cs">
-      <DependentUpon>CompletedCard.cs</DependentUpon>
+    <Compile Include="view\components\projectsComponent\CompletedCardByClient.Designer.cs">
+      <DependentUpon>CompletedCardByClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\components\projectsComponent\CompletedCardByFreelancer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\components\projectsComponent\CompletedCardByFreelancer.Designer.cs">
+      <DependentUpon>CompletedCardByFreelancer.cs</DependentUpon>
     </Compile>
     <Compile Include="view\components\projectsComponent\InProgressCard.cs">
       <SubType>UserControl</SubType>
@@ -360,6 +373,9 @@
     <EmbeddedResource Include="view\components\clientComponent\RatingFreelancer.resx">
       <DependentUpon>RatingFreelancer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="view\components\FreelancerComponent\CompletedProjectComponent.resx">
+      <DependentUpon>CompletedProjectComponent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="view\components\FreelancerComponent\mileStoneAddComponent.resx">
       <DependentUpon>mileStoneAddComponent.cs</DependentUpon>
     </EmbeddedResource>
@@ -393,8 +409,11 @@
     <EmbeddedResource Include="view\components\clientComponent\ProfileEdit.resx">
       <DependentUpon>ProfileEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="view\components\projectsComponent\CompletedCard.resx">
-      <DependentUpon>CompletedCard.cs</DependentUpon>
+    <EmbeddedResource Include="view\components\projectsComponent\CompletedCardByClient.resx">
+      <DependentUpon>CompletedCardByClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\components\projectsComponent\CompletedCardByFreelancer.resx">
+      <DependentUpon>CompletedCardByFreelancer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\components\projectsComponent\InProgressCard.resx">
       <DependentUpon>InProgressCard.cs</DependentUpon>

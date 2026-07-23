@@ -147,7 +147,7 @@ namespace Freelance_Platform.Repositories
     FROM projects p 
     LEFT JOIN biddings b ON p.ProjectId = b.ProjectId 
     WHERE p.ClientId = @clientId 
-      AND p.Status IN ('PLANNING', 'ON_HOLD')
+      AND p.Status IN ('PLANNING')
     GROUP BY p.ProjectId";
             }
             
@@ -300,45 +300,62 @@ WHERE p.ClientId = @clientId AND p.Status = 'ON_HOLD'
     f.HourlyRate,
     po.OwnerName AS FreelancerName, 
     po.ProfilePic,
-    po.ProfessionalTitle 
+    po.ProfessionalTitle,
+    r.ReviewId,
+    r.Rating,
+    r.Comment
 FROM projects p
 INNER JOIN biddings b ON p.ProjectId = b.ProjectId
 INNER JOIN freelancers f ON b.FreelancerId = f.FreelancerId
 INNER JOIN portfolios po ON f.FreelancerId = po.FreelancerId
+LEFT JOIN reviews r ON p.ProjectId = r.ProjectId AND r.ClientId = @clientId
 WHERE p.ClientId = @clientId AND p.Status = 'COMPLETED' 
   AND b.Status = 'Accepted';";
 
             MySqlParameter[] ps =
             {
-                new MySqlParameter("@clientId",UserSession.ClientId),
+        new MySqlParameter("@clientId", UserSession.ClientId),
+    };
 
-            };
             DataTable dt = dbconnect.GetData(query, ps);
             List<AssignedProjectDTO> projects = new List<AssignedProjectDTO>();
 
             foreach (DataRow row in dt.Rows)
             {
                 AssignedProjectDTO p = new AssignedProjectDTO();
+
+                // Freelancer Info
                 p.Freelancer.FreelancerId = Convert.ToInt32(row["FreelancerId"]);
                 p.Freelancer.HourlyRate = Convert.ToDecimal(row["HourlyRate"]);
                 p.Freelancer.Portfolio.OwnerName = row["FreelancerName"].ToString();
                 p.Freelancer.Portfolio.ProfessionalTitle = row["ProfessionalTitle"].ToString();
                 p.Freelancer.Portfolio.Profile = row["ProfilePic"].ToString();
 
+                // Project Info
                 p.Project.EndDate = Convert.ToDateTime(row["EndDate"]);
                 p.Project.ProjectId = Convert.ToInt32(row["ProjectId"]);
                 p.Project.ProjectTitle = row["ProjectTitle"].ToString();
                 p.Project.Description = row["Description"].ToString();
                 p.Project.BaselineBudget = Convert.ToDecimal(row["Budget"]);
                 p.Project.CurrentStatus = row["Status"].ToString();
-                projects.Add(p);
 
+                
+                if (row["ReviewId"] != DBNull.Value)
+                {
+                    p.Review.ReviewId = Convert.ToInt32(row["ReviewId"]);
+                    p.Review.Rating = Convert.ToSingle(row["Rating"]); 
+                    p.Review.Comment = row["Comment"].ToString();
+                }
+                else
+                {
+                    p.Review.ReviewId = 0; 
+                }
+
+                projects.Add(p);
             }
 
             return projects;
-
         }
-
 
         //Calculation Progress Rate for onGoing (In_Progress) projects
 

@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -66,6 +67,8 @@ namespace Freelance_Platform.view.components.projectsComponent
             if (freelancerService.SubmitCompletedProjects(projectId))
             {
                 MessageBox.Show("Submit your Completed ProjectSuccessfully");
+                btnSubmitReview.Enabled = false;
+                btnSubmitReview.Text = "Awaiting Client Approval";
             }
             else
             {

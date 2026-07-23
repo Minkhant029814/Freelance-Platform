@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Freelance_Platform.view.components.clientComponent
 {
@@ -20,12 +21,16 @@ namespace Freelance_Platform.view.components.clientComponent
         private readonly ClientService clientService;
         private readonly AssignedProjectDTO pf;
         private  Review review;
+
+        public event Action<Review> OnRatedCompleted;
+       
         public RatingFreelancer(AssignedProjectDTO p)
         {
             InitializeComponent();
             this.clientService = new ClientService();
             this.pf = p;
             
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -67,6 +72,7 @@ namespace Freelance_Platform.view.components.clientComponent
             if (clientService.RatingFreelancer(review))
             {
                 MessageBox.Show("Rating Freelancer task is completed..");
+                OnRatedCompleted?.Invoke(review);
                 this.Close();
             } else
             {

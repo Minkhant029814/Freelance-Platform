@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Freelance_Platform.Repositories
 {
@@ -528,7 +529,7 @@ WHERE b.Status = @status AND b.FreelancerId = @freelancerId;";
             };
 
             DataTable dt = dbConn.GetData(query, para);
-            List<ProjectStatusDTO> accepted = new List<ProjectStatusDTO>();
+            List<ProjectStatusDTO> projects = new List<ProjectStatusDTO>();
 
             foreach (DataRow row in dt.Rows)
             {
@@ -541,10 +542,52 @@ WHERE b.Status = @status AND b.FreelancerId = @freelancerId;";
                     BiddingDate = Convert.ToDateTime(row["BiddingDate"]),
                     ClientName = row["ClientName"].ToString()
                 };
-                accepted.Add(p);
+                projects.Add(p);
             }
 
-            return accepted;
+            return projects;
+
+        }
+
+        public List<ProjectStatusDTO> GetAcceptedProjects()
+        {
+            string query = @"SELECT 
+    b.Status AS BiddingStatus,
+    p.ProjectId,
+    p.ProjectTitle,
+    p.Budget AS ProjectBudget,
+    u.Username AS ClientName,
+    b.SubmissionDate AS BiddingDate
+FROM biddings b
+INNER JOIN projects p ON b.ProjectId = p.ProjectId
+INNER JOIN clients c ON p.ClientId = c.ClientId
+INNER JOIN users u ON c.UserId = u.UserId
+WHERE b.Status = 'Accepted' AND p.Status = 'IN_PROGRESS' AND b.FreelancerId = @freelancerId;";
+
+            MySqlParameter[] para =
+            {
+                new MySqlParameter("@freelancerId",UserSession.FreelancerId),
+                
+            };
+
+            DataTable dt = dbConn.GetData(query, para);
+            List<ProjectStatusDTO> projects = new List<ProjectStatusDTO>();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                ProjectStatusDTO p = new ProjectStatusDTO
+                {
+                    ProjectId = Convert.ToInt32(row["ProjectId"]),
+                    BiddingStatus = row["BiddingStatus"].ToString(),
+                    ProjectTitle = row["ProjectTitle"].ToString(),
+                    ProjectBudget = Convert.ToDecimal(row["ProjectBudget"]),
+                    BiddingDate = Convert.ToDateTime(row["BiddingDate"]),
+                    ClientName = row["ClientName"].ToString()
+                };
+                projects.Add(p);
+            }
+
+            return projects;
 
         }
 
@@ -615,7 +658,7 @@ INNER JOIN clients c
 INNER JOIN users u
     ON c.UserId = u.UserId
 
-WHERE m.FreelancerId = @freelancerId
+WHERE m.FreelancerId = @freelancerId AND p.Status = 'IN_PROGRESS'
 
 ORDER BY p.ProjectId,m.MilestoneId;";
 
@@ -715,6 +758,47 @@ ORDER BY p.ProjectId,m.MilestoneId;";
             }
         }
 
+
+        //Get Rating and Review for Completed Project By Freelancer
+        public List<CompletedProjectReviewDTO> ViewCompletedProject()
+        {
+            string query = @"SELECT 
+    p.Status ,
+    p.EndDate ,
+    p.ProjectTitle,
+    p.Budget ,
+    u.Username AS ClientName,
+    r.Rating ,
+    r.Comment
+FROM projects p
+JOIN clients c ON p.ClientId = c.ClientId
+JOIN users u ON c.UserId = u.UserId
+LEFT JOIN reviews r ON p.ProjectId = r.ProjectId
+WHERE r.FreelancerId = @freelancerId;";
+
+            MySqlParameter[] ps =
+            {
+                new MySqlParameter("@freelancerId",UserSession.FreelancerId),
+            };
+
+            DataTable dt = dbConn.GetData(query, ps);
+            List<CompletedProjectReviewDTO> completedProjects = new List<CompletedProjectReviewDTO>();
+            foreach(DataRow row in dt.Rows)
+            {
+                CompletedProjectReviewDTO p = new CompletedProjectReviewDTO
+                {
+                    ProjectTitle = row["ProjectTitle"].ToString(),
+                    ProjectStatus = row["Status"].ToString(),
+                    ProjectEndDate = Convert.ToDateTime(row["EndDate"]),
+                    ProjectBudget = Convert.ToDecimal(row["Budget"]),
+                    Rating = Convert.ToInt32(row["Rating"]),
+                    ClientName = row["ClientName"].ToString(),
+                    Comment = row["Comment"].ToString()
+                };
+                completedProjects.Add(p);
+            }
+            return completedProjects;
+        }
 
 
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Freelance_Platform.model
 {
-    public class BidProjectModel
+    public class BidProjectModelDTO
     {
 
        

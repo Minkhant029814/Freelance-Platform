@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.mainContainer = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnSubmitReview = new Guna.UI2.WinForms.Guna2Button();
             this.mileStonePanel = new Guna.UI2.WinForms.Guna2Panel();
             this.mileStoneLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -37,7 +38,6 @@
             this.lblprogress = new System.Windows.Forms.Label();
             this.lblClientName = new System.Windows.Forms.Label();
             this.lblProjectTitle = new System.Windows.Forms.Label();
-            this.btnSubmitReview = new Guna.UI2.WinForms.Guna2Button();
             this.mainContainer.SuspendLayout();
             this.mileStonePanel.SuspendLayout();
             this.SuspendLayout();
@@ -61,6 +61,25 @@
             this.mainContainer.Name = "mainContainer";
             this.mainContainer.Size = new System.Drawing.Size(947, 555);
             this.mainContainer.TabIndex = 0;
+            // 
+            // btnSubmitReview
+            // 
+            this.btnSubmitReview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSubmitReview.BackColor = System.Drawing.Color.Transparent;
+            this.btnSubmitReview.BorderRadius = 15;
+            this.btnSubmitReview.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSubmitReview.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSubmitReview.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSubmitReview.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSubmitReview.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnSubmitReview.ForeColor = System.Drawing.Color.White;
+            this.btnSubmitReview.Location = new System.Drawing.Point(679, 495);
+            this.btnSubmitReview.Name = "btnSubmitReview";
+            this.btnSubmitReview.Size = new System.Drawing.Size(239, 45);
+            this.btnSubmitReview.TabIndex = 7;
+            this.btnSubmitReview.Text = "Submit Review";
+            this.btnSubmitReview.Visible = false;
+            this.btnSubmitReview.Click += new System.EventHandler(this.btnSubmitReview_Click);
             // 
             // mileStonePanel
             // 
@@ -162,25 +181,6 @@
             this.lblProjectTitle.Size = new System.Drawing.Size(600, 62);
             this.lblProjectTitle.TabIndex = 0;
             this.lblProjectTitle.Text = "label1";
-            // 
-            // btnSubmitReview
-            // 
-            this.btnSubmitReview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSubmitReview.BackColor = System.Drawing.Color.Transparent;
-            this.btnSubmitReview.BorderRadius = 15;
-            this.btnSubmitReview.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSubmitReview.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSubmitReview.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSubmitReview.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSubmitReview.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnSubmitReview.ForeColor = System.Drawing.Color.White;
-            this.btnSubmitReview.Location = new System.Drawing.Point(738, 495);
-            this.btnSubmitReview.Name = "btnSubmitReview";
-            this.btnSubmitReview.Size = new System.Drawing.Size(180, 45);
-            this.btnSubmitReview.TabIndex = 7;
-            this.btnSubmitReview.Text = "Submit Review";
-            this.btnSubmitReview.Visible = false;
-            this.btnSubmitReview.Click += new System.EventHandler(this.btnSubmitReview_Click);
             // 
             // OngoingProjectCard
             // 

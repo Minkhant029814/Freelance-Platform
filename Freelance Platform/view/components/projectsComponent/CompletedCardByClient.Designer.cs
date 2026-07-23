@@ -1,6 +1,6 @@
 ﻿namespace Freelance_Platform.view.components.projectsComponent
 {
-    partial class CompletedCard
+    partial class CompletedCardByClient
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,21 +29,25 @@
         private void InitializeComponent()
         {
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnRating = new FontAwesome.Sharp.IconButton();
             this.lblProjectBudget = new System.Windows.Forms.Label();
             this.FreelancerPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.lblPayrate = new System.Windows.Forms.Label();
             this.lblProfessionalTitle = new System.Windows.Forms.Label();
             this.lblFreelancerName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.profilePic = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.lblDescription = new System.Windows.Forms.Label();
             this.lblProjectTitle = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
+            this.btnRating = new FontAwesome.Sharp.IconButton();
+            this.profilePic = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            this.ReviewPanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.lblComments = new System.Windows.Forms.Label();
+            this.RatingStar = new Guna.UI2.WinForms.Guna2RatingStar();
             this.guna2Panel1.SuspendLayout();
             this.FreelancerPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilePic)).BeginInit();
+            this.ReviewPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -53,6 +57,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2Panel1.BackColor = System.Drawing.SystemColors.Control;
             this.guna2Panel1.BorderRadius = 20;
+            this.guna2Panel1.Controls.Add(this.ReviewPanel);
             this.guna2Panel1.Controls.Add(this.btnRating);
             this.guna2Panel1.Controls.Add(this.lblProjectBudget);
             this.guna2Panel1.Controls.Add(this.FreelancerPanel);
@@ -63,34 +68,11 @@
             this.guna2Panel1.FillColor = System.Drawing.Color.White;
             this.guna2Panel1.Location = new System.Drawing.Point(45, 44);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(960, 464);
+            this.guna2Panel1.Size = new System.Drawing.Size(942, 567);
             this.guna2Panel1.TabIndex = 2;
-            // 
-            // btnRating
-            // 
-            this.btnRating.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnRating.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnRating.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnRating.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRating.ForeColor = System.Drawing.Color.White;
-            this.btnRating.IconChar = FontAwesome.Sharp.IconChar.Star;
-            this.btnRating.IconColor = System.Drawing.Color.White;
-            this.btnRating.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnRating.IconSize = 35;
-            this.btnRating.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRating.Location = new System.Drawing.Point(35, 393);
-            this.btnRating.Name = "btnRating";
-            this.btnRating.Size = new System.Drawing.Size(241, 52);
-            this.btnRating.TabIndex = 7;
-            this.btnRating.Text = "Rate Freelaner";
-            this.btnRating.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnRating.UseVisualStyleBackColor = false;
-            this.btnRating.Click += new System.EventHandler(this.btnRating_Click);
             // 
             // lblProjectBudget
             // 
-            this.lblProjectBudget.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.lblProjectBudget.AutoSize = true;
             this.lblProjectBudget.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProjectBudget.Location = new System.Drawing.Point(30, 333);
@@ -107,7 +89,7 @@
             this.FreelancerPanel.Controls.Add(this.lblFreelancerName);
             this.FreelancerPanel.Controls.Add(this.label1);
             this.FreelancerPanel.Controls.Add(this.profilePic);
-            this.FreelancerPanel.Location = new System.Drawing.Point(549, 92);
+            this.FreelancerPanel.Location = new System.Drawing.Point(531, 92);
             this.FreelancerPanel.Name = "FreelancerPanel";
             this.FreelancerPanel.Size = new System.Drawing.Size(379, 198);
             this.FreelancerPanel.TabIndex = 5;
@@ -152,27 +134,15 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Assigned Freelancer\r\n";
             // 
-            // profilePic
-            // 
-            this.profilePic.ImageRotate = 0F;
-            this.profilePic.Location = new System.Drawing.Point(16, 17);
-            this.profilePic.Name = "profilePic";
-            this.profilePic.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.profilePic.Size = new System.Drawing.Size(64, 64);
-            this.profilePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.profilePic.TabIndex = 0;
-            this.profilePic.TabStop = false;
-            // 
             // lblDescription
             // 
-            this.lblDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDescription.BackColor = System.Drawing.Color.Cyan;
             this.lblDescription.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescription.Location = new System.Drawing.Point(30, 92);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(502, 198);
+            this.lblDescription.Size = new System.Drawing.Size(484, 200);
             this.lblDescription.TabIndex = 3;
             this.lblDescription.Text = "label1";
             // 
@@ -184,7 +154,7 @@
             this.lblProjectTitle.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProjectTitle.Location = new System.Drawing.Point(29, 47);
             this.lblProjectTitle.Name = "lblProjectTitle";
-            this.lblProjectTitle.Size = new System.Drawing.Size(767, 45);
+            this.lblProjectTitle.Size = new System.Drawing.Size(749, 45);
             this.lblProjectTitle.TabIndex = 2;
             this.lblProjectTitle.Text = "label1";
             // 
@@ -210,18 +180,84 @@
             this.lblStatus.Text = "label1";
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // CompletedCard
+            // btnRating
+            // 
+            this.btnRating.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRating.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnRating.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRating.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRating.ForeColor = System.Drawing.Color.White;
+            this.btnRating.IconChar = FontAwesome.Sharp.IconChar.Star;
+            this.btnRating.IconColor = System.Drawing.Color.White;
+            this.btnRating.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnRating.IconSize = 35;
+            this.btnRating.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRating.Location = new System.Drawing.Point(614, 333);
+            this.btnRating.Name = "btnRating";
+            this.btnRating.Size = new System.Drawing.Size(293, 52);
+            this.btnRating.TabIndex = 7;
+            this.btnRating.Text = "Rate Freelaner";
+            this.btnRating.UseVisualStyleBackColor = false;
+            this.btnRating.Click += new System.EventHandler(this.btnRating_Click);
+            // 
+            // profilePic
+            // 
+            this.profilePic.ImageRotate = 0F;
+            this.profilePic.Location = new System.Drawing.Point(16, 17);
+            this.profilePic.Name = "profilePic";
+            this.profilePic.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.profilePic.Size = new System.Drawing.Size(64, 64);
+            this.profilePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.profilePic.TabIndex = 0;
+            this.profilePic.TabStop = false;
+            // 
+            // ReviewPanel
+            // 
+            this.ReviewPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ReviewPanel.BorderRadius = 15;
+            this.ReviewPanel.Controls.Add(this.RatingStar);
+            this.ReviewPanel.Controls.Add(this.lblComments);
+            this.ReviewPanel.FillColor = System.Drawing.Color.White;
+            this.ReviewPanel.Location = new System.Drawing.Point(35, 424);
+            this.ReviewPanel.Name = "ReviewPanel";
+            this.ReviewPanel.Size = new System.Drawing.Size(865, 118);
+            this.ReviewPanel.TabIndex = 8;
+            this.ReviewPanel.Visible = false;
+            // 
+            // lblComments
+            // 
+            this.lblComments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblComments.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblComments.Location = new System.Drawing.Point(29, 56);
+            this.lblComments.Name = "lblComments";
+            this.lblComments.Size = new System.Drawing.Size(815, 49);
+            this.lblComments.TabIndex = 0;
+            this.lblComments.Text = "label2";
+            // 
+            // RatingStar
+            // 
+            this.RatingStar.BorderColor = System.Drawing.Color.Gold;
+            this.RatingStar.Location = new System.Drawing.Point(27, 3);
+            this.RatingStar.Name = "RatingStar";
+            this.RatingStar.RatingColor = System.Drawing.Color.Gold;
+            this.RatingStar.Size = new System.Drawing.Size(220, 43);
+            this.RatingStar.TabIndex = 1;
+            // 
+            // CompletedCardByClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.guna2Panel1);
-            this.Name = "CompletedCard";
-            this.Size = new System.Drawing.Size(1035, 541);
+            this.Name = "CompletedCardByClient";
+            this.Size = new System.Drawing.Size(1017, 644);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             this.FreelancerPanel.ResumeLayout(false);
             this.FreelancerPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilePic)).EndInit();
+            this.ReviewPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -241,5 +277,8 @@
         private System.Windows.Forms.Label lblStatus;
         private FontAwesome.Sharp.IconButton btnRating;
         private System.Windows.Forms.Label lblProjectBudget;
+        private Guna.UI2.WinForms.Guna2Panel ReviewPanel;
+        private System.Windows.Forms.Label lblComments;
+        private Guna.UI2.WinForms.Guna2RatingStar RatingStar;
     }
 }

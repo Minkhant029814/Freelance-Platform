@@ -13,10 +13,10 @@ namespace Freelance_Platform.view.components.clientComponent
 {
     public partial class BidProjectsCard : UserControl
     {
-        private readonly BidProjectModel project;
+        private readonly BidProjectModelDTO project;
 
         public event EventHandler CardClick;
-        public BidProjectsCard(BidProjectModel p)
+        public BidProjectsCard(BidProjectModelDTO p)
         {
             InitializeComponent();
            
@@ -35,7 +35,7 @@ namespace Freelance_Platform.view.components.clientComponent
 
         }
 
-        private void DisplayData(BidProjectModel project)
+        private void DisplayData(BidProjectModelDTO project)
         {
             lblProjectTitle.Text = project.Title.ToString();
             lblBudget.Text = project.Budget.ToString();

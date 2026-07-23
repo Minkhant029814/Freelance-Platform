@@ -13,10 +13,13 @@ namespace Freelance_Platform.DTO
         {
             Freelancer = new Freelancer();
             Project = new Project();
+            Review = new Review();
         }
 
        public Project Project { get; set; }
         public Freelancer Freelancer { get; set; }
+
+        public Review Review { get; set; }
 
 
         

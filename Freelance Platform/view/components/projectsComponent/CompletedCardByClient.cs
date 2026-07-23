@@ -13,10 +13,10 @@ using System.Windows.Forms;
 
 namespace Freelance_Platform.view.components.projectsComponent
 {
-    public partial class CompletedCard : UserControl
+    public partial class CompletedCardByClient : UserControl
     {
         private readonly AssignedProjectDTO project;
-        public CompletedCard(AssignedProjectDTO p)
+        public CompletedCardByClient(AssignedProjectDTO p)
         {
             InitializeComponent();
             this.project= p;
@@ -36,6 +36,21 @@ namespace Freelance_Platform.view.components.projectsComponent
             lblPayrate.Text = pf.Freelancer.HourlyRate.ToString();
             lblProfessionalTitle.Text = pf.Freelancer.Portfolio.ProfessionalTitle;
 
+            if (pf.Review.ReviewId > 0)
+            {
+                btnRating.Visible = false;
+
+                ReviewPanel.Visible = true;
+                RatingStar.Value = pf.Review.Rating;
+                lblComments.Text = pf.Review.Comment;
+
+
+            }
+            else
+            {
+                btnRating.Visible = true; 
+            }
+
             //for profile image
             //for Profile picutre
             string imgPath = Path.Combine(Application.StartupPath, "Uploads", pf.Freelancer.Portfolio.Profile ?? "");
@@ -46,8 +61,21 @@ namespace Freelance_Platform.view.components.projectsComponent
 
         private void btnRating_Click(object sender, EventArgs e)
         {
-          Form review =  new RatingFreelancer(project);
-            review.Show();
+            RatingFreelancer ratingForm = new RatingFreelancer(project);
+
+            ratingForm.OnRatedCompleted += (savedReview) =>
+            {
+                
+                project.Review = savedReview;
+
+                
+                btnRating.Visible = false;
+                ReviewPanel.Visible = true;
+                RatingStar.Value = savedReview.Rating;
+                lblComments.Text = savedReview.Comment;
+            };
+
+            ratingForm.ShowDialog();
         }
     }
 }

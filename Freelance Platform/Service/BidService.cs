@@ -33,7 +33,7 @@ namespace Freelance_Platform.Service
             return bidRepository.HasUserBidded(projectId, freelancerId);
         }
 
-        public List<BidProjectModel> GetBidProjects()
+        public List<BidProjectModelDTO> GetBidProjects()
         {
             return bidRepository.GetBidProjects();
         }

@@ -17,6 +17,8 @@ namespace Freelance_Platform.view.components.projectsComponent
     {
         private readonly int projectId;
         private readonly ClientService clientService;
+
+        public event Action ProjectApproved;
         public ReviewSubmissionProjectCard(AssignedProjectDTO p)
         {
             InitializeComponent();
@@ -47,6 +49,7 @@ namespace Freelance_Platform.view.components.projectsComponent
             if (clientService.ApproveAndCompleteProject(projectId))
             {
                 MessageBox.Show("You have approved this project");
+                ProjectApproved?.Invoke();
             }else
             {
                 MessageBox.Show("Some errors occurs in duing approval project...");

@@ -54,10 +54,10 @@ namespace Freelance_Platform.Service
             return freelanerRepo.GetBiddingProjectsByStatus(status);
         }
 
-        //public List<ProjectStatusDTO> GetPendingProjects()
-        //{
-        //    return freelanerRepo.GetPendingProjects();
-        //}
+        public List<ProjectStatusDTO> GetAcceptedProjects()
+        {
+            return freelanerRepo.GetAcceptedProjects();
+        }
 
         public bool SetMileStones(int projectId,int FreelancerId,List<Milestone> ms)
         {
@@ -77,6 +77,12 @@ namespace Freelance_Platform.Service
         public bool SubmitCompletedProjects(int projectId)
         {
             return freelanerRepo.SubmitCompletedProjects(projectId);
+        }
+
+        //CompleteProjectWithClientReview
+        public List<CompletedProjectReviewDTO> ViewCompletedProject()
+        {
+            return freelanerRepo.ViewCompletedProject();
         }
     }
 }

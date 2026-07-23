@@ -16,7 +16,7 @@ namespace Freelance_Platform.view.components.clientComponent
 {
     public partial class BidReceived : UserControl
     {
-        private readonly  List<BidProjectModel> bidProjects;
+        private readonly  List<BidProjectModelDTO> bidProjects;
         private readonly BidService bidService;
         private readonly ClientService clientService;
         public BidReceived()

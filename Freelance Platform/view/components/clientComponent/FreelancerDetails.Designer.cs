@@ -294,8 +294,10 @@
             // 
             // RatingStar
             // 
+            this.RatingStar.BorderColor = System.Drawing.Color.Gold;
             this.RatingStar.Location = new System.Drawing.Point(33, 137);
             this.RatingStar.Name = "RatingStar";
+            this.RatingStar.RatingColor = System.Drawing.Color.Gold;
             this.RatingStar.Size = new System.Drawing.Size(120, 28);
             this.RatingStar.TabIndex = 4;
             // 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Freelance_Platform.model
 {
-    internal class Review
+    public class Review
     {
         public int ReviewId { get; set; }
 
