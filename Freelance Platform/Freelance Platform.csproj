@@ -299,6 +299,12 @@
     <Compile Include="view\components\projectsComponent\RejectedProjectCard.Designer.cs">
       <DependentUpon>RejectedProjectCard.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\components\projectsComponent\ReviewSubmissionProjectCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\components\projectsComponent\ReviewSubmissionProjectCard.Designer.cs">
+      <DependentUpon>ReviewSubmissionProjectCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\Dashboard\ClientDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -440,6 +446,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="view\components\projectsComponent\RejectedProjectCard.resx">
       <DependentUpon>RejectedProjectCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\components\projectsComponent\ReviewSubmissionProjectCard.resx">
+      <DependentUpon>ReviewSubmissionProjectCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\Dashboard\ClientDashboard.resx">
       <DependentUpon>ClientDashboard.cs</DependentUpon>

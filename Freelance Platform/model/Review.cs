@@ -10,6 +10,11 @@ namespace Freelance_Platform.model
     {
         public int ReviewId { get; set; }
 
+        public int ProjectId { get; set; }
+
+        public int ClientId { get; set; }
+
+        public int FreelancerId { get; set; }
         public string Comment { get; set; }
         public float Rating { get; set; }
 

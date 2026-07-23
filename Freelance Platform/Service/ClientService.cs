@@ -1,4 +1,5 @@
-﻿using Freelance_Platform.Repositories;
+﻿using Freelance_Platform.model;
+using Freelance_Platform.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,18 @@ namespace Freelance_Platform.Service
         public bool RejectFreelancer(int bidId)
         {
             return clientRepo.RejectFreelancer(bidId);
+        }
+
+        //Approve & Complete Project
+        public bool ApproveAndCompleteProject(int projectId)
+        {
+            return clientRepo.ApproveAndCompleteProject(projectId);
+        }
+
+        //Rating Freelancer
+        public bool RatingFreelancer(Review review)
+        {
+            return clientRepo.RatingFreelancer(review);
         }
     }
 }

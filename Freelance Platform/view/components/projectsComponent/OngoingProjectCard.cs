@@ -1,5 +1,6 @@
 ﻿using Freelance_Platform.DTO;
 using Freelance_Platform.model;
+using Freelance_Platform.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,11 +15,14 @@ namespace Freelance_Platform.view.components.projectsComponent
 {
     public partial class OngoingProjectCard : UserControl
     {
+
         public event Action ProjectDataChanged;
         private readonly int projectId;
+        private readonly FreelancerService freelancerService;
         public OngoingProjectCard(ProjectWithMilestonesDTO p)
         {
             this.projectId = p.ProjectId;
+            freelancerService = new FreelancerService();
             InitializeComponent();
             LoadData(p);
         }
@@ -29,6 +33,12 @@ namespace Freelance_Platform.view.components.projectsComponent
             lblProjectTitle.Text = p.ProjectTitle;
             btnEndate.Text = p.ProjectEndDate.ToString();
             progressBar.Value = p.OverAllProgress;
+            lblprogress.Text += $" {p.OverAllProgress} %";
+
+            if(p.OverAllProgress == 100)
+            {
+                btnSubmitReview.Visible = true;
+            }
 
             mileStoneLayout.Controls.Clear();
             foreach(Milestone m in p.Milestones)
@@ -51,6 +61,16 @@ namespace Freelance_Platform.view.components.projectsComponent
             }
         }
 
-        
+        private void btnSubmitReview_Click(object sender, EventArgs e)
+        {
+            if (freelancerService.SubmitCompletedProjects(projectId))
+            {
+                MessageBox.Show("Submit your Completed ProjectSuccessfully");
+            }
+            else
+            {
+                MessageBox.Show("Failed to submit your completed project");
+            }
+        }
     }
 }

@@ -73,5 +73,10 @@ namespace Freelance_Platform.Service
         {
             return freelanerRepo.UpdateMileStoneProgress(milestoneId,newProgress,newStatus);
         }
+
+        public bool SubmitCompletedProjects(int projectId)
+        {
+            return freelanerRepo.SubmitCompletedProjects(projectId);
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Freelance_Platform.Connection;
+using Freelance_Platform.model;
 using Freelance_Platform.Session;
 using MySql.Data.MySqlClient;
 using Mysqlx.Crud;
@@ -169,5 +170,56 @@ namespace Freelance_Platform.Repositories
             return false;
         }
 
+        //Approve & complete the project
+        public bool ApproveAndCompleteProject(int projectId)
+        {
+            try
+            {
+                string query = "UPDATE projects SET Status = 'COMPLETED' where ProjectId = @pid";
+                MySqlParameter[] ps =
+                {
+                    new MySqlParameter("@pid",projectId),
+                };
+
+                return db.ExecuteCommand(query, ps);
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error is {ex.Message}");
+                return false;
+            }
+
+        }
+
+        public bool RatingFreelancer(Review review)
+        {
+            try
+            {
+                string query = "INSERT INTO REVIEWS (ProjectId,ClientId,FreelancerId,Rating,Comment) " +
+                    "values (@pid,@cid,@fid,@rating,@comment)";
+                MySqlParameter[] ps =
+                    {
+                new MySqlParameter("@pid",review.ProjectId),
+                new MySqlParameter("@cid",review.ClientId),
+                new MySqlParameter("@fid",review.FreelancerId),
+                new MySqlParameter("@rating",review.Rating),
+                new MySqlParameter("@comment",review.Comment),
+                };
+
+                return db.ExecuteCommand(query, ps);
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error is {ex.Message}");
+                return false;
+            }
+        }
+
     }
+
+    
 }

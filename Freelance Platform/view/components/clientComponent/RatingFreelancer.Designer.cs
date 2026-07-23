@@ -93,6 +93,7 @@
             this.btnSave.Size = new System.Drawing.Size(189, 45);
             this.btnSave.TabIndex = 8;
             this.btnSave.Text = "Submit Review";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
@@ -135,6 +136,7 @@
             // 
             this.ratingStar.Location = new System.Drawing.Point(27, 68);
             this.ratingStar.Name = "ratingStar";
+            this.ratingStar.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ratingStar.Size = new System.Drawing.Size(212, 39);
             this.ratingStar.TabIndex = 4;
             // 

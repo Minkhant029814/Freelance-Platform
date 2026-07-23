@@ -34,7 +34,7 @@
             this.skillDisplayPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.lblReviewCount = new System.Windows.Forms.Label();
             this.lblRating = new System.Windows.Forms.Label();
-            this.guna2RatingStar1 = new Guna.UI2.WinForms.Guna2RatingStar();
+            this.RatingStar = new Guna.UI2.WinForms.Guna2RatingStar();
             this.lblPayRate = new System.Windows.Forms.Label();
             this.lblProfessionalTitle = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
@@ -54,7 +54,7 @@
             this.guna2Panel1.Controls.Add(this.skillDisplayPanel);
             this.guna2Panel1.Controls.Add(this.lblReviewCount);
             this.guna2Panel1.Controls.Add(this.lblRating);
-            this.guna2Panel1.Controls.Add(this.guna2RatingStar1);
+            this.guna2Panel1.Controls.Add(this.RatingStar);
             this.guna2Panel1.Controls.Add(this.lblPayRate);
             this.guna2Panel1.Controls.Add(this.lblProfessionalTitle);
             this.guna2Panel1.Controls.Add(this.lblName);
@@ -129,12 +129,12 @@
             this.lblRating.TabIndex = 5;
             this.lblRating.Text = "Rating";
             // 
-            // guna2RatingStar1
+            // RatingStar
             // 
-            this.guna2RatingStar1.Location = new System.Drawing.Point(29, 138);
-            this.guna2RatingStar1.Name = "guna2RatingStar1";
-            this.guna2RatingStar1.Size = new System.Drawing.Size(133, 28);
-            this.guna2RatingStar1.TabIndex = 4;
+            this.RatingStar.Location = new System.Drawing.Point(29, 138);
+            this.RatingStar.Name = "RatingStar";
+            this.RatingStar.Size = new System.Drawing.Size(133, 28);
+            this.RatingStar.TabIndex = 4;
             // 
             // lblPayRate
             // 
@@ -201,7 +201,7 @@
         private System.Windows.Forms.Label lblPayRate;
         private System.Windows.Forms.Label lblReviewCount;
         private System.Windows.Forms.Label lblRating;
-        private Guna.UI2.WinForms.Guna2RatingStar guna2RatingStar1;
+        private Guna.UI2.WinForms.Guna2RatingStar RatingStar;
         private System.Windows.Forms.FlowLayoutPanel skillDisplayPanel;
         private Guna.UI2.WinForms.Guna2Button btnViewProfile;
         private System.Windows.Forms.Label lblDescription;

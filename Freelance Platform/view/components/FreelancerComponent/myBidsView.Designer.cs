@@ -125,7 +125,7 @@
             this.Pending.Location = new System.Drawing.Point(4, 44);
             this.Pending.Name = "Pending";
             this.Pending.Padding = new System.Windows.Forms.Padding(3);
-            this.Pending.Size = new System.Drawing.Size(728, 421);
+            this.Pending.Size = new System.Drawing.Size(755, 421);
             this.Pending.TabIndex = 1;
             this.Pending.Text = "Pending Decisions";
             this.Pending.UseVisualStyleBackColor = true;
@@ -138,7 +138,7 @@
             this.PendingLayout.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.PendingLayout.Location = new System.Drawing.Point(3, 3);
             this.PendingLayout.Name = "PendingLayout";
-            this.PendingLayout.Size = new System.Drawing.Size(722, 415);
+            this.PendingLayout.Size = new System.Drawing.Size(749, 415);
             this.PendingLayout.TabIndex = 0;
             this.PendingLayout.WrapContents = false;
             this.PendingLayout.Resize += new System.EventHandler(this.PendingLayout_Resize);
@@ -149,7 +149,7 @@
             this.Rejected.Location = new System.Drawing.Point(4, 44);
             this.Rejected.Name = "Rejected";
             this.Rejected.Padding = new System.Windows.Forms.Padding(3);
-            this.Rejected.Size = new System.Drawing.Size(728, 421);
+            this.Rejected.Size = new System.Drawing.Size(755, 421);
             this.Rejected.TabIndex = 2;
             this.Rejected.Text = "Not Selected";
             this.Rejected.UseVisualStyleBackColor = true;

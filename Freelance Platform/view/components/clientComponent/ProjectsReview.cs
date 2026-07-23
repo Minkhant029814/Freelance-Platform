@@ -48,9 +48,7 @@ namespace Freelance_Platform.view.components.clientComponent
             planningCardDisplay.ResumeLayout();
         }
 
-        #endregion
-
-        #region In Progress
+        
 
         private void InProgressPage(bool refresh = false)
         {
@@ -78,9 +76,32 @@ namespace Freelance_Platform.view.components.clientComponent
             InProgressDisplay.ResumeLayout();
         }
 
-        #endregion
+        private void Reviewpage(bool refresh = false)
+        {
+            if (ReviewLayout.Controls.Count > 0 && !refresh) return;
+            
+                ReviewLayout.SuspendLayout();
+                ReviewLayout.Controls.Clear();
 
-        #region Completed
+                List<AssignedProjectDTO> projects =
+                    pservice.GetForSubmittedReview();
+
+
+
+                foreach (AssignedProjectDTO project in projects)
+                {
+                    ReviewSubmissionProjectCard card = new ReviewSubmissionProjectCard(project);
+                    card.Width = ReviewLayout.ClientSize.Width - 25;
+                    ReviewLayout.Controls.Add(card);
+                }
+                guna2TabControl1.TabPages[2].Text =
+                    $"Review Submissions ({projects.Count}) ";
+                ReviewLayout.ResumeLayout();
+            
+
+        }
+
+        
 
         private void CompletedPage(bool refresh = false)
         {
@@ -103,7 +124,7 @@ namespace Freelance_Platform.view.components.clientComponent
                 CompletedDisplay.Controls.Add(card);
             }
 
-            guna2TabControl1.TabPages[2].Text =
+            guna2TabControl1.TabPages[3].Text =
                 $"Completed ({projects.Count})";
 
             CompletedDisplay.ResumeLayout();
@@ -124,6 +145,10 @@ namespace Freelance_Platform.view.components.clientComponent
                     break;
 
                 case 2:
+                    Reviewpage();
+                    break;
+
+                case 3:
                     CompletedPage();
                     break;
             }
@@ -155,6 +180,7 @@ namespace Freelance_Platform.view.components.clientComponent
             PlanningPage(true);
             InProgressPage(true);
             CompletedPage(true);
+            Reviewpage(true);
         }
 
         private void CompletedDisplay_Resize(object sender, EventArgs e)
@@ -162,6 +188,14 @@ namespace Freelance_Platform.view.components.clientComponent
             foreach(Control c in CompletedDisplay.Controls)
             {
                 c.Width = CompletedDisplay.ClientSize.Width - 25;
+            }
+        }
+
+        private void ReviewLayout_Resize(object sender, EventArgs e)
+        {
+            foreach(Control c in ReviewLayout.Controls)
+            {
+                c.Width = ReviewLayout.ClientSize.Width - 25;
             }
         }
     }

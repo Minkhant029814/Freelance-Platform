@@ -42,12 +42,13 @@ namespace Freelance_Platform.view.components.clientComponent
             lblBio.Text = freelancer.Portfolio.Biography;
             lblName.Text = freelancer.Portfolio.OwnerName;
             lblProfessionalTitle.Text = freelancer.Portfolio.ProfessionalTitle;
-            guna2RatingStar1.Value = freelancer.AverageRating;
+            RatingStar.Value = freelancer.AverageRating;
             lblHourlyRate.Text = freelancer.HourlyRate.ToString() + " $ / hour";
             lblRating.Text = freelancer.AverageRating.ToString();
             lblReviewCount.Text = freelancer.TotalReviews.ToString();
             DisplayPastProjects(freelancer.Portfolio.Projects.ToList());
             lblProjectCount.Text = freelancer.Portfolio.Projects.Count.ToString() + " Past Projects";
+            RatingStar.Value = freelancer.AverageRating;
 
             //display Profile
             //for Profile picutre

@@ -695,5 +695,27 @@ ORDER BY p.ProjectId,m.MilestoneId;";
             }
         }
 
+        //Submit completed Project
+        public bool SubmitCompletedProjects(int projectId)
+        {
+            try
+            {
+                string query = "UPDATE projects set Status = 'ON_HOLD' where projectId = @pid";
+                MySqlParameter[] ps =
+                {
+                    new MySqlParameter("@pid",projectId),
+                };
+                return dbConn.ExecuteCommand(query, ps);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
+
+
+
     }
 }

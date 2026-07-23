@@ -132,12 +132,13 @@ namespace Freelance_Platform.Repositories
         {
             string query = "";
 
-            if (status == "PLANNING" || status == "ON_HOLD")
+            if (status == "PLANNING")
             {
 
                  query = @"
                         SELECT 
         p.ProjectTitle, 
+        p.ProjectId,
         p.Description, 
         p.Budget, 
         p.StartDate, 
@@ -162,6 +163,7 @@ namespace Freelance_Platform.Repositories
             {
                 Project p = new Project
                 {
+                    ProjectId = Convert.ToInt32(row["ProjectId"]),
                     ProjectTitle = row["ProjectTitle"].ToString(),
                     Description = row["Description"].ToString(),
                     BaselineBudget = Convert.ToDecimal(row["Budget"]),
@@ -230,8 +232,8 @@ WHERE p.ClientId = @clientId AND p.Status = 'IN_PROGRESS'
             return projects;
         }
 
-        //Get Completed Projects By Clients
-        public List<AssignedProjectDTO> GetCompletedProjects()
+
+        public List<AssignedProjectDTO> GetForSubmittedReview()
         {
             string query = @"SELECT 
     p.ProjectId, 
@@ -240,6 +242,7 @@ WHERE p.ClientId = @clientId AND p.Status = 'IN_PROGRESS'
     p.Budget, 
     p.EndDate,
     p.Status,
+    p.OverAllProgress,
     f.FreelancerId, 
     f.HourlyRate,
     po.OwnerName AS FreelancerName, 
@@ -249,7 +252,7 @@ FROM projects p
 INNER JOIN biddings b ON p.ProjectId = b.ProjectId
 INNER JOIN freelancers f ON b.FreelancerId = f.FreelancerId
 INNER JOIN portfolios po ON f.FreelancerId = po.FreelancerId
-WHERE p.ClientId = @clientId AND p.Status = 'IN_PROGRESS' 
+WHERE p.ClientId = @clientId AND p.Status = 'ON_HOLD' 
   AND b.Status = 'Accepted';";
 
             MySqlParameter[] ps =
@@ -269,6 +272,61 @@ WHERE p.ClientId = @clientId AND p.Status = 'IN_PROGRESS'
                 p.Freelancer.Portfolio.Profile = row["ProfilePic"].ToString();
 
                 p.Project.EndDate = Convert.ToDateTime(row["EndDate"]);
+                p.Project.ProjectId = Convert.ToInt32(row["ProjectId"]);
+                p.Project.ProjectTitle = row["ProjectTitle"].ToString();
+                p.Project.Description = row["Description"].ToString();
+                p.Project.BaselineBudget = Convert.ToDecimal(row["Budget"]);
+                p.Project.OverAllProgress = Convert.ToInt32(row["OverAllProgress"]);
+                p.Project.CurrentStatus = row["Status"].ToString();
+                projects.Add(p);
+
+            }
+
+            return projects;
+
+        }
+
+        //Get Completed Projects By Clients
+        public List<AssignedProjectDTO> GetCompletedProjects()
+        {
+            string query = @"SELECT 
+    p.ProjectId, 
+    p.ProjectTitle, 
+    p.Description, 
+    p.Budget, 
+    p.EndDate,
+    p.Status,
+    f.FreelancerId, 
+    f.HourlyRate,
+    po.OwnerName AS FreelancerName, 
+    po.ProfilePic,
+    po.ProfessionalTitle 
+FROM projects p
+INNER JOIN biddings b ON p.ProjectId = b.ProjectId
+INNER JOIN freelancers f ON b.FreelancerId = f.FreelancerId
+INNER JOIN portfolios po ON f.FreelancerId = po.FreelancerId
+WHERE p.ClientId = @clientId AND p.Status = 'COMPLETED' 
+  AND b.Status = 'Accepted';";
+
+            MySqlParameter[] ps =
+            {
+                new MySqlParameter("@clientId",UserSession.ClientId),
+
+            };
+            DataTable dt = dbconnect.GetData(query, ps);
+            List<AssignedProjectDTO> projects = new List<AssignedProjectDTO>();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                AssignedProjectDTO p = new AssignedProjectDTO();
+                p.Freelancer.FreelancerId = Convert.ToInt32(row["FreelancerId"]);
+                p.Freelancer.HourlyRate = Convert.ToDecimal(row["HourlyRate"]);
+                p.Freelancer.Portfolio.OwnerName = row["FreelancerName"].ToString();
+                p.Freelancer.Portfolio.ProfessionalTitle = row["ProfessionalTitle"].ToString();
+                p.Freelancer.Portfolio.Profile = row["ProfilePic"].ToString();
+
+                p.Project.EndDate = Convert.ToDateTime(row["EndDate"]);
+                p.Project.ProjectId = Convert.ToInt32(row["ProjectId"]);
                 p.Project.ProjectTitle = row["ProjectTitle"].ToString();
                 p.Project.Description = row["Description"].ToString();
                 p.Project.BaselineBudget = Convert.ToDecimal(row["Budget"]);

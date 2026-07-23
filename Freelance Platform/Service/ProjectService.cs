@@ -50,6 +50,11 @@ namespace Freelance_Platform.Service
             return projectRepo.GetProjectsWithAssigned();
         }
 
+        public List<AssignedProjectDTO> GetForSubmittedReview()
+        {
+            return projectRepo.GetForSubmittedReview();
+        }
+
         public List<AssignedProjectDTO> GetCompletedProjects()
         {
             return projectRepo.GetCompletedProjects();

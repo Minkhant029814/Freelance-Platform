@@ -68,8 +68,7 @@
             // 
             // btnRating
             // 
-            this.btnRating.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRating.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnRating.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnRating.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRating.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -81,7 +80,7 @@
             this.btnRating.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRating.Location = new System.Drawing.Point(35, 393);
             this.btnRating.Name = "btnRating";
-            this.btnRating.Size = new System.Drawing.Size(201, 52);
+            this.btnRating.Size = new System.Drawing.Size(241, 52);
             this.btnRating.TabIndex = 7;
             this.btnRating.Text = "Rate Freelaner";
             this.btnRating.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

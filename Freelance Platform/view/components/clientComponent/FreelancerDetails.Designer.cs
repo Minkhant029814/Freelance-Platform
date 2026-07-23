@@ -30,7 +30,11 @@
         {
             this.mainContainer = new Guna.UI2.WinForms.Guna2Panel();
             this.bodyContainer = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
+            this.clientReviewPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.label4 = new System.Windows.Forms.Label();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
+            this.lblNoProject = new System.Windows.Forms.Label();
             this.lblProjectCount = new System.Windows.Forms.Label();
             this.PastWorkDisplay = new System.Windows.Forms.FlowLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,22 +48,18 @@
             this.lblHourlyRate = new System.Windows.Forms.Label();
             this.lblReviewCount = new System.Windows.Forms.Label();
             this.lblRating = new System.Windows.Forms.Label();
-            this.guna2RatingStar1 = new Guna.UI2.WinForms.Guna2RatingStar();
+            this.RatingStar = new Guna.UI2.WinForms.Guna2RatingStar();
             this.lblProfessionalTitle = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.ProfilePic = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.clientReviewPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.lblNoProject = new System.Windows.Forms.Label();
             this.mainContainer.SuspendLayout();
             this.bodyContainer.SuspendLayout();
+            this.guna2Panel4.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
             this.headContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProfilePic)).BeginInit();
-            this.guna2Panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainContainer
@@ -91,6 +91,36 @@
             this.bodyContainer.Size = new System.Drawing.Size(935, 440);
             this.bodyContainer.TabIndex = 1;
             // 
+            // guna2Panel4
+            // 
+            this.guna2Panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2Panel4.Controls.Add(this.clientReviewPanel);
+            this.guna2Panel4.Controls.Add(this.label4);
+            this.guna2Panel4.Location = new System.Drawing.Point(18, 939);
+            this.guna2Panel4.Name = "guna2Panel4";
+            this.guna2Panel4.Size = new System.Drawing.Size(879, 364);
+            this.guna2Panel4.TabIndex = 3;
+            // 
+            // clientReviewPanel
+            // 
+            this.clientReviewPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.clientReviewPanel.Location = new System.Drawing.Point(25, 76);
+            this.clientReviewPanel.Name = "clientReviewPanel";
+            this.clientReviewPanel.Size = new System.Drawing.Size(837, 270);
+            this.clientReviewPanel.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(14, 19);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(168, 31);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Client Reviews";
+            // 
             // guna2Panel3
             // 
             this.guna2Panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -103,6 +133,17 @@
             this.guna2Panel3.Name = "guna2Panel3";
             this.guna2Panel3.Size = new System.Drawing.Size(879, 293);
             this.guna2Panel3.TabIndex = 2;
+            // 
+            // lblNoProject
+            // 
+            this.lblNoProject.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblNoProject.AutoSize = true;
+            this.lblNoProject.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNoProject.Location = new System.Drawing.Point(359, 131);
+            this.lblNoProject.Name = "lblNoProject";
+            this.lblNoProject.Size = new System.Drawing.Size(177, 31);
+            this.lblNoProject.TabIndex = 5;
+            this.lblNoProject.Text = "No Projects Yet";
             // 
             // lblProjectCount
             // 
@@ -210,7 +251,7 @@
             this.headContainer.Controls.Add(this.lblHourlyRate);
             this.headContainer.Controls.Add(this.lblReviewCount);
             this.headContainer.Controls.Add(this.lblRating);
-            this.headContainer.Controls.Add(this.guna2RatingStar1);
+            this.headContainer.Controls.Add(this.RatingStar);
             this.headContainer.Controls.Add(this.lblProfessionalTitle);
             this.headContainer.Controls.Add(this.lblName);
             this.headContainer.Controls.Add(this.ProfilePic);
@@ -251,12 +292,12 @@
             this.lblRating.TabIndex = 5;
             this.lblRating.Text = "Rating";
             // 
-            // guna2RatingStar1
+            // RatingStar
             // 
-            this.guna2RatingStar1.Location = new System.Drawing.Point(33, 137);
-            this.guna2RatingStar1.Name = "guna2RatingStar1";
-            this.guna2RatingStar1.Size = new System.Drawing.Size(120, 28);
-            this.guna2RatingStar1.TabIndex = 4;
+            this.RatingStar.Location = new System.Drawing.Point(33, 137);
+            this.RatingStar.Name = "RatingStar";
+            this.RatingStar.Size = new System.Drawing.Size(120, 28);
+            this.RatingStar.TabIndex = 4;
             // 
             // lblProfessionalTitle
             // 
@@ -290,47 +331,6 @@
             this.ProfilePic.TabIndex = 0;
             this.ProfilePic.TabStop = false;
             // 
-            // guna2Panel4
-            // 
-            this.guna2Panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2Panel4.Controls.Add(this.clientReviewPanel);
-            this.guna2Panel4.Controls.Add(this.label4);
-            this.guna2Panel4.Location = new System.Drawing.Point(18, 939);
-            this.guna2Panel4.Name = "guna2Panel4";
-            this.guna2Panel4.Size = new System.Drawing.Size(879, 364);
-            this.guna2Panel4.TabIndex = 3;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(14, 19);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(168, 31);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Client Reviews";
-            // 
-            // clientReviewPanel
-            // 
-            this.clientReviewPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.clientReviewPanel.Location = new System.Drawing.Point(25, 76);
-            this.clientReviewPanel.Name = "clientReviewPanel";
-            this.clientReviewPanel.Size = new System.Drawing.Size(837, 270);
-            this.clientReviewPanel.TabIndex = 3;
-            // 
-            // lblNoProject
-            // 
-            this.lblNoProject.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblNoProject.AutoSize = true;
-            this.lblNoProject.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNoProject.Location = new System.Drawing.Point(359, 131);
-            this.lblNoProject.Name = "lblNoProject";
-            this.lblNoProject.Size = new System.Drawing.Size(177, 31);
-            this.lblNoProject.TabIndex = 5;
-            this.lblNoProject.Text = "No Projects Yet";
-            // 
             // FreelancerDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -344,6 +344,8 @@
             this.Resize += new System.EventHandler(this.FreelancerDetails_Resize);
             this.mainContainer.ResumeLayout(false);
             this.bodyContainer.ResumeLayout(false);
+            this.guna2Panel4.ResumeLayout(false);
+            this.guna2Panel4.PerformLayout();
             this.guna2Panel3.ResumeLayout(false);
             this.guna2Panel3.PerformLayout();
             this.guna2Panel2.ResumeLayout(false);
@@ -353,8 +355,6 @@
             this.headContainer.ResumeLayout(false);
             this.headContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProfilePic)).EndInit();
-            this.guna2Panel4.ResumeLayout(false);
-            this.guna2Panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -376,7 +376,7 @@
         private System.Windows.Forms.Label lblHourlyRate;
         private System.Windows.Forms.Label lblReviewCount;
         private System.Windows.Forms.Label lblRating;
-        private Guna.UI2.WinForms.Guna2RatingStar guna2RatingStar1;
+        private Guna.UI2.WinForms.Guna2RatingStar RatingStar;
         private System.Windows.Forms.Label lblProfessionalTitle;
         private System.Windows.Forms.Label lblName;
         private Guna.UI2.WinForms.Guna2CirclePictureBox ProfilePic;

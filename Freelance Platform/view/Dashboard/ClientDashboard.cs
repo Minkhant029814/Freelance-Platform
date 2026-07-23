@@ -287,6 +287,7 @@ namespace Freelance_Platform.Forms.Dashboard
         {
             guna2Panel4.Visible = false;
             tableLayoutPanel1.Visible = false;
+          
             if (projectReview == null)
             {
                 projectReview = new ProjectsReview();
