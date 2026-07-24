@@ -26,10 +26,23 @@ namespace Freelance_Platform.view.components.clientComponent
             clientService = new ClientService();
             bidProjects = bidService.GetBidProjects();
             BiddingFreelancersView.Visible = false;
+            //MessageBox.Show("Bid project Counts are..." + bidProjects.Count);
 
-
+            CheckingNewBidAlerts(bidProjects);
 
             BiddingFreelancerView.RowTemplate.Height = 60;
+        }
+        private void CheckingNewBidAlerts(List<BidProjectModelDTO> projects)
+        {
+            foreach(BidProjectModelDTO p in projects)
+            {
+                if(p.NewBids > 0)
+                {
+                    MessageBox.Show("Your projects have some new bids;");
+                    return;
+                }
+               
+            }
         }
 
         private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

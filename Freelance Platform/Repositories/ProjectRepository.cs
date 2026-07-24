@@ -128,14 +128,10 @@ namespace Freelance_Platform.Repositories
 
         
         //Get project By Status
-        public List<Project> GetprojectByStatus(string status)
+        public List<Project> GetPlanningProjects()
         {
-            string query = "";
-
-            if (status == "PLANNING")
-            {
-
-                 query = @"
+            
+              string   query = @"
                         SELECT 
         p.ProjectTitle, 
         p.ProjectId,
@@ -147,14 +143,14 @@ namespace Freelance_Platform.Repositories
     FROM projects p 
     LEFT JOIN biddings b ON p.ProjectId = b.ProjectId 
     WHERE p.ClientId = @clientId 
-      AND p.Status IN ('PLANNING')
+      AND p.Status = 'PLANNING'
     GROUP BY p.ProjectId";
-            }
+            
             
             MySqlParameter[] para =
             {
                 new MySqlParameter("@clientId",UserSession.ClientId),
-                new MySqlParameter("@status",status)
+               
             };
             DataTable dt = dbconnect.GetData(query, para);
             List<Project> projects = new List<Project>();

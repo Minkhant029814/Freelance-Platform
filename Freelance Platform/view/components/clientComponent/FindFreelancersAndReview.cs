@@ -56,9 +56,6 @@ namespace Freelance_Platform.view.components.clientComponent
             foreach (var item in freelancers)
             {
                 card = new FreelancerCards(item);
-
-                
-
                 professionalDisplayPanel.Controls.Add(card);
             }
         }

@@ -142,12 +142,14 @@
             // FreelancerPanel
             // 
             this.FreelancerPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.FreelancerPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.FreelancerPanel.BackColor = System.Drawing.Color.Transparent;
+            this.FreelancerPanel.BorderRadius = 15;
             this.FreelancerPanel.Controls.Add(this.lblPayrate);
             this.FreelancerPanel.Controls.Add(this.lblProfessionalTitle);
             this.FreelancerPanel.Controls.Add(this.lblFreelancerName);
             this.FreelancerPanel.Controls.Add(this.label1);
             this.FreelancerPanel.Controls.Add(this.profilePic);
+            this.FreelancerPanel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.FreelancerPanel.Location = new System.Drawing.Point(531, 92);
             this.FreelancerPanel.Name = "FreelancerPanel";
             this.FreelancerPanel.Size = new System.Drawing.Size(379, 198);

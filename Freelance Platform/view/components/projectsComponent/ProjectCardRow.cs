@@ -31,17 +31,20 @@ namespace Freelance_Platform.components
 
            
             lblProjectStatus.Text = status;
-            if (status == "In Progress")
+            if (status == "PLANNING")
             {
-                lblProjectStatus.BackColor = Color.FromArgb(219, 234, 254); 
-                lblProjectStatus.ForeColor = Color.FromArgb(29, 78, 216);    
+
+                lblProjectStatus.ForeColor = Color.Orange;   
 
                
             }
-            else // Open
+            else if(status == "IN_PROGRESS")
             {
-                lblProjectStatus.BackColor = Color.FromArgb(243, 244, 246); 
-                lblProjectStatus.ForeColor = Color.FromArgb(55, 65, 81);     
+                lblProjectStatus.ForeColor = Color.Blue;
+            }
+            else
+            {
+                lblProjectStatus.ForeColor = Color.Green;
             }
         }
         private void ProjectCardRow_Load(object sender, EventArgs e)

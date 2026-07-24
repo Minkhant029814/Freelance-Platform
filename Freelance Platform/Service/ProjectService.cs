@@ -40,9 +40,9 @@ namespace Freelance_Platform.Service
 
        
 
-        public List<Project> GetProjectByStatus(string status)
+        public List<Project> GetPlanningProjects()
         {
-            return projectRepo.GetprojectByStatus(status);
+            return projectRepo.GetPlanningProjects();
         }
 
         public List<AssignedProjectDTO> GetProjectsAssigned()

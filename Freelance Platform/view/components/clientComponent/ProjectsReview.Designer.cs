@@ -105,6 +105,7 @@
             // 
             // planning
             // 
+            this.planning.BackColor = System.Drawing.Color.Transparent;
             this.planning.Controls.Add(this.planningCardDisplay);
             this.planning.Location = new System.Drawing.Point(4, 44);
             this.planning.Name = "planning";
@@ -112,7 +113,6 @@
             this.planning.Size = new System.Drawing.Size(936, 369);
             this.planning.TabIndex = 0;
             this.planning.Text = "Planning";
-            this.planning.UseVisualStyleBackColor = true;
             // 
             // planningCardDisplay
             // 
@@ -158,7 +158,7 @@
             this.Review.Name = "Review";
             this.Review.Size = new System.Drawing.Size(936, 369);
             this.Review.TabIndex = 3;
-            this.Review.Text = "Review Submission";
+            this.Review.Text = " Submission";
             this.Review.UseVisualStyleBackColor = true;
             // 
             // ReviewLayout

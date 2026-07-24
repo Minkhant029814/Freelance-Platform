@@ -18,10 +18,10 @@ namespace Freelance_Platform.view.components.FreelancerComponent
 {
     public partial class FreeLancerProjectCard : UserControl
     {
-        private  int projectId;
-        private readonly ProjectService pService;
+        
+       
         private string projectStatus;
-        private readonly decimal Budget;
+        private readonly Project project;
         private readonly BidService bidService;
 
       
@@ -31,9 +31,9 @@ namespace Freelance_Platform.view.components.FreelancerComponent
         public FreeLancerProjectCard(Project p)
         {
             InitializeComponent();
-            pService = new ProjectService();
+            this.project = p;
             bidService = new BidService();
-            Budget = p.BaselineBudget;
+           
             LoadData(p);
 
          
@@ -43,7 +43,7 @@ namespace Freelance_Platform.view.components.FreelancerComponent
 
         private void LoadData(Project p)
         {
-            this.projectId = p.ProjectId;
+            
             this.projectStatus = p.CurrentStatus;
             lblProjectTitle.Text = p.ProjectTitle;
             lblProjectDesc.Text = p.Description;
@@ -58,12 +58,12 @@ namespace Freelance_Platform.view.components.FreelancerComponent
         private void btnBidProject_Click(object sender, EventArgs e)
         {
 
-            bool alreadyBidded = bidService.HasUserBidded(projectId, Convert.ToInt32(UserSession.FreelancerId));
+            bool alreadyBidded = bidService.HasUserBidded(project.ProjectId, Convert.ToInt32(UserSession.FreelancerId));
 
             if (!alreadyBidded)
             {
                 
-                BidProjectForm bidForm = new BidProjectForm(Budget, projectId);
+                BidProjectForm bidForm = new BidProjectForm(project);
                 bidForm.ShowDialog();
 
                 if (bidForm.IsSubmitted)
@@ -79,7 +79,7 @@ namespace Freelance_Platform.view.components.FreelancerComponent
 
                 if (confirm == DialogResult.Yes)
                 {
-                    bidService.CancelSubmit(projectId, Convert.ToInt32(UserSession.FreelancerId));
+                    bidService.CancelSubmit(project.ProjectId, Convert.ToInt32(UserSession.FreelancerId));
                     UpdateUIBasedOnStatus(); 
                     MessageBox.Show("Bid cancelled.");
                 }
@@ -88,7 +88,7 @@ namespace Freelance_Platform.view.components.FreelancerComponent
 
         private void UpdateUIBasedOnStatus()
         {
-            bool alreadyBidded = bidService.HasUserBidded(projectId, Convert.ToInt32(UserSession.FreelancerId));
+            bool alreadyBidded = bidService.HasUserBidded(project.ProjectId, Convert.ToInt32(UserSession.FreelancerId));
 
             
            

@@ -22,14 +22,17 @@ namespace Freelance_Platform.view.components.FreelancerComponent
         public bool IsSubmitted { get; private set; } = false;
         private readonly decimal Budget;
         private readonly int ProjectId;
-        public BidProjectForm(decimal budget,int projectId)
+        public BidProjectForm(Project p)
         {
             InitializeComponent();
 
             bidService = new BidService();
-            this.ProjectId = projectId;
-            this.Budget = budget;
-            lblBudget.Text = "$" + $"{budget}";
+            this.ProjectId = p.ProjectId;
+            this.Budget = p.BaselineBudget;
+            lblBudget.Text = $"${Budget}";
+            lblTitle.Text += $" {p.ProjectTitle}";
+            numDown.Maximum = p.BaselineBudget;
+            numDown.Value = p.BaselineBudget;
         }
 
         private void txtBidAmount_TextChanged(object sender, EventArgs e)
@@ -44,25 +47,19 @@ namespace Freelance_Platform.view.components.FreelancerComponent
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            
-            if (string.IsNullOrWhiteSpace(txtBidAmount.Text) || string.IsNullOrWhiteSpace(rtxtMessage.Text))
+            if (string.IsNullOrEmpty(rtxtMessage.Text))
             {
-                MessageBox.Show("Please fill in all fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Plese enter the message for this biddings");
                 return;
             }
-
             
-            if (!decimal.TryParse(txtBidAmount.Text, out decimal bidAmount))
-            {
-                MessageBox.Show("Please enter a valid numeric amount.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-           
+            
+            
                 BidData = new Bidding
                 {
                     ProjectId =this.ProjectId, 
                     FreelancerId = Convert.ToInt32(UserSession.FreelancerId),
-                    BidAmount = Convert.ToDecimal(txtBidAmount.Text),
+                    BidAmount = Convert.ToDecimal(numDown.Value),
                     Message = rtxtMessage.Text, 
                     Status = "Pending",         
                     SubmissionDate = DateTime.Now
@@ -78,6 +75,11 @@ namespace Freelance_Platform.view.components.FreelancerComponent
                 MessageBox.Show("Failed to submit Proposal");
             }
            
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

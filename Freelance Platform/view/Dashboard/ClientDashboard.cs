@@ -24,27 +24,61 @@ namespace Freelance_Platform.Forms.Dashboard
         private FindFreelancersAndReview findFreelancerPage;
         private readonly FreelancerService freelancerService;
         private  ProjectsReview projectReview;
+        private readonly BidService bidService;
+        private readonly List<BidProjectModelDTO> bidProjects;
 
     
 
         private readonly ProjectService service = new ProjectService();
+        private Timer autoHideTimer;
 
         public ClientDashboard()
         {
             InitializeComponent();
+            bidService = new BidService();
+            bidProjects = bidService.GetBidProjects();
             lblGreeting.Text = "Welcome back, " + UserSession.Username;
             lblsubtitle.Text = "Here's what's happening with your projects today.";
             freelancerService = new FreelancerService();
+
+            // Timer initialization
+            autoHideTimer = new Timer();
+            autoHideTimer.Interval = 3000; // 3000 milliseconds = 3 seconds
+            autoHideTimer.Tick += AutoHideTimer_Tick;
+
+            CheckingNewBidAlerts(bidProjects);
         }
 
-        //Navigation Helper Method
-       
-        
-        
+        private void CheckingNewBidAlerts(List<BidProjectModelDTO> projects)
+        {
+            int totalNewBids = projects.Sum(p => p.NewBids); 
+            if (totalNewBids > 0)
+            {
+                notiBanner.Visible = true;
+                lblMessage.Text = $"🔔 You have {totalNewBids} new bid(s) waiting to check!";
 
-       
+                // start timing
+                autoHideTimer.Start();
+            }
+            else
+            {
+                notiBanner.Visible = false;
+            }
+        }
 
-        
+        // Event for after 3 seconds
+        private void AutoHideTimer_Tick(object sender, EventArgs e)
+        {
+            autoHideTimer.Stop(); 
+            notiBanner.Visible = false; 
+        }
+
+
+
+
+
+
+
         private void btnDashboard_Click(object sender, EventArgs e)
         {
 

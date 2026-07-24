@@ -91,12 +91,12 @@ namespace Freelance_Platform.Repositories
     p.ProjectTitle, 
     p.Budget, 
     COUNT(b.BidId) AS TotalBids, 
-   
     SUM(CASE WHEN b.SubmissionDate >= NOW() - INTERVAL 1 DAY AND b.Status = 'PENDING' THEN 1 ELSE 0 END) AS NewBidsCount
-    FROM Projects p
-    INNER JOIN Biddings b ON p.ProjectId = b.ProjectId
-    WHERE p.ClientId = @ClientId 
-    GROUP BY p.ProjectId, p.ProjectTitle, p.Budget;";
+FROM Projects p
+INNER JOIN Biddings b ON p.ProjectId = b.ProjectId
+WHERE p.ClientId = @ClientId 
+GROUP BY p.ProjectId, p.ProjectTitle, p.Budget
+ORDER BY MAX(b.SubmissionDate) DESC;  ";
 
             MySqlParameter[] ps =
             {

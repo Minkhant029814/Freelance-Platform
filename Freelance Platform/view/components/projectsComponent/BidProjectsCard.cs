@@ -16,6 +16,7 @@ namespace Freelance_Platform.view.components.clientComponent
         private readonly BidProjectModelDTO project;
 
         public event EventHandler CardClick;
+
         public BidProjectsCard(BidProjectModelDTO p)
         {
             InitializeComponent();
@@ -23,17 +24,23 @@ namespace Freelance_Platform.view.components.clientComponent
             project = p;
             DisplayData(p);
 
-            this.Click += BidProjectsCard_Click;
-
-            // Card ပေါ်က control တွေအားလုံးကိုလည်း ဒီ Method နဲ့ပဲ ချိတ်ပါ
-            foreach (Control ctrl in this.Controls)
-            {
-                ctrl.Click += BidProjectsCard_Click;
-            }
-
-
-
+            
+            SetupHoverEffects(this);
         }
+
+       
+        private void SetupHoverEffects(Control parentControl)
+        {
+            parentControl.Cursor = Cursors.Hand;
+            parentControl.Click += BidProjectsCard_Click;
+            
+            foreach (Control child in parentControl.Controls)
+            {
+                SetupHoverEffects(child); 
+            }
+        }
+
+        
 
         private void DisplayData(BidProjectModelDTO project)
         {

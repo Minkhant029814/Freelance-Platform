@@ -178,14 +178,16 @@
             // 
             // lblDate
             // 
-            this.lblDate.AutoSize = true;
-            this.lblDate.BackColor = System.Drawing.Color.Transparent;
+            this.lblDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDate.BackColor = System.Drawing.Color.NavajoWhite;
             this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.Location = new System.Drawing.Point(389, 20);
+            this.lblDate.ForeColor = System.Drawing.Color.Orange;
+            this.lblDate.Location = new System.Drawing.Point(399, 15);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(58, 22);
+            this.lblDate.Size = new System.Drawing.Size(425, 32);
             this.lblDate.TabIndex = 1;
             this.lblDate.Text = "label1";
+            this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblStatus
             // 

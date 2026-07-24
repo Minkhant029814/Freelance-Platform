@@ -4,6 +4,7 @@ using Freelance_Platform.Service;
 using Freelance_Platform.view.components.projectsComponent;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Freelance_Platform.view.components.clientComponent
@@ -32,7 +33,8 @@ namespace Freelance_Platform.view.components.clientComponent
             planningCardDisplay.SuspendLayout();
             planningCardDisplay.Controls.Clear();
 
-            List<Project> projects = pservice.GetProjectByStatus("PLANNING");
+            List<Project> projects = pservice.GetPlanningProjects();
+            IfNull(projects, planningCardDisplay, "No Planning projects here");
 
             foreach (Project project in projects)
             {
@@ -60,6 +62,7 @@ namespace Freelance_Platform.view.components.clientComponent
 
             List<AssignedProjectDTO> projects =
                 pservice.GetProjectsAssigned();
+            IfNull(projects, InProgressDisplay, "No In_progress projects here...");
 
             foreach (AssignedProjectDTO project in projects)
             {
@@ -85,8 +88,7 @@ namespace Freelance_Platform.view.components.clientComponent
 
                 List<AssignedProjectDTO> projects =
                     pservice.GetForSubmittedReview();
-
-
+            IfNull(projects, ReviewLayout, "No submitted projects to check and approve here...");
 
                 foreach (AssignedProjectDTO project in projects)
                 {
@@ -98,7 +100,7 @@ namespace Freelance_Platform.view.components.clientComponent
                     ReviewLayout.Controls.Add(card);
                 }
                 guna2TabControl1.TabPages[2].Text =
-                    $"Review Submissions ({projects.Count}) ";
+                    $"Submissions ({projects.Count}) ";
                 ReviewLayout.ResumeLayout();
             
 
@@ -114,9 +116,10 @@ namespace Freelance_Platform.view.components.clientComponent
             CompletedDisplay.SuspendLayout();
             CompletedDisplay.Controls.Clear();
 
-            
+
             List<AssignedProjectDTO> projects =
                 pservice.GetCompletedProjects();
+            IfNull(projects,CompletedDisplay,"No Completed project here...");
 
             foreach (AssignedProjectDTO project in projects)
             {
@@ -134,6 +137,28 @@ namespace Freelance_Platform.view.components.clientComponent
         }
 
         #endregion
+        //Messages if there is no projects for each category
+        private void IfNull <T>(List<T> p,Control c,string message)
+        {
+            if (p.Count == 0)
+            {
+                Label lblMessage = new Label();
+                lblMessage.Text = message;
+                lblMessage.ForeColor = Color.Green;
+                lblMessage.Font = new Font("Segoe UI", 14, FontStyle.Bold);
+                lblMessage.AutoSize = true;
+
+
+                lblMessage.Location = new Point(
+                    (c.Width - lblMessage.Width) / 2,
+                    (c.Height - lblMessage.Height) / 2
+                );
+
+
+                c.Controls.Add(lblMessage);
+            }
+
+        }
 
         private void guna2TabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {

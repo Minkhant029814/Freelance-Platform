@@ -16,7 +16,7 @@ namespace Freelance_Platform.view.components.FreelancerComponent
     public partial class SearchProjects : UserControl
     {
 
-        private readonly List<Project> projects;
+       
         private readonly FreelancerService fservice;
         private FreeLancerProjectCard card;
         
@@ -26,8 +26,8 @@ namespace Freelance_Platform.view.components.FreelancerComponent
             InitializeComponent();
             fservice = new FreelancerService();
 
-            this.projects = fservice.BrowseProjects(txtSearch.Text);
-            CreatingCard();
+            
+            CreatingCard(txtSearch.Text);
            
         }
 
@@ -36,11 +36,16 @@ namespace Freelance_Platform.view.components.FreelancerComponent
 
         }
 
-        private void CreatingCard()
+        private void CreatingCard(string keyword)
         {
-            foreach(Project p in projects)
+            ProjectDisplay.Controls.Clear();
+            var projects = fservice.BrowseProjects(keyword);
+
+            foreach (Project p in projects)
             {
-                card = new FreeLancerProjectCard(p);
+                FreeLancerProjectCard card = new FreeLancerProjectCard(p);
+                
+                card.Width = ProjectDisplay.ClientSize.Width - 30;
                 ProjectDisplay.Controls.Add(card);
             }
         }
@@ -68,8 +73,14 @@ namespace Freelance_Platform.view.components.FreelancerComponent
         {
             foreach(Control c in ProjectDisplay.Controls)
             {
-                c.Width = ProjectDisplay.ClientSize.Width - 25;
+                c.Width = ProjectDisplay.ClientSize.Width - 30;
             }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            
+            CreatingCard(txtSearch.Text);
         }
     }
 }

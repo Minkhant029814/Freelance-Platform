@@ -33,7 +33,7 @@ namespace Freelance_Platform.view.components.projectsComponent
 
             //Freelancers info
             lblFreelancerName.Text = pf.Freelancer.Portfolio.OwnerName;
-            lblPayrate.Text = pf.Freelancer.HourlyRate.ToString();
+            lblPayrate.Text = $"${pf.Freelancer.HourlyRate.ToString()}/hr";
             lblProfessionalTitle.Text = pf.Freelancer.Portfolio.ProfessionalTitle;
 
             if (pf.Review.ReviewId > 0)
