@@ -22,6 +22,10 @@ namespace Freelance_Platform.DTO
 
         public string Biography { get; set; }
 
+        public float AverageRating { get; set; }
+
+        public int ReviewCount { get; set; }
+
         public List<string> Skills { get; set; } = new List<string>();
     }
 }

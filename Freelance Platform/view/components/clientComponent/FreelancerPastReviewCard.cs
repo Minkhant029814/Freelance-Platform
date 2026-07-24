@@ -1,0 +1,32 @@
+﻿using Freelance_Platform.DTO;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Freelance_Platform.view.components.clientComponent
+{
+    public partial class FreelancerPastReviewCard : UserControl
+    {
+        public FreelancerPastReviewCard(ReviewDTO review)
+        {
+            InitializeComponent();
+            LoadData(review);
+        }
+
+
+        private void LoadData(ReviewDTO r)
+        {
+
+            lblClientName.Text = r.ClientName;
+            lblcomment.Text = r.Comment;
+            lblCommentDate.Text = r.CommentDate.ToString();
+            RatingStar.Value = r.Rating;
+        }
+    }
+}

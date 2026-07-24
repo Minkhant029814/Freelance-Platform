@@ -1,4 +1,5 @@
 ﻿using FontAwesome.Sharp;
+using Freelance_Platform.DTO;
 using Freelance_Platform.model;
 using Freelance_Platform.Service;
 using Freelance_Platform.view.components.FreelancerComponent;
@@ -45,8 +46,9 @@ namespace Freelance_Platform.view.components.clientComponent
             RatingStar.Value = freelancer.AverageRating;
             lblHourlyRate.Text = freelancer.HourlyRate.ToString() + " $ / hour";
             lblRating.Text = freelancer.AverageRating.ToString();
-            lblReviewCount.Text = freelancer.TotalReviews.ToString();
+            lblReviewCount.Text = $"({freelancer.TotalReviews.ToString()} Reviews)";
             DisplayPastProjects(freelancer.Portfolio.Projects.ToList());
+            DisplayClientReviews(freelancer.Reviews);
             lblProjectCount.Text = freelancer.Portfolio.Projects.Count.ToString() + " Past Projects";
             RatingStar.Value = freelancer.AverageRating;
 
@@ -66,6 +68,7 @@ namespace Freelance_Platform.view.components.clientComponent
             }
         }
 
+        
 
         //Skill Tag Display
         private void CreateSkillButton(string skill)
@@ -113,6 +116,26 @@ namespace Freelance_Platform.view.components.clientComponent
             }
         }
 
+        private void DisplayClientReviews(List<ReviewDTO> reviews)
+        {
+            clientReviewPanel.Controls.Clear();
+
+            if (reviews == null || reviews.Count == 0)
+            {
+                bodyContainer.Controls.Remove(ReviewPanel);
+                return;
+            }
+            bodyContainer.Controls.Add(ReviewPanel);
+            foreach (ReviewDTO r in reviews)
+            {
+                FreelancerPastReviewCard card = new FreelancerPastReviewCard(r);
+                card.Width = clientReviewPanel.ClientSize.Width - 50;
+                clientReviewPanel.Controls.Add(card);
+            }
+
+        }
+
+
         private void FreelancerDetails_Resize(object sender, EventArgs e)
         {
            
@@ -122,7 +145,15 @@ namespace Freelance_Platform.view.components.clientComponent
         {
             foreach (Control c in PastWorkDisplay.Controls)
             {
-                c.Width = PastWorkDisplay.Width - 50;
+                c.Width = PastWorkDisplay.ClientSize.Width - 50;
+            }
+        }
+
+        private void clientReviewPanel_Resize(object sender, EventArgs e)
+        {
+            foreach(Control c in clientReviewPanel.Controls)
+            {
+                c.Width = clientReviewPanel.ClientSize.Width - 50;
             }
         }
     }

@@ -20,6 +20,6 @@ namespace Freelance_Platform.DTO
 
         public string Comment { get; set; }
 
-        public DateTime ProjectEndDate { get; set; }
+        public DateTime CompletedDate { get; set; }
     }
 }

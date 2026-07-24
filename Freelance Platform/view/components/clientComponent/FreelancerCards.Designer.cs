@@ -113,7 +113,7 @@
             // 
             this.lblReviewCount.AutoSize = true;
             this.lblReviewCount.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblReviewCount.Location = new System.Drawing.Point(270, 143);
+            this.lblReviewCount.Location = new System.Drawing.Point(307, 143);
             this.lblReviewCount.Name = "lblReviewCount";
             this.lblReviewCount.Size = new System.Drawing.Size(114, 23);
             this.lblReviewCount.TabIndex = 6;
@@ -123,7 +123,7 @@
             // 
             this.lblRating.AutoSize = true;
             this.lblRating.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRating.Location = new System.Drawing.Point(181, 143);
+            this.lblRating.Location = new System.Drawing.Point(191, 143);
             this.lblRating.Name = "lblRating";
             this.lblRating.Size = new System.Drawing.Size(59, 23);
             this.lblRating.TabIndex = 5;

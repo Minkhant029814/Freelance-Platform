@@ -175,7 +175,7 @@ namespace Freelance_Platform.Repositories
         {
             try
             {
-                string query = "UPDATE projects SET Status = 'COMPLETED' where ProjectId = @pid";
+                string query = "UPDATE projects SET Status = 'COMPLETED',CompletedDate = NOW() where ProjectId = @pid";
                 MySqlParameter[] ps =
                 {
                     new MySqlParameter("@pid",projectId),

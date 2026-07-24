@@ -39,7 +39,7 @@ namespace Freelance_Platform.view.components.clientComponent
 
         private void BidReceived_Load(object sender, EventArgs e)
         {
-            MessageBox.Show("Total Projects Found: " + bidProjects.Count.ToString());
+           
             //when there is no bidding projects
             if (bidProjects.Count == 0)
             {

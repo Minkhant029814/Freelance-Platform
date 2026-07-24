@@ -65,7 +65,7 @@
             // 
             // ratingPanel
             // 
-            this.ratingPanel.BackColor = System.Drawing.Color.Cyan;
+            this.ratingPanel.BackColor = System.Drawing.Color.White;
             this.ratingPanel.Controls.Add(this.btnSave);
             this.ratingPanel.Controls.Add(this.btnCancel);
             this.ratingPanel.Controls.Add(this.rtxtReview);
@@ -134,8 +134,10 @@
             // 
             // ratingStar
             // 
+            this.ratingStar.BorderColor = System.Drawing.Color.Gold;
             this.ratingStar.Location = new System.Drawing.Point(27, 68);
             this.ratingStar.Name = "ratingStar";
+            this.ratingStar.RatingColor = System.Drawing.Color.Gold;
             this.ratingStar.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ratingStar.Size = new System.Drawing.Size(212, 39);
             this.ratingStar.TabIndex = 4;
@@ -152,7 +154,7 @@
             // 
             // freelancerInfoPanel
             // 
-            this.freelancerInfoPanel.BackColor = System.Drawing.Color.Lime;
+            this.freelancerInfoPanel.BackColor = System.Drawing.Color.White;
             this.freelancerInfoPanel.Controls.Add(this.lblProfessionalTitle);
             this.freelancerInfoPanel.Controls.Add(this.lblFreelacerName);
             this.freelancerInfoPanel.Controls.Add(this.profilePic);
@@ -184,6 +186,7 @@
             // 
             // profilePic
             // 
+            this.profilePic.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.profilePic.ImageRotate = 0F;
             this.profilePic.Location = new System.Drawing.Point(16, 15);
             this.profilePic.Name = "profilePic";
@@ -195,6 +198,7 @@
             // 
             // headContainer
             // 
+            this.headContainer.BackColor = System.Drawing.Color.White;
             this.headContainer.Controls.Add(this.lblProjectTitle);
             this.headContainer.Controls.Add(this.label1);
             this.headContainer.Dock = System.Windows.Forms.DockStyle.Top;

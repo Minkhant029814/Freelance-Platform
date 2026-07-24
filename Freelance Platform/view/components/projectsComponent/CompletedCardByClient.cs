@@ -27,9 +27,9 @@ namespace Freelance_Platform.view.components.projectsComponent
         {
             lblProjectTitle.Text = pf.Project.ProjectTitle;
             lblDescription.Text = pf.Project.Description;
-            lblDate.Text = pf.Project.EndDate.ToString("dd MMMM yyyy");
+            lblDate.Text = $"Completed {pf.Project.CompletedDate.ToString("dd MMMM yyyy")}";
             lblStatus.Text = pf.Project.CurrentStatus;
-
+            lblFinalPayment.Text = $"Final payment: ${pf.Project.BaselineBudget} paid";
 
             //Freelancers info
             lblFreelancerName.Text = pf.Freelancer.Portfolio.OwnerName;

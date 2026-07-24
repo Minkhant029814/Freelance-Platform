@@ -114,10 +114,17 @@
     <Compile Include="DTO\FreelancerCardDTO.cs" />
     <Compile Include="DTO\AssignedProjectDTO.cs" />
     <Compile Include="DTO\ProjectWithMilestoneDTO.cs" />
+    <Compile Include="DTO\ReviewDTO.cs" />
     <Compile Include="model\MileStone.cs" />
     <Compile Include="Repositories\FreelancerRepository.cs" />
     <Compile Include="Service\BidService.cs" />
     <Compile Include="Service\FreelancerService.cs" />
+    <Compile Include="view\components\clientComponent\FreelancerPastReviewCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\components\clientComponent\FreelancerPastReviewCard.Designer.cs">
+      <DependentUpon>FreelancerPastReviewCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\components\clientComponent\RatingFreelancer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -370,6 +377,9 @@
     <Compile Include="Service\ClientService.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="Session\UserSession.cs" />
+    <EmbeddedResource Include="view\components\clientComponent\FreelancerPastReviewCard.resx">
+      <DependentUpon>FreelancerPastReviewCard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="view\components\clientComponent\RatingFreelancer.resx">
       <DependentUpon>RatingFreelancer.cs</DependentUpon>
     </EmbeddedResource>

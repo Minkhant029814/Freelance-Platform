@@ -69,6 +69,12 @@ namespace Freelance_Platform.view.components.clientComponent
                 Comment = rtxtReview.Text
             };
 
+            if(string.IsNullOrEmpty(rtxtReview.Text) || ratingStar.Value == 0)
+            {
+                MessageBox.Show("Please Rating and Comment for Freelancers..");
+                return;
+            }
+
             if (clientService.RatingFreelancer(review))
             {
                 MessageBox.Show("Rating Freelancer task is completed..");

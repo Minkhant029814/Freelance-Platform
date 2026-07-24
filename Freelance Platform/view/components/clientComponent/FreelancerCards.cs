@@ -35,7 +35,11 @@ namespace Freelance_Platform.view.components.clientComponent
             lblProfessionalTitle.Text = f.ProfessionalTitle;
             lblPayRate.Text = f.HourlyRate.ToString();
             lblDescription.Text = f.Biography;
-            
+
+            RatingStar.Value = f.AverageRating;
+            lblRating.Text = f.AverageRating.ToString();
+            lblReviewCount.Text = $"({f.ReviewCount.ToString()} Reviews)";
+
 
             //for Profile picutre
             string imgPath = Path.Combine(Application.StartupPath, "Uploads", f.ProfilePic ?? "");

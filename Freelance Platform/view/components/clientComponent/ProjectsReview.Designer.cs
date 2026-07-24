@@ -34,23 +34,23 @@
             this.planningCardDisplay = new System.Windows.Forms.FlowLayoutPanel();
             this.inProgress = new System.Windows.Forms.TabPage();
             this.InProgressDisplay = new System.Windows.Forms.FlowLayoutPanel();
+            this.Review = new System.Windows.Forms.TabPage();
+            this.ReviewLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.completed = new System.Windows.Forms.TabPage();
             this.CompletedDisplay = new System.Windows.Forms.FlowLayoutPanel();
             this.headContainer = new Guna.UI2.WinForms.Guna2Panel();
+            this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             this.lblTotalProjects = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.Review = new System.Windows.Forms.TabPage();
-            this.ReviewLayout = new System.Windows.Forms.FlowLayoutPanel();
-            this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.mainContainer.SuspendLayout();
             this.guna2TabControl1.SuspendLayout();
             this.planning.SuspendLayout();
             this.inProgress.SuspendLayout();
+            this.Review.SuspendLayout();
             this.completed.SuspendLayout();
             this.headContainer.SuspendLayout();
-            this.Review.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -117,7 +117,7 @@
             // planningCardDisplay
             // 
             this.planningCardDisplay.AutoScroll = true;
-            this.planningCardDisplay.BackColor = System.Drawing.Color.IndianRed;
+            this.planningCardDisplay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.planningCardDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
             this.planningCardDisplay.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.planningCardDisplay.Location = new System.Drawing.Point(3, 3);
@@ -141,7 +141,7 @@
             // InProgressDisplay
             // 
             this.InProgressDisplay.AutoScroll = true;
-            this.InProgressDisplay.BackColor = System.Drawing.Color.Lime;
+            this.InProgressDisplay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.InProgressDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
             this.InProgressDisplay.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.InProgressDisplay.Location = new System.Drawing.Point(3, 3);
@@ -150,6 +150,29 @@
             this.InProgressDisplay.TabIndex = 0;
             this.InProgressDisplay.WrapContents = false;
             this.InProgressDisplay.Resize += new System.EventHandler(this.InProgressDisplay_Resize);
+            // 
+            // Review
+            // 
+            this.Review.Controls.Add(this.ReviewLayout);
+            this.Review.Location = new System.Drawing.Point(4, 44);
+            this.Review.Name = "Review";
+            this.Review.Size = new System.Drawing.Size(936, 369);
+            this.Review.TabIndex = 3;
+            this.Review.Text = "Review Submission";
+            this.Review.UseVisualStyleBackColor = true;
+            // 
+            // ReviewLayout
+            // 
+            this.ReviewLayout.AutoScroll = true;
+            this.ReviewLayout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ReviewLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ReviewLayout.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.ReviewLayout.Location = new System.Drawing.Point(0, 0);
+            this.ReviewLayout.Name = "ReviewLayout";
+            this.ReviewLayout.Size = new System.Drawing.Size(936, 369);
+            this.ReviewLayout.TabIndex = 0;
+            this.ReviewLayout.WrapContents = false;
+            this.ReviewLayout.Resize += new System.EventHandler(this.ReviewLayout_Resize);
             // 
             // completed
             // 
@@ -165,7 +188,7 @@
             // CompletedDisplay
             // 
             this.CompletedDisplay.AutoScroll = true;
-            this.CompletedDisplay.BackColor = System.Drawing.Color.SpringGreen;
+            this.CompletedDisplay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.CompletedDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CompletedDisplay.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.CompletedDisplay.Location = new System.Drawing.Point(3, 3);
@@ -188,6 +211,21 @@
             this.headContainer.Name = "headContainer";
             this.headContainer.Size = new System.Drawing.Size(944, 100);
             this.headContainer.TabIndex = 0;
+            // 
+            // iconPictureBox2
+            // 
+            this.iconPictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconPictureBox2.BackColor = System.Drawing.Color.White;
+            this.iconPictureBox2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.Users;
+            this.iconPictureBox2.IconColor = System.Drawing.SystemColors.ControlText;
+            this.iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox2.IconSize = 47;
+            this.iconPictureBox2.Location = new System.Drawing.Point(671, 38);
+            this.iconPictureBox2.Name = "iconPictureBox2";
+            this.iconPictureBox2.Size = new System.Drawing.Size(47, 47);
+            this.iconPictureBox2.TabIndex = 4;
+            this.iconPictureBox2.TabStop = false;
             // 
             // lblTotalProjects
             // 
@@ -220,44 +258,6 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Project  WorkSpace";
             // 
-            // Review
-            // 
-            this.Review.Controls.Add(this.ReviewLayout);
-            this.Review.Location = new System.Drawing.Point(4, 44);
-            this.Review.Name = "Review";
-            this.Review.Size = new System.Drawing.Size(936, 369);
-            this.Review.TabIndex = 3;
-            this.Review.Text = "Review Submission";
-            this.Review.UseVisualStyleBackColor = true;
-            // 
-            // ReviewLayout
-            // 
-            this.ReviewLayout.AutoScroll = true;
-            this.ReviewLayout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ReviewLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ReviewLayout.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.ReviewLayout.Location = new System.Drawing.Point(0, 0);
-            this.ReviewLayout.Name = "ReviewLayout";
-            this.ReviewLayout.Size = new System.Drawing.Size(936, 369);
-            this.ReviewLayout.TabIndex = 0;
-            this.ReviewLayout.WrapContents = false;
-            this.ReviewLayout.Resize += new System.EventHandler(this.ReviewLayout_Resize);
-            // 
-            // iconPictureBox2
-            // 
-            this.iconPictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.iconPictureBox2.BackColor = System.Drawing.Color.White;
-            this.iconPictureBox2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.Users;
-            this.iconPictureBox2.IconColor = System.Drawing.SystemColors.ControlText;
-            this.iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox2.IconSize = 47;
-            this.iconPictureBox2.Location = new System.Drawing.Point(671, 38);
-            this.iconPictureBox2.Name = "iconPictureBox2";
-            this.iconPictureBox2.Size = new System.Drawing.Size(47, 47);
-            this.iconPictureBox2.TabIndex = 4;
-            this.iconPictureBox2.TabStop = false;
-            // 
             // iconPictureBox1
             // 
             this.iconPictureBox1.BackColor = System.Drawing.Color.White;
@@ -283,10 +283,10 @@
             this.guna2TabControl1.ResumeLayout(false);
             this.planning.ResumeLayout(false);
             this.inProgress.ResumeLayout(false);
+            this.Review.ResumeLayout(false);
             this.completed.ResumeLayout(false);
             this.headContainer.ResumeLayout(false);
             this.headContainer.PerformLayout();
-            this.Review.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
             this.ResumeLayout(false);

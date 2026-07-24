@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.mainContainer = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnStat = new Guna.UI2.WinForms.Guna2Button();
-            this.lblSubmittedDate = new System.Windows.Forms.Label();
-            this.lblProjectTitle = new System.Windows.Forms.Label();
+            this.btnApprove = new Guna.UI2.WinForms.Guna2Button();
             this.FreelancerPanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.lblPayrate = new System.Windows.Forms.Label();
             this.lblProfessionalTitle = new System.Windows.Forms.Label();
             this.lblFreelancerName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.profilePic = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnApprove = new Guna.UI2.WinForms.Guna2Button();
+            this.lblProjectTitle = new System.Windows.Forms.Label();
+            this.lblSubmittedDate = new System.Windows.Forms.Label();
+            this.btnStat = new Guna.UI2.WinForms.Guna2Button();
             this.mainContainer.SuspendLayout();
             this.FreelancerPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilePic)).BeginInit();
@@ -62,47 +62,28 @@
             this.mainContainer.Size = new System.Drawing.Size(1029, 311);
             this.mainContainer.TabIndex = 0;
             // 
-            // btnStat
+            // btnApprove
             // 
-            this.btnStat.BorderRadius = 15;
-            this.btnStat.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnStat.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnStat.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnStat.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnStat.FillColor = System.Drawing.Color.CornflowerBlue;
-            this.btnStat.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnStat.ForeColor = System.Drawing.Color.Blue;
-            this.btnStat.Location = new System.Drawing.Point(24, 18);
-            this.btnStat.Name = "btnStat";
-            this.btnStat.Size = new System.Drawing.Size(180, 55);
-            this.btnStat.TabIndex = 0;
-            this.btnStat.Text = "Submitted Review";
-            // 
-            // lblSubmittedDate
-            // 
-            this.lblSubmittedDate.AutoSize = true;
-            this.lblSubmittedDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSubmittedDate.Location = new System.Drawing.Point(256, 30);
-            this.lblSubmittedDate.Name = "lblSubmittedDate";
-            this.lblSubmittedDate.Size = new System.Drawing.Size(65, 28);
-            this.lblSubmittedDate.TabIndex = 1;
-            this.lblSubmittedDate.Text = "label1";
-            // 
-            // lblProjectTitle
-            // 
-            this.lblProjectTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblProjectTitle.BackColor = System.Drawing.Color.Transparent;
-            this.lblProjectTitle.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProjectTitle.Location = new System.Drawing.Point(19, 95);
-            this.lblProjectTitle.Name = "lblProjectTitle";
-            this.lblProjectTitle.Size = new System.Drawing.Size(579, 79);
-            this.lblProjectTitle.TabIndex = 2;
-            this.lblProjectTitle.Text = "label1";
+            this.btnApprove.BackColor = System.Drawing.Color.Transparent;
+            this.btnApprove.BorderRadius = 15;
+            this.btnApprove.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnApprove.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnApprove.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnApprove.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnApprove.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnApprove.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnApprove.ForeColor = System.Drawing.Color.White;
+            this.btnApprove.Location = new System.Drawing.Point(24, 253);
+            this.btnApprove.Name = "btnApprove";
+            this.btnApprove.Size = new System.Drawing.Size(223, 45);
+            this.btnApprove.TabIndex = 7;
+            this.btnApprove.Text = "Approve &&&Complete";
+            this.btnApprove.Click += new System.EventHandler(this.btnApprove_Click);
             // 
             // FreelancerPanel
             // 
             this.FreelancerPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.FreelancerPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.FreelancerPanel.Controls.Add(this.label2);
             this.FreelancerPanel.Controls.Add(this.lblPayrate);
             this.FreelancerPanel.Controls.Add(this.lblProfessionalTitle);
@@ -113,6 +94,17 @@
             this.FreelancerPanel.Name = "FreelancerPanel";
             this.FreelancerPanel.Size = new System.Drawing.Size(379, 198);
             this.FreelancerPanel.TabIndex = 6;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.label2.Location = new System.Drawing.Point(56, 158);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(186, 23);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Waiting for your review";
             // 
             // lblPayrate
             // 
@@ -165,33 +157,45 @@
             this.profilePic.TabIndex = 0;
             this.profilePic.TabStop = false;
             // 
-            // label2
+            // lblProjectTitle
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label2.Location = new System.Drawing.Point(56, 158);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(186, 23);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Waiting for your review";
+            this.lblProjectTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblProjectTitle.BackColor = System.Drawing.Color.Transparent;
+            this.lblProjectTitle.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProjectTitle.Location = new System.Drawing.Point(19, 95);
+            this.lblProjectTitle.Name = "lblProjectTitle";
+            this.lblProjectTitle.Size = new System.Drawing.Size(579, 79);
+            this.lblProjectTitle.TabIndex = 2;
+            this.lblProjectTitle.Text = "label1";
             // 
-            // btnApprove
+            // lblSubmittedDate
             // 
-            this.btnApprove.BorderRadius = 15;
-            this.btnApprove.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnApprove.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnApprove.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnApprove.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnApprove.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnApprove.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnApprove.ForeColor = System.Drawing.Color.White;
-            this.btnApprove.Location = new System.Drawing.Point(24, 253);
-            this.btnApprove.Name = "btnApprove";
-            this.btnApprove.Size = new System.Drawing.Size(223, 45);
-            this.btnApprove.TabIndex = 7;
-            this.btnApprove.Text = "Approve &&&Complete";
-            this.btnApprove.Click += new System.EventHandler(this.btnApprove_Click);
+            this.lblSubmittedDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblSubmittedDate.BackColor = System.Drawing.Color.Transparent;
+            this.lblSubmittedDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubmittedDate.Location = new System.Drawing.Point(256, 30);
+            this.lblSubmittedDate.Name = "lblSubmittedDate";
+            this.lblSubmittedDate.Size = new System.Drawing.Size(342, 81);
+            this.lblSubmittedDate.TabIndex = 1;
+            this.lblSubmittedDate.Text = "label1";
+            // 
+            // btnStat
+            // 
+            this.btnStat.BorderRadius = 15;
+            this.btnStat.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnStat.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnStat.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnStat.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnStat.FillColor = System.Drawing.Color.CornflowerBlue;
+            this.btnStat.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnStat.ForeColor = System.Drawing.Color.Blue;
+            this.btnStat.Location = new System.Drawing.Point(24, 18);
+            this.btnStat.Name = "btnStat";
+            this.btnStat.Size = new System.Drawing.Size(180, 55);
+            this.btnStat.TabIndex = 0;
+            this.btnStat.Text = "Submitted Review";
             // 
             // ReviewSubmissionProjectCard
             // 
@@ -201,7 +205,6 @@
             this.Name = "ReviewSubmissionProjectCard";
             this.Size = new System.Drawing.Size(1067, 347);
             this.mainContainer.ResumeLayout(false);
-            this.mainContainer.PerformLayout();
             this.FreelancerPanel.ResumeLayout(false);
             this.FreelancerPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilePic)).EndInit();

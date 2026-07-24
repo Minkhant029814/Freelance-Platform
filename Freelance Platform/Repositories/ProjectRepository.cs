@@ -240,7 +240,7 @@ WHERE p.ClientId = @clientId AND p.Status = 'IN_PROGRESS'
     p.ProjectTitle, 
     p.Description, 
     p.Budget, 
-    p.EndDate,
+    p.SubmittedDate,
     p.Status,
     p.OverAllProgress,
     f.FreelancerId, 
@@ -271,7 +271,7 @@ WHERE p.ClientId = @clientId AND p.Status = 'ON_HOLD'
                 p.Freelancer.Portfolio.ProfessionalTitle = row["ProfessionalTitle"].ToString();
                 p.Freelancer.Portfolio.Profile = row["ProfilePic"].ToString();
 
-                p.Project.EndDate = Convert.ToDateTime(row["EndDate"]);
+                p.Project.SubmittedDate = Convert.ToDateTime(row["SubmittedDate"]);
                 p.Project.ProjectId = Convert.ToInt32(row["ProjectId"]);
                 p.Project.ProjectTitle = row["ProjectTitle"].ToString();
                 p.Project.Description = row["Description"].ToString();
@@ -294,7 +294,7 @@ WHERE p.ClientId = @clientId AND p.Status = 'ON_HOLD'
     p.ProjectTitle, 
     p.Description, 
     p.Budget, 
-    p.EndDate,
+    p.CompletedDate,
     p.Status,
     f.FreelancerId, 
     f.HourlyRate,
@@ -310,7 +310,8 @@ INNER JOIN freelancers f ON b.FreelancerId = f.FreelancerId
 INNER JOIN portfolios po ON f.FreelancerId = po.FreelancerId
 LEFT JOIN reviews r ON p.ProjectId = r.ProjectId AND r.ClientId = @clientId
 WHERE p.ClientId = @clientId AND p.Status = 'COMPLETED' 
-  AND b.Status = 'Accepted';";
+  AND b.Status = 'Accepted'
+ORDER BY p.CompletedDate DESC;";
 
             MySqlParameter[] ps =
             {
@@ -332,14 +333,23 @@ WHERE p.ClientId = @clientId AND p.Status = 'COMPLETED'
                 p.Freelancer.Portfolio.Profile = row["ProfilePic"].ToString();
 
                 // Project Info
-                p.Project.EndDate = Convert.ToDateTime(row["EndDate"]);
+               
                 p.Project.ProjectId = Convert.ToInt32(row["ProjectId"]);
                 p.Project.ProjectTitle = row["ProjectTitle"].ToString();
                 p.Project.Description = row["Description"].ToString();
                 p.Project.BaselineBudget = Convert.ToDecimal(row["Budget"]);
                 p.Project.CurrentStatus = row["Status"].ToString();
 
-                
+                if (row["CompletedDate"] != DBNull.Value && row["CompletedDate"] != null)
+                {
+                    p.Project.CompletedDate = Convert.ToDateTime(row["CompletedDate"]);
+                }
+                else
+                {
+                    p.Project.CompletedDate = DateTime.MinValue; // Data မရှိသေးပါက Default တန်ဖိုးထားရန်
+                }
+
+
                 if (row["ReviewId"] != DBNull.Value)
                 {
                     p.Review.ReviewId = Convert.ToInt32(row["ReviewId"]);

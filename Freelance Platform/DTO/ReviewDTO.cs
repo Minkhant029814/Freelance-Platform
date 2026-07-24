@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Freelance_Platform.DTO
+{
+    public class ReviewDTO
+    {
+        public string ClientName { get; set; }
+        public float Rating { get; set; }
+
+        public string Comment { get; set; }
+
+        public DateTime CommentDate { get; set; }
+    }
+}

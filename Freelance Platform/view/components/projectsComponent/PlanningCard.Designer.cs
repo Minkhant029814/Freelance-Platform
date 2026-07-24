@@ -60,6 +60,7 @@
             // lblcheck
             // 
             this.lblcheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblcheck.BackColor = System.Drawing.Color.Transparent;
             this.lblcheck.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblcheck.Location = new System.Drawing.Point(449, 229);
             this.lblcheck.Name = "lblcheck";
@@ -70,6 +71,7 @@
             // lblBudget
             // 
             this.lblBudget.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblBudget.BackColor = System.Drawing.Color.Transparent;
             this.lblBudget.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBudget.Location = new System.Drawing.Point(30, 229);
             this.lblBudget.Name = "lblBudget";
@@ -105,6 +107,7 @@
             // lblDate
             // 
             this.lblDate.AutoSize = true;
+            this.lblDate.BackColor = System.Drawing.Color.Transparent;
             this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDate.Location = new System.Drawing.Point(306, 20);
             this.lblDate.Name = "lblDate";

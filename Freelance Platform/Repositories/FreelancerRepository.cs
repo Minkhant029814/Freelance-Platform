@@ -270,45 +270,57 @@ namespace Freelance_Platform.Repositories
         public List<FreelancerCardDTO> GetFreelancerCards(string searchTerm = "")
         {
             string query = @"
-    SELECT
-        f.FreelancerId,
-        f.Expertise,
-        f.HourlyRate,
-        p.OwnerName,
-        p.ProfessionalTitle,
-        p.ProfilePic,
-        LEFT(IFNULL(p.Biography,''), 120) AS Biography,
-        GROUP_CONCAT(DISTINCT s.SkillName SEPARATOR ', ') AS Skills
-    FROM freelancers f
-    LEFT JOIN portfolios p
-        ON f.FreelancerId = p.FreelancerId
-    LEFT JOIN freelancer_skills s
-        ON f.FreelancerId = s.FreelancerId";
+SELECT
+    f.FreelancerId,
+    f.Expertise,
+    f.HourlyRate,
+    p.OwnerName,
+    p.ProfessionalTitle,
+    p.ProfilePic,
+    LEFT(IFNULL(p.Biography,''), 120) AS Biography,
+    GROUP_CONCAT(DISTINCT s.SkillName SEPARATOR ', ') AS Skills,
+    IFNULL(rv.AverageRating, 0) AS AverageRating,
+    IFNULL(rv.ReviewCount, 0) AS ReviewCount
+FROM freelancers f
+LEFT JOIN portfolios p
+    ON f.FreelancerId = p.FreelancerId
+LEFT JOIN freelancer_skills s
+    ON f.FreelancerId = s.FreelancerId
+LEFT JOIN (
+    SELECT 
+        FreelancerId, 
+        ROUND(AVG(Rating), 1) AS AverageRating, 
+        COUNT(ReviewId) AS ReviewCount
+    FROM reviews
+    GROUP BY FreelancerId
+) rv ON f.FreelancerId = rv.FreelancerId";
 
             List<MySqlParameter> parameters = new List<MySqlParameter>();
 
             if (!string.IsNullOrWhiteSpace(searchTerm))
             {
                 query += @"
-        WHERE
-            p.OwnerName LIKE @Search
-            OR p.ProfessionalTitle LIKE @Search
-            OR f.Expertise LIKE @Search
-            OR s.SkillName LIKE @Search";
+    WHERE
+        p.OwnerName LIKE @Search
+        OR p.ProfessionalTitle LIKE @Search
+        OR f.Expertise LIKE @Search
+        OR s.SkillName LIKE @Search";
 
                 parameters.Add(new MySqlParameter("@Search", "%" + searchTerm + "%"));
             }
 
             query += @"
-    GROUP BY
-        f.FreelancerId,
-        f.Expertise,
-        f.HourlyRate,
-        p.OwnerName,
-        p.ProfessionalTitle,
-        p.ProfilePic,
-        p.Biography
-    ORDER BY p.OwnerName;";
+GROUP BY
+    f.FreelancerId,
+    f.Expertise,
+    f.HourlyRate,
+    p.OwnerName,
+    p.ProfessionalTitle,
+    p.ProfilePic,
+    p.Biography,
+    rv.AverageRating,
+    rv.ReviewCount
+ORDER BY p.OwnerName;";
 
             DataTable dt = dbConn.GetData(query, parameters.ToArray());
 
@@ -324,7 +336,11 @@ namespace Freelance_Platform.Repositories
                     Expertise = row["Expertise"].ToString(),
                     HourlyRate = Convert.ToDecimal(row["HourlyRate"]),
                     ProfilePic = row["ProfilePic"].ToString(),
-                    Biography = row["Biography"].ToString()
+                    Biography = row["Biography"].ToString(),
+
+                    
+                    AverageRating = Convert.ToSingle(row["AverageRating"]),
+                    ReviewCount = Convert.ToInt32(row["ReviewCount"])
                 };
 
                 string skills = row["Skills"].ToString();
@@ -341,71 +357,91 @@ namespace Freelance_Platform.Repositories
             return freelancers;
         }
 
-
         public Freelancer FreelancerDetails(int freelancerId)
         {
             string freelancerQuery = @"
+SELECT
+    f.FreelancerId,
+    f.Expertise,
+    f.HourlyRate,
+
+    p.OwnerName,
+    p.ProfessionalTitle,
+    p.ProfilePic,
+    p.Biography,
+    p.ContactEmail,
+    p.ExternalLinks,
+
+    COALESCE(rv.AverageRating, 0) AS AverageRating,
+    COALESCE(rv.TotalReviews, 0) AS TotalReviews,
+
+    sk.SkillsList,
+
+    pw.PastProjectTitles,
+    pw.PastProjectDescriptions,
+
+    rev.ClientNames,
+    rev.ReviewRatings,
+    rev.ReviewComments,
+    rev.ReviewDates
+
+FROM freelancers f
+
+LEFT JOIN portfolios p
+    ON f.FreelancerId = p.FreelancerId
+
+/************************** Skills ******************************/
+LEFT JOIN
+(
     SELECT
-        f.FreelancerId,
-        f.Expertise,
-        f.HourlyRate,
+        FreelancerId,
+        GROUP_CONCAT(SkillName SEPARATOR ', ') AS SkillsList
+    FROM freelancer_skills
+    GROUP BY FreelancerId
+) sk
+    ON f.FreelancerId = sk.FreelancerId
 
-        p.OwnerName,
-        p.ProfessionalTitle,
-        p.ProfilePic,
-        p.Biography,
-        p.ContactEmail,
-        p.ExternalLinks,
+/************** Past Works ******************************/
+LEFT JOIN
+(
+    SELECT
+        FreelancerId,
+        GROUP_CONCAT(ProjectTitle SEPARATOR '||') AS PastProjectTitles,
+        GROUP_CONCAT(ProjectDescription SEPARATOR '||') AS PastProjectDescriptions
+    FROM freelancer_pastworks
+    GROUP BY FreelancerId
+) pw
+    ON f.FreelancerId = pw.FreelancerId
 
-        COALESCE(rv.AverageRating, 0) AS AverageRating,
-        COALESCE(rv.TotalReviews, 0) AS TotalReviews,
+/*************************Rating Summary *************************/
+LEFT JOIN
+(
+    SELECT
+        FreelancerId,
+        ROUND(AVG(Rating), 1) AS AverageRating,
+        COUNT(*) AS TotalReviews
+    FROM reviews
+    GROUP BY FreelancerId
+) rv
+    ON f.FreelancerId = rv.FreelancerId
 
-        sk.SkillsList,
+/************************* Reviews Details List *************************/
+LEFT JOIN
+(
+    SELECT
+        r.FreelancerId,
+        GROUP_CONCAT(COALESCE(u.Username, 'Anonymous') SEPARATOR '||') AS ClientNames,
+        GROUP_CONCAT(r.Rating SEPARATOR '||') AS ReviewRatings,
+        GROUP_CONCAT(COALESCE(r.Comment, '') SEPARATOR '||') AS ReviewComments,
+        GROUP_CONCAT(DATE_FORMAT(r.CreatedDate, '%Y-%m-%d %H:%i') SEPARATOR '||') AS ReviewDates
+    FROM reviews r
+    LEFT JOIN clients c ON r.ClientId = c.ClientId
+    LEFT JOIN users u ON c.UserId = u.UserId
+    GROUP BY r.FreelancerId
+) rev
+    ON f.FreelancerId = rev.FreelancerId
 
-        pw.PastProjectTitles,
-        pw.PastProjectDescriptions
-
-    FROM freelancers f
-
-    LEFT JOIN portfolios p
-        ON f.FreelancerId = p.FreelancerId
-
-    /* Skills */
-    LEFT JOIN
-    (
-        SELECT
-            FreelancerId,
-            GROUP_CONCAT(SkillName SEPARATOR ', ') AS SkillsList
-        FROM freelancer_skills
-        GROUP BY FreelancerId
-    ) sk
-        ON f.FreelancerId = sk.FreelancerId
-
-    /* Past Works */
-    LEFT JOIN
-    (
-        SELECT
-            FreelancerId,
-            GROUP_CONCAT(ProjectTitle SEPARATOR '||') AS PastProjectTitles,
-            GROUP_CONCAT(ProjectDescription SEPARATOR '||') AS PastProjectDescriptions
-        FROM freelancer_pastworks
-        GROUP BY FreelancerId
-    ) pw
-        ON f.FreelancerId = pw.FreelancerId
-
-    /* Rating Summary */
-    LEFT JOIN
-    (
-        SELECT
-            FreelancerId,
-            ROUND(AVG(Rating),1) AS AverageRating,
-            COUNT(*) AS TotalReviews
-        FROM reviews
-        GROUP BY FreelancerId
-    ) rv
-        ON f.FreelancerId = rv.FreelancerId
-
-    WHERE f.FreelancerId = @freeId;";
+WHERE f.FreelancerId = @freeId;"; // အပြင်ဘက်ဆုံးမှာ တစ်နေရာတည်းသာ ထားရှိရန်
 
             MySqlParameter[] para =
             {
@@ -427,6 +463,7 @@ namespace Freelance_Platform.Repositories
                     TotalReviews = Convert.ToInt32(row["TotalReviews"])
                 };
 
+                // Portfolio Mapping
                 freelancer.Portfolio.OwnerName = row["OwnerName"].ToString();
                 freelancer.Portfolio.ProfessionalTitle = row["ProfessionalTitle"].ToString();
                 freelancer.Portfolio.Biography = row["Biography"].ToString();
@@ -434,16 +471,15 @@ namespace Freelance_Platform.Repositories
                 freelancer.Portfolio.Profile = row["ProfilePic"].ToString();
                 freelancer.Portfolio.ExternalLink = row["ExternalLinks"].ToString();
 
-                // Skills
+                // Skills Mapping
                 string skillsRaw = row["SkillsList"]?.ToString();
-
                 freelancer.Skills = string.IsNullOrWhiteSpace(skillsRaw)
                     ? new List<string>()
                     : skillsRaw.Split(',')
                                .Select(s => s.Trim())
                                .ToList();
 
-                // Past Works
+                // Past Works Mapping
                 string titlesRaw = row["PastProjectTitles"]?.ToString();
                 string descsRaw = row["PastProjectDescriptions"]?.ToString();
 
@@ -462,6 +498,35 @@ namespace Freelance_Platform.Repositories
                         {
                             ProjectTitle = titles[i],
                             Description = (i < descs.Length) ? descs[i] : ""
+                        });
+                    }
+                }
+
+                // ==========================================
+                // Reviews & Client Details Mapping
+                // ==========================================
+                string clientNamesRaw = row["ClientNames"]?.ToString();
+                string reviewRatingsRaw = row["ReviewRatings"]?.ToString();
+                string reviewCommentsRaw = row["ReviewComments"]?.ToString();
+                string reviewDatesRaw = row["ReviewDates"]?.ToString();
+
+                freelancer.Reviews = new List<ReviewDTO>();
+
+                if (!string.IsNullOrWhiteSpace(clientNamesRaw))
+                {
+                    string[] clientNames = clientNamesRaw.Split(new[] { "||" }, StringSplitOptions.None);
+                    string[] ratings = string.IsNullOrWhiteSpace(reviewRatingsRaw) ? new string[0] : reviewRatingsRaw.Split(new[] { "||" }, StringSplitOptions.None);
+                    string[] comments = string.IsNullOrWhiteSpace(reviewCommentsRaw) ? new string[0] : reviewCommentsRaw.Split(new[] { "||" }, StringSplitOptions.None);
+                    string[] dates = string.IsNullOrWhiteSpace(reviewDatesRaw) ? new string[0] : reviewDatesRaw.Split(new[] { "||" }, StringSplitOptions.None);
+
+                    for (int i = 0; i < clientNames.Length; i++)
+                    {
+                        freelancer.Reviews.Add(new ReviewDTO
+                        {
+                            ClientName = clientNames[i],
+                            Rating = i < ratings.Length ? Convert.ToSingle(ratings[i]) : 0f,
+                            Comment = i < comments.Length ? comments[i] : "",
+                            CommentDate = i < dates.Length ? Convert.ToDateTime(dates[i]) : DateTime.Now
                         });
                     }
                 }
@@ -743,7 +808,7 @@ ORDER BY p.ProjectId,m.MilestoneId;";
         {
             try
             {
-                string query = "UPDATE projects set Status = 'ON_HOLD' where projectId = @pid";
+                string query = "UPDATE projects SET Status = 'ON_HOLD', SubmittedDate = NOW() WHERE ProjectId = @pid";
                 MySqlParameter[] ps =
                 {
                     new MySqlParameter("@pid",projectId),
@@ -764,7 +829,7 @@ ORDER BY p.ProjectId,m.MilestoneId;";
         {
             string query = @"SELECT 
     p.Status ,
-    p.EndDate ,
+    p.CompletedDate ,
     p.ProjectTitle,
     p.Budget ,
     u.Username AS ClientName,
@@ -789,7 +854,7 @@ WHERE r.FreelancerId = @freelancerId;";
                 {
                     ProjectTitle = row["ProjectTitle"].ToString(),
                     ProjectStatus = row["Status"].ToString(),
-                    ProjectEndDate = Convert.ToDateTime(row["EndDate"]),
+                    CompletedDate = Convert.ToDateTime(row["CompletedDate"]),
                     ProjectBudget = Convert.ToDecimal(row["Budget"]),
                     Rating = Convert.ToInt32(row["Rating"]),
                     ClientName = row["ClientName"].ToString(),

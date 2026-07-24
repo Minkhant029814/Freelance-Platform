@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.mainContainer = new Guna.UI2.WinForms.Guna2Panel();
-            this.lblProjectTitle = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
+            this.lblProjectTitle = new System.Windows.Forms.Label();
             this.mainContainer.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,30 +42,18 @@
             this.mainContainer.BorderRadius = 15;
             this.mainContainer.Controls.Add(this.lblDescription);
             this.mainContainer.Controls.Add(this.lblProjectTitle);
-            this.mainContainer.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
+            this.mainContainer.FillColor = System.Drawing.Color.White;
             this.mainContainer.Location = new System.Drawing.Point(20, 18);
             this.mainContainer.Name = "mainContainer";
             this.mainContainer.Size = new System.Drawing.Size(679, 181);
             this.mainContainer.TabIndex = 0;
-            // 
-            // lblProjectTitle
-            // 
-            this.lblProjectTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblProjectTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
-            this.lblProjectTitle.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProjectTitle.Location = new System.Drawing.Point(13, 19);
-            this.lblProjectTitle.Name = "lblProjectTitle";
-            this.lblProjectTitle.Size = new System.Drawing.Size(650, 58);
-            this.lblProjectTitle.TabIndex = 0;
-            this.lblProjectTitle.Text = "label1";
             // 
             // lblDescription
             // 
             this.lblDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDescription.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
+            this.lblDescription.BackColor = System.Drawing.Color.White;
             this.lblDescription.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescription.Location = new System.Drawing.Point(15, 77);
             this.lblDescription.Name = "lblDescription";
@@ -73,11 +61,23 @@
             this.lblDescription.TabIndex = 1;
             this.lblDescription.Text = "label1";
             // 
+            // lblProjectTitle
+            // 
+            this.lblProjectTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblProjectTitle.BackColor = System.Drawing.Color.White;
+            this.lblProjectTitle.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProjectTitle.Location = new System.Drawing.Point(13, 19);
+            this.lblProjectTitle.Name = "lblProjectTitle";
+            this.lblProjectTitle.Size = new System.Drawing.Size(650, 58);
+            this.lblProjectTitle.TabIndex = 0;
+            this.lblProjectTitle.Text = "label1";
+            // 
             // PastWorksCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Controls.Add(this.mainContainer);
             this.Margin = new System.Windows.Forms.Padding(15);

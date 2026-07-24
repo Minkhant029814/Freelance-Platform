@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Freelance_Platform.DTO;
+using System;
 using System.Collections.Generic;
 
 namespace Freelance_Platform.model
@@ -21,6 +22,8 @@ namespace Freelance_Platform.model
         public float AverageRating { get; set; }
 
         public int TotalReviews { get; set; }
+
+        public List<ReviewDTO> Reviews { get; set; }
 
 
         public Freelancer() : base("", "", "")

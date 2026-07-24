@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.lblProgressPercent = new System.Windows.Forms.Label();
             this.FreelancerPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.lblPayrate = new System.Windows.Forms.Label();
             this.lblProfessionalTitle = new System.Windows.Forms.Label();
@@ -40,7 +41,6 @@
             this.lblProjectTitle = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
-            this.lblProgressPercent = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
             this.FreelancerPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilePic)).BeginInit();
@@ -66,9 +66,21 @@
             this.guna2Panel1.Size = new System.Drawing.Size(856, 391);
             this.guna2Panel1.TabIndex = 1;
             // 
+            // lblProgressPercent
+            // 
+            this.lblProgressPercent.AutoSize = true;
+            this.lblProgressPercent.BackColor = System.Drawing.Color.Transparent;
+            this.lblProgressPercent.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProgressPercent.Location = new System.Drawing.Point(30, 312);
+            this.lblProgressPercent.Name = "lblProgressPercent";
+            this.lblProgressPercent.Size = new System.Drawing.Size(62, 25);
+            this.lblProgressPercent.TabIndex = 6;
+            this.lblProgressPercent.Text = "label2";
+            // 
             // FreelancerPanel
             // 
             this.FreelancerPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.FreelancerPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.FreelancerPanel.Controls.Add(this.lblPayrate);
             this.FreelancerPanel.Controls.Add(this.lblProfessionalTitle);
             this.FreelancerPanel.Controls.Add(this.lblFreelancerName);
@@ -144,7 +156,7 @@
             this.lblDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDescription.BackColor = System.Drawing.Color.Cyan;
+            this.lblDescription.BackColor = System.Drawing.Color.Transparent;
             this.lblDescription.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescription.Location = new System.Drawing.Point(30, 92);
             this.lblDescription.Name = "lblDescription";
@@ -167,6 +179,7 @@
             // lblDate
             // 
             this.lblDate.AutoSize = true;
+            this.lblDate.BackColor = System.Drawing.Color.Transparent;
             this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDate.Location = new System.Drawing.Point(389, 20);
             this.lblDate.Name = "lblDate";
@@ -176,25 +189,15 @@
             // 
             // lblStatus
             // 
-            this.lblStatus.BackColor = System.Drawing.Color.White;
+            this.lblStatus.BackColor = System.Drawing.Color.Transparent;
             this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus.ForeColor = System.Drawing.Color.Gray;
+            this.lblStatus.ForeColor = System.Drawing.Color.Blue;
             this.lblStatus.Location = new System.Drawing.Point(13, 15);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(287, 32);
             this.lblStatus.TabIndex = 0;
-            this.lblStatus.Text = "label1";
+            this.lblStatus.Text = "In Progress";
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblProgressPercent
-            // 
-            this.lblProgressPercent.AutoSize = true;
-            this.lblProgressPercent.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProgressPercent.Location = new System.Drawing.Point(30, 312);
-            this.lblProgressPercent.Name = "lblProgressPercent";
-            this.lblProgressPercent.Size = new System.Drawing.Size(62, 25);
-            this.lblProgressPercent.TabIndex = 6;
-            this.lblProgressPercent.Text = "label2";
             // 
             // InProgressCard
             // 
