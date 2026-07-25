@@ -32,7 +32,7 @@ namespace Freelance_Platform.view.components.projectsComponent
         {
             lblClientName.Text = p.ClientName;
             lblProjectTitle.Text = p.ProjectTitle;
-            btnEndate.Text = p.ProjectEndDate.ToString();
+            btnEndate.Text = $"Next Deadline : {p.ProjectEndDate:dd MMMM yyyy}";
             progressBar.Value = p.OverAllProgress;
             lblprogress.Text += $" {p.OverAllProgress} %";
 

@@ -14,15 +14,16 @@ namespace Freelance_Platform.view.components.FreelancerComponent
     public partial class mileStoneAddComponent : UserControl
     {
 
-        private readonly int mileStonesCount;
+     
        
 
         public event EventHandler MileStoneDeleted;
+        public event EventHandler WeightChange;
 
-        public mileStoneAddComponent(int counts)
+        public mileStoneAddComponent()
         {
             InitializeComponent();
-            this.mileStonesCount = counts;
+            
           
             
           
@@ -52,8 +53,7 @@ namespace Freelance_Platform.view.components.FreelancerComponent
         private void btnDeleteMileStone_Click(object sender, EventArgs e)
         {
             MileStoneDeleted?.Invoke(this, EventArgs.Empty);
-            this.Parent.Controls.Remove(this);
-            this.Dispose();
+           
         }
 
         private void mileStoneAddComponent_Load(object sender, EventArgs e)
@@ -61,6 +61,9 @@ namespace Freelance_Platform.view.components.FreelancerComponent
 
         }
 
-       
+        private void numericMileStoneWeight_ValueChanged(object sender, EventArgs e)
+        {
+            WeightChange?.Invoke(this,EventArgs.Empty);
+        }
     }
 }

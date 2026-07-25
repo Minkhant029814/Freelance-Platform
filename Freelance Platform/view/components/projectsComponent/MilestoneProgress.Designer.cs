@@ -49,7 +49,7 @@
             this.mainContainer.Controls.Add(this.iconBtn);
             this.mainContainer.Controls.Add(this.lblProgressValue);
             this.mainContainer.Controls.Add(this.lblMileStonetile);
-            this.mainContainer.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.mainContainer.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
             this.mainContainer.Location = new System.Drawing.Point(14, 16);
             this.mainContainer.Name = "mainContainer";
             this.mainContainer.Size = new System.Drawing.Size(1003, 226);
@@ -62,6 +62,7 @@
             this.btnUpdateProgress.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnUpdateProgress.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnUpdateProgress.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnUpdateProgress.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
             this.btnUpdateProgress.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnUpdateProgress.ForeColor = System.Drawing.Color.White;
             this.btnUpdateProgress.Location = new System.Drawing.Point(740, 159);
@@ -87,14 +88,15 @@
             // 
             // iconBtn
             // 
-            this.iconBtn.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconBtn.IconColor = System.Drawing.Color.Black;
+            this.iconBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
+            this.iconBtn.IconChar = FontAwesome.Sharp.IconChar.Check;
+            this.iconBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
             this.iconBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconBtn.Location = new System.Drawing.Point(21, 59);
             this.iconBtn.Name = "iconBtn";
-            this.iconBtn.Size = new System.Drawing.Size(41, 37);
+            this.iconBtn.Size = new System.Drawing.Size(80, 82);
             this.iconBtn.TabIndex = 2;
-            this.iconBtn.UseVisualStyleBackColor = true;
+            this.iconBtn.UseVisualStyleBackColor = false;
             // 
             // lblProgressValue
             // 
@@ -111,7 +113,7 @@
             this.lblMileStonetile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMileStonetile.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMileStonetile.Location = new System.Drawing.Point(80, 59);
+            this.lblMileStonetile.Location = new System.Drawing.Point(107, 59);
             this.lblMileStonetile.Name = "lblMileStonetile";
             this.lblMileStonetile.Size = new System.Drawing.Size(449, 105);
             this.lblMileStonetile.TabIndex = 0;

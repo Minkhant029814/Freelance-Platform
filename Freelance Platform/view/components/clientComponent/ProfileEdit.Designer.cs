@@ -132,7 +132,7 @@
             this.ProfilePict.Size = new System.Drawing.Size(168, 168);
             this.ProfilePict.TabIndex = 14;
             this.ProfilePict.TabStop = false;
-            this.ProfilePict.Click += new System.EventHandler(this.ProfilePict_Click);
+    
             // 
             // btnSaveChanges
             // 
@@ -198,7 +198,7 @@
             this.txtAddress.SelectedText = "";
             this.txtAddress.Size = new System.Drawing.Size(286, 60);
             this.txtAddress.TabIndex = 9;
-            this.txtAddress.TextChanged += new System.EventHandler(this.txtAddress_TextChanged);
+          
             // 
             // iconPictureBox3
             // 

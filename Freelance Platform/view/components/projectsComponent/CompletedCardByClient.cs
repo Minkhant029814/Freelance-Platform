@@ -27,13 +27,13 @@ namespace Freelance_Platform.view.components.projectsComponent
         {
             lblProjectTitle.Text = pf.Project.ProjectTitle;
             lblDescription.Text = pf.Project.Description;
-            lblDate.Text = $"Completed {pf.Project.CompletedDate.ToString("dd MMMM yyyy")}";
+            lblDate.Text = $"Completed {pf.Project.CompletedDate:dd MMMM yyyy}";
             lblStatus.Text = pf.Project.CurrentStatus;
             lblFinalPayment.Text = $"Final payment: ${pf.Project.BaselineBudget} paid";
 
             //Freelancers info
             lblFreelancerName.Text = pf.Freelancer.Portfolio.OwnerName;
-            lblPayrate.Text = $"${pf.Freelancer.HourlyRate.ToString()}/hr";
+            lblPayrate.Text = $"${pf.Freelancer.HourlyRate}/hr";
             lblProfessionalTitle.Text = pf.Freelancer.Portfolio.ProfessionalTitle;
 
             if (pf.Review.ReviewId > 0)

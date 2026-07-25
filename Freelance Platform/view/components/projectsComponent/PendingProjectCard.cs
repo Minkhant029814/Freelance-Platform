@@ -26,7 +26,7 @@ namespace Freelance_Platform.view.components.projectsComponent
             lblBudget.Text = p.ProjectBudget.ToString();
             lblProjectTitle.Text = p.ProjectTitle;
             lblClientName.Text = p.ClientName;
-            lblSubmittedDate.Text = p.BiddingDate.ToString();
+            lblSubmittedDate.Text = $"Submitted {p.BiddingDate:dd MMMM yyyy}";
             btnStatus.Text = p.BiddingStatus;
         }
     }

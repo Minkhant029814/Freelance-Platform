@@ -11,6 +11,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls.WebParts;
 using System.Windows;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -580,7 +581,7 @@ WHERE f.FreelancerId = @freeId;"; // အပြင်ဘက်ဆုံးမှ�
     p.ProjectTitle,
     p.Budget AS ProjectBudget,
     u.Username AS ClientName,
-    b.SubmissionDate AS BiddingDate
+    b.RejectedDate AS RejectedDate
 FROM biddings b
 INNER JOIN projects p ON b.ProjectId = p.ProjectId
 INNER JOIN clients c ON p.ClientId = c.ClientId
@@ -604,7 +605,7 @@ WHERE b.Status = @status AND b.FreelancerId = @freelancerId;";
                     BiddingStatus = row["BiddingStatus"].ToString(),
                     ProjectTitle = row["ProjectTitle"].ToString(),
                     ProjectBudget = Convert.ToDecimal(row["ProjectBudget"]),
-                    BiddingDate = Convert.ToDateTime(row["BiddingDate"]),
+                    BiddingDate = Convert.ToDateTime(row["RejectedDate"]),
                     ClientName = row["ClientName"].ToString()
                 };
                 projects.Add(p);
@@ -622,7 +623,7 @@ WHERE b.Status = @status AND b.FreelancerId = @freelancerId;";
     p.ProjectTitle,
     p.Budget AS ProjectBudget,
     u.Username AS ClientName,
-    b.SubmissionDate AS BiddingDate
+    b.AcceptedDate AS AcceptedDate
 FROM biddings b
 INNER JOIN projects p ON b.ProjectId = p.ProjectId
 INNER JOIN clients c ON p.ClientId = c.ClientId
@@ -646,7 +647,7 @@ WHERE b.Status = 'Accepted' AND p.Status = 'IN_PROGRESS' AND b.FreelancerId = @f
                     BiddingStatus = row["BiddingStatus"].ToString(),
                     ProjectTitle = row["ProjectTitle"].ToString(),
                     ProjectBudget = Convert.ToDecimal(row["ProjectBudget"]),
-                    BiddingDate = Convert.ToDateTime(row["BiddingDate"]),
+                    BiddingDate = Convert.ToDateTime(row["AcceptedDate"]),
                     ClientName = row["ClientName"].ToString()
                 };
                 projects.Add(p);
@@ -697,6 +698,30 @@ WHERE b.Status = 'Accepted' AND p.Status = 'IN_PROGRESS' AND b.FreelancerId = @f
             }
         }
 
+
+        //Check if there's already miles for that projectId
+        public bool HasMileStone(int projectId)
+        {
+            try
+            {
+                
+                string query = "SELECT COUNT(*) FROM milestones WHERE ProjectId = @pid";
+                MySqlParameter[] ps =
+                {
+            new MySqlParameter("@pid", projectId),
+        };
+
+                object result = dbConn.GetScaler(query, ps);
+                int count = result != null ? Convert.ToInt32(result) : 0;
+
+                return count > 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message); 
+                return false;
+            }
+        }
         public List<ProjectWithMilestonesDTO> GetProjectWithMileStone(int freelancerId)
         {
             string query = @"SELECT

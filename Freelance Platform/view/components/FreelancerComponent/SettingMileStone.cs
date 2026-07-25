@@ -20,7 +20,8 @@ namespace Freelance_Platform.view.components.FreelancerComponent
        
         private int mileStoneCounts;
         private int mileStoneWeight;
-      
+
+        public event Action SaveMileStone;
 
         public SettingMileStone(int pid)
         {
@@ -48,68 +49,93 @@ namespace Freelance_Platform.view.components.FreelancerComponent
 
         private void btnAddMileStones_Click(object sender, EventArgs e)
         {
-            mileStoneCounts++;
-            mileStoneAddComponent newComponent = new mileStoneAddComponent(mileStoneCounts);
+            mileStoneAddComponent newComponent = new mileStoneAddComponent();
 
+            
             newComponent.MileStoneDeleted += (s, args) =>
             {
+
+               
+                MileStoneLayout.Controls.Remove(newComponent);
+                newComponent.Dispose();
+
                 mileStoneCounts--;
                 if (mileStoneCounts < 0) mileStoneCounts = 0;
 
                 lblMildeStoneCount.Text = $"{mileStoneCounts} milestones";
 
-               
+                
                 this.BeginInvoke((Action)(() =>
                 {
                     DisplayMileStoneWeight();
                 }));
             };
 
+            newComponent.WeightChange += (s, args) =>
+            {
+                DisplayMileStoneWeight();
+            };
+
+            
             MileStoneLayout.Controls.Add(newComponent);
+
+            mileStoneCounts++;
             lblMildeStoneCount.Text = $"{mileStoneCounts} milestones";
 
+            
             DisplayMileStoneWeight();
+
             MileStoneLayout.ScrollControlIntoView(newComponent);
         }
 
         private void DisplayMileStoneWeight()
         {
-            mileStoneWeight = 0; 
+            mileStoneWeight = 0;
+
+          
+            int activeComponentsCount = 0;
 
             foreach (Control c in MileStoneLayout.Controls)
             {
                 if (c is mileStoneAddComponent comp)
                 {
-                   
+                    activeComponentsCount++;
                     int weight = comp.MilestoneWeight;
                     mileStoneWeight += weight;
-                    if(mileStoneWeight == 100)
-                    {
-                        btnAddMileStones.Enabled = false;
-                        lblMileStonePercentage.Text = $"Your milestone weights are ready to share.";
-                        lblMileStonePercentage.ForeColor = Color.Green;
-                    }else if(mileStoneWeight > 100)
-                    {
-                        lblMileStonePercentage.Text = $"{mileStoneWeight - 100} Over to Reach 100 %";
-                        lblMileStonePercentage.ForeColor = Color.Orange;
-                        btnAddMileStones.Enabled = false;
-                    }
-                    else
-                    {
-                        btnAddMileStones.Enabled = true;
-                        lblMileStonePercentage.Text = $"{100 - mileStoneWeight} remaings to Reach 100 %";
-                        lblMileStonePercentage.ForeColor = Color.Red;
-                    }
-                    
                 }
             }
 
             
+            if (activeComponentsCount == 0)
+            {
+                btnAddMileStones.Enabled = true;
+                lblMileStonePercentage.Text = $"100 remaings to Reach 100 %";
+                lblMileStonePercentage.ForeColor = Color.Red;
+            }
+            else if (mileStoneWeight == 100)
+            {
+                btnAddMileStones.Enabled = false;
+                lblMileStonePercentage.Text = $"Your milestone weights are ready to share.";
+                lblMileStonePercentage.ForeColor = Color.Green;
+            }
+            else if (mileStoneWeight > 100)
+            {
+                lblMileStonePercentage.Text = $"{mileStoneWeight - 100} Over to Reach 100 %";
+                lblMileStonePercentage.ForeColor = Color.Orange;
+                btnAddMileStones.Enabled = false;
+            }
+            else
+            {
+                btnAddMileStones.Enabled = true;
+                lblMileStonePercentage.Text = $"{100 - mileStoneWeight} remaings to Reach 100 %";
+                lblMileStonePercentage.ForeColor = Color.Red;
+            }
+
             if (mileStoneWeight < 0) mileStoneWeight = 0;
 
             lblTotalWeight.Text = $"Total Weight \n {mileStoneWeight} % ";
         }
-           
+
         private void SaveMilestones()
         {
 
@@ -172,6 +198,7 @@ namespace Freelance_Platform.view.components.FreelancerComponent
            
             if (SaveToDatabase(projectId, Convert.ToInt32(UserSession.FreelancerId), milestones))
             {
+                SaveMileStone?.Invoke();
                 MessageBox.Show("Set Milestones successfully...", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close(); 
             }
@@ -188,6 +215,7 @@ namespace Freelance_Platform.view.components.FreelancerComponent
 
         private void btnSaveMileStone_Click(object sender, EventArgs e)
         {
+            SaveMileStone?.Invoke();
             SaveMilestones();
         }
 

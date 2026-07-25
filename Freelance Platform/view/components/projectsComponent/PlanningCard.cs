@@ -27,8 +27,8 @@ namespace Freelance_Platform.view.components.projectsComponent
             lblStatus.Text = p.CurrentStatus;
             lblProjectTitle.Text = p.ProjectTitle;
             lblDescription.Text = p.Description;
-            lblBudget.Text = p.BaselineBudget.ToString();
-            lblDate.Text = $"Created at {p.StartDate.ToString("dd MMMM yyyy")}";
+            lblBudget.Text = $"$ {p.BaselineBudget}";
+            lblDate.Text = $"Created at {p.StartDate:dd MMMM yyyy}";
 
             if(p.BidCount == 0)
             {

@@ -102,18 +102,18 @@ namespace Freelance_Platform.Repositories
                 {
                     try
                     {
-                        // ၁။ ရွေးချယ်လိုက်တဲ့ Freelancer ကို Accepted လုပ်ခြင်း
-                        string updateSelectedBid = "UPDATE biddings SET Status = 'Accepted' WHERE BidId = @BidId";
+                        //  Acception selected Freelancers
+                        string updateSelectedBid = "UPDATE biddings SET Status = 'Accepted',AcceptedDate = NOW() WHERE BidId = @BidId";
 
-                        // ၂။ အဲ့ဒီ Project ထဲက တခြား Freelancer တွေကို Reject လုပ်ခြင်း
-                        // (BidId မတူတဲ့သူတွေကို ရှာပြီး Reject လုပ်တာပါ)
-                        string rejectOthers = "UPDATE biddings SET Status = 'Rejected' WHERE ProjectId = @ProjectId AND BidId != @BidId";
+                        
+                        // Rejecting other freelancers
+                        string rejectOthers = "UPDATE biddings SET Status = 'Rejected',RejectedDate = NOW() WHERE ProjectId = @ProjectId AND BidId != @BidId";
 
                         
                         string updateProjectStatus = "UPDATE projects SET Status = 'IN_PROGRESS' WHERE ProjectId = @ProjectId";
 
 
-                        // Command များ run ခြင်း
+                        // Running Command
                         using (var cmd = new MySqlCommand(updateSelectedBid, conn, transaction))
                         {
                             cmd.Parameters.AddWithValue("@BidId", bidId);

@@ -24,10 +24,7 @@ namespace Freelance_Platform.view.components.clientComponent
             clientService = new ClientService();
         }
 
-        private void txtAddress_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void btnSaveChanges_Click(object sender, EventArgs e)
 
@@ -96,12 +93,11 @@ namespace Freelance_Platform.view.components.clientComponent
         private void ProfileEdit_Load(object sender, EventArgs e)
         {
             btnSaveChanges.Image = IconChar.Save.ToBitmap(color: Color.White, 30);
-        }
 
-        private void ProfilePict_Click(object sender, EventArgs e)
-        {
 
         }
+
+       
 
         private string HandleImageUpload(int userId, string sourceFilePath)
         {

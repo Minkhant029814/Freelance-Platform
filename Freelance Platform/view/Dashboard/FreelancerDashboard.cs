@@ -179,6 +179,23 @@ namespace Freelance_Platform.Forms.Dashboard
 
             
             List<Project> activeProjects = projectService.GetAllProjects();
+            if(activeProjects.Count == 0)
+            {
+                Label lblMessage = new Label();
+                lblMessage.Text = "No active projects here";
+                lblMessage.ForeColor = Color.Green;
+                lblMessage.Font = new Font("Segoe UI", 14, FontStyle.Bold);
+                lblMessage.AutoSize = true;
+
+
+                lblMessage.Location = new Point(
+                    (flowCardDisplay.Width - lblMessage.Width) / 2,
+                    (flowCardDisplay.Height - lblMessage.Height) / 2
+                );
+
+
+                flowCardDisplay.Controls.Add(lblMessage);
+            }
 
           
             foreach (Project proj in activeProjects)

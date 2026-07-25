@@ -1,4 +1,5 @@
 ﻿using Freelance_Platform.DTO;
+using Freelance_Platform.Service;
 using Freelance_Platform.view.components.FreelancerComponent;
 using System;
 using System.Collections.Generic;
@@ -15,12 +16,14 @@ namespace Freelance_Platform.view.components.projectsComponent
     public partial class AcceptedProjectCard : UserControl
     {
         private readonly ProjectStatusDTO project;
-       
+        private readonly FreelancerService fservice;
+        
         public AcceptedProjectCard(ProjectStatusDTO p)
         {
             InitializeComponent();
+            fservice = new FreelancerService();
             this.project = p;
-            
+            hasMilestonePanel.Visible = false;
             LoadData(project);
         }
 
@@ -28,9 +31,15 @@ namespace Freelance_Platform.view.components.projectsComponent
         private void LoadData(ProjectStatusDTO p)
         {
             btnStatus.Text = p.BiddingStatus;
-            lblAcceptDate.Text = p.BiddingDate.ToString();
+            lblAcceptDate.Text = $"Accepted at {p.BiddingDate.ToString("dd MMMM yyyy")}";
+            lblBudget.Text = $"$ {p.ProjectBudget}";
             lblClientName.Text = p.ClientName;
+            lblNote.Text = $"Congratulations — {p.ClientName} accepted your proposal. Your contract is now active.";
             lblProjectTitle.Text = p.ProjectTitle;
+            if (fservice.HasMileStones(p.ProjectId))
+            {
+                MilestoneStatusCheck();
+            }
             
         }
 
@@ -47,9 +56,19 @@ namespace Freelance_Platform.view.components.projectsComponent
 
         private void btnSetMileStone_Click_1(object sender, EventArgs e)
         {
-            Form setMileStone = new SettingMileStone(project.ProjectId);
+            SettingMileStone setMileStone = new SettingMileStone(project.ProjectId);
+            setMileStone.SaveMileStone += () =>
+            {
+                MilestoneStatusCheck();
+            };
             setMileStone.ShowDialog();
 
+        }
+
+        private void MilestoneStatusCheck()
+        {
+            btnSetMileStone.Visible = false;
+            hasMilestonePanel.Visible = true;
         }
     }
 }

@@ -52,7 +52,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ongoingProjectLayout.AutoScroll = true;
-            this.ongoingProjectLayout.BackColor = System.Drawing.Color.Yellow;
+            this.ongoingProjectLayout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ongoingProjectLayout.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.ongoingProjectLayout.Location = new System.Drawing.Point(22, 29);
             this.ongoingProjectLayout.Name = "ongoingProjectLayout";

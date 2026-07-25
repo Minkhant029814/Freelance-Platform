@@ -20,14 +20,19 @@ namespace Freelance_Platform.view.components.FreelancerComponent
         {
             InitializeComponent();
             fservice = new FreelancerService();
+
+            //Default Tab
             AcceptedPage();
             
         }
 
-        private void AcceptedPage()
+        private void AcceptedPage(bool refresh = false)
         {
+            if (acceptedLayout.Controls.Count > 0 && !refresh) return;
+
             acceptedLayout.Controls.Clear();
             List<ProjectStatusDTO> projects = fservice.GetAcceptedProjects();
+            IfNull(projects, acceptedLayout, "No Accepted Projects here...");
             foreach(ProjectStatusDTO p in projects)
             {
                 AcceptedProjectCard card = new AcceptedProjectCard(p);
@@ -39,10 +44,33 @@ namespace Freelance_Platform.view.components.FreelancerComponent
 
         }
 
-        private void PendingPage(string status)
+        private void IfNull<T>(List<T> p,Control c, string message)
         {
+            if(p.Count == 0)
+            {
+                Label lblMessage = new Label();
+                lblMessage.Text = message;
+                lblMessage.ForeColor = Color.Green;
+                lblMessage.Font = new Font("Segoe UI", 14, FontStyle.Bold);
+                lblMessage.AutoSize = true;
+
+
+                lblMessage.Location = new Point(
+                    (c.Width - lblMessage.Width) / 2,
+                    (c.Height - lblMessage.Height) / 2
+                );
+
+
+                c.Controls.Add(lblMessage);
+            }
+        }
+
+        private void PendingPage(string status,bool refresh = false)
+        {
+            if (PendingLayout.Controls.Count > 0 && !refresh) return;
             PendingLayout.Controls.Clear();
             List<ProjectStatusDTO> pendingProjects = fservice.GetBiddingProjectsByStatus(status);
+            IfNull(pendingProjects, PendingLayout, "No your bidding projects..");
             foreach(ProjectStatusDTO p in pendingProjects)
             {
                 PendingProjectCard card = new PendingProjectCard(p);
@@ -54,10 +82,12 @@ namespace Freelance_Platform.view.components.FreelancerComponent
 
         }
 
-        private void RejectedPage(string status)
+        private void RejectedPage(string status, bool refresh = false)
         {
+            if (RejectedLayout.Controls.Count > 0 && !refresh) return;
             RejectedLayout.Controls.Clear();
             List<ProjectStatusDTO> RejectedProjects = fservice.GetBiddingProjectsByStatus(status);
+            IfNull(RejectedProjects, RejectedLayout, "No Rejected Project here...");
             foreach(ProjectStatusDTO p in RejectedProjects)
             {
                 RejectedProjectCard card = new RejectedProjectCard(p);
@@ -85,6 +115,13 @@ namespace Freelance_Platform.view.components.FreelancerComponent
                         break;
                 }
            
+        }
+
+        public void RefreshAllTabs()
+        {
+            AcceptedPage(true);
+            PendingPage("Pending", true);
+            RejectedPage("Rejected", true);
         }
 
         private void acceptedLayout_Resize(object sender, EventArgs e)

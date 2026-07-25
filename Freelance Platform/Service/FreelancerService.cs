@@ -64,6 +64,11 @@ namespace Freelance_Platform.Service
             return freelanerRepo.SetMileStones(projectId, FreelancerId, ms);
         }
 
+        public bool HasMileStones(int projectId)
+        {
+            return freelanerRepo.HasMileStone(projectId);
+        }
+
         public List<ProjectWithMilestonesDTO> GetProjectsWithMilestones(int freelancerId)
         {
             return freelanerRepo.GetProjectWithMileStone(freelancerId);

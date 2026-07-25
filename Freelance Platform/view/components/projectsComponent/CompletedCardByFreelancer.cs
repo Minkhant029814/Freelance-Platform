@@ -25,8 +25,8 @@ namespace Freelance_Platform.view.components.projectsComponent
             lblClientName.Text = p.ClientName;
             lblComment.Text = p.Comment;
             ratingStar.Value = p.Rating;
-            lblPayment.Text = p.ProjectBudget.ToString();
-            lblCompletedDate.Text = p.CompletedDate.ToString();
+            lblPayment.Text = $"$ {p.ProjectBudget}";
+            lblCompletedDate.Text = $"Completed {p.CompletedDate:dd MMMM yyyy}";
 
         }
     }

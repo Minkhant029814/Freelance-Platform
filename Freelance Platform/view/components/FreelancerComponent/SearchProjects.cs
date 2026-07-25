@@ -40,13 +40,26 @@ namespace Freelance_Platform.view.components.FreelancerComponent
         {
             ProjectDisplay.Controls.Clear();
             var projects = fservice.BrowseProjects(keyword);
-
-            foreach (Project p in projects)
+            if (projects.Count == 0)
             {
-                FreeLancerProjectCard card = new FreeLancerProjectCard(p);
+                Label lblMessage = new Label();
+                lblMessage.Text = "No  projects ....";
+                lblMessage.ForeColor = Color.Green;
+                lblMessage.Font = new Font("Segoe UI", 14, FontStyle.Bold);
+                lblMessage.AutoSize = true;
+
+
                 
-                card.Width = ProjectDisplay.ClientSize.Width - 30;
-                ProjectDisplay.Controls.Add(card);
+
+                ProjectDisplay.Controls.Add(lblMessage);
+
+                foreach (Project p in projects)
+                {
+                    FreeLancerProjectCard card = new FreeLancerProjectCard(p);
+
+                    card.Width = ProjectDisplay.ClientSize.Width - 30;
+                    ProjectDisplay.Controls.Add(card);
+                }
             }
         }
 

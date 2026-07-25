@@ -36,6 +36,23 @@ namespace Freelance_Platform.view.components.FreelancerComponent
         private void LoadData(List<ProjectWithMilestonesDTO> ps)
         {
             ongoingProjectLayout.Controls.Clear();
+            if(ps.Count == 0)
+            {
+                Label lblMessage = new Label();
+                lblMessage.Text = "No ongoing project here";
+                lblMessage.ForeColor = Color.Green;
+                lblMessage.Font = new Font("Segoe UI", 14, FontStyle.Bold);
+                lblMessage.AutoSize = true;
+
+
+                lblMessage.Location = new Point(
+                    (ongoingProjectLayout.Width - lblMessage.Width) / 2,
+                    (ongoingProjectLayout.Height - lblMessage.Height) / 2
+                );
+
+
+                ongoingProjectLayout.Controls.Add(lblMessage);
+            }
             foreach(ProjectWithMilestonesDTO p in ps)
             {
                 OngoingProjectCard card = new OngoingProjectCard(p);

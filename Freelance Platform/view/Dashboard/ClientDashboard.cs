@@ -216,7 +216,7 @@ namespace Freelance_Platform.Forms.Dashboard
 
 
 
-            btnPostProject.Visible = false;
+          
             tableLayoutPanel1.Visible = false;
             profilePage.Visible = true;
             profilePage.BringToFront();
@@ -288,7 +288,7 @@ namespace Freelance_Platform.Forms.Dashboard
                 projectReview.Visible = false;
             }
             tableLayoutPanel1.Visible = true;
-            btnPostProject.Visible = false;
+           
 
 
             bidReceived = new BidReceived();

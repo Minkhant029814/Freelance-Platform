@@ -27,6 +27,23 @@ namespace Freelance_Platform.view.components.FreelancerComponent
         private void LoadData(List<CompletedProjectReviewDTO> ps)
         {
             CompletedProjectLayout.Controls.Clear();
+            if(ps.Count == 0)
+            {
+                Label lblMessage = new Label();
+                lblMessage.Text = "No Completed projects here";
+                lblMessage.ForeColor = Color.Green;
+                lblMessage.Font = new Font("Segoe UI", 14, FontStyle.Bold);
+                lblMessage.AutoSize = true;
+
+
+                lblMessage.Location = new Point(
+                    (CompletedProjectLayout.Width - lblMessage.Width) / 2,
+                    (CompletedProjectLayout.Height - lblMessage.Height) / 2
+                );
+
+
+                CompletedProjectLayout.Controls.Add(lblMessage);
+            }
             foreach (CompletedProjectReviewDTO p in ps)
             {
                

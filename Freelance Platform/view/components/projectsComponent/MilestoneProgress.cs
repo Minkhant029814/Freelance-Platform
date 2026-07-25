@@ -43,6 +43,7 @@ namespace Freelance_Platform.view.components.projectsComponent
             {
                 lblProgressValue.Text = "100% ✓ Completed";
                 lblProgressValue.BackColor = Color.LightGreen;
+                iconBtn.IconChar = FontAwesome.Sharp.IconChar.Check;
               
                 
                 lblProgressValue.Font = new Font(lblProgressValue.Font, FontStyle.Strikeout);
@@ -51,13 +52,15 @@ namespace Freelance_Platform.view.components.projectsComponent
             {
                 lblProgressValue.Text = $"{m.Progress}% In Progress";
                 lblProgressValue.BackColor = Color.LightBlue;
-                
+                iconBtn.IconChar = FontAwesome.Sharp.IconChar.Tasks;
+
             }
             else
             {
                 lblProgressValue.Text = "0% Pending";
                 lblProgressValue.BackColor = Color.LightGray;
-              
+                iconBtn.IconChar = FontAwesome.Sharp.IconChar.Clock;
+
             }
         }
 

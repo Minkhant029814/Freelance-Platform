@@ -22,11 +22,11 @@ namespace Freelance_Platform.view.components.projectsComponent
 
         private void LoadData(ProjectStatusDTO p)
         {
-            lblBudget.Text = p.ProjectBudget.ToString();
+            lblBudget.Text = $"$ {p.ProjectBudget}";
             lblProjectTitle.Text = p.ProjectTitle;
             lblClientName.Text = p.ClientName;
             btnStatus.Text = p.BiddingStatus;
-            lblRejectedDate.Text = p.BiddingDate.ToString();
+            lblRejectedDate.Text = $"Declined {p.BiddingDate:dd MMMM yyyy}";
         }
     }
 }

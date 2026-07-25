@@ -138,7 +138,7 @@ namespace Freelance_Platform.view.components.clientComponent
 
         #endregion
         //Messages if there is no projects for each category
-        private void IfNull <T>(List<T> p,Control c,string message)
+        private void IfNull<T>(List<T> p,Control c,string message)
         {
             if (p.Count == 0)
             {

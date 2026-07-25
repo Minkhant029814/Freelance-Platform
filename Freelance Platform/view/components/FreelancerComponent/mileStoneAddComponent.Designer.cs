@@ -110,6 +110,7 @@
             this.numericMileStoneWeight.Name = "numericMileStoneWeight";
             this.numericMileStoneWeight.Size = new System.Drawing.Size(175, 48);
             this.numericMileStoneWeight.TabIndex = 1;
+            this.numericMileStoneWeight.ValueChanged += new System.EventHandler(this.numericMileStoneWeight_ValueChanged);
             // 
             // txtMileStoneTitle
             // 

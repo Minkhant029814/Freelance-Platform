@@ -27,15 +27,15 @@ namespace Freelance_Platform.view.components.projectsComponent
         {
             lblProjectTitle.Text = pf.Project.ProjectTitle;
             lblDescription.Text = pf.Project.Description;
-            lblDate.Text = $"Next deadline {pf.Project.EndDate.ToString("dd MMMM yyyy")}";
-         
+            lblDate.Text = $"Next deadline {pf.Project.EndDate:dd MMMM yyyy}";
+            lblPayrate.Text = $" ${pf.Project.BaselineBudget}";
             progressBar.Value = pf.Project.OverAllProgress;
             lblProgressPercent.Text = $"Mile Stone Completed Percentage is {pf.Project.OverAllProgress} %";
 
 
             //Freelancers info
             lblFreelancerName.Text = pf.Freelancer.Portfolio.OwnerName;
-            lblPayrate.Text = pf.Freelancer.HourlyRate.ToString();
+            lblPayrate.Text = $" ${pf.Freelancer.HourlyRate}";
             lblProfessionalTitle.Text = pf.Freelancer.Portfolio.ProfessionalTitle;
 
             //for profile image

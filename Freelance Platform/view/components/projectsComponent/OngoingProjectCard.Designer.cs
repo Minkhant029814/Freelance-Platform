@@ -59,7 +59,7 @@
             this.mainContainer.FillColor = System.Drawing.Color.White;
             this.mainContainer.Location = new System.Drawing.Point(15, 18);
             this.mainContainer.Name = "mainContainer";
-            this.mainContainer.Size = new System.Drawing.Size(947, 555);
+            this.mainContainer.Size = new System.Drawing.Size(947, 617);
             this.mainContainer.TabIndex = 0;
             // 
             // btnSubmitReview
@@ -73,9 +73,9 @@
             this.btnSubmitReview.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnSubmitReview.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnSubmitReview.ForeColor = System.Drawing.Color.White;
-            this.btnSubmitReview.Location = new System.Drawing.Point(679, 495);
+            this.btnSubmitReview.Location = new System.Drawing.Point(637, 532);
             this.btnSubmitReview.Name = "btnSubmitReview";
-            this.btnSubmitReview.Size = new System.Drawing.Size(239, 45);
+            this.btnSubmitReview.Size = new System.Drawing.Size(239, 65);
             this.btnSubmitReview.TabIndex = 7;
             this.btnSubmitReview.Text = "Submit Review";
             this.btnSubmitReview.Visible = false;
@@ -92,7 +92,7 @@
             this.mileStonePanel.FillColor = System.Drawing.Color.White;
             this.mileStonePanel.Location = new System.Drawing.Point(35, 277);
             this.mileStonePanel.Name = "mileStonePanel";
-            this.mileStonePanel.Size = new System.Drawing.Size(883, 212);
+            this.mileStonePanel.Size = new System.Drawing.Size(883, 227);
             this.mileStonePanel.TabIndex = 6;
             // 
             // mileStoneLayout
@@ -105,7 +105,7 @@
             this.mileStoneLayout.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.mileStoneLayout.Location = new System.Drawing.Point(20, 43);
             this.mileStoneLayout.Name = "mileStoneLayout";
-            this.mileStoneLayout.Size = new System.Drawing.Size(846, 155);
+            this.mileStoneLayout.Size = new System.Drawing.Size(846, 170);
             this.mileStoneLayout.TabIndex = 8;
             this.mileStoneLayout.WrapContents = false;
             this.mileStoneLayout.Resize += new System.EventHandler(this.mileStoneLayout_Resize);
@@ -188,7 +188,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.mainContainer);
             this.Name = "OngoingProjectCard";
-            this.Size = new System.Drawing.Size(979, 593);
+            this.Size = new System.Drawing.Size(979, 655);
             this.mainContainer.ResumeLayout(false);
             this.mainContainer.PerformLayout();
             this.mileStonePanel.ResumeLayout(false);
