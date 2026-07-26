@@ -146,6 +146,24 @@ namespace Freelance_Platform.Forms.Dashboard
 
             List<Project> activeProjects = service.GetAllProjectsListById();
 
+            if (activeProjects.Count == 0)
+            {
+                Label lblMessage = new Label();
+                lblMessage.Text = "No active Projects here";
+                lblMessage.ForeColor = Color.Green;
+                lblMessage.Font = new Font("Segoe UI", 14, FontStyle.Bold);
+                lblMessage.AutoSize = true;
+
+
+                lblMessage.Location = new Point(
+                    (projectDisplayLayout.Width - lblMessage.Width) / 2,
+                    (projectDisplayLayout.Height - lblMessage.Height) / 2
+                );
+
+
+                projectDisplayLayout.Controls.Add(lblMessage);
+            }
+
 
             foreach (Project proj in activeProjects)
             {
@@ -153,18 +171,8 @@ namespace Freelance_Platform.Forms.Dashboard
                 ProjectCardRow card = new ProjectCardRow();
 
 
-                card.PopulateData(
-
-                    proj.ProjectTitle,
-                    proj.Description,
-                    proj.BaselineBudget.ToString("N0"),
-                    proj.EndDate.ToString("d/M/yyyy"),
-                    proj.CurrentStatus.ToString()
-                );
-
-
+                card.PopulateData(proj);
                 card.Width = projectDisplayLayout.ClientSize.Width - 30;
-
 
                 projectDisplayLayout.Controls.Add(card);
             }
@@ -185,16 +193,7 @@ namespace Freelance_Platform.Forms.Dashboard
 
         //Updating User profiel
 
-        private void UpdateProfile()
-        {
-            profilePage.UpdateProfile(
-            name: UserSession.Username,
-            email: UserSession.Email,
-            phone: UserSession.Phone,
-            location: UserSession.Address,
-            image: UserSession.Imagepath
-     );
-        }
+       
 
 
         private void btnProfile_Click(object sender, EventArgs e)
@@ -211,7 +210,7 @@ namespace Freelance_Platform.Forms.Dashboard
                 guna2Panel3.Controls.Add(profilePage);
             }
 
-            UpdateProfile();
+            
 
 
 

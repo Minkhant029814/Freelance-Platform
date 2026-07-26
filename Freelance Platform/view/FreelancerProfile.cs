@@ -21,7 +21,7 @@ namespace Freelance_Platform.Forms
     public partial class FreelancerProfile : Form
     {
         private readonly int userId;
-        private readonly string type;
+      
         private readonly string name;
         private readonly FreelancerService freelancerService = new FreelancerService();
         private readonly List<string> selectedSkillsList = new List<string>();

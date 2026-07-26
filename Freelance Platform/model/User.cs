@@ -24,19 +24,6 @@ namespace Freelance_Platform.model
 
        
 
-        public virtual void Register()
-        {
-
-        }
-
-        public virtual void Login()
-        {
-
-        }
-
-        public virtual void CreateProfile()
-        {
-
-        }
+       
     }
 }

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.mainPanel = new Guna.UI2.WinForms.Guna2Panel();
-            this.lblClientName = new System.Windows.Forms.Label();
-            this.lblCommentDate = new System.Windows.Forms.Label();
-            this.lblcomment = new System.Windows.Forms.Label();
             this.RatingStar = new Guna.UI2.WinForms.Guna2RatingStar();
+            this.lblcomment = new System.Windows.Forms.Label();
+            this.lblCommentDate = new System.Windows.Forms.Label();
+            this.lblClientName = new System.Windows.Forms.Label();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,26 +52,15 @@
             this.mainPanel.Size = new System.Drawing.Size(594, 316);
             this.mainPanel.TabIndex = 0;
             // 
-            // lblClientName
+            // RatingStar
             // 
-            this.lblClientName.AutoSize = true;
-            this.lblClientName.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClientName.Location = new System.Drawing.Point(29, 23);
-            this.lblClientName.Name = "lblClientName";
-            this.lblClientName.Size = new System.Drawing.Size(53, 23);
-            this.lblClientName.TabIndex = 0;
-            this.lblClientName.Text = "label1";
-            // 
-            // lblCommentDate
-            // 
-            this.lblCommentDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCommentDate.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCommentDate.Location = new System.Drawing.Point(356, 23);
-            this.lblCommentDate.Name = "lblCommentDate";
-            this.lblCommentDate.Size = new System.Drawing.Size(199, 35);
-            this.lblCommentDate.TabIndex = 1;
-            this.lblCommentDate.Text = "label2";
-            this.lblCommentDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.RatingStar.BackColor = System.Drawing.Color.Transparent;
+            this.RatingStar.BorderColor = System.Drawing.Color.Gold;
+            this.RatingStar.Location = new System.Drawing.Point(33, 64);
+            this.RatingStar.Name = "RatingStar";
+            this.RatingStar.RatingColor = System.Drawing.Color.Gold;
+            this.RatingStar.Size = new System.Drawing.Size(268, 56);
+            this.RatingStar.TabIndex = 3;
             // 
             // lblcomment
             // 
@@ -85,15 +74,28 @@
             this.lblcomment.TabIndex = 2;
             this.lblcomment.Text = "label3";
             // 
-            // RatingStar
+            // lblCommentDate
             // 
-            this.RatingStar.BackColor = System.Drawing.Color.White;
-            this.RatingStar.BorderColor = System.Drawing.Color.Gold;
-            this.RatingStar.Location = new System.Drawing.Point(33, 64);
-            this.RatingStar.Name = "RatingStar";
-            this.RatingStar.RatingColor = System.Drawing.Color.Gold;
-            this.RatingStar.Size = new System.Drawing.Size(268, 56);
-            this.RatingStar.TabIndex = 3;
+            this.lblCommentDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCommentDate.BackColor = System.Drawing.Color.Transparent;
+            this.lblCommentDate.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCommentDate.Location = new System.Drawing.Point(247, 23);
+            this.lblCommentDate.Name = "lblCommentDate";
+            this.lblCommentDate.Size = new System.Drawing.Size(308, 35);
+            this.lblCommentDate.TabIndex = 1;
+            this.lblCommentDate.Text = "label2";
+            this.lblCommentDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblClientName
+            // 
+            this.lblClientName.AutoSize = true;
+            this.lblClientName.BackColor = System.Drawing.Color.Transparent;
+            this.lblClientName.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClientName.Location = new System.Drawing.Point(29, 23);
+            this.lblClientName.Name = "lblClientName";
+            this.lblClientName.Size = new System.Drawing.Size(53, 23);
+            this.lblClientName.TabIndex = 0;
+            this.lblClientName.Text = "label1";
             // 
             // FreelancerPastReviewCard
             // 

@@ -116,10 +116,10 @@ namespace Freelance_Platform.Repositories
             if (dt != null && dt.Rows.Count > 0)
             {
                 UserSession.ClientId = Convert.ToInt32(dt.Rows[0]["ClientId"]);
-                UserSession.Phone = dt.Rows[0]["Phone"].ToString();
-                UserSession.Email = dt.Rows[0]["Email"].ToString();
-                UserSession.Imagepath = dt.Rows[0]["ProfilePic"].ToString();
-                UserSession.Address = dt.Rows[0]["Address"].ToString();
+                //UserSession.Phone = dt.Rows[0]["Phone"].ToString();
+                //UserSession.Email = dt.Rows[0]["Email"].ToString();
+                //UserSession.Imagepath = dt.Rows[0]["ProfilePic"].ToString();
+                //UserSession.Address = dt.Rows[0]["Address"].ToString();
             }
         }
 

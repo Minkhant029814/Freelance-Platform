@@ -1,4 +1,5 @@
 ﻿using FontAwesome.Sharp;
+using Freelance_Platform.model;
 using Freelance_Platform.Repositories;
 using Freelance_Platform.Service;
 using Freelance_Platform.Session;
@@ -18,90 +19,92 @@ namespace Freelance_Platform.view.components.clientComponent
     public partial class ProfileEdit : UserControl
     {
         private readonly ClientService clientService;
+        private string selectedFilePath = "";
+        private readonly Client client;
+
         public ProfileEdit()
         {
             InitializeComponent();
             clientService = new ClientService();
+            client = clientService.GetClientDetails(Convert.ToInt32(UserSession.ClientId));
         }
 
-        
+        private void ProfileEdit_Load(object sender, EventArgs e)
+        {
+            btnSaveChanges.Image = IconChar.Save.ToBitmap(color: Color.White, 30);
+            UpdateProfile(client);
+
+            
+        }
 
         private void btnSaveChanges_Click(object sender, EventArgs e)
-
         {
-
             string profileName = "";
 
             if (!string.IsNullOrEmpty(selectedFilePath))
             {
-                
-               
-               profileName = HandleImageUpload(UserSession.UserId, selectedFilePath);
+                profileName = HandleImageUpload(UserSession.UserId, selectedFilePath);
 
                 if (profileName == "ERROR")
                 {
-                    return; 
+                    return;
                 }
             }
             else
             {
-                
-                profileName = UserSession.Imagepath; 
+                profileName = client.ProfilePic;
             }
 
-            bool flag = clientService.UpdateProfile(txtName.Text, txtEmail.Text, txtPhone.Text, txtAddress.Text,profileName);
+            Client c = new Client(username: txtName.Text, "", "")
+            {
+                Email = txtEmail.Text,
+                Phone = txtPhone.Text,
+                Address = txtAddress.Text,
+                ProfilePic = profileName
+            };
+
+            bool flag = clientService.UpdateProfile(c);
 
             if (flag)
             {
-                MessageBox.Show("Update successfully");
 
+                UpdateProfile(clientService.GetClientDetails(Convert.ToInt32(UserSession.ClientId)));
+
+                MessageBox.Show("Update successfully");
             }
             else
             {
                 MessageBox.Show("failed to update data");
             }
         }
-
-
-        public void UpdateProfile(string name,string email,string phone,string location,string image)
+        
+        private void UpdateProfile(Client c)
         {
-            txtName.Text = name;
-            txtEmail.Text = email;
-            txtPhone.Text = phone;
-            txtAddress.Text = location;
+            txtName.Text = c.Username;
+            txtEmail.Text = c.Email;
+            txtPhone.Text = c.Phone;
+            txtAddress.Text = c.Address;
 
-           
-
-           
-            if (!string.IsNullOrEmpty(image))
+            if (!string.IsNullOrEmpty(c.ProfilePic))
             {
-                string imgPath = Path.Combine(Application.StartupPath, "Uploads", image);
+                string imgPath = Path.Combine(Application.StartupPath, "Uploads", c.ProfilePic);
 
-              
                 if (File.Exists(imgPath))
                 {
                     
-                    ProfilePict.Image = Image.FromFile(imgPath);
-                    return; 
+                    using (var fs = new FileStream(imgPath, FileMode.Open, FileAccess.Read))
+                    {
+                        ProfilePict.Image = Image.FromStream(fs);
+                    }
+                    return;
                 }
             }
 
-            
             ProfilePict.Image = Properties.Resources.register;
         }
 
-        private void ProfileEdit_Load(object sender, EventArgs e)
-        {
-            btnSaveChanges.Image = IconChar.Save.ToBitmap(color: Color.White, 30);
-
-
-        }
-
-       
-
         private string HandleImageUpload(int userId, string sourceFilePath)
         {
-
             if (string.IsNullOrEmpty(sourceFilePath))
             {
                 return null;
@@ -109,20 +112,16 @@ namespace Freelance_Platform.view.components.clientComponent
 
             try
             {
-
                 string targetFolder = Path.Combine(Application.StartupPath, "Uploads");
                 if (!Directory.Exists(targetFolder))
                 {
                     Directory.CreateDirectory(targetFolder);
                 }
 
-
                 string uniqueFileName = "client_" + userId + Path.GetExtension(sourceFilePath);
                 string destinationPath = Path.Combine(targetFolder, uniqueFileName);
 
-
                 File.Copy(sourceFilePath, destinationPath, true);
-
 
                 return uniqueFileName;
             }
@@ -132,7 +131,7 @@ namespace Freelance_Platform.view.components.clientComponent
                 return "ERROR";
             }
         }
-        string selectedFilePath = "";
+
         private void btnEditProfile_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
@@ -142,9 +141,10 @@ namespace Freelance_Platform.view.components.clientComponent
                 {
                     selectedFilePath = ofd.FileName;
                     ProfilePict.Image = Image.FromFile(selectedFilePath);
-
                 }
             }
         }
+
+       
     }
 }

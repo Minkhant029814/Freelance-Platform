@@ -59,7 +59,7 @@
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(800, 740);
+            this.guna2Panel1.Size = new System.Drawing.Size(693, 740);
             this.guna2Panel1.TabIndex = 0;
             this.guna2Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
             // 
@@ -81,9 +81,9 @@
             this.guna2Panel2.Controls.Add(this.label1);
             this.guna2Panel2.Controls.Add(this.txtProjectTitle);
             this.guna2Panel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
-            this.guna2Panel2.Location = new System.Drawing.Point(163, 104);
+            this.guna2Panel2.Location = new System.Drawing.Point(32, 106);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(600, 612);
+            this.guna2Panel2.Size = new System.Drawing.Size(620, 612);
             this.guna2Panel2.TabIndex = 5;
             this.guna2Panel2.UseTransparentBackground = true;
             // 
@@ -106,6 +106,7 @@
             // 
             // btnPostProject
             // 
+            this.btnPostProject.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPostProject.BorderRadius = 15;
             this.btnPostProject.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnPostProject.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -113,7 +114,7 @@
             this.btnPostProject.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnPostProject.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnPostProject.ForeColor = System.Drawing.Color.White;
-            this.btnPostProject.Location = new System.Drawing.Point(369, 527);
+            this.btnPostProject.Location = new System.Drawing.Point(389, 527);
             this.btnPostProject.Name = "btnPostProject";
             this.btnPostProject.Size = new System.Drawing.Size(180, 45);
             this.btnPostProject.TabIndex = 15;
@@ -150,9 +151,10 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(345, 314);
+            this.label4.Location = new System.Drawing.Point(349, 314);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(80, 23);
             this.label4.TabIndex = 12;
@@ -160,11 +162,12 @@
             // 
             // dtimeEndDate
             // 
+            this.dtimeEndDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dtimeEndDate.Checked = true;
             this.dtimeEndDate.FillColor = System.Drawing.Color.White;
             this.dtimeEndDate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtimeEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtimeEndDate.Location = new System.Drawing.Point(349, 359);
+            this.dtimeEndDate.Location = new System.Drawing.Point(353, 359);
             this.dtimeEndDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtimeEndDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtimeEndDate.Name = "dtimeEndDate";
@@ -195,6 +198,7 @@
             this.dtimeStartDate.Size = new System.Drawing.Size(220, 36);
             this.dtimeStartDate.TabIndex = 9;
             this.dtimeStartDate.Value = new System.DateTime(2026, 6, 11, 23, 54, 25, 506);
+            this.dtimeStartDate.ValueChanged += new System.EventHandler(this.dtimeStartDate_ValueChanged);
             // 
             // txtProejctDesc
             // 
@@ -216,7 +220,7 @@
             this.txtProejctDesc.PlaceholderText = "Describe the deliverables,  required skills, and \r\nany other relevant details\r\n";
             this.txtProejctDesc.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtProejctDesc.SelectedText = "";
-            this.txtProejctDesc.Size = new System.Drawing.Size(507, 122);
+            this.txtProejctDesc.Size = new System.Drawing.Size(527, 122);
             this.txtProejctDesc.TabIndex = 8;
             // 
             // label2
@@ -257,7 +261,7 @@
             this.txtProjectTitle.Name = "txtProjectTitle";
             this.txtProjectTitle.PlaceholderText = "e.g. C# Developer \r\n";
             this.txtProjectTitle.SelectedText = "";
-            this.txtProjectTitle.Size = new System.Drawing.Size(515, 60);
+            this.txtProjectTitle.Size = new System.Drawing.Size(535, 60);
             this.txtProjectTitle.TabIndex = 0;
             // 
             // label6
@@ -284,7 +288,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(800, 740);
+            this.ClientSize = new System.Drawing.Size(693, 740);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;

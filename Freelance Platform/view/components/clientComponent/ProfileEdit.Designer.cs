@@ -75,7 +75,7 @@
             this.guna2Panel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
             this.guna2Panel1.Location = new System.Drawing.Point(74, 51);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(872, 567);
+            this.guna2Panel1.Size = new System.Drawing.Size(845, 567);
             this.guna2Panel1.TabIndex = 0;
             // 
             // btnEditProfile
@@ -91,11 +91,11 @@
             this.btnEditProfile.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnEditProfile.IconSize = 30;
             this.btnEditProfile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditProfile.Location = new System.Drawing.Point(351, 177);
+            this.btnEditProfile.Location = new System.Drawing.Point(302, 177);
             this.btnEditProfile.Name = "btnEditProfile";
-            this.btnEditProfile.Size = new System.Drawing.Size(155, 45);
+            this.btnEditProfile.Size = new System.Drawing.Size(215, 45);
             this.btnEditProfile.TabIndex = 16;
-            this.btnEditProfile.Text = "Edit Profile";
+            this.btnEditProfile.Text = "Update New Profile";
             this.btnEditProfile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEditProfile.UseVisualStyleBackColor = false;
             this.btnEditProfile.Click += new System.EventHandler(this.btnEditProfile_Click);
@@ -113,7 +113,7 @@
             this.txtEmail.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtEmail.Location = new System.Drawing.Point(548, 276);
+            this.txtEmail.Location = new System.Drawing.Point(521, 276);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PlaceholderText = "";
@@ -126,13 +126,13 @@
             this.ProfilePict.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ProfilePict.BackColor = System.Drawing.Color.Transparent;
             this.ProfilePict.ImageRotate = 0F;
-            this.ProfilePict.Location = new System.Drawing.Point(338, 3);
+            this.ProfilePict.Location = new System.Drawing.Point(324, 3);
             this.ProfilePict.Name = "ProfilePict";
             this.ProfilePict.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.ProfilePict.Size = new System.Drawing.Size(168, 168);
+            this.ProfilePict.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ProfilePict.TabIndex = 14;
             this.ProfilePict.TabStop = false;
-    
             // 
             // btnSaveChanges
             // 
@@ -148,7 +148,7 @@
             this.btnSaveChanges.ForeColor = System.Drawing.Color.White;
             this.btnSaveChanges.Location = new System.Drawing.Point(46, 475);
             this.btnSaveChanges.Name = "btnSaveChanges";
-            this.btnSaveChanges.Size = new System.Drawing.Size(790, 67);
+            this.btnSaveChanges.Size = new System.Drawing.Size(763, 67);
             this.btnSaveChanges.TabIndex = 12;
             this.btnSaveChanges.Text = "Save Changes";
             this.btnSaveChanges.Click += new System.EventHandler(this.btnSaveChanges_Click);
@@ -161,7 +161,7 @@
             this.iconPictureBox4.IconChar = FontAwesome.Sharp.IconChar.LocationPin;
             this.iconPictureBox4.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
             this.iconPictureBox4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox4.Location = new System.Drawing.Point(548, 353);
+            this.iconPictureBox4.Location = new System.Drawing.Point(521, 353);
             this.iconPictureBox4.Name = "iconPictureBox4";
             this.iconPictureBox4.Size = new System.Drawing.Size(32, 32);
             this.iconPictureBox4.TabIndex = 11;
@@ -172,7 +172,7 @@
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(586, 360);
+            this.label4.Location = new System.Drawing.Point(559, 360);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(79, 25);
             this.label4.TabIndex = 10;
@@ -191,14 +191,13 @@
             this.txtAddress.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtAddress.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddress.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtAddress.Location = new System.Drawing.Point(548, 390);
+            this.txtAddress.Location = new System.Drawing.Point(521, 390);
             this.txtAddress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.PlaceholderText = "";
             this.txtAddress.SelectedText = "";
             this.txtAddress.Size = new System.Drawing.Size(286, 60);
             this.txtAddress.TabIndex = 9;
-          
             // 
             // iconPictureBox3
             // 
@@ -251,7 +250,7 @@
             this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.MailBulk;
             this.iconPictureBox2.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
             this.iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox2.Location = new System.Drawing.Point(548, 239);
+            this.iconPictureBox2.Location = new System.Drawing.Point(521, 239);
             this.iconPictureBox2.Name = "iconPictureBox2";
             this.iconPictureBox2.Size = new System.Drawing.Size(32, 32);
             this.iconPictureBox2.TabIndex = 5;
@@ -262,7 +261,7 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(586, 246);
+            this.label2.Location = new System.Drawing.Point(559, 246);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(124, 25);
             this.label2.TabIndex = 4;
@@ -317,7 +316,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.guna2Panel1);
             this.Name = "ProfileEdit";
-            this.Size = new System.Drawing.Size(991, 644);
+            this.Size = new System.Drawing.Size(964, 644);
             this.Load += new System.EventHandler(this.ProfileEdit_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();

@@ -18,10 +18,14 @@ namespace Freelance_Platform.Service
             return clientRepo.CreateProfile(uid,email,phone,address,profile);
         }
 
-
-        public bool UpdateProfile(string name,string email,string phone, string address, string profile)
+        public Client GetClientDetails(int clientId)
         {
-            return clientRepo.UpdateProfile(name,email,phone,address,profile);
+            return clientRepo.GetClientDetails(clientId);
+        }
+
+        public bool UpdateProfile(Client client)
+        {
+            return clientRepo.UpdateProfile(client);
         }
 
         public bool AcceptFreelancers(int bidId,int projectId)

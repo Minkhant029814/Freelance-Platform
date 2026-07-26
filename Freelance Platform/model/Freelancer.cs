@@ -40,28 +40,6 @@ namespace Freelance_Platform.model
         }
 
        
-        //public override void CreateProfile()
-        //{
-           
-        //    Console.WriteLine("Creating Profile with Database Transaction...");
-        //}
-
-        //public void BrowseProjects(List<Project> projects)
-        //{
-        //    foreach (var p in projects)
-        //    {
-        //        Console.WriteLine(p.ProjectTitle);
-        //    }
-        //}
-
-        //public void SubmitProposal(Bidding Bid)
-        //{
-        //    Console.WriteLine("Bid Submitted");
-        //}
-
-        //public void ManageProject()
-        //{
-        //    Console.WriteLine("Managing Projects");
-        //}
+        
     }
 }

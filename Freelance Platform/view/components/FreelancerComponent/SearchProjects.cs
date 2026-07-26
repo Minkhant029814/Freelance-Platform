@@ -18,7 +18,7 @@ namespace Freelance_Platform.view.components.FreelancerComponent
 
        
         private readonly FreelancerService fservice;
-        private FreeLancerProjectCard card;
+      
         
         public SearchProjects()
         {
@@ -53,14 +53,15 @@ namespace Freelance_Platform.view.components.FreelancerComponent
 
                 ProjectDisplay.Controls.Add(lblMessage);
 
-                foreach (Project p in projects)
+            }
+            foreach (Project p in projects)
                 {
                     FreeLancerProjectCard card = new FreeLancerProjectCard(p);
 
                     card.Width = ProjectDisplay.ClientSize.Width - 30;
                     ProjectDisplay.Controls.Add(card);
                 }
-            }
+           
         }
 
 

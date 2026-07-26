@@ -13,29 +13,13 @@ namespace Freelance_Platform.model
         public string Email { get; set; }
         
         public string Address { get; set; }
+
+        public string ProfilePic { get; set; }
         public Client(string username, string password,string type) : base(username, password,type)
         {
 
         }
 
-        public override void CreateProfile()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ViewFreelanceProfile()
-        {
-            Console.WriteLine("Vewing freelancer profile..");
-        }
-
-        public void PostProject (Project project)
-        {
-            Console.WriteLine("Project posted...");
-        }
-
-        public void LeaveReview()
-        {
-            Console.WriteLine("Review Submitted..");
-        }
+       
     }
 }

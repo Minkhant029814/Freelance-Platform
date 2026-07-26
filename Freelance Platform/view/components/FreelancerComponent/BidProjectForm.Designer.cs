@@ -114,6 +114,7 @@
             // rtxtMessage
             // 
             this.rtxtMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtxtMessage.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtxtMessage.Location = new System.Drawing.Point(41, 265);
             this.rtxtMessage.Name = "rtxtMessage";
             this.rtxtMessage.Size = new System.Drawing.Size(665, 79);
@@ -194,6 +195,7 @@
             this.ClientSize = new System.Drawing.Size(806, 598);
             this.Controls.Add(this.guna2Panel1);
             this.Name = "BidProjectForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BidProjectForm";
             this.Load += new System.EventHandler(this.BidProjectForm_Load);
             this.guna2Panel1.ResumeLayout(false);

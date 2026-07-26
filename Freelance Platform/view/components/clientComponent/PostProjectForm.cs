@@ -22,6 +22,9 @@ namespace Freelance_Platform.Forms
         {
             InitializeComponent();
             projectService = new ProjectService();
+            dtimeStartDate.Value = DateTime.Now;
+            dtimeStartDate.MinDate = dtimeStartDate.Value;
+            dtimeEndDate.Value = DateTime.Now.AddDays(7);
         }
 
         private void guna2Panel1_Paint(object sender, PaintEventArgs e)
@@ -107,13 +110,43 @@ namespace Freelance_Platform.Forms
 
             if (projectService.PostProject(p))
             {
-                MessageBox.Show("Project is posted successfully");
+                DialogResult result = MessageBox.Show(
+                    "Project is posted successfully!\nDo you want to post another project?",
+                    "Success",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (result == DialogResult.Yes)
+                {
+                    txtProjectTitle.Clear();
+                    txtProejctDesc.Clear();
+                    numBudget.Value = 0;
+                    
+                }
+                else
+                {
+                    // No ကို နှိပ်လျှင် Form ကို ပိတ်မည်
+                    this.Close();
+                }
             }
             else
             {
-                MessageBox.Show("Failed to Post Proejct");
+                MessageBox.Show("Failed to Post Project", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
+
+        private void dtimeStartDate_ValueChanged(object sender, EventArgs e)
+        {
+            dtimeEndDate.MinDate = dtimeStartDate.Value;
+
+            if (dtimeEndDate.Value < dtimeStartDate.Value)
+            {
+                dtimeEndDate.Value = dtimeStartDate.Value;
+            }
+        }
+
+        
     }
 }

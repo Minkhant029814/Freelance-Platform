@@ -1,4 +1,5 @@
-﻿using Org.BouncyCastle.Asn1.Cmp;
+﻿using Freelance_Platform.model;
+using Org.BouncyCastle.Asn1.Cmp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,26 +20,26 @@ namespace Freelance_Platform.components
         }
 
         
-        public void PopulateData(string title, string desc, string budget, string dueDate, string status)
+        public void PopulateData(Project p)
         {
-            lblProjectTitle.Text= title;
+            lblProjectTitle.Text = p.ProjectTitle;
           
-            lblProjectDesc.Text = desc;
-            lblProjectBudget.Text = $"${budget}";
+            lblProjectDesc.Text = p.Description;
+            lblProjectBudget.Text = $"${p.BaselineBudget}";
           
          
-            lblProjectDate.Text = $"Due{dueDate}";
+            lblProjectDate.Text = $"Due{p.EndDate:dd MMMM yyyy}";
 
            
-            lblProjectStatus.Text = status;
-            if (status == "PLANNING")
+            lblProjectStatus.Text = p.CurrentStatus;
+            if (p.CurrentStatus == "PLANNING")
             {
 
                 lblProjectStatus.ForeColor = Color.Orange;   
 
                
             }
-            else if(status == "IN_PROGRESS")
+            else if(p.CurrentStatus == "IN_PROGRESS")
             {
                 lblProjectStatus.ForeColor = Color.Blue;
             }

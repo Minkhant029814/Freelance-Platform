@@ -1,5 +1,7 @@
 ﻿using Freelance_Platform.Forms.Dashboard;
+using Freelance_Platform.model;
 using Freelance_Platform.Service;
+using Freelance_Platform.Session;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -121,6 +123,7 @@ namespace Freelance_Platform.Forms
                 return;
             }
 
+            
            
             bool flag = clientService.CreateProfile(userId, email, phone, address, profileFileName);
 

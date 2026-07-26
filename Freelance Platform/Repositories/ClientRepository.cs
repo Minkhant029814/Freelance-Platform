@@ -49,16 +49,61 @@ namespace Freelance_Platform.Repositories
             return false;
         }
 
+        public Client GetClientDetails(int clientId)
+        {
+            string query = @"SELECT 
+                        c.ClientId,
+                        u.UserType,
+                        u.Username AS UserName,
+                        c.Phone,
+                        c.Email,
+                        c.Address,
+                        c.ProfilePic
+                    FROM 
+                        clients c
+                    JOIN 
+                        users u ON c.UserId = u.UserId
+                    WHERE 
+                        c.ClientId = @clientId";
 
+            MySqlParameter[] ps = {
+        new MySqlParameter("@clientId", clientId)
+    };
 
-        public bool UpdateProfile(string name, string email, string phone, string address, string profile)
+            DataTable dt = db.GetData(query, ps);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                DataRow row = dt.Rows[0];
+
+                Client client = new Client(
+                    username: row["UserName"].ToString(),
+                    password: "",
+                    type: row["UserType"].ToString()
+                )
+                {
+                    ClientId = Convert.ToInt32(row["ClientId"]),
+                    Phone = row["Phone"] != DBNull.Value ? row["Phone"].ToString() : string.Empty,
+                    Email = row["Email"] != DBNull.Value ? row["Email"].ToString() : string.Empty,
+                    Address = row["Address"] != DBNull.Value ? row["Address"].ToString() : string.Empty,
+                  
+                     ProfilePic = row["ProfilePic"] != DBNull.Value ? row["ProfilePic"].ToString() : string.Empty
+                };
+
+                return client;
+            }
+
+            return null; 
+        }
+
+        public bool UpdateProfile(Client c)
 {
     try
     {
         
         string userQuery = "UPDATE Users SET Username = @name WHERE UserId = @uid";
         MySqlParameter[] userParams = {
-            new MySqlParameter("@name", name), 
+            new MySqlParameter("@name", c.Username), 
             new MySqlParameter("@uid", UserSession.UserId)
         };
 
@@ -69,27 +114,22 @@ namespace Freelance_Platform.Repositories
         string clientQuery = "UPDATE Clients SET Phone = @phone, Email = @email, Address = @address, ProfilePic = @profile WHERE UserId = @uid";
         MySqlParameter[] clientParams = { 
             new MySqlParameter("@uid", UserSession.UserId),
-            new MySqlParameter("@phone", phone),
-            new MySqlParameter("@email", email),
-            new MySqlParameter("@address", address),
-            new MySqlParameter("@profile", profile)
+            new MySqlParameter("@phone", c.Phone),
+            new MySqlParameter("@email", c.Email),
+            new MySqlParameter("@address",c.Address),
+            new MySqlParameter("@profile", c.ProfilePic)
         };
 
-        bool isClientUpdate = db.ExecuteCommand(clientQuery, clientParams);
-        if (!isClientUpdate) return false;
+        return db.ExecuteCommand(clientQuery, clientParams);
+        
 
-       
-        UserSession.Username = name;
-        UserSession.Phone = phone;
-        UserSession.Email = email;
-        UserSession.Imagepath = profile; 
-        UserSession.Address = address;
-
-        return true; 
+        
     }
     catch (Exception ex)
     {
-        throw new Exception("Profile Update Failed..... " + ex.Message);
+                MessageBox.Show("Profile UpdateFailed..... " + ex.Message);
+                return false;
+        
     }
 }
 

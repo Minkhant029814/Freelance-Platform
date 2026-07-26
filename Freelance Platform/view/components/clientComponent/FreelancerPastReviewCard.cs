@@ -25,7 +25,7 @@ namespace Freelance_Platform.view.components.clientComponent
 
             lblClientName.Text = r.ClientName;
             lblcomment.Text = r.Comment;
-            lblCommentDate.Text = r.CommentDate.ToString();
+            lblCommentDate.Text = $"Rated at {r.CommentDate:dd MMMM yyyy}";
             RatingStar.Value = r.Rating;
         }
     }
