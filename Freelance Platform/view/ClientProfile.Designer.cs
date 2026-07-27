@@ -1,6 +1,6 @@
 ﻿namespace Freelance_Platform.Forms
 {
-    partial class ClientProflle
+    partial class ClientProfile
     {
         /// <summary>
         /// Required designer variable.

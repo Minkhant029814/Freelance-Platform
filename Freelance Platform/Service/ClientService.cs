@@ -1,4 +1,5 @@
-﻿using Freelance_Platform.model;
+﻿using Freelance_Platform.Interfaces;
+using Freelance_Platform.model;
 using Freelance_Platform.Repositories;
 using System;
 using System.Collections.Generic;
@@ -10,44 +11,55 @@ namespace Freelance_Platform.Service
 {
     internal class ClientService
     {
-        private readonly ClientRepository clientRepo = new ClientRepository();
+        private readonly IClientRepository _clientRepo;
 
+        public ClientService() :this (new ClientRepository())
+        {
+
+        }
+
+        public ClientService(IClientRepository clientRepo)
+        {
+            _clientRepo = clientRepo ?? throw new ArgumentException(nameof(clientRepo));
+        }
 
         public bool CreateProfile(int uid,string email,string phone,string address,string profile)
         {
-            return clientRepo.CreateProfile(uid,email,phone,address,profile);
+            return _clientRepo.CreateProfile(uid,email,phone,address,profile);
         }
 
         public Client GetClientDetails(int clientId)
         {
-            return clientRepo.GetClientDetails(clientId);
+            return _clientRepo.GetClientDetails(clientId);
         }
 
-        public bool UpdateProfile(Client client)
+        
+        public bool UpdateProfile(Client client, int userId)
         {
-            return clientRepo.UpdateProfile(client);
+            if (client == null) throw new ArgumentException(nameof(client));
+            return _clientRepo.UpdateProfile(client,userId);
         }
 
         public bool AcceptFreelancers(int bidId,int projectId)
         {
-            return clientRepo.AcceptFreelancer(bidId, projectId);
+            return _clientRepo.AcceptFreelancer(bidId, projectId);
         }
 
         public bool RejectFreelancer(int bidId)
         {
-            return clientRepo.RejectFreelancer(bidId);
+            return _clientRepo.RejectFreelancer(bidId);
         }
 
         //Approve & Complete Project
         public bool ApproveAndCompleteProject(int projectId)
         {
-            return clientRepo.ApproveAndCompleteProject(projectId);
+            return _clientRepo.ApproveAndCompleteProject(projectId);
         }
 
         //Rating Freelancer
         public bool RatingFreelancer( Review review)
         {
-            return clientRepo.RatingFreelancer(  review);
+            return _clientRepo.RatingFreelancer(  review);
         }
     }
 }

@@ -115,6 +115,11 @@
     <Compile Include="DTO\AssignedProjectDTO.cs" />
     <Compile Include="DTO\ProjectWithMilestoneDTO.cs" />
     <Compile Include="DTO\ReviewDTO.cs" />
+    <Compile Include="Interfaces\IBidRepository.cs" />
+    <Compile Include="Interfaces\IClientRepository.cs" />
+    <Compile Include="Interfaces\IFreelancerRepository.cs" />
+    <Compile Include="Interfaces\IProjectRepository.cs" />
+    <Compile Include="Interfaces\IUserRepository.cs" />
     <Compile Include="model\MileStone.cs" />
     <Compile Include="Repositories\FreelancerRepository.cs" />
     <Compile Include="Service\BidService.cs" />
@@ -259,11 +264,11 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Service\ProjectService.cs" />
-    <Compile Include="view\ClientProflle.cs">
+    <Compile Include="view\ClientProfile.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="view\ClientProflle.Designer.cs">
-      <DependentUpon>ClientProflle.cs</DependentUpon>
+    <Compile Include="view\ClientProfile.Designer.cs">
+      <DependentUpon>ClientProfile.cs</DependentUpon>
     </Compile>
     <Compile Include="view\components\clientComponent\ProjectsReview.cs">
       <SubType>UserControl</SubType>
@@ -362,7 +367,6 @@
     <Compile Include="model\Project.cs" />
     <Compile Include="model\Review.cs" />
     <Compile Include="model\User.cs" />
-    <Compile Include="model\UserFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -446,8 +450,8 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="view\ClientProflle.resx">
-      <DependentUpon>ClientProflle.cs</DependentUpon>
+    <EmbeddedResource Include="view\ClientProfile.resx">
+      <DependentUpon>ClientProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\components\clientComponent\ProjectsReview.resx">
       <DependentUpon>ProjectsReview.cs</DependentUpon>

@@ -1,87 +1,74 @@
 ﻿using Freelance_Platform.Connection;
 using Freelance_Platform.DTO;
+using Freelance_Platform.Interfaces;
 using Freelance_Platform.model;
-using Freelance_Platform.Session;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.UI.WebControls.WebParts;
-using System.Windows;
+using System.Diagnostics;
+
+
 
 namespace Freelance_Platform.Repositories
 {
-    internal class ProjectRepository
+    internal class ProjectRepository : IProjectRepository
     {
-
         private readonly dbConnect dbconnect = new dbConnect();
 
-       
         public bool PostProject(Project project)
         {
+            if (project == null) throw new ArgumentNullException(nameof(project));
 
             try
             {
-
-                string query = "Insert into projects (ClientId,ProjectTitle,Description,Budget,StartDate,EndDate,Status) values" +
-                " (@clientId,@title,@desc,@budget,@startDate,@endDate,'PLANNING')";
+                string query = "INSERT INTO projects (ClientId,ProjectTitle,Description,Budget,StartDate,EndDate,Status) " +
+                               "VALUES (@clientId,@title,@desc,@budget,@startDate,@endDate,'PLANNING')";
                 MySqlParameter[] ps =
                 {
-                new MySqlParameter("@clientId",UserSession.ClientId),
-                new MySqlParameter("@title",project.ProjectTitle),
-                new MySqlParameter("@desc",project.Description),
-                new MySqlParameter("@budget",project.BaselineBudget),
-                new MySqlParameter("@startDate",project.StartDate),
-                new MySqlParameter("@endDate",project.EndDate),
-
-            };
+                    new MySqlParameter("@clientId", project.ClientId),
+                    new MySqlParameter("@title", project.ProjectTitle),
+                    new MySqlParameter("@desc", project.Description),
+                    new MySqlParameter("@budget", project.BaselineBudget),
+                    new MySqlParameter("@startDate", project.StartDate),
+                    new MySqlParameter("@endDate", project.EndDate),
+                };
 
                 return dbconnect.ExecuteCommand(query, ps);
             }
             catch (Exception ex)
             {
-
-                MessageBox.Show(ex.Message);
+                Debug.WriteLine($"PostProject failed: {ex}");
+                return false;
             }
-            return false;
         }
 
-        public List<Project> AllProjectById()
+        public List<Project> AllProjectsByClient(int clientId)
         {
-            string query = "Select ProjectTitle,Description,Budget,EndDate,Status from projects where ClientId = @clientId";
+            string query = "SELECT ProjectTitle,Description,Budget,EndDate,Status FROM projects WHERE ClientId = @clientId";
+            MySqlParameter[] ps = { new MySqlParameter("@clientId", clientId) };
 
-            MySqlParameter[] ps =
+            DataTable dt = dbconnect.GetData(query, ps);
+            var projects = new List<Project>();
+
+            if (dt == null) return projects;
+
+            foreach (DataRow row in dt.Rows)
             {
-                new MySqlParameter("@clientId",UserSession.ClientId)
-            };
-
-          DataTable dt =  dbconnect.GetData(query, ps);
-            List<Project> projects = new List<Project>();
-
-            foreach(DataRow row in dt.Rows)
-            {
-                Project p = new Project
+                var p = new Project
                 {
-                    ProjectTitle = row["ProjectTitle"].ToString(),
-                    Description = row["Description"].ToString(),
-                    BaselineBudget = Convert.ToDecimal(row["Budget"]),
-                    EndDate = Convert.ToDateTime(row["EndDate"]),
-                    CurrentStatus = row["Status"].ToString(),
+                    ProjectTitle = row["ProjectTitle"]?.ToString() ?? string.Empty,
+                    Description = row["Description"]?.ToString() ?? string.Empty,
+                    BaselineBudget = row["Budget"] != DBNull.Value ? Convert.ToDecimal(row["Budget"]) : 0m,
+                    EndDate = row["EndDate"] != DBNull.Value ? Convert.ToDateTime(row["EndDate"]) : DateTime.MinValue,
+                    CurrentStatus = row["Status"]?.ToString() ?? string.Empty
                 };
 
                 projects.Add(p);
-                
             }
 
             return projects;
         }
-
-
-       
-
 
         public List<Project> AllProject()
         {
@@ -90,94 +77,77 @@ namespace Freelance_Platform.Repositories
             using (MySqlConnection conn = dbconnect.GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-             
-                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-
-                List<Project> projects = new List<Project>();
-
-                foreach(DataRow row in dt.Rows)
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
                 {
-                    Project p = new Project
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    var projects = new List<Project>();
+
+                    foreach (DataRow row in dt.Rows)
                     {
-                        ProjectId = Convert.ToInt32(row["ProjectId"]),
-                        ClientId = Convert.ToInt32(row["ClientId"]),
-                        ProjectTitle = row["ProjectTitle"].ToString(),
-                        Description = row["Description"].ToString(),
-                        BaselineBudget = Convert.ToDecimal(row["Budget"]),
-                        EndDate = Convert.ToDateTime(row["EndDate"]),
-                        CurrentStatus = row["Status"].ToString()
+                        var p = new Project
+                        {
+                            ProjectId = row["ProjectId"] != DBNull.Value ? Convert.ToInt32(row["ProjectId"]) : 0,
+                            ClientId = row["ClientId"] != DBNull.Value ? Convert.ToInt32(row["ClientId"]) : 0,
+                            ProjectTitle = row["ProjectTitle"]?.ToString() ?? string.Empty,
+                            Description = row["Description"]?.ToString() ?? string.Empty,
+                            BaselineBudget = row["Budget"] != DBNull.Value ? Convert.ToDecimal(row["Budget"]) : 0m,
+                            EndDate = row["EndDate"] != DBNull.Value ? Convert.ToDateTime(row["EndDate"]) : DateTime.MinValue,
+                            CurrentStatus = row["Status"]?.ToString() ?? string.Empty
+                        };
+                        projects.Add(p);
+                    }
 
-
-
-                    };
-                    projects.Add(p);
-
-                };
-
-
-
-                return projects;
+                    return projects;
+                }
             }
-
-
         }
 
-
-        
-        //Get project By Status
-        public List<Project> GetPlanningProjects()
+        public List<Project> GetPlanningProjects(int clientId)
         {
-            
-              string   query = @"
-                        SELECT 
-        p.ProjectTitle, 
-        p.ProjectId,
-        p.Description, 
-        p.Budget, 
-        p.StartDate, 
-        p.Status,
-        COUNT(b.BidId) AS BidCount
-    FROM projects p 
-    LEFT JOIN biddings b ON p.ProjectId = b.ProjectId 
-    WHERE p.ClientId = @clientId 
-      AND p.Status = 'PLANNING'
-    GROUP BY p.ProjectId";
-            
-            
-            MySqlParameter[] para =
-            {
-                new MySqlParameter("@clientId",UserSession.ClientId),
-               
-            };
+            string query = @"
+                SELECT 
+                    p.ProjectTitle, 
+                    p.ProjectId,
+                    p.Description, 
+                    p.Budget, 
+                    p.StartDate, 
+                    p.Status,
+                    COUNT(b.BidId) AS BidCount
+                FROM projects p 
+                LEFT JOIN biddings b ON p.ProjectId = b.ProjectId 
+                WHERE p.ClientId = @clientId 
+                  AND p.Status = 'PLANNING'
+                GROUP BY p.ProjectId";
+
+            MySqlParameter[] para = { new MySqlParameter("@clientId", clientId) };
             DataTable dt = dbconnect.GetData(query, para);
-            List<Project> projects = new List<Project>();
+            var projects = new List<Project>();
+
+            if (dt == null) return projects;
 
             foreach (DataRow row in dt.Rows)
             {
-                Project p = new Project
+                var p = new Project
                 {
-                    ProjectId = Convert.ToInt32(row["ProjectId"]),
-                    ProjectTitle = row["ProjectTitle"].ToString(),
-                    Description = row["Description"].ToString(),
-                    BaselineBudget = Convert.ToDecimal(row["Budget"]),
-                    StartDate = Convert.ToDateTime(row["StartDate"]),
-                    CurrentStatus = row["Status"].ToString(),
-                    BidCount = Convert.ToInt32(row["BidCount"])
+                    ProjectId = row["ProjectId"] != DBNull.Value ? Convert.ToInt32(row["ProjectId"]) : 0,
+                    ProjectTitle = row["ProjectTitle"]?.ToString() ?? string.Empty,
+                    Description = row["Description"]?.ToString() ?? string.Empty,
+                    BaselineBudget = row["Budget"] != DBNull.Value ? Convert.ToDecimal(row["Budget"]) : 0m,
+                    StartDate = row["StartDate"] != DBNull.Value ? Convert.ToDateTime(row["StartDate"]) : DateTime.MinValue,
+                    CurrentStatus = row["Status"]?.ToString() ?? string.Empty,
+                    BidCount = row["BidCount"] != DBNull.Value ? Convert.ToInt32(row["BidCount"]) : 0
                 };
 
                 projects.Add(p);
-
             }
 
             return projects;
         }
 
-        //Get completed Project with assigned Freelancers
-
-        public List<AssignedProjectDTO> GetProjectsWithAssigned()
+        public List<AssignedProjectDTO> GetProjectsWithAssigned(int clientId)
         {
             string query = @"SELECT 
     p.ProjectId, 
@@ -199,37 +169,41 @@ INNER JOIN portfolios po ON f.FreelancerId = po.FreelancerId
 WHERE p.ClientId = @clientId AND p.Status = 'IN_PROGRESS' 
   AND b.Status = 'Accepted';";
 
-            MySqlParameter[] ps =
-            {
-                new MySqlParameter("@clientId",UserSession.ClientId),
-                
-            };
-            DataTable dt = dbconnect.GetData(query,ps );
-            List<AssignedProjectDTO> projects = new List<AssignedProjectDTO>();
+            MySqlParameter[] ps = { new MySqlParameter("@clientId", clientId) };
+            DataTable dt = dbconnect.GetData(query, ps);
+            var projects = new List<AssignedProjectDTO>();
+
+            if (dt == null) return projects;
 
             foreach (DataRow row in dt.Rows)
             {
-                AssignedProjectDTO p = new AssignedProjectDTO();
-                p.Freelancer.HourlyRate = Convert.ToDecimal(row["HourlyRate"]);
-                p.Freelancer.Portfolio.OwnerName = row["FreelancerName"].ToString();
-                p.Freelancer.Portfolio.ProfessionalTitle = row["ProfessionalTitle"].ToString();
-                p.Freelancer.Portfolio.Profile = row["ProfilePic"].ToString();
-                
-                p.Project.EndDate = Convert.ToDateTime(row["EndDate"]);
-                p.Project.ProjectTitle = row["ProjectTitle"].ToString();
-                p.Project.Description = row["Description"].ToString();
-                p.Project.BaselineBudget = Convert.ToDecimal(row["Budget"]);
-                p.Project.OverAllProgress = Convert.ToInt32(row["OverAllProgress"]);
-                p.Project.CurrentStatus = row["Status"].ToString();
-                projects.Add(p);
+                var p = new AssignedProjectDTO
+                {
+                    Project = new Project(),
+                    Freelancer = new Freelancer(),
+                    Review = new Review()
+                };
 
+                p.Freelancer.HourlyRate = row["HourlyRate"] != DBNull.Value ? Convert.ToDecimal(row["HourlyRate"]) : 0m;
+                p.Freelancer.Portfolio = p.Freelancer.Portfolio ?? new Portfolio();
+                p.Freelancer.Portfolio.OwnerName = row["FreelancerName"]?.ToString() ?? string.Empty;
+                p.Freelancer.Portfolio.ProfessionalTitle = row["ProfessionalTitle"]?.ToString() ?? string.Empty;
+                p.Freelancer.Portfolio.Profile = row["ProfilePic"]?.ToString() ?? string.Empty;
+
+                p.Project.EndDate = row["EndDate"] != DBNull.Value ? Convert.ToDateTime(row["EndDate"]) : DateTime.MinValue;
+                p.Project.ProjectTitle = row["ProjectTitle"]?.ToString() ?? string.Empty;
+                p.Project.Description = row["Description"]?.ToString() ?? string.Empty;
+                p.Project.BaselineBudget = row["Budget"] != DBNull.Value ? Convert.ToDecimal(row["Budget"]) : 0m;
+                p.Project.OverAllProgress = row["OverAllProgress"] != DBNull.Value ? Convert.ToInt32(row["OverAllProgress"]) : 0;
+                p.Project.CurrentStatus = row["Status"]?.ToString() ?? string.Empty;
+
+                projects.Add(p);
             }
 
             return projects;
         }
 
-
-        public List<AssignedProjectDTO> GetForSubmittedReview()
+        public List<AssignedProjectDTO> GetForSubmittedReview(int clientId)
         {
             string query = @"SELECT 
     p.ProjectId, 
@@ -251,39 +225,42 @@ INNER JOIN portfolios po ON f.FreelancerId = po.FreelancerId
 WHERE p.ClientId = @clientId AND p.Status = 'ON_HOLD' 
   AND b.Status = 'Accepted';";
 
-            MySqlParameter[] ps =
-            {
-                new MySqlParameter("@clientId",UserSession.ClientId),
-
-            };
+            MySqlParameter[] ps = { new MySqlParameter("@clientId", clientId) };
             DataTable dt = dbconnect.GetData(query, ps);
-            List<AssignedProjectDTO> projects = new List<AssignedProjectDTO>();
+            var projects = new List<AssignedProjectDTO>();
+
+            if (dt == null) return projects;
 
             foreach (DataRow row in dt.Rows)
             {
-                AssignedProjectDTO p = new AssignedProjectDTO();
-                p.Freelancer.HourlyRate = Convert.ToDecimal(row["HourlyRate"]);
-                p.Freelancer.Portfolio.OwnerName = row["FreelancerName"].ToString();
-                p.Freelancer.Portfolio.ProfessionalTitle = row["ProfessionalTitle"].ToString();
-                p.Freelancer.Portfolio.Profile = row["ProfilePic"].ToString();
+                var p = new AssignedProjectDTO
+                {
+                    Project = new Project(),
+                    Freelancer = new Freelancer(),
+                    Review = new Review()
+                };
 
-                p.Project.SubmittedDate = Convert.ToDateTime(row["SubmittedDate"]);
-                p.Project.ProjectId = Convert.ToInt32(row["ProjectId"]);
-                p.Project.ProjectTitle = row["ProjectTitle"].ToString();
-                p.Project.Description = row["Description"].ToString();
-                p.Project.BaselineBudget = Convert.ToDecimal(row["Budget"]);
-                p.Project.OverAllProgress = Convert.ToInt32(row["OverAllProgress"]);
-                p.Project.CurrentStatus = row["Status"].ToString();
+                p.Freelancer.HourlyRate = row["HourlyRate"] != DBNull.Value ? Convert.ToDecimal(row["HourlyRate"]) : 0m;
+                p.Freelancer.Portfolio = p.Freelancer.Portfolio ?? new Portfolio();
+                p.Freelancer.Portfolio.OwnerName = row["FreelancerName"]?.ToString() ?? string.Empty;
+                p.Freelancer.Portfolio.ProfessionalTitle = row["ProfessionalTitle"]?.ToString() ?? string.Empty;
+                p.Freelancer.Portfolio.Profile = row["ProfilePic"]?.ToString() ?? string.Empty;
+
+                p.Project.SubmittedDate = row["SubmittedDate"] != DBNull.Value ? Convert.ToDateTime(row["SubmittedDate"]) : DateTime.MinValue;
+                p.Project.ProjectId = row["ProjectId"] != DBNull.Value ? Convert.ToInt32(row["ProjectId"]) : 0;
+                p.Project.ProjectTitle = row["ProjectTitle"]?.ToString() ?? string.Empty;
+                p.Project.Description = row["Description"]?.ToString() ?? string.Empty;
+                p.Project.BaselineBudget = row["Budget"] != DBNull.Value ? Convert.ToDecimal(row["Budget"]) : 0m;
+                p.Project.OverAllProgress = row["OverAllProgress"] != DBNull.Value ? Convert.ToInt32(row["OverAllProgress"]) : 0;
+                p.Project.CurrentStatus = row["Status"]?.ToString() ?? string.Empty;
+
                 projects.Add(p);
-
             }
 
             return projects;
-
         }
 
-        //Get Completed Projects By Clients
-        public List<AssignedProjectDTO> GetCompletedProjects()
+        public List<AssignedProjectDTO> GetCompletedProjects(int clientId)
         {
             string query = @"SELECT 
     p.ProjectId, 
@@ -309,52 +286,47 @@ WHERE p.ClientId = @clientId AND p.Status = 'COMPLETED'
   AND b.Status = 'Accepted'
 ORDER BY p.CompletedDate DESC;";
 
-            MySqlParameter[] ps =
-            {
-        new MySqlParameter("@clientId", UserSession.ClientId),
-    };
-
+            MySqlParameter[] ps = { new MySqlParameter("@clientId", clientId) };
             DataTable dt = dbconnect.GetData(query, ps);
-            List<AssignedProjectDTO> projects = new List<AssignedProjectDTO>();
+            var projects = new List<AssignedProjectDTO>();
+
+            if (dt == null) return projects;
 
             foreach (DataRow row in dt.Rows)
             {
-                AssignedProjectDTO p = new AssignedProjectDTO();
+                var p = new AssignedProjectDTO
+                {
+                    Project = new Project(),
+                    Freelancer = new Freelancer(),
+                    Review = new Review()
+                };
 
                 // Freelancer Info
-                p.Freelancer.FreelancerId = Convert.ToInt32(row["FreelancerId"]);
-                p.Freelancer.HourlyRate = Convert.ToDecimal(row["HourlyRate"]);
-                p.Freelancer.Portfolio.OwnerName = row["FreelancerName"].ToString();
-                p.Freelancer.Portfolio.ProfessionalTitle = row["ProfessionalTitle"].ToString();
-                p.Freelancer.Portfolio.Profile = row["ProfilePic"].ToString();
+                p.Freelancer.FreelancerId = row["FreelancerId"] != DBNull.Value ? Convert.ToInt32(row["FreelancerId"]) : 0;
+                p.Freelancer.HourlyRate = row["HourlyRate"] != DBNull.Value ? Convert.ToDecimal(row["HourlyRate"]) : 0m;
+                p.Freelancer.Portfolio = p.Freelancer.Portfolio ?? new Portfolio();
+                p.Freelancer.Portfolio.OwnerName = row["FreelancerName"]?.ToString() ?? string.Empty;
+                p.Freelancer.Portfolio.ProfessionalTitle = row["ProfessionalTitle"]?.ToString() ?? string.Empty;
+                p.Freelancer.Portfolio.Profile = row["ProfilePic"]?.ToString() ?? string.Empty;
 
                 // Project Info
-               
-                p.Project.ProjectId = Convert.ToInt32(row["ProjectId"]);
-                p.Project.ProjectTitle = row["ProjectTitle"].ToString();
-                p.Project.Description = row["Description"].ToString();
-                p.Project.BaselineBudget = Convert.ToDecimal(row["Budget"]);
-                p.Project.CurrentStatus = row["Status"].ToString();
+                p.Project.ProjectId = row["ProjectId"] != DBNull.Value ? Convert.ToInt32(row["ProjectId"]) : 0;
+                p.Project.ProjectTitle = row["ProjectTitle"]?.ToString() ?? string.Empty;
+                p.Project.Description = row["Description"]?.ToString() ?? string.Empty;
+                p.Project.BaselineBudget = row["Budget"] != DBNull.Value ? Convert.ToDecimal(row["Budget"]) : 0m;
+                p.Project.CurrentStatus = row["Status"]?.ToString() ?? string.Empty;
 
-                if (row["CompletedDate"] != DBNull.Value && row["CompletedDate"] != null)
-                {
-                    p.Project.CompletedDate = Convert.ToDateTime(row["CompletedDate"]);
-                }
-                else
-                {
-                    p.Project.CompletedDate = DateTime.MinValue; // Data မရှိသေးပါက Default တန်ဖိုးထားရန်
-                }
-
+                p.Project.CompletedDate = row["CompletedDate"] != DBNull.Value ? Convert.ToDateTime(row["CompletedDate"]) : DateTime.MinValue;
 
                 if (row["ReviewId"] != DBNull.Value)
                 {
                     p.Review.ReviewId = Convert.ToInt32(row["ReviewId"]);
-                    p.Review.Rating = Convert.ToSingle(row["Rating"]); 
-                    p.Review.Comment = row["Comment"].ToString();
+                    p.Review.Rating = row["Rating"] != DBNull.Value ? Convert.ToSingle(row["Rating"]) : 0f;
+                    p.Review.Comment = row["Comment"]?.ToString() ?? string.Empty;
                 }
                 else
                 {
-                    p.Review.ReviewId = 0; 
+                    p.Review.ReviewId = 0;
                 }
 
                 projects.Add(p);
@@ -363,42 +335,49 @@ ORDER BY p.CompletedDate DESC;";
             return projects;
         }
 
-        //Calculation Progress Rate for onGoing (In_Progress) projects
-
         public bool CalculateProjectProgressRate(int projectId)
         {
-            
-            string getMilestonesQuery = "SELECT Weight, Progress FROM milestones WHERE ProjectId = @pId";
-            MySqlParameter[] pParams = { new MySqlParameter("@pId", projectId) };
-            DataTable dt = dbconnect.GetData(getMilestonesQuery, pParams);
-
-            double totalWeightedProgress = 0;
-            double totalWeight = 0;
-
-            foreach (DataRow row in dt.Rows)
+            try
             {
-                double weight = Convert.ToDouble(row["Weight"]);
-                double progress = Convert.ToDouble(row["Progress"]);
+                string getMilestonesQuery = "SELECT Weight, Progress FROM milestones WHERE ProjectId = @pId";
+                MySqlParameter[] pParams = { new MySqlParameter("@pId", projectId) };
+                DataTable dt = dbconnect.GetData(getMilestonesQuery, pParams);
 
-                totalWeightedProgress += (progress * weight);
-                totalWeight += weight;
+                double totalWeightedProgress = 0;
+                double totalWeight = 0;
+
+                if (dt != null)
+                {
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        double weight = row["Weight"] != DBNull.Value ? Convert.ToDouble(row["Weight"]) : 0;
+                        double progress = row["Progress"] != DBNull.Value ? Convert.ToDouble(row["Progress"]) : 0;
+
+                        totalWeightedProgress += (progress * weight);
+                        totalWeight += weight;
+                    }
+                }
+
+                int overallProgress = 0;
+                if (totalWeight > 0)
+                {
+                    overallProgress = (int)(totalWeightedProgress / totalWeight);
+                }
+
+                // Update column name to match DTO/property (OverAllProgress)
+                string updateProjectQuery = "UPDATE projects SET OverAllProgress = @overall WHERE ProjectId = @pId";
+                MySqlParameter[] projParams = {
+                    new MySqlParameter("@overall", overallProgress),
+                    new MySqlParameter("@pId", projectId)
+                };
+
+                return dbconnect.ExecuteCommand(updateProjectQuery, projParams);
             }
-
-            int overallProgress = 0;
-            if (totalWeight > 0)
+            catch (Exception ex)
             {
-                overallProgress = (int)(totalWeightedProgress / totalWeight);
+                Debug.WriteLine($"CalculateProjectProgressRate failed: {ex}");
+                return false;
             }
-
-           
-            string updateProjectQuery = "UPDATE projects SET OverallProgress = @overall WHERE ProjectId = @pId";
-            MySqlParameter[] projParams = {
-        new MySqlParameter("@overall", overallProgress),
-        new MySqlParameter("@pId", projectId)
-    };
-
-            return dbconnect.ExecuteCommand(updateProjectQuery, projParams);
         }
-
     }
 }

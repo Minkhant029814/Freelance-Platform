@@ -15,13 +15,13 @@ using System.Windows.Forms;
 
 namespace Freelance_Platform.Forms
 {
-    public partial class ClientProflle : Form
+    public partial class ClientProfile : Form
     {
         private readonly int userId;
         private readonly string type;
         private readonly string name;
         private readonly ClientService clientService;
-        public ClientProflle(int userId, string type, string name)
+        public ClientProfile(int userId, string type, string name)
         {
             InitializeComponent();
             this.userId = userId;

@@ -38,6 +38,7 @@ namespace Freelance_Platform.Forms
 
         public bool ValidatePassword(string password)
         {
+            if (password == null) return false;
             if (password.Length < 8 || password.Length > 12)
             {
                 return false;
@@ -50,10 +51,10 @@ namespace Freelance_Platform.Forms
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            string name = txtUserName.Text;
+            string name = txtUserName.Text?.Trim();
             string password = txtPassword.Text;
             string confirmPass = txtConfirm.Text;
-            string type = comboRole.Text;
+            string type = comboRole.Text?.Trim();
 
             // Validation
             if (string.IsNullOrWhiteSpace(name) ||
@@ -66,6 +67,13 @@ namespace Freelance_Platform.Forms
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
 
+                return;
+            }
+            //Ensure a valid is selected 
+            if(!string.Equals(type,"Freelancer",StringComparison.OrdinalIgnoreCase) &&
+                !string.Equals(type, "Client", StringComparison.OrdinalIgnoreCase))
+            {
+                MessageBox.Show("Please select a valid role.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -95,49 +103,57 @@ namespace Freelance_Platform.Forms
 
             User user = new User(name,password,type);
 
-            // Register
-            int userId = userService.Register(user);
-
-            // Register Failed
-            if (userId <= 0)
+            btnRegister.Enabled = false;
+            try
             {
+                // Register
+                int userId = userService.Register(user);
+
+                // Register Failed
+                if (userId <= 0)
+                {
+                    MessageBox.Show(
+                        "Username already exists or registration failed.",
+                        "Register",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+
+                    return;
+                }
+
                 MessageBox.Show(
-                    "Username already exists or registration failed.",
+                    "Account created successfully.",
                     "Register",
                     MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                    MessageBoxIcon.Information);
 
-                return;
+                // Open Profile Form
+                if (type == "Freelancer")
+                {
+                    new FreelancerProfile(userId, type, name).Show();
+
+
+                }
+                else
+                {
+                    ClientProfile frm =
+                        new ClientProfile(userId, type, name);
+
+
+                    frm.Show();
+                }
+
+                this.Close();
             }
-
-            MessageBox.Show(
-                "Account created successfully.",
-                "Register",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
-
-            // Open Profile Form
-            if (type == "Freelancer")
+            catch (Exception ex)
             {
-                new FreelancerProfile(userId,type,name).Show();
-
-                
+                MessageBox.Show("Registration failed: " + ex.Message, "Register", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
             }
-            else
+            finally
             {
-                ClientProflle frm =
-                    new ClientProflle(userId,type,name);
-
-
-                frm.Show();
+                btnRegister.Enabled = true;
             }
-
-            this.Hide();
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
 
         }
 

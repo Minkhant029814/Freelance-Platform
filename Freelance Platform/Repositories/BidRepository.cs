@@ -1,50 +1,46 @@
 ﻿using Freelance_Platform.Connection;
 using Freelance_Platform.DTO;
+using Freelance_Platform.Interfaces;
 using Freelance_Platform.model;
-using Freelance_Platform.Session;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+using System.Diagnostics;
+
+
 
 namespace Freelance_Platform.Repositories
 {
-    public class BidRepository
+    public class BidRepository : IBidRepository
     {
         private readonly dbConnect db = new dbConnect();
 
-
         public bool SubmitBid(Bidding bid)
         {
+            if (bid == null) throw new ArgumentNullException(nameof(bid));
 
             try
             {
                 string query = "INSERT INTO Biddings (ProjectId,FreelancerId,Message,BidAmount,Status,SubmissionDate) " +
-                    " values (@pid,@fid,@message,@bidAmount,@status,@date)";
+                               "VALUES (@pid,@fid,@message,@bidAmount,@status,@date)";
                 MySqlParameter[] ps =
-                    {
-                new MySqlParameter("@pid",bid.ProjectId),
-                new MySqlParameter("@fid",bid.FreelancerId),
-                new MySqlParameter("@message",bid.Message),
-                new MySqlParameter("@bidAmount",bid.BidAmount),
-                new MySqlParameter("@status",bid.Status ?? "Pending"),
-                new MySqlParameter("@date",bid.SubmissionDate)
+                {
+                    new MySqlParameter("@pid", bid.ProjectId),
+                    new MySqlParameter("@fid", bid.FreelancerId),
+                    new MySqlParameter("@message", bid.Message ?? (object)DBNull.Value),
+                    new MySqlParameter("@bidAmount", bid.BidAmount),
+                    new MySqlParameter("@status", bid.Status ?? "Pending"),
+                    new MySqlParameter("@date", bid.SubmissionDate)
                 };
 
                 return db.ExecuteCommand(query, ps);
-
             }
             catch (Exception ex)
             {
-
-                Console.WriteLine(ex.Message);
+                Debug.WriteLine($"SubmitBid failed: {ex}");
                 return false;
             }
-
         }
 
         public bool CancelBid(int projectId, int freelancerId)
@@ -52,41 +48,47 @@ namespace Freelance_Platform.Repositories
             try
             {
                 string query = "UPDATE Biddings SET Status = 'Cancelled' WHERE ProjectId = @pid AND FreelancerId = @fid;";
-
-                MySqlParameter[] ps = {
-        new MySqlParameter("@pid", projectId),
-        new MySqlParameter("@fid", freelancerId)
-    };
+                MySqlParameter[] ps =
+                {
+                    new MySqlParameter("@pid", projectId),
+                    new MySqlParameter("@fid", freelancerId)
+                };
 
                 return db.ExecuteCommand(query, ps);
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Debug.WriteLine($"CancelBid failed: {ex}");
                 return false;
             }
-
         }
 
-
-       
         public bool HasUserBidded(int projectId, int freelancerId)
         {
-            string query = "SELECT COUNT(*) FROM Biddings WHERE ProjectId = @pid AND FreelancerId = @fid AND Status = 'Pending';";
-            MySqlParameter[] ps = {
-        new MySqlParameter("@pid", projectId),
-        new MySqlParameter("@fid", freelancerId)
-    };
+            try
+            {
+                string query = "SELECT COUNT(*) FROM Biddings WHERE ProjectId = @pid AND FreelancerId = @fid AND Status = 'Pending';";
+                MySqlParameter[] ps =
+                {
+                    new MySqlParameter("@pid", projectId),
+                    new MySqlParameter("@fid", freelancerId)
+                };
 
-            
-            return Convert.ToInt32(db.GetScaler(query,ps)) > 0;
+                int count = db.GetScaler(query, ps);
+                return count > 0;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"HasUserBidded failed: {ex}");
+                return false;
+            }
         }
 
-
-        public List<BidProjectModelDTO> GetBidProjects()
+        public List<BidProjectModelDTO> GetBidProjects(int clientId)
         {
-          
-            string query = @"SELECT 
+            try
+            {
+                string query = @"SELECT 
     p.ProjectId, 
     p.ProjectTitle, 
     p.Budget, 
@@ -96,70 +98,73 @@ FROM Projects p
 INNER JOIN Biddings b ON p.ProjectId = b.ProjectId
 WHERE p.ClientId = @ClientId 
 GROUP BY p.ProjectId, p.ProjectTitle, p.Budget
-ORDER BY MAX(b.SubmissionDate) DESC;  ";
+ORDER BY MAX(b.SubmissionDate) DESC;";
 
-            MySqlParameter[] ps =
-            {
-        new MySqlParameter("@ClientId", UserSession.ClientId) 
-    };
+                MySqlParameter[] ps = { new MySqlParameter("@ClientId", clientId) };
 
-            DataTable dt = db.GetData(query, ps);
-            List<BidProjectModelDTO> projects = new List<BidProjectModelDTO>();
+                DataTable dt = db.GetData(query, ps);
+                var projects = new List<BidProjectModelDTO>();
 
-            foreach (DataRow row in dt.Rows)
-            {
-                BidProjectModelDTO p = new BidProjectModelDTO
+                if (dt == null) return projects;
+
+                foreach (DataRow row in dt.Rows)
                 {
-                    ProjectId = Convert.ToInt32(row["ProjectId"]),
-                    Title = row["ProjectTitle"].ToString(),
-                    Budget = Convert.ToDecimal(row["Budget"]),
-                    TotalBids = Convert.ToInt32(row["TotalBids"]),
-                    NewBids = Convert.ToInt32(row["NewBidsCount"]), 
-                };
+                    projects.Add(new BidProjectModelDTO
+                    {
+                        ProjectId = row["ProjectId"] != DBNull.Value ? Convert.ToInt32(row["ProjectId"]) : 0,
+                        Title = row["ProjectTitle"]?.ToString() ?? string.Empty,
+                        Budget = row["Budget"] != DBNull.Value ? Convert.ToDecimal(row["Budget"]) : 0m,
+                        TotalBids = row["TotalBids"] != DBNull.Value ? Convert.ToInt32(row["TotalBids"]) : 0,
+                        NewBids = row["NewBidsCount"] != DBNull.Value ? Convert.ToInt32(row["NewBidsCount"]) : 0
+                    });
+                }
 
-                projects.Add(p);
+                return projects;
             }
-
-            return projects;
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"GetBidProjects failed: {ex}");
+                return new List<BidProjectModelDTO>();
+            }
         }
-
 
         public List<FreelancerBidDTO> GetFreelancerBids(int projectId)
         {
-            string query = @"SELECT  p.OwnerName, p.ProfilePic, p.ProfessionalTitle,b.BidId,b.ProjectId, b.BidAmount, b.Message ,b.Status
-                 FROM Biddings b 
-                 JOIN Portfolios p ON b.FreelancerId = p.FreelancerId 
-                 WHERE b.ProjectId = @ProjectId";
-            MySqlParameter[] ps =
+            try
             {
-                new MySqlParameter("@ProjectId", projectId),
-             };
+                string query = @"SELECT p.OwnerName, p.ProfilePic, p.ProfessionalTitle, b.BidId, b.ProjectId, b.BidAmount, b.Message, b.Status
+                                 FROM Biddings b 
+                                 JOIN Portfolios p ON b.FreelancerId = p.FreelancerId 
+                                 WHERE b.ProjectId = @ProjectId";
+                MySqlParameter[] ps = { new MySqlParameter("@ProjectId", projectId) };
 
-            DataTable dt = db.GetData(query, ps);
-            List<FreelancerBidDTO> freelancerBids = new List<FreelancerBidDTO>();
+                DataTable dt = db.GetData(query, ps);
+                var freelancerBids = new List<FreelancerBidDTO>();
 
-            foreach (DataRow row in dt.Rows)
-            {
-                FreelancerBidDTO bid = new FreelancerBidDTO
+                if (dt == null) return freelancerBids;
+
+                foreach (DataRow row in dt.Rows)
                 {
-                    ProjectId = Convert.ToInt32(row["ProjectId"]),
-                    BidId = Convert.ToInt32(row["BidId"]),
-                    OwnerName = row["OwnerName"].ToString(),
-                    BidAmount = Convert.ToDecimal(row["BidAmount"]),
-                    Message = row["Message"].ToString(),
-                    ProfessionalTitle = row["ProfessionalTitle"].ToString(),
-                    Status = row["Status"].ToString(),
-                    ProfilePic = row["ProfilePic"].ToString(),
-                    
-                };
+                    freelancerBids.Add(new FreelancerBidDTO
+                    {
+                        ProjectId = row["ProjectId"] != DBNull.Value ? Convert.ToInt32(row["ProjectId"]) : 0,
+                        BidId = row["BidId"] != DBNull.Value ? Convert.ToInt32(row["BidId"]) : 0,
+                        OwnerName = row["OwnerName"]?.ToString() ?? string.Empty,
+                        BidAmount = row["BidAmount"] != DBNull.Value ? Convert.ToDecimal(row["BidAmount"]) : 0m,
+                        Message = row["Message"]?.ToString() ?? string.Empty,
+                        ProfessionalTitle = row["ProfessionalTitle"]?.ToString() ?? string.Empty,
+                        Status = row["Status"]?.ToString() ?? string.Empty,
+                        ProfilePic = row["ProfilePic"]?.ToString() ?? string.Empty
+                    });
+                }
 
-                freelancerBids.Add(bid);
+                return freelancerBids;
             }
-
-            return freelancerBids;
-
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"GetFreelancerBids failed: {ex}");
+                return new List<FreelancerBidDTO>();
+            }
         }
-
     }
-
 }

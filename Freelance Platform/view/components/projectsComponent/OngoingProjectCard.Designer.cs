@@ -142,9 +142,9 @@
             this.btnEndate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnEndate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnEndate.ForeColor = System.Drawing.Color.White;
-            this.btnEndate.Location = new System.Drawing.Point(667, 27);
+            this.btnEndate.Location = new System.Drawing.Point(591, 27);
             this.btnEndate.Name = "btnEndate";
-            this.btnEndate.Size = new System.Drawing.Size(219, 45);
+            this.btnEndate.Size = new System.Drawing.Size(295, 45);
             this.btnEndate.TabIndex = 4;
             this.btnEndate.Text = "guna2Button1";
             // 

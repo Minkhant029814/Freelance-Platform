@@ -1,7 +1,9 @@
 ﻿using Freelance_Platform.Connection;
 using Freelance_Platform.DTO;
+using Freelance_Platform.Interfaces;
 using Freelance_Platform.model;
 using Freelance_Platform.Repositories;
+using Freelance_Platform.Session;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,55 +16,57 @@ namespace Freelance_Platform.Service
     internal class ProjectService
     {
 
-        private readonly ProjectRepository projectRepo;
+        private readonly IProjectRepository _projectRepo;
 
-        public ProjectService()
+        public ProjectService(): this(new ProjectRepository()) { }
+        public ProjectService(IProjectRepository projectRepo)
         {
-            this.projectRepo = new ProjectRepository();
+            _projectRepo = projectRepo ?? throw new ArgumentException(nameof(projectRepo));
         }
 
 
         public bool PostProject(Project project)
         {
-            return projectRepo.PostProject(project);
+            if (project == null) throw new ArgumentException(nameof(project));
+            return _projectRepo.PostProject(project);
 
         }
 
         public List<Project> GetAllProjectsListById()
         {
-            return projectRepo.AllProjectById();
+            return _projectRepo.AllProjectsByClient(Convert.ToInt32(UserSession.ClientId));
         }
 
         public List<Project> GetAllProjects()
         {
-            return projectRepo.AllProject();
+            return _projectRepo.AllProject();
         }
 
-       
+
 
         public List<Project> GetPlanningProjects()
         {
-            return projectRepo.GetPlanningProjects();
+            return _projectRepo.GetPlanningProjects(UserSession.ClientId);
         }
 
         public List<AssignedProjectDTO> GetProjectsAssigned()
         {
-            return projectRepo.GetProjectsWithAssigned();
+            return _projectRepo.GetProjectsWithAssigned(UserSession.ClientId);
         }
 
         public List<AssignedProjectDTO> GetForSubmittedReview()
         {
-            return projectRepo.GetForSubmittedReview();
+            return _projectRepo.GetForSubmittedReview(UserSession.ClientId);
         }
 
         public List<AssignedProjectDTO> GetCompletedProjects()
         {
-            return projectRepo.GetCompletedProjects();
+            return _projectRepo.GetCompletedProjects(UserSession.ClientId);
         }
 
         public bool CalculateProjectProgressRate(int projectId)
         {
-            return projectRepo.CalculateProjectProgressRate(projectId);
+            return _projectRepo.CalculateProjectProgressRate(projectId);
         }
     }
 }

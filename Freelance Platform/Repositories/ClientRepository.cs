@@ -1,4 +1,5 @@
 ﻿using Freelance_Platform.Connection;
+using Freelance_Platform.Interfaces;
 using Freelance_Platform.model;
 using Freelance_Platform.Session;
 using MySql.Data.MySqlClient;
@@ -6,6 +7,7 @@ using Mysqlx.Crud;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -18,7 +20,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 namespace Freelance_Platform.Repositories
 {
 
-    internal class ClientRepository
+    internal class ClientRepository : IClientRepository
     {
         private readonly dbConnect db = new dbConnect();
 
@@ -96,15 +98,16 @@ namespace Freelance_Platform.Repositories
             return null; 
         }
 
-        public bool UpdateProfile(Client c)
+        public bool UpdateProfile(Client c,int userId)
 {
+            if (c == null) throw new ArgumentException(nameof(c));
     try
     {
         
         string userQuery = "UPDATE Users SET Username = @name WHERE UserId = @uid";
         MySqlParameter[] userParams = {
             new MySqlParameter("@name", c.Username), 
-            new MySqlParameter("@uid", UserSession.UserId)
+            new MySqlParameter("@uid", userId)
         };
 
         
@@ -113,7 +116,7 @@ namespace Freelance_Platform.Repositories
 
         string clientQuery = "UPDATE Clients SET Phone = @phone, Email = @email, Address = @address, ProfilePic = @profile WHERE UserId = @uid";
         MySqlParameter[] clientParams = { 
-            new MySqlParameter("@uid", UserSession.UserId),
+            new MySqlParameter("@uid", userId),
             new MySqlParameter("@phone", c.Phone),
             new MySqlParameter("@email", c.Email),
             new MySqlParameter("@address",c.Address),
@@ -127,7 +130,7 @@ namespace Freelance_Platform.Repositories
     }
     catch (Exception ex)
     {
-                MessageBox.Show("Profile UpdateFailed..... " + ex.Message);
+                Debug.WriteLine($"UpdateProfile failed {ex.Message}");
                 return false;
         
     }
@@ -180,8 +183,9 @@ namespace Freelance_Platform.Repositories
                     catch (Exception ex)
                     {
 
-                        transaction.Rollback();
-                        throw new Exception("Profile Updating Failed: " + ex.Message);
+                        try { transaction.Rollback(); } catch { }
+                        Debug.WriteLine($"AcceptFreelancer transaction failed :{ex.Message}");
+                        return false;
                     }
                 }
             }
@@ -204,10 +208,11 @@ namespace Freelance_Platform.Repositories
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message);
+                Debug.WriteLine($"RejectFreelancer failed {ex.Message}");
+                return false;
             }
 
-            return false;
+            
         }
 
         //Approve & complete the project
@@ -227,7 +232,7 @@ namespace Freelance_Platform.Repositories
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error is {ex.Message}");
+                Debug.WriteLine($"ApproveAndCompleteProject failed {ex.Message}");
                 return false;
             }
 
@@ -254,11 +259,12 @@ namespace Freelance_Platform.Repositories
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error is {ex.Message}");
+                Debug.WriteLine($"RatingFreelancer failed {ex.Message}");
                 return false;
             }
         }
 
+       
     }
 
     

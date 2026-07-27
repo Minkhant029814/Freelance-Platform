@@ -1,93 +1,93 @@
 ﻿using Freelance_Platform.DTO;
+using Freelance_Platform.Interfaces;
 using Freelance_Platform.model;
 using Freelance_Platform.Repositories;
-using System;
+using Freelance_Platform.Session;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Freelance_Platform.Service
 {
     internal class FreelancerService
     {
-        private readonly FreelancerRepository freelanerRepo = new FreelancerRepository();
+        private readonly IFreelancerRepository _freelancerRepo;
 
-        public FreelancerService()
+        public FreelancerService() : this(new FreelancerRepository()) { }
+
+        public FreelancerService(IFreelancerRepository freelancerRepo)
         {
-
+            _freelancerRepo = freelancerRepo ?? throw new System.ArgumentNullException(nameof(freelancerRepo));
         }
 
-        public bool CreateProfile(Freelancer freelancer,string profile)
+        public bool CreateProfile(Freelancer freelancer, string profile)
         {
-            return freelanerRepo.CreateProfile(freelancer,profile);
+            if (freelancer == null) throw new System.ArgumentNullException(nameof(freelancer));
+            return _freelancerRepo.CreateProfile(freelancer, profile, UserSession.UserId);
         }
-
 
         public Freelancer DashboardInfo()
         {
-            return freelanerRepo.DashboardInfo();
+            return _freelancerRepo.DashboardInfo(UserSession.FreelancerId);
         }
 
-        public bool UpdateProfile(Freelancer freelancer,string profile)
+        public bool UpdateProfile(Freelancer freelancer, string profile)
         {
-            return freelanerRepo.UpdateProfile(freelancer,profile);
+            return _freelancerRepo.UpdateProfile(freelancer, profile);
         }
 
         public List<FreelancerCardDTO> GetFreelancerCards(string search = "")
         {
-            return freelanerRepo.GetFreelancerCards(search);
+            return _freelancerRepo.GetFreelancerCards(search);
         }
 
         public Freelancer FreelancerDetails(int freelancerId)
         {
-            return freelanerRepo.FreelancerDetails(freelancerId);
+            return _freelancerRepo.FreelancerDetails(freelancerId);
         }
 
         public List<Project> BrowseProjects(string search)
         {
-            return freelanerRepo.BrowseProjects(search);
+            return _freelancerRepo.BrowseProjects(search);
         }
 
         public List<ProjectStatusDTO> GetBiddingProjectsByStatus(string status)
         {
-            return freelanerRepo.GetBiddingProjectsByStatus(status);
+            return _freelancerRepo.GetBiddingProjectsByStatus(status, UserSession.FreelancerId);
         }
 
         public List<ProjectStatusDTO> GetAcceptedProjects()
         {
-            return freelanerRepo.GetAcceptedProjects();
+            return _freelancerRepo.GetAcceptedProjects(UserSession.FreelancerId);
         }
 
-        public bool SetMileStones(int projectId,int FreelancerId,List<Milestone> ms)
+        public bool SetMileStones(int projectId, int FreelancerId, List<Milestone> ms)
         {
-            return freelanerRepo.SetMileStones(projectId, FreelancerId, ms);
+            return _freelancerRepo.SetMileStones(projectId, FreelancerId, ms);
         }
 
         public bool HasMileStones(int projectId)
         {
-            return freelanerRepo.HasMileStone(projectId);
+            return _freelancerRepo.HasMileStone(projectId);
         }
 
         public List<ProjectWithMilestonesDTO> GetProjectsWithMilestones(int freelancerId)
         {
-            return freelanerRepo.GetProjectWithMileStone(freelancerId);
+            return _freelancerRepo.GetProjectWithMileStone(freelancerId);
         }
 
-        public bool UpdateMileStoneProgress(int milestoneId,int newProgress,string newStatus)
+        public bool UpdateMileStoneProgress(int milestoneId, int newProgress, string newStatus)
         {
-            return freelanerRepo.UpdateMileStoneProgress(milestoneId,newProgress,newStatus);
+            return _freelancerRepo.UpdateMileStoneProgress(milestoneId, newProgress, newStatus);
         }
 
         public bool SubmitCompletedProjects(int projectId)
         {
-            return freelanerRepo.SubmitCompletedProjects(projectId);
+            return _freelancerRepo.SubmitCompletedProjects(projectId);
         }
 
-        //CompleteProjectWithClientReview
         public List<CompletedProjectReviewDTO> ViewCompletedProject()
         {
-            return freelanerRepo.ViewCompletedProject();
+            return _freelancerRepo.ViewCompletedProject(UserSession.FreelancerId);
         }
     }
 }

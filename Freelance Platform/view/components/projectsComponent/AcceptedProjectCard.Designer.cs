@@ -30,6 +30,8 @@
         {
             this.mainContainer = new Guna.UI2.WinForms.Guna2Panel();
             this.bottomContainer = new Guna.UI2.WinForms.Guna2Panel();
+            this.hasMilestonePanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.btnSetMileStone = new FontAwesome.Sharp.IconButton();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,14 +45,12 @@
             this.lblBudget = new System.Windows.Forms.Label();
             this.lblAcceptDate = new System.Windows.Forms.Label();
             this.btnStatus = new Guna.UI2.WinForms.Guna2Button();
-            this.hasMilestonePanel = new Guna.UI2.WinForms.Guna2Panel();
-            this.label3 = new System.Windows.Forms.Label();
             this.mainContainer.SuspendLayout();
             this.bottomContainer.SuspendLayout();
+            this.hasMilestonePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             this.middleContainer.SuspendLayout();
             this.headContainer.SuspendLayout();
-            this.hasMilestonePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainContainer
@@ -83,6 +83,30 @@
             this.bottomContainer.Size = new System.Drawing.Size(979, 144);
             this.bottomContainer.TabIndex = 2;
             // 
+            // hasMilestonePanel
+            // 
+            this.hasMilestonePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.hasMilestonePanel.Controls.Add(this.label3);
+            this.hasMilestonePanel.FillColor = System.Drawing.Color.Gray;
+            this.hasMilestonePanel.Location = new System.Drawing.Point(652, 27);
+            this.hasMilestonePanel.Name = "hasMilestonePanel";
+            this.hasMilestonePanel.Size = new System.Drawing.Size(285, 81);
+            this.hasMilestonePanel.TabIndex = 13;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(17, 11);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(253, 59);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Finished Setting Milestones\r\nCheck On going Projects\r\n";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // btnSetMileStone
             // 
             this.btnSetMileStone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -96,11 +120,11 @@
             this.btnSetMileStone.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnSetMileStone.IconSize = 30;
             this.btnSetMileStone.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSetMileStone.Location = new System.Drawing.Point(727, 47);
+            this.btnSetMileStone.Location = new System.Drawing.Point(673, 47);
             this.btnSetMileStone.Margin = new System.Windows.Forms.Padding(15);
             this.btnSetMileStone.Name = "btnSetMileStone";
             this.btnSetMileStone.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnSetMileStone.Size = new System.Drawing.Size(195, 50);
+            this.btnSetMileStone.Size = new System.Drawing.Size(249, 50);
             this.btnSetMileStone.TabIndex = 12;
             this.btnSetMileStone.Text = "Set MileStones";
             this.btnSetMileStone.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -255,29 +279,6 @@
             this.btnStatus.Text = "guna2Button1";
             this.btnStatus.Click += new System.EventHandler(this.btnStatus_Click);
             // 
-            // hasMilestonePanel
-            // 
-            this.hasMilestonePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.hasMilestonePanel.Controls.Add(this.label3);
-            this.hasMilestonePanel.FillColor = System.Drawing.Color.Gray;
-            this.hasMilestonePanel.Location = new System.Drawing.Point(652, 41);
-            this.hasMilestonePanel.Name = "hasMilestonePanel";
-            this.hasMilestonePanel.Size = new System.Drawing.Size(308, 81);
-            this.hasMilestonePanel.TabIndex = 13;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(21, 21);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(217, 46);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Finished Setting Milestones\r\nCheck On going Projects\r\n";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // AcceptedProjectCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -288,13 +289,12 @@
             this.mainContainer.ResumeLayout(false);
             this.bottomContainer.ResumeLayout(false);
             this.bottomContainer.PerformLayout();
+            this.hasMilestonePanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
             this.middleContainer.ResumeLayout(false);
             this.middleContainer.PerformLayout();
             this.headContainer.ResumeLayout(false);
             this.headContainer.PerformLayout();
-            this.hasMilestonePanel.ResumeLayout(false);
-            this.hasMilestonePanel.PerformLayout();
             this.ResumeLayout(false);
 
         }

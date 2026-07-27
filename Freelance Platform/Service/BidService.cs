@@ -1,70 +1,95 @@
-﻿using Freelance_Platform.DTO;
+﻿
+using Freelance_Platform.DTO;
+using Freelance_Platform.Interfaces;
 using Freelance_Platform.model;
 using Freelance_Platform.Repositories;
+using Freelance_Platform.Session;
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
 
 namespace Freelance_Platform.Service
 {
     public class BidService
     {
-        private readonly BidRepository bidRepository = new BidRepository();
+        private readonly IBidRepository _bidRepository;
+
+        public BidService() : this(new BidRepository()) { }
+
+        public BidService(IBidRepository bidRepository)
+        {
+            _bidRepository = bidRepository ?? throw new ArgumentNullException(nameof(bidRepository));
+        }
 
         public bool BidSubmit(Bidding bid)
         {
-            return bidRepository.SubmitBid(bid);
+            if (bid == null) throw new ArgumentNullException(nameof(bid));
+            return _bidRepository.SubmitBid(bid);
         }
 
-        public bool CancelSubmit(int projectId,int freelancerId)
+        public bool CancelSubmit(int projectId, int freelancerId)
         {
-            return bidRepository.CancelBid(projectId, freelancerId);
+            return _bidRepository.CancelBid(projectId, freelancerId);
         }
 
-        public bool HasUserBidded(int projectId,int freelancerId)
+        public bool HasUserBidded(int projectId, int freelancerId)
         {
-            return bidRepository.HasUserBidded(projectId, freelancerId);
+            return _bidRepository.HasUserBidded(projectId, freelancerId);
         }
 
         public List<BidProjectModelDTO> GetBidProjects()
         {
-            return bidRepository.GetBidProjects();
+            // forward current client id explicitly to repository
+            try
+            {
+                return _bidRepository.GetBidProjects(UserSession.ClientId);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"GetBidProjects failed: {ex}");
+                return new List<BidProjectModelDTO>();
+            }
         }
 
         public List<FreelancerBidDTO> GetFreelancerBids(int projectId)
         {
-            // Repository က Data အရင်ယူ
-            List<FreelancerBidDTO> bidList = bidRepository.GetFreelancerBids(projectId);
+            // Repository returns DTOs with ProfilePic (filename). convert to Image safely here.
+            List<FreelancerBidDTO> bidList;
+            try
+            {
+                bidList = _bidRepository.GetFreelancerBids(projectId) ?? new List<FreelancerBidDTO>();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"GetFreelancerBids failed: {ex}");
+                return new List<FreelancerBidDTO>();
+            }
 
-            // ProfilePic (string) -> ProfileImage (Image)
             foreach (var item in bidList)
             {
+                item.ProfileImage = Properties.Resources.register;
+
+                if (string.IsNullOrWhiteSpace(item.ProfilePic)) continue;
+
                 string imgPath = Path.Combine(Application.StartupPath, "Uploads", item.ProfilePic);
 
-                if (File.Exists(imgPath))
+
+                if (!File.Exists(imgPath)) continue;
+
+                try
                 {
-                    try
+                    using (var fs = new FileStream(imgPath, FileMode.Open, FileAccess.Read))
+                    using (var img = Image.FromStream(fs))
                     {
-                        // File Lock မဖြစ်အောင် Clone လုပ်
-                        using (var img = Image.FromFile(imgPath))
-                        {
-                            item.ProfileImage = (Image)img.Clone();
-                        }
-                    }
-                    catch
-                    {
-                        item.ProfileImage = Properties.Resources.register;
+                        item.ProfileImage = (Image)img.Clone();
                     }
                 }
-                else
+                catch (Exception ex)
                 {
+                    Debug.WriteLine($"Failed to load image {imgPath}: {ex}");
                     item.ProfileImage = Properties.Resources.register;
                 }
             }
