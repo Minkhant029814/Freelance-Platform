@@ -18,7 +18,85 @@ namespace Freelance_Platform.Repositories
 
         public FreelancerRepository() { }
 
-        public bool CreateProfile(Freelancer freelancer, string profile, int userId)
+        //public bool CreateProfile(Freelancer freelancer, string profile, int userId)
+        //{
+        //    using (MySqlConnection conn = dbConn.GetConnection())
+        //    {
+        //        conn.Open();
+        //        using (MySqlTransaction trans = conn.BeginTransaction())
+        //        {
+        //            try
+        //            {
+        //                string queryFreelancer = @"INSERT INTO freelancers (UserId, Expertise, HourlyRate) 
+        //                                   VALUES (@UserId, @Expertise, @HourlyRate);";
+
+        //                using (MySqlCommand cmd = new MySqlCommand(queryFreelancer, conn, trans))
+        //                {
+        //                    cmd.Parameters.AddWithValue("@UserId", userId);
+        //                    cmd.Parameters.AddWithValue("@Expertise", freelancer.Expertise ?? (object)DBNull.Value);
+        //                    cmd.Parameters.AddWithValue("@HourlyRate", freelancer.HourlyRate);
+        //                    cmd.ExecuteNonQuery();
+        //                }
+
+        //                long lastId;
+        //                using (MySqlCommand cmdId = new MySqlCommand("SELECT LAST_INSERT_ID();", conn, trans))
+        //                {
+        //                    lastId = Convert.ToInt64(cmdId.ExecuteScalar());
+        //                }
+
+        //                string queryPortfolio = @"INSERT INTO portfolios (FreelancerId, OwnerName, ProfilePic, ProfessionalTitle, Biography, ContactEmail, ExternalLinks) 
+        //                                  VALUES (@fid, @OwnerName, @pic, @Title, @Bio, @contact, @link);";
+
+        //                using (MySqlCommand cmd = new MySqlCommand(queryPortfolio, conn, trans))
+        //                {
+        //                    cmd.Parameters.AddWithValue("@fid", lastId);
+        //                    cmd.Parameters.AddWithValue("@OwnerName", freelancer.Portfolio?.OwnerName ?? (object)DBNull.Value);
+        //                    cmd.Parameters.AddWithValue("@pic", profile ?? (object)DBNull.Value);
+        //                    cmd.Parameters.AddWithValue("@Title", freelancer.Portfolio?.ProfessionalTitle ?? (object)DBNull.Value);
+        //                    cmd.Parameters.AddWithValue("@Bio", freelancer.Portfolio?.Biography ?? (object)DBNull.Value);
+        //                    cmd.Parameters.AddWithValue("@contact", freelancer.Portfolio?.ContactEmail ?? (object)DBNull.Value);
+        //                    cmd.Parameters.AddWithValue("@link", freelancer.Portfolio?.ExternalLink ?? (object)DBNull.Value);
+        //                    cmd.ExecuteNonQuery();
+        //                }
+
+        //                var projects = freelancer.Portfolio?.Projects ?? new List<Project>();
+        //                foreach (var project in projects)
+        //                {
+        //                    string freelancer_pastWorkQuery = "INSERT INTO freelancer_pastworks (freelancerId,ProjectTitle,ProjectDescription) VALUES (@fid,@pTitle,@pDesc);";
+        //                    using (MySqlCommand cmd = new MySqlCommand(freelancer_pastWorkQuery, conn, trans))
+        //                    {
+        //                        cmd.Parameters.AddWithValue("@fid", lastId);
+        //                        cmd.Parameters.AddWithValue("@pTitle", project.ProjectTitle ?? (object)DBNull.Value);
+        //                        cmd.Parameters.AddWithValue("@pDesc", project.Description ?? (object)DBNull.Value);
+        //                        cmd.ExecuteNonQuery();
+        //                    }
+        //                }
+
+        //                foreach (var skill in freelancer.Skills ?? Enumerable.Empty<string>())
+        //                {
+        //                    string querySkill = "INSERT INTO freelancer_skills (FreelancerId, SkillName) VALUES (@fid, @SkillName);";
+        //                    using (MySqlCommand cmd = new MySqlCommand(querySkill, conn, trans))
+        //                    {
+        //                        cmd.Parameters.AddWithValue("@fid", lastId);
+        //                        cmd.Parameters.AddWithValue("@SkillName", skill ?? string.Empty);
+        //                        cmd.ExecuteNonQuery();
+        //                    }
+        //                }
+
+        //                trans.Commit();
+        //                return true;
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                try { trans.Rollback(); } catch { /* ignore rollback errors */ }
+        //                Debug.WriteLine($"CreateProfile failed: {ex}");
+        //                return false;
+        //            }
+        //        }
+        //    }
+        //}
+
+        public bool CreateProfile(Freelancer freelancer, string profile)
         {
             using (MySqlConnection conn = dbConn.GetConnection())
             {
@@ -27,16 +105,18 @@ namespace Freelance_Platform.Repositories
                 {
                     try
                     {
+
                         string queryFreelancer = @"INSERT INTO freelancers (UserId, Expertise, HourlyRate) 
                                            VALUES (@UserId, @Expertise, @HourlyRate);";
 
                         using (MySqlCommand cmd = new MySqlCommand(queryFreelancer, conn, trans))
                         {
-                            cmd.Parameters.AddWithValue("@UserId", userId);
-                            cmd.Parameters.AddWithValue("@Expertise", freelancer.Expertise ?? (object)DBNull.Value);
+                            cmd.Parameters.AddWithValue("@UserId", freelancer.FreelancerId);
+                            cmd.Parameters.AddWithValue("@Expertise", freelancer.Expertise);
                             cmd.Parameters.AddWithValue("@HourlyRate", freelancer.HourlyRate);
                             cmd.ExecuteNonQuery();
                         }
+
 
                         long lastId;
                         using (MySqlCommand cmdId = new MySqlCommand("SELECT LAST_INSERT_ID();", conn, trans))
@@ -44,25 +124,29 @@ namespace Freelance_Platform.Repositories
                             lastId = Convert.ToInt64(cmdId.ExecuteScalar());
                         }
 
+
                         string queryPortfolio = @"INSERT INTO portfolios (FreelancerId, OwnerName, ProfilePic, ProfessionalTitle, Biography, ContactEmail, ExternalLinks) 
                                           VALUES (@fid, @OwnerName, @pic, @Title, @Bio, @contact, @link);";
 
                         using (MySqlCommand cmd = new MySqlCommand(queryPortfolio, conn, trans))
                         {
                             cmd.Parameters.AddWithValue("@fid", lastId);
-                            cmd.Parameters.AddWithValue("@OwnerName", freelancer.Portfolio?.OwnerName ?? (object)DBNull.Value);
-                            cmd.Parameters.AddWithValue("@pic", profile ?? (object)DBNull.Value);
-                            cmd.Parameters.AddWithValue("@Title", freelancer.Portfolio?.ProfessionalTitle ?? (object)DBNull.Value);
-                            cmd.Parameters.AddWithValue("@Bio", freelancer.Portfolio?.Biography ?? (object)DBNull.Value);
-                            cmd.Parameters.AddWithValue("@contact", freelancer.Portfolio?.ContactEmail ?? (object)DBNull.Value);
-                            cmd.Parameters.AddWithValue("@link", freelancer.Portfolio?.ExternalLink ?? (object)DBNull.Value);
+                            cmd.Parameters.AddWithValue("@OwnerName", freelancer.Portfolio.OwnerName);
+                            cmd.Parameters.AddWithValue("@pic", profile);
+                            cmd.Parameters.AddWithValue("@Title", freelancer.Portfolio.ProfessionalTitle);
+                            cmd.Parameters.AddWithValue("@Bio", freelancer.Portfolio.Biography);
+                            cmd.Parameters.AddWithValue("@contact", freelancer.Portfolio.ContactEmail);
+                            cmd.Parameters.AddWithValue("@link", freelancer.Portfolio.ExternalLink);
+
                             cmd.ExecuteNonQuery();
                         }
 
                         var projects = freelancer.Portfolio?.Projects ?? new List<Project>();
+
                         foreach (var project in projects)
                         {
-                            string freelancer_pastWorkQuery = "INSERT INTO freelancer_pastworks (freelancerId,ProjectTitle,ProjectDescription) VALUES (@fid,@pTitle,@pDesc);";
+                            string freelancer_pastWorkQuery = "Insert into freelancer_pastworks (freelancerId,ProjectTitle,ProjectDescription) values (@fid,@pTitle,@pDesc);";
+
                             using (MySqlCommand cmd = new MySqlCommand(freelancer_pastWorkQuery, conn, trans))
                             {
                                 cmd.Parameters.AddWithValue("@fid", lastId);
@@ -70,15 +154,17 @@ namespace Freelance_Platform.Repositories
                                 cmd.Parameters.AddWithValue("@pDesc", project.Description ?? (object)DBNull.Value);
                                 cmd.ExecuteNonQuery();
                             }
+
                         }
 
-                        foreach (var skill in freelancer.Skills ?? Enumerable.Empty<string>())
+
+                        foreach (var skill in freelancer.Skills)
                         {
                             string querySkill = "INSERT INTO freelancer_skills (FreelancerId, SkillName) VALUES (@fid, @SkillName);";
                             using (MySqlCommand cmd = new MySqlCommand(querySkill, conn, trans))
                             {
                                 cmd.Parameters.AddWithValue("@fid", lastId);
-                                cmd.Parameters.AddWithValue("@SkillName", skill ?? string.Empty);
+                                cmd.Parameters.AddWithValue("@SkillName", skill);
                                 cmd.ExecuteNonQuery();
                             }
                         }
@@ -88,13 +174,13 @@ namespace Freelance_Platform.Repositories
                     }
                     catch (Exception ex)
                     {
-                        try { trans.Rollback(); } catch { /* ignore rollback errors */ }
-                        Debug.WriteLine($"CreateProfile failed: {ex}");
-                        return false;
+                        trans.Rollback();
+                        throw new Exception("Profile Creating Failed: " + ex.Message);
                     }
                 }
             }
         }
+
 
         public bool UpdateProfile(Freelancer freelancer, string profile)
         {

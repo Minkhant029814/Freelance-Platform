@@ -2,6 +2,7 @@
 using Freelance_Platform.model;
 using Freelance_Platform.Repositories;
 using Freelance_Platform.Service;
+using Freelance_Platform.Session;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -108,7 +109,7 @@ namespace Freelance_Platform.Forms
             }
 
 
-            if (projectService.PostProject(p))
+            if (projectService.PostProject(p,UserSession.ClientId))
             {
                 DialogResult result = MessageBox.Show(
                     "Project is posted successfully!\nDo you want to post another project?",

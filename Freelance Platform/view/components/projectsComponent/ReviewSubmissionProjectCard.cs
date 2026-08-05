@@ -33,8 +33,8 @@ namespace Freelance_Platform.view.components.projectsComponent
             lblPayrate.Text = p.Freelancer.HourlyRate.ToString();
             lblProfessionalTitle.Text = p.Freelancer.Portfolio.ProfessionalTitle;
             lblProjectTitle.Text = p.Project.ProjectTitle;
-            lblSubmittedDate.Text = $"Submitted at {p.Project.SubmittedDate.ToString("dd MMMM yyyy, hh:mm tt")}";
-            MessageBox.Show("Project Id is ..." + p.Project.ProjectId);
+            lblSubmittedDate.Text = $"Submitted at {p.Project.SubmittedDate:dd MMMM yyyy, hh:mm tt}";
+           
 
 
             //for profile image

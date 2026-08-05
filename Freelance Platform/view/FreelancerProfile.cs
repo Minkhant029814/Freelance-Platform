@@ -25,7 +25,7 @@ namespace Freelance_Platform.Forms
         private readonly string name;
         private readonly FreelancerService freelancerService = new FreelancerService();
         private readonly List<string> selectedSkillsList = new List<string>();
-        public FreelancerProfile(int userId,string type,string name)
+        public FreelancerProfile(int userId,string name)
         {
             InitializeComponent();
             txtName.Text = name;
@@ -235,6 +235,11 @@ namespace Freelance_Platform.Forms
         private void btnAddPastWork_Click(object sender, EventArgs e)
         {
             new AddPastWorksForm(this.freelancer).ShowDialog();
+        }
+
+        private void ComboExpertise_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Freelance_Platform.Interfaces
 {
     internal interface IFreelancerRepository
     {
-        bool CreateProfile(Freelancer freelancer, string profile, int userId);
+        bool CreateProfile(Freelancer freelancer, string profile);
         bool UpdateProfile(Freelancer freelancer, string profile);
         Freelancer DashboardInfo(int freelancerId);
         List<FreelancerCardDTO> GetFreelancerCards(string searchTerm = "");

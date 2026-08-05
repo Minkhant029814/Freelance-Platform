@@ -130,7 +130,7 @@ namespace Freelance_Platform.Forms
                 // Open Profile Form
                 if (type == "Freelancer")
                 {
-                    new FreelancerProfile(userId, type, name).Show();
+                    new FreelancerProfile(userId, name).Show();
 
 
                 }
@@ -160,6 +160,12 @@ namespace Freelance_Platform.Forms
         private void Register_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void lbLogin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            new frmLogin().Show();
+            this.Hide();
         }
     }
 }

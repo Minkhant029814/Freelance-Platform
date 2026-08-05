@@ -120,21 +120,7 @@ namespace Freelance_Platform.Repositories
         }
 
 
-        private void LoadClientSession(int userId)
-        {
-            string query = "SELECT ClientId, Phone, Email,ProfilePic,Address FROM clients WHERE UserId = @id";
-            MySqlParameter[] ps = { new MySqlParameter("@id", userId) };
-            DataTable dt = db.GetData(query, ps);
-
-            if (dt != null && dt.Rows.Count > 0)
-            {
-                UserSession.ClientId = Convert.ToInt32(dt.Rows[0]["ClientId"]);
-                //UserSession.Phone = dt.Rows[0]["Phone"].ToString();
-                //UserSession.Email = dt.Rows[0]["Email"].ToString();
-                //UserSession.Imagepath = dt.Rows[0]["ProfilePic"].ToString();
-                //UserSession.Address = dt.Rows[0]["Address"].ToString();
-            }
-        }
+        
 
 
     }

@@ -22,7 +22,7 @@ namespace Freelance_Platform.Service
         public bool CreateProfile(Freelancer freelancer, string profile)
         {
             if (freelancer == null) throw new System.ArgumentNullException(nameof(freelancer));
-            return _freelancerRepo.CreateProfile(freelancer, profile, UserSession.UserId);
+            return _freelancerRepo.CreateProfile(freelancer, profile);
         }
 
         public Freelancer DashboardInfo()

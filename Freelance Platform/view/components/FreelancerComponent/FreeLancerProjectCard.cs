@@ -48,7 +48,7 @@ namespace Freelance_Platform.view.components.FreelancerComponent
             lblProjectTitle.Text = p.ProjectTitle;
             lblProjectDesc.Text = p.Description;
             lblProjectBudget.Text = $"${p.BaselineBudget}";
-            lblProjectDate.Text = $" Due {p.EndDate.ToString("d/M/yyyy")}";
+            lblProjectDate.Text = $" Due {p.EndDate:d/M/yyyy}";
             UpdateUIBasedOnStatus();
             OnBidChanged?.Invoke(this, EventArgs.Empty);
 

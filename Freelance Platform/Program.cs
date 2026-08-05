@@ -19,7 +19,8 @@ namespace Freelance_Platform
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogin());
+            Application.Run(new frmLogin()); 
+            //Application.Run(new FreelancerProfile(1, "Panda"));
         }
     }
 }

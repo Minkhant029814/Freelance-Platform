@@ -25,10 +25,10 @@ namespace Freelance_Platform.Service
         }
 
 
-        public bool PostProject(Project project)
+        public bool PostProject(Project project,int clientId)
         {
             if (project == null) throw new ArgumentException(nameof(project));
-            return _projectRepo.PostProject(project);
+            return _projectRepo.PostProject(project,clientId);
 
         }
 

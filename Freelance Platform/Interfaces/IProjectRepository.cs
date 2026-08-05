@@ -10,7 +10,7 @@ namespace Freelance_Platform.Interfaces
 {
     internal interface IProjectRepository
     {
-        bool PostProject(Project project);
+        bool PostProject(Project project,int clientId);
         List<Project> AllProjectsByClient(int clientId);
         List<Project> AllProject();
         List<Project> GetPlanningProjects(int clientId);

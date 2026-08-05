@@ -52,7 +52,7 @@ namespace Freelance_Platform.Forms.Dashboard
             DisplayProjectCards();
         }
 
-        // အဓိက UI Switching Logic
+        //  UI Switching Logic
         private void ShowDashboardView()
         {
             foreach (Control ctrl in mainPanel.Controls) ctrl.Visible = false;
@@ -76,10 +76,10 @@ namespace Freelance_Platform.Forms.Dashboard
 
         public void RefreshAllViews()
         {
-            // Database ကနေ Data အသစ်ပြန်ယူ
+            // Fetching new data from database
             List<Project> updatedList = projectService.GetAllProjects();
 
-            // Dashboard ကို ပြန်ဆောက်
+            // Rebuild Dashoard
             //DisplayProjectCards();
 
             

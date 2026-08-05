@@ -44,7 +44,7 @@
             this.btnAddPastWorks.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnAddPastWorks.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnAddPastWorks.ForeColor = System.Drawing.Color.White;
-            this.btnAddPastWorks.Location = new System.Drawing.Point(560, 324);
+            this.btnAddPastWorks.Location = new System.Drawing.Point(70, 393);
             this.btnAddPastWorks.Name = "btnAddPastWorks";
             this.btnAddPastWorks.Size = new System.Drawing.Size(180, 45);
             this.btnAddPastWorks.TabIndex = 11;
@@ -53,6 +53,8 @@
             // 
             // txtProjectDes
             // 
+            this.txtProjectDes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtProjectDes.BorderRadius = 10;
             this.txtProjectDes.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtProjectDes.DefaultText = "";
@@ -63,13 +65,13 @@
             this.txtProjectDes.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtProjectDes.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtProjectDes.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtProjectDes.Location = new System.Drawing.Point(70, 324);
+            this.txtProjectDes.Location = new System.Drawing.Point(70, 299);
             this.txtProjectDes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtProjectDes.Multiline = true;
             this.txtProjectDes.Name = "txtProjectDes";
             this.txtProjectDes.PlaceholderText = "Describe the project, Your role and the techniques you used";
             this.txtProjectDes.SelectedText = "";
-            this.txtProjectDes.Size = new System.Drawing.Size(432, 76);
+            this.txtProjectDes.Size = new System.Drawing.Size(562, 76);
             this.txtProjectDes.TabIndex = 10;
             // 
             // label3
@@ -126,7 +128,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(778, 450);
             this.Controls.Add(this.btnAddPastWorks);
             this.Controls.Add(this.txtProjectDes);
             this.Controls.Add(this.label3);

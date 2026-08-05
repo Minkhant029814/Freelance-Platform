@@ -2,6 +2,7 @@
 using Freelance_Platform.DTO;
 using Freelance_Platform.Interfaces;
 using Freelance_Platform.model;
+using Freelance_Platform.Session;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace Freelance_Platform.Repositories
     {
         private readonly dbConnect dbconnect = new dbConnect();
 
-        public bool PostProject(Project project)
+        public bool PostProject(Project project,int clientId)
         {
             if (project == null) throw new ArgumentNullException(nameof(project));
 
@@ -26,7 +27,7 @@ namespace Freelance_Platform.Repositories
                                "VALUES (@clientId,@title,@desc,@budget,@startDate,@endDate,'PLANNING')";
                 MySqlParameter[] ps =
                 {
-                    new MySqlParameter("@clientId", project.ClientId),
+                    new MySqlParameter("@clientId",clientId),
                     new MySqlParameter("@title", project.ProjectTitle),
                     new MySqlParameter("@desc", project.Description),
                     new MySqlParameter("@budget", project.BaselineBudget),
@@ -90,7 +91,7 @@ namespace Freelance_Platform.Repositories
                         var p = new Project
                         {
                             ProjectId = row["ProjectId"] != DBNull.Value ? Convert.ToInt32(row["ProjectId"]) : 0,
-                            ClientId = row["ClientId"] != DBNull.Value ? Convert.ToInt32(row["ClientId"]) : 0,
+                            
                             ProjectTitle = row["ProjectTitle"]?.ToString() ?? string.Empty,
                             Description = row["Description"]?.ToString() ?? string.Empty,
                             BaselineBudget = row["Budget"] != DBNull.Value ? Convert.ToDecimal(row["Budget"]) : 0m,

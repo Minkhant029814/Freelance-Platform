@@ -146,6 +146,7 @@
             this.ComboExpertise.StartIndex = 0;
             this.ComboExpertise.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.ComboExpertise.TabIndex = 4;
+            this.ComboExpertise.SelectedIndexChanged += new System.EventHandler(this.ComboExpertise_SelectedIndexChanged);
             // 
             // txtName
             // 
@@ -257,16 +258,18 @@
             this.FormLayout.Controls.Add(this.label6);
             this.FormLayout.Controls.Add(this.label5);
             this.FormLayout.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
-            this.FormLayout.Location = new System.Drawing.Point(53, 98);
+            this.FormLayout.Location = new System.Drawing.Point(28, 110);
             this.FormLayout.Name = "FormLayout";
             this.FormLayout.Padding = new System.Windows.Forms.Padding(0, 0, 50, 40);
-            this.FormLayout.Size = new System.Drawing.Size(753, 531);
+            this.FormLayout.Size = new System.Drawing.Size(753, 541);
             this.FormLayout.TabIndex = 2;
             this.FormLayout.Scroll += new System.Windows.Forms.ScrollEventHandler(this.FormLayout_Scroll);
             this.FormLayout.Paint += new System.Windows.Forms.PaintEventHandler(this.FormLayout_Paint);
             // 
             // comboSkill
             // 
+            this.comboSkill.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.comboSkill.BackColor = System.Drawing.Color.Transparent;
             this.comboSkill.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboSkill.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -274,7 +277,7 @@
             this.comboSkill.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.comboSkill.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.comboSkill.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.comboSkill.ItemHeight = 30;
+            this.comboSkill.ItemHeight = 45;
             this.comboSkill.Items.AddRange(new object[] {
             "C# (.NET)",
             "Java",
@@ -289,10 +292,10 @@
             "React Native",
             "Android Development (Kotlin)",
             "iOS Development (Swift)"});
-            this.comboSkill.Location = new System.Drawing.Point(22, 578);
+            this.comboSkill.Location = new System.Drawing.Point(23, 708);
             this.comboSkill.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
             this.comboSkill.Name = "comboSkill";
-            this.comboSkill.Size = new System.Drawing.Size(366, 36);
+            this.comboSkill.Size = new System.Drawing.Size(678, 51);
             this.comboSkill.StartIndex = 0;
             this.comboSkill.TabIndex = 15;
             // 
@@ -303,16 +306,15 @@
             this.SkillDisplayLayout.AutoScroll = true;
             this.SkillDisplayLayout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
             this.SkillDisplayLayout.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SkillDisplayLayout.Location = new System.Drawing.Point(22, 627);
+            this.SkillDisplayLayout.Location = new System.Drawing.Point(22, 883);
             this.SkillDisplayLayout.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.SkillDisplayLayout.Name = "SkillDisplayLayout";
             this.SkillDisplayLayout.Padding = new System.Windows.Forms.Padding(10);
-            this.SkillDisplayLayout.Size = new System.Drawing.Size(604, 81);
+            this.SkillDisplayLayout.Size = new System.Drawing.Size(679, 156);
             this.SkillDisplayLayout.TabIndex = 14;
             // 
             // btnAddSkill
             // 
-            this.btnAddSkill.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddSkill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
             this.btnAddSkill.BorderRadius = 15;
             this.btnAddSkill.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -322,28 +324,29 @@
             this.btnAddSkill.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
             this.btnAddSkill.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnAddSkill.ForeColor = System.Drawing.Color.White;
-            this.btnAddSkill.Location = new System.Drawing.Point(467, 504);
+            this.btnAddSkill.Location = new System.Drawing.Point(23, 796);
             this.btnAddSkill.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.btnAddSkill.Name = "btnAddSkill";
             this.btnAddSkill.Size = new System.Drawing.Size(180, 45);
             this.btnAddSkill.TabIndex = 13;
-            this.btnAddSkill.Text = "Add";
+            this.btnAddSkill.Text = "Add Skills";
             this.btnAddSkill.Click += new System.EventHandler(this.btnAddSkill_Click);
             // 
             // label10
             // 
             this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
             this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(17, 521);
+            this.label10.Location = new System.Drawing.Point(17, 658);
             this.label10.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(258, 28);
+            this.label10.Size = new System.Drawing.Size(258, 45);
             this.label10.TabIndex = 10;
             this.label10.Text = "Technical Skill & Tech Stack\r\n";
             // 
             // txtExternalLink
             // 
-            this.txtExternalLink.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtExternalLink.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtExternalLink.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
             this.txtExternalLink.BorderRadius = 10;
             this.txtExternalLink.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -353,19 +356,21 @@
             this.txtExternalLink.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtExternalLink.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtExternalLink.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtExternalLink.Font = new System.Drawing.Font("Segoe UI", 10.8F);
+            this.txtExternalLink.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtExternalLink.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtExternalLink.Location = new System.Drawing.Point(404, 422);
+            this.txtExternalLink.Location = new System.Drawing.Point(23, 558);
             this.txtExternalLink.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.txtExternalLink.Name = "txtExternalLink";
-            this.txtExternalLink.PlaceholderText = "https://github.com/alexdev";
+            this.txtExternalLink.PlaceholderText = "https://github.com";
             this.txtExternalLink.SelectedText = "";
-            this.txtExternalLink.Size = new System.Drawing.Size(296, 60);
+            this.txtExternalLink.Size = new System.Drawing.Size(678, 83);
             this.txtExternalLink.TabIndex = 9;
             this.txtExternalLink.TextChanged += new System.EventHandler(this.txtExternalLink_TextChanged);
             // 
             // txtEmail
             // 
+            this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
             this.txtEmail.BorderRadius = 10;
             this.txtEmail.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -375,23 +380,22 @@
             this.txtEmail.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtEmail.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtEmail.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 10.8F);
+            this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtEmail.Location = new System.Drawing.Point(22, 422);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PlaceholderText = "alex@example.com";
             this.txtEmail.SelectedText = "";
-            this.txtEmail.Size = new System.Drawing.Size(286, 60);
+            this.txtEmail.Size = new System.Drawing.Size(679, 76);
             this.txtEmail.TabIndex = 8;
             // 
             // label9
             // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
             this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(410, 357);
+            this.label9.Location = new System.Drawing.Point(18, 512);
             this.label9.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(290, 28);
@@ -403,7 +407,7 @@
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(18, 357);
+            this.label8.Location = new System.Drawing.Point(17, 381);
             this.label8.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(132, 28);
@@ -414,11 +418,11 @@
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(17, 278);
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(17, 300);
             this.label7.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(164, 28);
+            this.label7.Size = new System.Drawing.Size(230, 38);
             this.label7.TabIndex = 5;
             this.label7.Text = "Contact/Web link";
             // 
@@ -436,25 +440,25 @@
             this.txtBiogarphy.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtBiogarphy.FillColor = System.Drawing.Color.WhiteSmoke;
             this.txtBiogarphy.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBiogarphy.Font = new System.Drawing.Font("Segoe UI", 10.8F);
+            this.txtBiogarphy.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBiogarphy.ForeColor = System.Drawing.Color.Blue;
             this.txtBiogarphy.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBiogarphy.Location = new System.Drawing.Point(13, 118);
+            this.txtBiogarphy.Location = new System.Drawing.Point(13, 135);
             this.txtBiogarphy.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.txtBiogarphy.Multiline = true;
             this.txtBiogarphy.Name = "txtBiogarphy";
             this.txtBiogarphy.PlaceholderText = "I am a passionate developer with 5+ years of experience building scalable\r\n web a" +
     "pplications..";
             this.txtBiogarphy.SelectedText = "";
-            this.txtBiogarphy.Size = new System.Drawing.Size(620, 121);
+            this.txtBiogarphy.Size = new System.Drawing.Size(688, 139);
             this.txtBiogarphy.TabIndex = 4;
             this.txtBiogarphy.TextChanged += new System.EventHandler(this.guna2TextBox1_TextChanged_1);
             // 
             // label6
             // 
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(9, 70);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(9, 75);
             this.label6.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(504, 33);
@@ -476,10 +480,10 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(24, 75);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(389, 20);
+            this.label4.Size = new System.Drawing.Size(451, 25);
             this.label4.TabIndex = 1;
             this.label4.Text = "Manage your public freelancer identity and portfolio";
             // 
@@ -506,7 +510,7 @@
             this.btnSaveProfile.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
             this.btnSaveProfile.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveProfile.ForeColor = System.Drawing.Color.White;
-            this.btnSaveProfile.Location = new System.Drawing.Point(76, 645);
+            this.btnSaveProfile.Location = new System.Drawing.Point(75, 676);
             this.btnSaveProfile.Name = "btnSaveProfile";
             this.btnSaveProfile.Size = new System.Drawing.Size(701, 65);
             this.btnSaveProfile.TabIndex = 11;

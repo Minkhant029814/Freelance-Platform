@@ -41,6 +41,7 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.lbLogin = new System.Windows.Forms.LinkLabel();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,6 +59,7 @@
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
+            this.panel2.Controls.Add(this.lbLogin);
             this.panel2.Controls.Add(this.chkShowPassword);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.txtConfirm);
@@ -114,7 +116,7 @@
             this.btnRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
             this.btnRegister.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegister.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnRegister.Location = new System.Drawing.Point(210, 520);
+            this.btnRegister.Location = new System.Drawing.Point(210, 538);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(170, 55);
             this.btnRegister.TabIndex = 5;
@@ -146,6 +148,7 @@
             this.comboRole.Name = "comboRole";
             this.comboRole.Size = new System.Drawing.Size(261, 45);
             this.comboRole.TabIndex = 6;
+            this.comboRole.Text = "Freelancer";
             // 
             // label2
             // 
@@ -201,6 +204,18 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Welcome !";
             // 
+            // lbLogin
+            // 
+            this.lbLogin.AutoSize = true;
+            this.lbLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLogin.Location = new System.Drawing.Point(215, 506);
+            this.lbLogin.Name = "lbLogin";
+            this.lbLogin.Size = new System.Drawing.Size(225, 25);
+            this.lbLogin.TabIndex = 11;
+            this.lbLogin.TabStop = true;
+            this.lbLogin.Text = "already have an account";
+            this.lbLogin.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbLogin_LinkClicked);
+            // 
             // Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -232,5 +247,6 @@
         private System.Windows.Forms.TextBox txtConfirm;
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.CheckBox chkShowPassword;
+        private System.Windows.Forms.LinkLabel lbLogin;
     }
 }
