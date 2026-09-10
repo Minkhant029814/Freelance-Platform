@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.mainPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.leftPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.topPanel = new Guna.UI2.WinForms.Guna2Panel();
@@ -79,7 +80,7 @@
             this.leftPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.leftPanel.Location = new System.Drawing.Point(6, 88);
             this.leftPanel.Name = "leftPanel";
-            this.leftPanel.Size = new System.Drawing.Size(831, 224);
+            this.leftPanel.Size = new System.Drawing.Size(867, 224);
             this.leftPanel.TabIndex = 2;
             this.leftPanel.WrapContents = false;
             this.leftPanel.Resize += new System.EventHandler(this.leftPanel_Resize);
@@ -113,7 +114,7 @@
             this.BiddingFreelancersView.Controls.Add(this.pnlTitle);
             this.BiddingFreelancersView.Location = new System.Drawing.Point(6, 318);
             this.BiddingFreelancersView.Name = "BiddingFreelancersView";
-            this.BiddingFreelancersView.Size = new System.Drawing.Size(834, 287);
+            this.BiddingFreelancersView.Size = new System.Drawing.Size(813, 287);
             this.BiddingFreelancersView.TabIndex = 3;
             // 
             // BiddingFreelancerView
@@ -122,7 +123,7 @@
             this.BiddingFreelancerView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -151,14 +152,18 @@
             this.BiddingFreelancerView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.BiddingFreelancerView.Location = new System.Drawing.Point(0, 100);
             this.BiddingFreelancerView.Name = "BiddingFreelancerView";
+            this.BiddingFreelancerView.ReadOnly = true;
             this.BiddingFreelancerView.RowHeadersVisible = false;
             this.BiddingFreelancerView.RowHeadersWidth = 60;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BiddingFreelancerView.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.BiddingFreelancerView.RowTemplate.Height = 24;
-            this.BiddingFreelancerView.Size = new System.Drawing.Size(834, 187);
+            this.BiddingFreelancerView.Size = new System.Drawing.Size(813, 187);
             this.BiddingFreelancerView.TabIndex = 1;
             this.BiddingFreelancerView.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.BiddingFreelancerView.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BiddingFreelancerView.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BiddingFreelancerView.ThemeStyle.HeaderStyle.Height = 40;
+            this.BiddingFreelancerView.ThemeStyle.ReadOnly = true;
             this.BiddingFreelancerView.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BiddingFreelancerView.ThemeStyle.RowsStyle.Height = 24;
             this.BiddingFreelancerView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.BiddingFreelancerView_CellContentClick);
@@ -170,12 +175,14 @@
             this.freelancerName.HeaderText = "Freelancer Name";
             this.freelancerName.MinimumWidth = 6;
             this.freelancerName.Name = "freelancerName";
+            this.freelancerName.ReadOnly = true;
             // 
             // reject
             // 
             this.reject.HeaderText = "Reject";
             this.reject.MinimumWidth = 6;
             this.reject.Name = "reject";
+            this.reject.ReadOnly = true;
             this.reject.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.reject.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.reject.Text = "Reject";
@@ -186,6 +193,7 @@
             this.accept.HeaderText = "Accept";
             this.accept.MinimumWidth = 6;
             this.accept.Name = "accept";
+            this.accept.ReadOnly = true;
             this.accept.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.accept.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.accept.Text = "Accept";
@@ -197,6 +205,7 @@
             this.title.HeaderText = "Professional Title";
             this.title.MinimumWidth = 6;
             this.title.Name = "title";
+            this.title.ReadOnly = true;
             // 
             // ProfilePic
             // 
@@ -204,6 +213,7 @@
             this.ProfilePic.HeaderText = "Profile";
             this.ProfilePic.MinimumWidth = 6;
             this.ProfilePic.Name = "ProfilePic";
+            this.ProfilePic.ReadOnly = true;
             this.ProfilePic.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ProfilePic.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
@@ -213,6 +223,7 @@
             this.amount.HeaderText = "Bid Amount";
             this.amount.MinimumWidth = 6;
             this.amount.Name = "amount";
+            this.amount.ReadOnly = true;
             // 
             // Status
             // 
@@ -220,6 +231,7 @@
             this.Status.HeaderText = "Status";
             this.Status.MinimumWidth = 6;
             this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
             // 
             // message
             // 
@@ -227,6 +239,7 @@
             this.message.HeaderText = "Proposed Note";
             this.message.MinimumWidth = 6;
             this.message.Name = "message";
+            this.message.ReadOnly = true;
             // 
             // pnlTitle
             // 
@@ -237,7 +250,7 @@
             this.pnlTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTitle.Location = new System.Drawing.Point(0, 0);
             this.pnlTitle.Name = "pnlTitle";
-            this.pnlTitle.Size = new System.Drawing.Size(834, 100);
+            this.pnlTitle.Size = new System.Drawing.Size(813, 100);
             this.pnlTitle.TabIndex = 0;
             // 
             // lblBudget

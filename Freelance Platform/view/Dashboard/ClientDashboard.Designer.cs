@@ -56,11 +56,11 @@
             this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.notiBanner = new Guna.UI2.WinForms.Guna2Panel();
+            this.lblMessage = new System.Windows.Forms.Label();
             this.btnPostProject = new Guna.UI2.WinForms.Guna2Button();
             this.lblsubtitle = new System.Windows.Forms.Label();
             this.lblGreeting = new System.Windows.Forms.Label();
-            this.notiBanner = new Guna.UI2.WinForms.Guna2Panel();
-            this.lblMessage = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
             this.panelDashboardContent.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
@@ -506,6 +506,33 @@
             this.guna2Panel2.Size = new System.Drawing.Size(849, 104);
             this.guna2Panel2.TabIndex = 3;
             // 
+            // notiBanner
+            // 
+            this.notiBanner.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.notiBanner.BorderRadius = 15;
+            this.notiBanner.Controls.Add(this.lblMessage);
+            this.notiBanner.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
+            this.notiBanner.Location = new System.Drawing.Point(276, 3);
+            this.notiBanner.Name = "notiBanner";
+            this.notiBanner.Size = new System.Drawing.Size(561, 95);
+            this.notiBanner.TabIndex = 3;
+            this.notiBanner.Visible = false;
+            // 
+            // lblMessage
+            // 
+            this.lblMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblMessage.BackColor = System.Drawing.Color.Transparent;
+            this.lblMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMessage.ForeColor = System.Drawing.Color.White;
+            this.lblMessage.Location = new System.Drawing.Point(23, 6);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(519, 72);
+            this.lblMessage.TabIndex = 0;
+            this.lblMessage.Text = "label6";
+            // 
             // btnPostProject
             // 
             this.btnPostProject.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -542,33 +569,6 @@
             this.lblGreeting.Size = new System.Drawing.Size(294, 32);
             this.lblGreeting.TabIndex = 0;
             this.lblGreeting.Text = "Welcome back, Jane";
-            // 
-            // notiBanner
-            // 
-            this.notiBanner.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.notiBanner.BorderRadius = 15;
-            this.notiBanner.Controls.Add(this.lblMessage);
-            this.notiBanner.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(115)))), ((int)(((byte)(168)))));
-            this.notiBanner.Location = new System.Drawing.Point(398, 3);
-            this.notiBanner.Name = "notiBanner";
-            this.notiBanner.Size = new System.Drawing.Size(439, 95);
-            this.notiBanner.TabIndex = 3;
-            this.notiBanner.Visible = false;
-            // 
-            // lblMessage
-            // 
-            this.lblMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblMessage.BackColor = System.Drawing.Color.Transparent;
-            this.lblMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMessage.ForeColor = System.Drawing.Color.White;
-            this.lblMessage.Location = new System.Drawing.Point(23, 6);
-            this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(397, 72);
-            this.lblMessage.TabIndex = 0;
-            this.lblMessage.Text = "label6";
             // 
             // ClientDashboard
             // 

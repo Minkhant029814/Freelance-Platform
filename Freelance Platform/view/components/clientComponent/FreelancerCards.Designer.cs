@@ -135,6 +135,7 @@
             this.RatingStar.Location = new System.Drawing.Point(29, 138);
             this.RatingStar.Name = "RatingStar";
             this.RatingStar.RatingColor = System.Drawing.Color.Gold;
+            this.RatingStar.ReadOnly = true;
             this.RatingStar.Size = new System.Drawing.Size(133, 28);
             this.RatingStar.TabIndex = 4;
             // 

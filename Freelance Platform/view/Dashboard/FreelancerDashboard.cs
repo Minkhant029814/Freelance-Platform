@@ -1,13 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
-using System.Windows.Forms;
-using Freelance_Platform.components;
-using Freelance_Platform.model;
+﻿using Freelance_Platform.model;
 using Freelance_Platform.Service;
 using Freelance_Platform.Session;
 using Freelance_Platform.view.components.FreelancerComponent;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Windows.Forms;
+
+
 
 namespace Freelance_Platform.Forms.Dashboard
 {
@@ -20,7 +22,7 @@ namespace Freelance_Platform.Forms.Dashboard
         private readonly FreelancerEdit profile;
         private readonly SearchProjects searchProjects;
         private readonly myBidsView mybids;
-        private  OngoingProjectComponent ongoingPage;
+        private OngoingProjectComponent ongoingPage;
         private CompletedProjectComponent completedPage;
 
         public FreelancerDashboard()
@@ -28,28 +30,22 @@ namespace Freelance_Platform.Forms.Dashboard
             InitializeComponent();
             searchProjects = new SearchProjects();
             mybids = new myBidsView();
-            
+
             profile = new FreelancerEdit(this) { Visible = false, Dock = DockStyle.Fill };
-            
-           
+
             mainPanel.Controls.Add(profile);
             searchProjects.Dock = DockStyle.Fill;
             mybids.Dock = DockStyle.Fill;
-            
+
             mainPanel.Controls.Add(searchProjects);
             mainPanel.Controls.Add(mybids);
-            
-            
-
-          
-          
         }
 
         private void FreelancerDashboard_Load(object sender, EventArgs e)
         {
             ShowDashboardView();
             DisplayDashboard();
-            DisplayProjectCards();
+            DisplayProjectCards(); // initial load
         }
 
         //  UI Switching Logic
@@ -58,14 +54,12 @@ namespace Freelance_Platform.Forms.Dashboard
             foreach (Control ctrl in mainPanel.Controls) ctrl.Visible = false;
             bottomContainer.Visible = true;
             CardLayout.Visible = true;
-           
         }
 
         private void ShowProfileView()
         {
             bottomContainer.Visible = false;
             CardLayout.Visible = false;
-            
 
             foreach (Control ctrl in mainPanel.Controls) ctrl.Visible = false;
 
@@ -74,22 +68,38 @@ namespace Freelance_Platform.Forms.Dashboard
             profile.BringToFront();
         }
 
-        public void RefreshAllViews()
+        
+        /// Refresh views and re-render active project cards.
+        /// If updatedProjectId is provided, that project will be moved to top of the list (if present).
+      
+        public void RefreshAllViews(int? updatedProjectId = null)
         {
-            // Fetching new data from database
-            List<Project> updatedList = projectService.GetAllProjects();
+            var projects = SafeGetActiveProjects();
 
-            // Rebuild Dashoard
-            //DisplayProjectCards();
+            if (projects == null) projects = new List<Project>();
 
-            
-         
+            // If caller provided an updated project id, put it to the top so it's visible immediately
+            if (updatedProjectId.HasValue)
+            {
+                int idx = projects.FindIndex(p => p.ProjectId == updatedProjectId.Value);
+                if (idx > 0)
+                {
+                    var updated = projects[idx];
+                    projects.RemoveAt(idx);
+                    projects.Insert(0, updated);
+                }
+            }
+
+            DisplayProjectCards(projects);
+
+            // Optionally refresh other panels that rely on project data
+            // If those controls expose public refresh methods, call them here.
+            // e.g. if (ongoingPage != null) ongoingPage.RefreshData();
         }
+
         private void ShowBrowseView()
         {
-           
             CardLayout.Visible = false;
-           
             bottomContainer.Visible = false;
 
             foreach (Control ctrl in mainPanel.Controls) ctrl.Visible = false;
@@ -105,9 +115,7 @@ namespace Freelance_Platform.Forms.Dashboard
             foreach (Control c in mainPanel.Controls) c.Visible = false;
             mybids.Visible = true;
             mybids.BringToFront();
-
         }
-
 
         private void ShowOngoingPage()
         {
@@ -133,23 +141,23 @@ namespace Freelance_Platform.Forms.Dashboard
 
             completedPage.Visible = true;
             completedPage.BringToFront();
-
         }
 
         // Navigation Buttons
         private void btnDashboard_Click(object sender, EventArgs e)
         {
-            lblGreeting.Text = freelancerService.DashboardInfo().Portfolio.OwnerName;
+            var info = freelancerService.DashboardInfo();
+            lblGreeting.Text = info?.Portfolio?.OwnerName ?? "";
             lblDesc.Text = "Here is your freelance overview";
             ShowDashboardView();
             DisplayDashboard();
+            RefreshAllViews();
         }
 
         private void btnProfile_Click(object sender, EventArgs e)
         {
             lblGreeting.Text = "Profile Setup";
             lblDesc.Text = "Complete your profile to win more projects";
-            //RefreshAllViews();
             ShowProfileView();
         }
 
@@ -157,7 +165,7 @@ namespace Freelance_Platform.Forms.Dashboard
         {
             lblGreeting.Text = "Browse Projects";
             lblDesc.Text = "Find work that matches your skills";
-            //RefreshAllViews();
+            RefreshAllViews();
             ShowBrowseView();
         }
 
@@ -165,50 +173,114 @@ namespace Freelance_Platform.Forms.Dashboard
         public void DisplayDashboard()
         {
             Freelancer f = freelancerService.DashboardInfo();
-            lblGreeting.Text = f.Portfolio.OwnerName;
-            lblName.Text = f.Portfolio.OwnerName;
+            lblGreeting.Text = f?.Portfolio?.OwnerName ?? string.Empty;
+            lblName.Text = f?.Portfolio?.OwnerName ?? string.Empty;
 
-            string imgPath = Path.Combine(Application.StartupPath, "Uploads", f.Portfolio.Profile ?? "");
-            ProfilePict.Image = (File.Exists(imgPath)) ? Image.FromFile(imgPath) : Properties.Resources.register;
+            // Load image safely without locking file
+            ProfilePict.Image?.Dispose();
+            if (!string.IsNullOrEmpty(f?.Portfolio?.Profile))
+            {
+                string imgPath = Path.Combine(Application.StartupPath, "Uploads", f.Portfolio.Profile);
+                if (File.Exists(imgPath))
+                {
+                    try
+                    {
+                        using (var fs = new FileStream(imgPath, FileMode.Open, FileAccess.Read))
+                        using (var img = Image.FromStream(fs))
+                        {
+                            ProfilePict.Image = new Bitmap(img);
+                        }
+                        return;
+                    }
+                    catch
+                    {
+                        // fall through to default image
+                    }
+                }
+            }
+
+            ProfilePict.Image = Properties.Resources.register;
         }
 
-        private void DisplayProjectCards()
+  
+        /// Displays project cards using provided list or fetches from service if null.
+        /// Uses SuspendLayout/ResumeLayout to reduce flicker and avoids duplicate DB calls.
+      
+        private void DisplayProjectCards(List<Project> projects = null)
         {
-           
-            flowCardDisplay.Controls.Clear();
-
-            
-            List<Project> activeProjects = projectService.GetAllProjects();
-            if(activeProjects.Count == 0)
+            flowCardDisplay.SuspendLayout();
+            try
             {
-                Label lblMessage = new Label();
-                lblMessage.Text = "No active projects here";
-                lblMessage.ForeColor = Color.Green;
-                lblMessage.Font = new Font("Segoe UI", 14, FontStyle.Bold);
-                lblMessage.AutoSize = true;
+                flowCardDisplay.Controls.Clear();
 
+                var activeProjects = projects ?? SafeGetActiveProjects();
+                if (activeProjects == null) activeProjects = new List<Project>();
 
-                lblMessage.Location = new Point(
-                    (flowCardDisplay.Width - lblMessage.Width) / 2,
-                    (flowCardDisplay.Height - lblMessage.Height) / 2
-                );
+                if (activeProjects.Count == 0)
+                {
+                    var lblMessage = new Label
+                    {
+                        Text = "No active projects here",
+                        ForeColor = Color.Green,
+                        Font = new Font("Segoe UI", 14, FontStyle.Bold),
+                        AutoSize = true
+                    };
 
+                    // Center label in the flow panel area
+                    var wrapper = new Panel
+                    {
+                        Dock = DockStyle.Fill
+                    };
+                    lblMessage.Location = new Point(
+                        Math.Max(0, (wrapper.ClientSize.Width - lblMessage.PreferredWidth) / 2),
+                        Math.Max(0, (wrapper.ClientSize.Height - lblMessage.PreferredHeight) / 2)
+                    );
+                    lblMessage.Anchor = AnchorStyles.None;
+                    wrapper.Controls.Add(lblMessage);
+                    flowCardDisplay.Controls.Add(wrapper);
+                }
+                else
+                {
+                    foreach (Project proj in activeProjects)
+                    {
+                        var card = new FreeLancerProjectCard(proj)
+                        {
+                            Width = Math.Max(0, flowCardDisplay.ClientSize.Width - 25)
+                        };
 
-                flowCardDisplay.Controls.Add(lblMessage);
+                        flowCardDisplay.Controls.Add(card);
+                    }
+                }
             }
-
-          
-            foreach (Project proj in activeProjects)
+            finally
             {
-                FreeLancerProjectCard card = new FreeLancerProjectCard(proj);
-            
-                card.Width = flowCardDisplay.ClientSize.Width - 25;
-                flowCardDisplay.Controls.Add(card);
+                flowCardDisplay.ResumeLayout();
             }
         }
+
+        private List<Project> SafeGetActiveProjects()
+        {
+            try
+            {
+                var list = projectService.GetAllProjects() ?? new List<Project>();
+                // defensive: ensure no null entries
+                return list.Where(p => p != null).ToList();
+            }
+            catch
+            {
+                // Don't throw from UI refresh — return empty list on failure
+                return new List<Project>();
+            }
+        }
+
         private void flowCardDisplay_Resize(object sender, EventArgs e)
         {
-            foreach (Control c in flowCardDisplay.Controls) c.Width = flowCardDisplay.ClientSize.Width - 25;
+            foreach (Control c in flowCardDisplay.Controls)
+            {
+                // wrapper panels may exist for the "no items" message
+                if (c is Panel) continue;
+                c.Width = Math.Max(0, flowCardDisplay.ClientSize.Width - 25);
+            }
         }
 
         private void btnSignOut_Click(object sender, EventArgs e)
@@ -217,7 +289,7 @@ namespace Freelance_Platform.Forms.Dashboard
             {
                 UserSession.Logout();
                 new frmLogin().Show();
-                this.Hide();
+                Hide();
             }
         }
 
@@ -230,7 +302,6 @@ namespace Freelance_Platform.Forms.Dashboard
         {
             lblGreeting.Text = "My Bids";
             lblDesc.Text = "Track client decisions and your next steps";
-
             ShowBidsView();
         }
 
